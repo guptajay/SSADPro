@@ -1,17 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ssadpro/model/Section.dart';
+import 'package:flutter/foundation.dart';
+import 'package:ssadpro/view/WorldUI.dart';
 
 class SectionUI extends StatefulWidget {
+  final List<Section> list;
+  int worldInt = 0;
+
+  SectionUI({Key key, @required this.list, @required this.worldInt})
+      : super(key: key);
+
   @override
-  _SectionUIState createState() => _SectionUIState();
+  _SectionUIState createState() =>
+      _SectionUIState(list: list, worldInt: worldInt);
 }
 
 class _SectionUIState extends State<SectionUI> {
+  final List<Section> list;
+  int worldInt = 0;
+
+  _SectionUIState(
+      {Key key,
+      @required this.list,
+      @required this.worldInt}); //: super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Section Page'),
+        title: Text('World $worldInt'),
+        //title: Text(listt[0]),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -26,16 +44,19 @@ class _SectionUIState extends State<SectionUI> {
           SizedBox(height: 50),
           Row(
             children: <Widget>[
-              SectionBox('Section 1'),
-              SectionBox('Section 2')
+              SectionBox(list[0].sectionName),
+              SectionBox(list[1].sectionName),
             ],
           ),
           Row(
-            children: <Widget>[SectionBox('abc'), SectionBox('abc')],
+            children: <Widget>[
+              SectionBox(list[2].sectionName),
+              SectionBox(list[3].sectionName),
+            ],
           ),
-          Row(
-            children: <Widget>[SectionBox('abc'), SectionBox('abc')],
-          ),
+//          Row(
+//            children: <Widget>[SectionBox('abc'), SectionBox('abc')],
+//          ),
         ],
       ),
     );

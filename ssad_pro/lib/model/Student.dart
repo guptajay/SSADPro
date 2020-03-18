@@ -1,16 +1,18 @@
-
-
-class Student{
+class Student {
   String _userName; //For simplicity, _userName = email;
   String _password;
   String _userNickname; //Name displayed in game
-  List<bool> _unlockedWorldBool = [true]; //first world unlocked = true, if the 2nd world is unlocked, [true, true]. 6 worlds in total
-  List<String> _progressOfLevels; //All the levels completed of that section in that world
+  List<bool> _unlockedWorldBool = [
+    true
+  ]; //first world unlocked = true, if the 2nd world is unlocked, [true, true]. 6 worlds in total
+  List<String>
+      _progressOfLevels; //All the levels completed of that section in that world
   List<String> _progressOfSections; //All the sections completed in that world
 
   //---------------------------------------------------------
   //Constructor
-  Student(this._userName, this._password){ //Constructor for object creation
+  Student(this._userName, this._password) {
+    //Constructor for object creation
   }
 
   //---------------------------------------------------------
@@ -33,15 +35,15 @@ class Student{
 
   //---------------------------------------------------------
   //Method
-  List<bool> updateUnlockedWorld(){
+  void updateUnlockedWorld() {
     _unlockedWorldBool.add(true);
   }
 
-  List<String> updateProgressOfSection(String sectionCompleted){
+  List<String> updateProgressOfSection(String sectionCompleted) {
     _progressOfSections.add(sectionCompleted);
   }
 
-  List<String> updateProgressOfLevels(String levelCompleted){
+  List<String> updateProgressOfLevels(String levelCompleted) {
     _progressOfLevels.add(levelCompleted);
   }
 }
