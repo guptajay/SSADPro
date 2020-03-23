@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/home_page.dart';
+import 'package:ssadpro/view/instructor_dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -56,13 +57,23 @@ class _LoginPageState extends State<LoginPage> {
       splashColor: Colors.grey,
       onPressed: () {
         signInWithGoogle().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return HomePage();
-              },
-            ),
-          );
+          if (isSwitched) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return InstructorDashboard();
+                },
+              ),
+            );
+          } else {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return HomePage();
+                },
+              ),
+            );
+          }
         });
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
