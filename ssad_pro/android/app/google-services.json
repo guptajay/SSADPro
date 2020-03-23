@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "16411527819",
+    "firebase_url": "https://ssadpro-71726.firebaseio.com",
+    "project_id": "ssadpro-71726",
+    "storage_bucket": "ssadpro-71726.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16411527819:android:202107a8e679d47af5228e",
+        "android_client_info": {
+          "package_name": "jaygupta.ssadpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16411527819-13aqd0g2keepfmvr1ut443gfpkb0ktbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jaygupta.ssadpro",
+            "certificate_hash": "ec3d666de4d2511297b452c647bf410d21888813"
+          }
+        },
+        {
+          "client_id": "16411527819-dr2qbflmcu36iffbuknbb3o3rbaqef2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIIZA7SFm7D9oDsqgTjrdwn5M_WzAJdPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16411527819-dr2qbflmcu36iffbuknbb3o3rbaqef2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
