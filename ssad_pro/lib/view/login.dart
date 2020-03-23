@@ -8,10 +8,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool isSwitched = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[50],
         body: Container(
             child: MediaQuery.removePadding(
                 context: context,
@@ -31,6 +32,20 @@ class _LoginPageState extends State<LoginPage> {
                           children: <Widget>[],
                         )),
                     SizedBox(height: 50),
+                    Center(
+                        child: Container(
+                            width: 250,
+                            child: SwitchListTile(
+                              title: Text("I'm a Instructor"),
+                              value: isSwitched,
+                              onChanged: (value) {
+                                setState(() {
+                                  isSwitched = value;
+                                });
+                              },
+                              activeTrackColor: Colors.lightBlueAccent,
+                              activeColor: Colors.blue[700],
+                            ))),
                     _signInButton(),
                   ],
                 )))));

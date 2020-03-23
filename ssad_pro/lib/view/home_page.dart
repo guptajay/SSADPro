@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width * 0.20;
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       body: Container(
         decoration: BoxDecoration(),
         child: Center(
