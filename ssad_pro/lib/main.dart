@@ -17,7 +17,7 @@ class Startup extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "SSADPro",
+        title: "SSADProO",
         theme: ThemeData(
             textTheme: Theme.of(context).textTheme.apply(
                   fontFamily: 'Open Sans',
