@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/loginUI.dart';
 
-class InstructorDashboard extends StatelessWidget {
+class Gr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -82,7 +82,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -117,7 +117,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -152,7 +152,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -185,8 +185,8 @@ class InstructorDashboard extends StatelessWidget {
                   signOutGoogle();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) {
-                    return LoginPage();
-                  }), ModalRoute.withName('/'));
+                        return LoginPage();
+                      }), ModalRoute.withName('/'));
                 },
                 color: Colors.blue[400],
                 child: Padding(

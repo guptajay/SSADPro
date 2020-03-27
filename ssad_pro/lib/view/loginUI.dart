@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/view/home_page.dart';
-import 'package:ssadpro/view/instructor_dashboard.dart';
+import 'package:ssadpro/view/HomePageUI.dart';
+import 'package:ssadpro/view/InstructorDashboardUI.dart';
 
 class LoginPage extends StatefulWidget {
   @override

@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/view/WorldUI.dart';
-import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/loginUI.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() => runApp(Startup());
