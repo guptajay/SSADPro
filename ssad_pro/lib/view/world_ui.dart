@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
-import 'SectionUI.dart';
+import 'package:ssadpro/view/section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/view/loginUI.dart';
+import 'package:ssadpro/view/login.dart';
 
 class Gr extends StatelessWidget {
   @override
@@ -185,8 +185,8 @@ class Gr extends StatelessWidget {
                   signOutGoogle();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) {
-                        return LoginPage();
-                      }), ModalRoute.withName('/'));
+                    return LoginPage();
+                  }), ModalRoute.withName('/'));
                 },
                 color: Colors.blue[400],
                 child: Padding(
