@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/world_ui.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -47,13 +48,10 @@ class HomePage extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => DietTrackerDashboard()),
+                        MaterialPageRoute(builder: (context) => WorldUI()),
                       );
-                      */
                     },
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,13 +80,10 @@ class HomePage extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => DietTrackerDashboard()),
+                        MaterialPageRoute(builder: (context) => WorldUI()),
                       );
-                      */
                     },
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
