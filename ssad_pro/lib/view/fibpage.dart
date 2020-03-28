@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ssad_start/txtHandle.dart';
+import 'package:ssadpro/controller/txt_handle.dart';
 
 class FIBPage extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _InputPageState extends State<FIBPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
             centerTitle: true,
             title: Text("Fill in the Blanks",
@@ -48,24 +48,27 @@ class _InputPageState extends State<FIBPage> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          SizedBox(height:100),
+                          SizedBox(height: 100),
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.only(left:20, right:20),
+                              padding: EdgeInsets.only(left: 20, right: 20),
                               child: SizedBox(
                                   width: 300.0,
                                   child: RaisedButton(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.white)),
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                     textColor: Colors.white,
                                     color: Colors.blue[700],
                                     onPressed: () {},
                                     child: Padding(
-                                      padding: const EdgeInsets.only(top:40.0, bottom:40),
+                                      padding: const EdgeInsets.only(
+                                          top: 40.0, bottom: 40),
                                       child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: <Widget>[
                                             SizedBox(
                                               width: 10,
@@ -76,7 +79,7 @@ class _InputPageState extends State<FIBPage> {
                                   )),
                             ),
                           ),
-                          SizedBox(height:20),
+                          SizedBox(height: 20),
                           Expanded(
                             child: Container(
                               decoration: new BoxDecoration(boxShadow: [
@@ -85,53 +88,57 @@ class _InputPageState extends State<FIBPage> {
                                   blurRadius: 20.0,
                                 ),
                               ]),
-                              padding: EdgeInsets.only(left: 20,right:20),
+                              padding: EdgeInsets.only(left: 20, right: 20),
                               child: SizedBox(
                                   width: 300.0,
                                   child: RaisedButton(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         side: BorderSide(color: Colors.white)),
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                     textColor: Colors.black,
                                     color: Colors.white,
                                     onPressed: () {},
                                     child: Padding(
-                                        padding: const EdgeInsets.only(top:20.0, bottom:20),
+                                        padding: const EdgeInsets.only(
+                                            top: 20.0, bottom: 20),
                                         child: Row(
                                           children: <Widget>[
                                             Expanded(
-
                                               child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: <Widget>[
-
                                                   Padding(
-                                                    padding: const EdgeInsets.only(left:10),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 10),
                                                     child: TextField(
-                                                      style: TextStyle(color: Colors.black),
-
+                                                      style: TextStyle(
+                                                          color: Colors.black),
                                                       controller: myController,
                                                       decoration: InputDecoration(
-                                                          border: InputBorder.none,
-                                                          hintText: 'Enter your answer here...',
-                                                          hintStyle: TextStyle(color: Colors.black)),
+                                                          border:
+                                                              InputBorder.none,
+                                                          hintText:
+                                                              'Enter your answer here...',
+                                                          hintStyle: TextStyle(
+                                                              color: Colors
+                                                                  .black)),
                                                     ),
                                                   ),
                                                 ],
                                               ),
-
                                             ),
                                           ],
-                                        )
-                                    ),
+                                        )),
                                   )),
                             ),
                           ),
-                          SizedBox(height:100),
-
+                          SizedBox(height: 100),
                           Container(
-                            padding: EdgeInsets.only(left:2, right:2),
+                            padding: EdgeInsets.only(left: 2, right: 2),
                             child: SizedBox(
                                 width: 55.0,
                                 child: RaisedButton(
@@ -142,16 +149,18 @@ class _InputPageState extends State<FIBPage> {
                                   textColor: Colors.white,
                                   color: Colors.blue[900],
                                   onPressed: () {
-                                    if(myController.text == "correct"){
+                                    if (myController.text == "correct") {
                                       createRecord("Correct", "fib");
-                                    }else{
+                                    } else {
                                       createRecord("Wrong", "fib");
                                     }
                                   },
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top:10.0, bottom:10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10.0, bottom: 10),
                                     child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: <Widget>[
                                           SizedBox(
                                             width: 10,
@@ -166,9 +175,10 @@ class _InputPageState extends State<FIBPage> {
                           ),
                           RaisedButton(
                             child: Text('Retrieve Data'),
-                            onPressed: () async{
+                            onPressed: () async {
                               print(await getData("fib"));
-                              print("____________________________________________");
+                              print(
+                                  "____________________________________________");
                             },
                           ),
                           RaisedButton(
