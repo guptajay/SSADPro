@@ -1,7 +1,5 @@
-import 'package:ssad_start/constants.dart';
-import 'package:ssad_start/reusableCard.dart';
 import 'package:flutter/material.dart';
-import 'package:ssad_start/bottom_button.dart';
+import 'package:ssad_start/txtHandle.dart';
 
 class FIBPage extends StatefulWidget {
   @override
@@ -72,16 +70,13 @@ class _InputPageState extends State<FIBPage> {
                                             SizedBox(
                                               width: 10,
                                             ),
-                                            Text("Question to be asked",
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold))
+                                            Text("Question to be asked"),
                                           ]),
                                     ),
                                   )),
                             ),
                           ),
-                          SizedBox(height:40),
+                          SizedBox(height:20),
                           Expanded(
                             child: Container(
                               decoration: new BoxDecoration(boxShadow: [
@@ -102,29 +97,29 @@ class _InputPageState extends State<FIBPage> {
                                     color: Colors.white,
                                     onPressed: () {},
                                     child: Padding(
-                                      padding: const EdgeInsets.only(top:20.0, bottom:20),
+                                        padding: const EdgeInsets.only(top:20.0, bottom:20),
                                         child: Row(
                                           children: <Widget>[
                                             Expanded(
 
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: <Widget>[
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: <Widget>[
 
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(left:10),
-                                                      child: TextField(
-                                                        style: TextStyle(color: Colors.black),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:10),
+                                                    child: TextField(
+                                                      style: TextStyle(color: Colors.black),
 
-                                                        controller: myController,
-                                                        decoration: InputDecoration(
-                                                            border: InputBorder.none,
-                                                            hintText: 'Enter your answer here...',
-                                                        hintStyle: TextStyle(color: Colors.black)),
-                                                      ),
+                                                      controller: myController,
+                                                      decoration: InputDecoration(
+                                                          border: InputBorder.none,
+                                                          hintText: 'Enter your answer here...',
+                                                          hintStyle: TextStyle(color: Colors.black)),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
+                                              ),
 
                                             ),
                                           ],
@@ -146,7 +141,13 @@ class _InputPageState extends State<FIBPage> {
                                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                   textColor: Colors.white,
                                   color: Colors.blue[900],
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if(myController.text == "correct"){
+                                      createRecord("Correct", "fib");
+                                    }else{
+                                      createRecord("Wrong", "fib");
+                                    }
+                                  },
                                   child: Padding(
                                     padding: const EdgeInsets.only(top:10.0, bottom:10),
                                     child: Row(
@@ -163,6 +164,19 @@ class _InputPageState extends State<FIBPage> {
                                   ),
                                 )),
                           ),
+                          RaisedButton(
+                            child: Text('Retrieve Data'),
+                            onPressed: () async{
+                              print(await getData("fib"));
+                              print("____________________________________________");
+                            },
+                          ),
+                          RaisedButton(
+                            child: Text('Delete Data'),
+                            onPressed: () {
+                              deleteData("fib");
+                            },
+                          )
                         ]),
                   ),
                 ))));

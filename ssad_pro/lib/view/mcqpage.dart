@@ -1,8 +1,5 @@
-import 'package:ssad_start/constants.dart';
-import 'package:ssad_start/reusableCard.dart';
 import 'package:flutter/material.dart';
-import 'package:ssad_start/bottom_button.dart';
-import 'package:ssad_start/database_test.dart';
+import 'package:ssad_start/txtHandle.dart';
 
 class MCQPage extends StatefulWidget {
   @override
@@ -63,7 +60,8 @@ class _InputPageState extends State<MCQPage> {
                             color: Colors.blue[700],
                             onPressed: () {},
                             child: Padding(
-                              padding: const EdgeInsets.only(top:60.0, bottom:60),
+                              padding: const EdgeInsets.only(
+                                  top: 60.0, bottom: 60),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -84,158 +82,190 @@ class _InputPageState extends State<MCQPage> {
             ),
             Expanded(
                 child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: pressAttention1==1?Colors.red[800]:(pressAttention1==2?Colors.grey:Colors.blue[700]),
-                          onPressed: () {
-                            setState(() => pressAttention1 = 1);
-                            setState(() => pressAttention2 = 2);
-                            setState(() => pressAttention3 = 2);
-                            setState(() => pressAttention4 = 2);
-                            createRecord("Wrong");
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top:40.0, bottom:40),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text("Option 1",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only( right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: pressAttention2==1?Colors.red[800]:(pressAttention2==2?Colors.grey:Colors.blue[700]),
-                          onPressed: () {
-                            setState(() => pressAttention2 = 1);
-                            setState(() => pressAttention1 = 2);
-                            setState(() => pressAttention3 = 2);
-                            setState(() => pressAttention4 = 2);
-                            createRecord("Wrong");
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top:40.0, bottom:40),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text("Option 2",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
-              ],
-            )),
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 40),
+                        child: SizedBox(
+                            width: 300.0,
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(color: Colors.white)),
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                              textColor: Colors.white,
+                              color: pressAttention1 == 1
+                                  ? Colors.red[800]
+                                  : (pressAttention1 == 2 ? Colors.grey : Colors
+                                  .blue[700]),
+                              onPressed: () {
+                                setState(() => pressAttention1 = 1);
+                                setState(() => pressAttention2 = 2);
+                                setState(() => pressAttention3 = 2);
+                                setState(() => pressAttention4 = 2);
+                                createRecord("Wrong", "mcq");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 40.0, bottom: 40),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text("Option 1",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold))
+                                    ]),
+                              ),
+                            )),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 40),
+                        child: SizedBox(
+                            width: 300.0,
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(color: Colors.white)),
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                              textColor: Colors.white,
+                              color: pressAttention2 == 1
+                                  ? Colors.red[800]
+                                  : (pressAttention2 == 2 ? Colors.grey : Colors
+                                  .blue[700]),
+                              onPressed: () {
+                                setState(() => pressAttention2 = 1);
+                                setState(() => pressAttention1 = 2);
+                                setState(() => pressAttention3 = 2);
+                                setState(() => pressAttention4 = 2);
+                                createRecord("Wrong", "mcq");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 40.0, bottom: 40),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text("Option 2",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold))
+                                    ]),
+                              ),
+                            )),
+                      ),
+                    ),
+                  ],
+                )),
             Expanded(
                 child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: pressAttention3==1?Colors.red[800]:(pressAttention3==2?Colors.grey:Colors.blue[700]),
-                          onPressed: () {
-                            setState(() { pressAttention3 = 1;pressAttention1 = 2;pressAttention2 = 2;pressAttention4 = 2;});
-                            createRecord("Wrong");
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top:40.0, bottom:40),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text("Option 3",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only( right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: pressAttention4==1?Colors.green[800]:(pressAttention4==2?Colors.grey:Colors.blue[700]),
-                          onPressed: () {
-                            setState(() => pressAttention4 = 1);
-                            setState(() => pressAttention1 = 2);
-                            setState(() => pressAttention3 = 2);
-                            setState(() => pressAttention2 = 2);
-                            createRecord("Right");
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top:40.0, bottom:40),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text("Option 4",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
-              ],
-            )),
-            
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 40),
+                        child: SizedBox(
+                            width: 300.0,
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(color: Colors.white)),
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                              textColor: Colors.white,
+                              color: pressAttention3 == 1
+                                  ? Colors.red[800]
+                                  : (pressAttention3 == 2 ? Colors.grey : Colors
+                                  .blue[700]),
+                              onPressed: () {
+                                setState(() {
+                                  pressAttention3 = 1;
+                                  pressAttention1 = 2;
+                                  pressAttention2 = 2;
+                                  pressAttention4 = 2;
+                                });
+                                createRecord("Wrong", "mcq");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 40.0, bottom: 40),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text("Option 3",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold))
+                                    ]),
+                              ),
+                            )),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 40),
+                        child: SizedBox(
+                            width: 300.0,
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(color: Colors.white)),
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                              textColor: Colors.white,
+                              color: pressAttention4 == 1
+                                  ? Colors.green[800]
+                                  : (pressAttention4 == 2 ? Colors.grey : Colors
+                                  .blue[700]),
+                              onPressed: () {
+                                setState(() => pressAttention4 = 1);
+                                setState(() => pressAttention1 = 2);
+                                setState(() => pressAttention3 = 2);
+                                setState(() => pressAttention2 = 2);
+                                createRecord("Right", "mcq");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 40.0, bottom: 40),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text("Option 4",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold))
+                                    ]),
+                              ),
+                            )),
+                      ),
+                    ),
+                  ],
+                )),
+            RaisedButton(
+              child: Text('Retrieve Data'),
+              onPressed: () async {
+                print(await getData("mcq"));
+                print("____________________________________________");
+              },
+            ),
+            RaisedButton(
+              child: Text('Delete Data'),
+              onPressed: () {
+                deleteData("mcq");
+              },
+            )
           ],
         ));
-
   }
 }
