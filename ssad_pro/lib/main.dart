@@ -8,6 +8,11 @@ import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/view/WorldUI.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ssadpro/view/assessment_history.dart';
+//import 'package:ssadpro/view/send_assignment.dart';
+
+
+
 
 void main() => runApp(Startup());
 
@@ -22,6 +27,8 @@ class Startup extends StatelessWidget {
             textTheme: Theme.of(context).textTheme.apply(
                   fontFamily: 'Open Sans',
                 )),
-        home: LoginPage());
+//        home: DateTimePickerWidget());  // LoginPage FirstRoute
+          home: MyHomePage());  // LoginPage FirstRoute
+
   }
 }
