@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
-import 'SectionUI.dart';
+import 'package:ssadpro/view/section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
+import 'package:ssadpro/view/appbar.dart';
 
 class WorldUI extends StatefulWidget {
   @override
@@ -82,16 +83,8 @@ class _WorldUIState extends State<WorldUI> {
     ]; //Each world consists of 4 section . but now only world1,world2 has sections.
 //--------------------------------------------------------------------------------------
     return Scaffold(
-      appBar: AppBar(
-        title: Text('World Page'),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            print('back');
-          },
-        ),
-      ),
+      appBar: ReusableWidgets.getAppBar(
+          "Adventure", Colors.blue[600], Colors.grey[50]),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

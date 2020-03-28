@@ -4,8 +4,6 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
-import 'package:ssadpro/model/World.dart';
-import 'package:ssadpro/view/WorldUI.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ssadpro/view/assessment_history.dart';
@@ -22,7 +20,7 @@ class Startup extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "SSADProO",
+        title: "SSADPro",
         theme: ThemeData(
             textTheme: Theme.of(context).textTheme.apply(
                   fontFamily: 'Open Sans',

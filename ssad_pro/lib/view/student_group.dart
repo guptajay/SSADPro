@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/login.dart';
-import 'package:ssadpro/view/student_group.dart';
 
-class InstructorDashboard extends StatelessWidget {
+class Gr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +47,13 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
+                      /*
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Gr()),
+                        MaterialPageRoute(
+                            builder: (context) => DietTrackerDashboard()),
                       );
+                      */
                     },
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +85,8 @@ class InstructorDashboard extends StatelessWidget {
                       /*
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Gr()),
+                        MaterialPageRoute(
+                            builder: (context) => DietTrackerDashboard()),
                       );
                       */
                     },
@@ -114,7 +117,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -149,7 +152,7 @@ class InstructorDashboard extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /* 
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(

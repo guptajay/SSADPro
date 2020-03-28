@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ssadpro/view/WorldUI.dart';
+import 'package:ssadpro/view/world_ui.dart';
 
 class SectionUI extends StatefulWidget {
   final List<Section> list;
