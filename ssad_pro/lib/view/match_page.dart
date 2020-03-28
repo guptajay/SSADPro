@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/drag_objects.dart';
+import 'package:ssadpro/view/appbar.dart';
 
 class MatchPage extends StatefulWidget {
   @override
@@ -33,26 +34,8 @@ class _InputPageState extends State<MatchPage> {
     return Stack(
       children: <Widget>[
         Scaffold(
-            backgroundColor: Colors.white,
-            appBar: AppBar(
-                centerTitle: true,
-                title: Text("Match the Column ",
-                    style: TextStyle(
-                        color: Colors.blue[600],
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold)),
-                backgroundColor: Colors.grey[50],
-                brightness: Brightness.light,
-                elevation: 0,
-                iconTheme: IconThemeData(
-                  color: Colors.grey[50], //change your color here
-                ),
-                bottom: PreferredSize(
-                    child: Container(
-                      color: Colors.blue[600],
-                      height: 4.0,
-                    ),
-                    preferredSize: Size.fromHeight(4.0))),
+            appBar: ReusableWidgets.getAppBar(
+                "Match the Column", Colors.blue[600], Colors.grey[50]),
             body: Container(
                 child: MediaQuery.removePadding(
                     context: context,
@@ -63,7 +46,7 @@ class _InputPageState extends State<MatchPage> {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
-                              SizedBox(height: 20),
+                              SizedBox(height: 40),
                               Expanded(
                                 child: Table(
                                   border: TableBorder.all(
@@ -77,6 +60,7 @@ class _InputPageState extends State<MatchPage> {
                                           child: Container(
                                             height: 60,
                                             child: Text('Question 1',
+                                                textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -186,7 +170,7 @@ class _InputPageState extends State<MatchPage> {
                                 ),
                               ),
                               Container(
-                                  color: Colors.blue[900],
+                                  color: Colors.blue[600],
                                   height: 55,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +179,8 @@ class _InputPageState extends State<MatchPage> {
                                         "Confirm Answer",
                                         style: TextStyle(
                                             fontSize: 25,
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
                                       )
                                     ],
                                   )),
