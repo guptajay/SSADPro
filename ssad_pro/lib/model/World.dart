@@ -4,6 +4,17 @@ class World {
   int _worldInt;
   List<Section> _sectionList = [];
 
+  World();
+
+  World.fromJson(Map<String, dynamic> json)
+      : _worldInt = json['_worldInt'],
+        _sectionList = json['_sectionList'];
+
+  Map<String, dynamic> toJson() => {
+        '_worldInt': _worldInt,
+        '_sectionList': _sectionList,
+      };
+
   int get worldInt => _worldInt;
 
   set worldInt(int value) {

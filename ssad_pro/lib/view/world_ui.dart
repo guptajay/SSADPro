@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
-import 'package:ssadpro/view/section.dart';
+import 'section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'dart:convert';
 import 'package:ssadpro/view/appbar.dart';
 
 class WorldUI extends StatefulWidget {
@@ -12,6 +16,61 @@ class WorldUI extends StatefulWidget {
 }
 
 class _WorldUIState extends State<WorldUI> {
+//  TextEditingController keyInputController = new TextEditingController();
+//  TextEditingController valueInputController = new TextEditingController();
+//
+//  File jsonFile;
+//  Directory dir;
+//  String fileName = 'myJSONFile.json';
+//  bool fileExists = false;
+//  Map<String, String> fileContent;
+//
+//  @override
+//  void initState() {
+//    super.initState();
+//    getApplicationDocumentsDirectory().then((Directory directory) {
+//      dir = directory;
+//      jsonFile = new File(dir.path + "/" + fileName);
+//      fileExists = jsonFile.existsSync();
+//      if (fileExists)
+//        this.setState(
+//            () => fileContent = json.decode(jsonFile.readAsStringSync()));
+//    });
+//  }
+//
+//  @override
+//  void dispose() {
+//    keyInputController.dispose();
+//    valueInputController.dispose();
+//    super.dispose();
+//  }
+//
+//  void createFile(
+//      Map<String, dynamic> content, Directory dir, String fileName) {
+//    print("Creating file!");
+//    File file = new File(dir.path + "/" + fileName);
+//    file.createSync();
+//    fileExists = true;
+//    file.writeAsStringSync(json.encode(content));
+//  }
+//
+//  void writeToFile(String key, dynamic value) {
+//    print("Writing to file!");
+//    Map<String, dynamic> content = {key: value};
+//    if (fileExists) {
+//      print("File exists");
+//      Map<String, dynamic> jsonFileContent =
+//          json.decode(jsonFile.readAsStringSync());
+//      jsonFileContent.addAll(content);
+//      jsonFile.writeAsStringSync(json.encode(jsonFileContent));
+//    } else {
+//      print("File does not exist!");
+//      createFile(content, dir, fileName);
+//    }
+//    this.setState(() => fileContent = json.decode(jsonFile.readAsStringSync()));
+//    print(fileContent);
+//  }
+
   @override
   Widget build(BuildContext context) {
     //---------------------------------------------------------------------------------
@@ -52,6 +111,10 @@ class _WorldUIState extends State<WorldUI> {
     sec8.sectionInt = 8;
     sec8.sectionName = 'W2S4';
 
+    Section sec9 = new Section();
+    sec9.sectionInt = 9;
+    sec9.sectionName = 'W1 Final';
+
     World world1 = new World();
     World world2 = new World();
     World world3 = new World();
@@ -63,6 +126,7 @@ class _WorldUIState extends State<WorldUI> {
     world1.addSection(sec2);
     world1.addSection(sec5);
     world1.addSection(sec6);
+    world1.addSection(sec9);
 
     world2.worldInt = 2;
     world2.addSection(sec3);
@@ -82,38 +146,34 @@ class _WorldUIState extends State<WorldUI> {
       world5
     ]; //Each world consists of 4 section . but now only world1,world2 has sections.
 //--------------------------------------------------------------------------------------
+//    String json = jsonEncode(world1);
+//    Map<String, dynamic> user = jsonDecode(json);
+//    print(user['worldInt']);
+//    user['world1']
     return Scaffold(
-      appBar: ReusableWidgets.getAppBar(
-          "Adventure", Colors.blue[600], Colors.grey[50]),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(height: 50),
-          Row(
+        appBar: ReusableWidgets.getAppBar(
+            "Adventure", Colors.blue[600], Colors.grey[50]),
+        body: Center(
+          child: Column(
             children: <Widget>[
+              SizedBox(height: 60),
               WorldBox(worldlist[0].worldInt.toString(), context,
                   stu1.unlockedWorldBool, worldlist, 0),
+              SizedBox(height: 20),
               WorldBox(worldlist[1].worldInt.toString(), context,
                   stu1.unlockedWorldBool, worldlist, 1),
-            ],
-          ),
-          Row(
-            children: <Widget>[
+              SizedBox(height: 20),
               WorldBox(worldlist[2].worldInt.toString(), context,
                   stu1.unlockedWorldBool, worldlist, 2),
+              SizedBox(height: 20),
               WorldBox(worldlist[3].worldInt.toString(), context,
                   stu1.unlockedWorldBool, worldlist, 3),
-            ],
-          ),
-          Row(
-            children: <Widget>[
+              SizedBox(height: 20),
               WorldBox(worldlist[4].worldInt.toString(), context,
                   stu1.unlockedWorldBool, worldlist, 4),
             ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
 
@@ -128,13 +188,15 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
   if (unlocked) {
     return Stack(
       children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(left: 80, top: 60),
-          width: 100,
-          height: 100,
-          color: Colors.blue[300],
-          child: FlatButton(
-            child: Text('World $WorldID'),
+        SizedBox(
+          width: 300.0,
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.white)),
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            textColor: Colors.white,
+            color: Colors.blue[700],
             onPressed: () {
               Navigator.push(
                 cont,
@@ -146,32 +208,145 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                 ),
               );
             },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("World $WorldID",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                ),
+                Icon(
+                  Icons.lock_open,
+                  size: 40,
+                ),
+              ],
+            ),
           ),
         ),
       ],
     );
+
+//    return Stack(
+//      children: <Widget>[
+//        Container(
+//          margin: EdgeInsets.only(left: 80, top: 60),
+//          width: 100,
+//          height: 100,
+//          color: Colors.blue[300],
+//          child: FlatButton(
+//            child: Text('World $WorldID'),
+//            onPressed: () {
+//              Navigator.push(
+//                cont,
+//                MaterialPageRoute(
+//                  builder: (cont) => SectionUI(
+//                    list: wlist[index].sectionList,
+//                    worldInt: wlist[index].worldInt,
+//                  ),
+//                ),
+//              );
+//            },
+//          ),
+//        ),
+//      ],
+//    );
+
   } else {
     return Stack(
       children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(left: 80, top: 60),
-          padding: EdgeInsets.all(10),
-          width: 100,
-          height: 100,
-          color: Colors.blue[300],
-          child: FlatButton(
-            child: Text('World $WorldID'),
+        SizedBox(
+          width: 300.0,
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.white)),
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            textColor: Colors.white,
+            color: Colors.red[400],
             onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("World $WorldID",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                ),
+                Icon(
+                  Icons.lock_outline,
+                  size: 40,
+                ),
+              ],
+            ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 80, top: 60),
-          width: 100,
-          height: 100,
-          color: Colors.white.withOpacity(0.5),
-          child: Icon(Icons.lock),
         ),
       ],
     );
   }
+}
+//
+//Column(
+//crossAxisAlignment: CrossAxisAlignment.center,
+//children: <Widget>[
+//SizedBox(height: 50),
+//Row(
+//children: <Widget>[
+//WorldBox(worldlist[0].worldInt.toString(), context,
+//stu1.unlockedWorldBool, worldlist, 0),
+//WorldBox(worldlist[1].worldInt.toString(), context,
+//stu1.unlockedWorldBool, worldlist, 1),
+//],
+//),
+//Row(
+//children: <Widget>[
+//WorldBox(worldlist[2].worldInt.toString(), context,
+//stu1.unlockedWorldBool, worldlist, 2),
+//WorldBox(worldlist[3].worldInt.toString(), context,
+//stu1.unlockedWorldBool, worldlist, 3),
+//],
+//),
+//Row(
+//children: <Widget>[
+//WorldBox(worldlist[4].worldInt.toString(), context,
+//stu1.unlockedWorldBool, worldlist, 4),
+//],
+//),
+//],
+//),
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  return directory.path;
+}
+
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/status.txt');
+}
+
+void createRecord(String res) async {
+  final Directory directory = await getApplicationDocumentsDirectory();
+  final File file = File('${directory.path}/status.txt');
+  await file.writeAsString("Attempt " + res + "\n", mode: FileMode.append);
+}
+
+void deleteData() async {
+  final Directory directory = await getApplicationDocumentsDirectory();
+  final File file = File('${directory.path}/status.txt');
+  await file.writeAsString("");
+}
+
+Future<String> getData() async {
+  String text;
+  try {
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final File file = File('${directory.path}/status.txt');
+    text = await file.readAsString();
+  } catch (e) {
+    print("Couldn't read file");
+  }
+  return text;
 }
