@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ssadpro/view/world_ui.dart';
+import 'package:ssadpro/view/levelview.dart';
 
 class SectionUI extends StatefulWidget {
   final List<Section> list;
@@ -44,7 +45,21 @@ class _SectionUIState extends State<SectionUI> {
           SizedBox(height: 50),
           Row(
             children: <Widget>[
-              SectionBox(list[0].sectionName),
+              Container(
+                margin: EdgeInsets.only(left: 80, top: 60),
+                width: 100,
+                height: 100,
+                color: Colors.blue[300],
+                child: FlatButton(
+                  child: Text('Section 1'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LevelViewPage()),
+                    );
+                  },
+                ),
+              ),
               SectionBox(list[1].sectionName),
             ],
           ),

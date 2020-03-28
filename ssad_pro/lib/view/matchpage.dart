@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ssad_start/dragObjects.dart';
+import 'package:ssadpro/controller/drag_objects.dart';
 
 class MatchPage extends StatefulWidget {
   @override
@@ -220,7 +220,6 @@ class _InputPageState extends State<MatchPage> {
               text1 = label;
               abc = Colors.black;
             },
-
             builder: (
               BuildContext context,
               List<dynamic> accepted,
@@ -251,12 +250,11 @@ class _InputPageState extends State<MatchPage> {
               text2 = label;
               abc = Colors.black;
             },
-
             builder: (
-                BuildContext context,
-                List<dynamic> accepted,
-                List<dynamic> rejected,
-                ) {
+              BuildContext context,
+              List<dynamic> accepted,
+              List<dynamic> rejected,
+            ) {
               return Container(
                 width: 197.0,
                 height: 70.0,
@@ -282,12 +280,11 @@ class _InputPageState extends State<MatchPage> {
               text3 = label;
               abc = Colors.black;
             },
-
             builder: (
-                BuildContext context,
-                List<dynamic> accepted,
-                List<dynamic> rejected,
-                ) {
+              BuildContext context,
+              List<dynamic> accepted,
+              List<dynamic> rejected,
+            ) {
               return Container(
                 width: 197.0,
                 height: 70.0,
@@ -313,12 +310,11 @@ class _InputPageState extends State<MatchPage> {
               text4 = label;
               abc = Colors.black;
             },
-
             builder: (
-                BuildContext context,
-                List<dynamic> accepted,
-                List<dynamic> rejected,
-                ) {
+              BuildContext context,
+              List<dynamic> accepted,
+              List<dynamic> rejected,
+            ) {
               return Container(
                 width: 197.0,
                 height: 70.0,

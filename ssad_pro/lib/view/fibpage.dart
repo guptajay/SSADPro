@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
+import 'package:ssadpro/view/appbar.dart';
 
 class FIBPage extends StatefulWidget {
   @override
@@ -19,25 +20,8 @@ class _InputPageState extends State<FIBPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text("Fill in the Blanks",
-                style: TextStyle(
-                    color: Colors.blue[600],
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold)),
-            backgroundColor: Colors.grey[50],
-            brightness: Brightness.light,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Colors.grey[50], //change your color here
-            ),
-            bottom: PreferredSize(
-                child: Container(
-                  color: Colors.blue[600],
-                  height: 4.0,
-                ),
-                preferredSize: Size.fromHeight(4.0))),
+        appBar: ReusableWidgets.getAppBar(
+            "Fill in the Blanks", Colors.blue[600], Colors.grey[50]),
         body: Container(
             child: MediaQuery.removePadding(
                 context: context,
@@ -61,7 +45,7 @@ class _InputPageState extends State<FIBPage> {
                                         side: BorderSide(color: Colors.white)),
                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                     textColor: Colors.white,
-                                    color: Colors.blue[700],
+                                    color: Colors.grey[400],
                                     onPressed: () {},
                                     child: Padding(
                                       padding: const EdgeInsets.only(
@@ -70,84 +54,81 @@ class _InputPageState extends State<FIBPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: <Widget>[
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text("Question to be asked"),
+                                            Text("Question to be asked",
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20,
+                                                )),
                                           ]),
                                     ),
                                   )),
                             ),
                           ),
                           SizedBox(height: 20),
-                          Expanded(
+                          Center(
                             child: Container(
                               decoration: new BoxDecoration(boxShadow: [
                                 new BoxShadow(
                                   color: Colors.grey[400],
-                                  blurRadius: 20.0,
+                                  blurRadius: 50.0,
                                 ),
                               ]),
                               padding: EdgeInsets.only(left: 20, right: 20),
                               child: SizedBox(
-                                  width: 300.0,
                                   child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        side: BorderSide(color: Colors.white)),
-                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                    textColor: Colors.black,
-                                    color: Colors.white,
-                                    onPressed: () {},
-                                    child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 20.0, bottom: 20),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 10),
-                                                    child: TextField(
-                                                      style: TextStyle(
-                                                          color: Colors.black),
-                                                      controller: myController,
-                                                      decoration: InputDecoration(
-                                                          border:
-                                                              InputBorder.none,
-                                                          hintText:
-                                                              'Enter your answer here...',
-                                                          hintStyle: TextStyle(
-                                                              color: Colors
-                                                                  .black)),
-                                                    ),
-                                                  ),
-                                                ],
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.black,
+                                color: Colors.white,
+                                onPressed: () {},
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10.0, bottom: 10),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
+                                                child: TextField(
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                  controller: myController,
+                                                  decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                          'Enter your answer here...',
+                                                      hintStyle: TextStyle(
+                                                          color: Colors.black)),
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        )),
-                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                              )),
                             ),
                           ),
-                          SizedBox(height: 100),
+                          SizedBox(height: 50),
                           Container(
-                            padding: EdgeInsets.only(left: 2, right: 2),
+                            padding: EdgeInsets.only(left: 20, right: 20),
                             child: SizedBox(
                                 width: 55.0,
                                 child: RaisedButton(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                      borderRadius: BorderRadius.circular(50.0),
                                       side: BorderSide(color: Colors.white)),
                                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                   textColor: Colors.white,
-                                  color: Colors.blue[900],
+                                  color: Colors.blue[600],
                                   onPressed: () {
                                     if (myController.text == "correct") {
                                       createRecord("Correct", "fib");
