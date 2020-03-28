@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:ssadpro/view/appbar.dart';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -51,25 +49,37 @@ class _MyHomePageState extends State<MyHomePage>
     //     ),
 
     return Scaffold(
+      appBar: ReusableWidgets.getAppBar(
+          "Assessment", Colors.blue[600], Colors.grey[50]),
       body: NestedScrollView(
         controller: _scrollViewController,
         headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              title: Text('Assessment History'),
+              // title: Text('Assessment History'),
               centerTitle: true,
+              backgroundColor: Colors.grey[50],
               pinned: true,
               floating: true,
               forceElevated: boxIsScrolled,
               bottom: TabBar(
+                indicatorColor: Colors.blue[600],
                 tabs: <Widget>[
                   Tab(
-                    text: "Current",
-                    icon: Icon(Icons.offline_bolt),
+                    child: Text(
+                      "Current",
+                      style: TextStyle(color: Colors.blue[600], fontSize: 15),
+                    ),
+                    icon: Icon(Icons.offline_bolt,
+                        color: Colors.blue[600], size: 40),
                   ),
                   Tab(
-                    text: "History",
-                    icon: Icon(Icons.history),
+                    child: Text(
+                      "History",
+                      style: TextStyle(color: Colors.blue[600], fontSize: 15),
+                    ),
+                    icon:
+                        Icon(Icons.history, color: Colors.blue[600], size: 40),
                   )
                 ],
                 controller: _tabController,
@@ -104,8 +114,7 @@ class _MyHomePageState extends State<MyHomePage>
   }
 }
 
-List<String> current_assignment_list =
-[
+List<String> current_assignment_list = [
   "\nCourse : SSAD\nAssignment Name : Lab Test 1\nTopic : abc\nDeadline  : dd-mm-yyy\n",
   "\nCourse : SSAD\nAssignment Name : Lab Test 2\nTopic : abc\nDeadline  : dd-mm-yyy\n",
   "\nCourse : SSAD\nAssignment Name : Lab Test 3\nTopic : abc\nDeadline  : dd-mm-yyy\n",
@@ -118,8 +127,7 @@ List<String> current_assignment_list =
   "\nCourse : SSAD\nAssignment Name : Lab Test 10\nTopic : abc\nDeadline  : dd-mm-yyy\n",
 ];
 
-List<String> history_assignment_list =
-[
+List<String> history_assignment_list = [
   "\nCourse : SSAD\nAssignment Name : Lab Test 1\nTopic : abc\nDeadline  : dd-mm-yyy\n",
   "\nCourse : SSAD\nAssignment Name : Lab Test 2\nTopic : abc\nDeadline  : dd-mm-yyy\n",
   "\nCourse : SSAD\nAssignment Name : Lab Test 3\nTopic : abc\nDeadline  : dd-mm-yyy\n",
@@ -141,10 +149,11 @@ class PageOne extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         child: Material(
           elevation: 4.0,
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(20.0),
           color: index % 2 == 0 ? Colors.greenAccent : Colors.lightGreenAccent,
           child: Center(
-            child: Text(current_assignment_list[index]),
+            child: Text(current_assignment_list[index],
+                style: TextStyle(fontSize: 15)),
           ),
         ),
       ),
@@ -162,10 +171,11 @@ class PageTwo extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         child: Material(
           elevation: 4.0,
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(15.0),
           color: index % 2 == 0 ? Colors.orangeAccent : Colors.deepOrange,
           child: Center(
-            child: Text(history_assignment_list[index]),
+            child: Text(history_assignment_list[index],
+                style: TextStyle(fontSize: 15)),
           ),
         ),
       ),
@@ -238,7 +248,6 @@ class PageTwo extends StatelessWidget {
 //    );
 //  }
 //}
-
 
 //import 'package:dashboard/dashboard.dart';
 //

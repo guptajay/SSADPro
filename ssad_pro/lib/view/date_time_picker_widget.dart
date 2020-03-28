@@ -54,8 +54,9 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
   }
 
   Future<DateTime> _selectDateTime(BuildContext context) => showDatePicker(
-    context: context,
-    initialDate: DateTime.now().add(Duration(seconds: 1)),
-    firstDate: DateTime.now(),
-    lastDate: DateTime(2100),
-  );
+        context: context,
+        initialDate: DateTime.now().add(Duration(seconds: 1)),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2100),
+      );
+}

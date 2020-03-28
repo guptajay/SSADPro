@@ -9,9 +9,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ssadpro/view/assessment_history.dart';
 //import 'package:ssadpro/view/send_assignment.dart';
 
-
-
-
 void main() => runApp(Startup());
 
 class Startup extends StatelessWidget {
@@ -26,7 +23,6 @@ class Startup extends StatelessWidget {
                   fontFamily: 'Open Sans',
                 )),
 //        home: DateTimePickerWidget());  // LoginPage FirstRoute
-          home: MyHomePage());  // LoginPage FirstRoute
-
+        home: LoginPage()); // LoginPage FirstRoute
   }
 }
