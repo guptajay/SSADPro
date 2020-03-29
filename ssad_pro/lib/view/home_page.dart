@@ -16,13 +16,16 @@ class HomePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               CircleAvatar(
-                backgroundImage: NetworkImage(
+              /*  backgroundImage: NetworkImage(
                   imageUrl,
                 ),
+                */
+
                 radius: 40,
                 backgroundColor: Colors.transparent,
               ),
               SizedBox(height: 10),
+              /*
               Text(
                 'STUDENT',
                 style: TextStyle(
@@ -30,6 +33,8 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black54),
               ),
+              
+               */
               Text(
                 name,
                 style: TextStyle(
