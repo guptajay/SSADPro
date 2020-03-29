@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
               ),
               SizedBox(height: 10),
-              /*
+
               Text(
                 'STUDENT',
                 style: TextStyle(
@@ -33,8 +33,8 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black54),
               ),
-              
-               */
+
+               /*
               Text(
                 name,
                 style: TextStyle(
@@ -42,6 +42,8 @@ class HomePage extends StatelessWidget {
                     color: Colors.blue[600],
                     fontWeight: FontWeight.bold),
               ),
+
+                */
               SizedBox(height: 20),
               SizedBox(
                   width: 300.0,
