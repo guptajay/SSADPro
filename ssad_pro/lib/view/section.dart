@@ -75,7 +75,7 @@ SizedBox SectionBox(String Boxname, Color color, BuildContext cont) {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
           side: BorderSide(color: Colors.white)),
-      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       textColor: Colors.white,
       color: color,
       onPressed: () {
