@@ -49,37 +49,29 @@ class _MyHomePageState extends State<MyHomePage>
     //     ),
 
     return Scaffold(
-      appBar: ReusableWidgets.getAppBar(
-          "Assessment", Colors.blue[600], Colors.grey[50]),
+//      appBar: ReusableWidgets.getAppBar(
+//          "Assessment History", Colors.grey[50], Colors.blue[600]),
       body: NestedScrollView(
         controller: _scrollViewController,
         headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              // title: Text('Assessment History'),
+               title: Text('Assessment History'),
               centerTitle: true,
-              backgroundColor: Colors.grey[50],
+              backgroundColor: Colors.blue[600],
               pinned: true,
               floating: true,
               forceElevated: boxIsScrolled,
               bottom: TabBar(
-                indicatorColor: Colors.blue[600],
+                indicatorColor: Colors.grey[50],
                 tabs: <Widget>[
                   Tab(
-                    child: Text(
-                      "Current",
-                      style: TextStyle(color: Colors.blue[600], fontSize: 15),
-                    ),
-                    icon: Icon(Icons.offline_bolt,
-                        color: Colors.blue[600], size: 40),
+                    text: "Current",
+                    icon: Icon(Icons.offline_bolt),
                   ),
                   Tab(
-                    child: Text(
-                      "History",
-                      style: TextStyle(color: Colors.blue[600], fontSize: 15),
-                    ),
-                    icon:
-                        Icon(Icons.history, color: Colors.blue[600], size: 40),
+                    text: "History",
+                    icon: Icon(Icons.history),
                   )
                 ],
                 controller: _tabController,
