@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ssad_pro/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/ssad_pro/android/app/src/debug/debug.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ssad_pro/android/app/src/main/main.iml" filepath="$PROJECT_DIR$/ssad_pro/android/app/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ssad_pro/android/app/src/profile/profile.iml" filepath="$PROJECT_DIR$/ssad_pro/android/app/src/profile/profile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ssad_pro/ssad_pro.iml" filepath="$PROJECT_DIR$/ssad_pro/ssad_pro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SSADPro.iml" filepath="$PROJECT_DIR$/.idea/SSADPro.iml" />
     </modules>
   </component>
 </project>

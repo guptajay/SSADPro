@@ -51,7 +51,7 @@ class InstructorDashboard extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Gr()),
+                        MaterialPageRoute(builder: (context) => StudentGroupPage()),
                       );
                     },
                     child: Row(
