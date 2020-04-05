@@ -10,6 +10,7 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ssadpro/view/user_list.dart';
+import 'compete_mode.dart';
 
 class HomePage extends StatelessWidget {
  final AuthService _auth = AuthService();
@@ -135,13 +136,11 @@ class HomePage extends StatelessWidget {
                       textColor: Colors.white,
                       color: Colors.blue[700],
                       onPressed: () {
-                        /*
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DietTrackerDashboard()),
+                              builder: (context) => Home1()),
                         );
-                        */
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
