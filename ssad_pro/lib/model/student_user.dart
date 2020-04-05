@@ -1,7 +1,10 @@
+//Equivalent to brew model
 class StudentUser {
 
   final String name;
-  final int group;
+  final String matric;
+  final int age;
+  final String group;
 
-  StudentUser({this.name,this.group});
+  StudentUser({this.name,this.matric, this.age, this.group});
 }

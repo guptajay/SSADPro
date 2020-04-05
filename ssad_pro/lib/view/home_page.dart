@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/profile.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
@@ -11,11 +12,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ssadpro/view/user_list.dart';
 
 class HomePage extends StatelessWidget {
-//  final AuthService _auth = AuthService();
+ final AuthService _auth = AuthService();
   @override
 
 
   Widget build(BuildContext context) {
+
+    Future navigateToSubPage(context) async {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+    }
+
     return StreamProvider<List<StudentUser>>.value(
       value: DatabaseService().users,
       child: Scaffold(
@@ -29,7 +35,6 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                UserList(),
                 CircleAvatar(
                   /* backgroundImage: NetworkImage(
                     imageUrl,
@@ -189,7 +194,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+//                SizedBox(height: 20),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -224,12 +229,12 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(
-                  height: 20,
-                ),
+//                SizedBox(
+//                  height: 20,
+//                ),
                 RaisedButton(
                   onPressed: () {
-                    signOutGoogle();
+                   _auth.signOutGoogle();
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) {
                           return LoginPage();
@@ -246,7 +251,19 @@ class HomePage extends StatelessWidget {
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40)),
-                )
+                ),
+              SizedBox(
+                child: RaisedButton(
+                  child: Text(
+                    'Profile'
+                  ),
+                  color: Colors.red,
+                  onPressed: () {
+                    navigateToSubPage(context);
+                  },
+                ),
+
+              )
               ],
             ),
           ),

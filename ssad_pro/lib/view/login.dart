@@ -4,11 +4,13 @@ import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthService _auth = AuthService();
   bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {
-        signInWithGoogle().whenComplete(() {
+        _auth.signInWithGoogle().whenComplete(() {
           if (isSwitched) {
             Navigator.of(context).push(
               MaterialPageRoute(
