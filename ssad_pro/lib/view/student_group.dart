@@ -407,7 +407,7 @@ class StudentGroupPage extends StatelessWidget {
     return  StreamProvider<List<StudentUser>>.value(
     value: DatabaseService().users,
     child: Scaffold(
-    body: UserList(),
+    body: UserList(), //UserList() Prints all the registered users of the application
     )
     );
   }

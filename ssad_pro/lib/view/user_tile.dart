@@ -37,6 +37,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'package:ssadpro/view/select_student_group.dart';
 import 'package:ssadpro/view/user_list.dart';
 
 class UserTile extends StatelessWidget {
@@ -47,6 +48,10 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future navigateToSubPage(context) async {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => SelectStudentGroup()));
+    }
+
     return Column(
         children: <Widget>[
       SizedBox(
@@ -56,7 +61,7 @@ class UserTile extends StatelessWidget {
         ),
         color: Colors.red,
         onPressed: () {
-          //navigateToSubPage(context);
+          navigateToSubPage(context);
         },
       ),
     ),

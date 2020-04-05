@@ -10,21 +10,37 @@ class DatabaseService {
   DatabaseService({this.uid});
   //collection reference
   final CollectionReference studentUserCollection = Firestore.instance.collection('users');
+  //final CollectionReference assignmentSubCollection = Firestore.instance.collection('assignments');
+
   //Name of the collection - users
 //Reference to the collection - studentUserCollection
 
   //Function to store user related data in the user collection for a particular user.
-  Future updateStudentUserData(String name, String matric, int age, String group, List<String> options) async{
+  Future updateStudentUserData(String name, String matric, int age, String group) async{
 //    uid = uid + 'Details';
      return await studentUserCollection.document(uid).setData({
        'name': name,
        'matric': matric,
        'age' : age,
        'group': group,
-       'options': options,
+       //'options': options,
 //       'assignments' : assignments,
      });
    }
+
+
+   Future updateAssignment(String name, String topic, String deadline, List<String> questions) async{
+
+     return await studentUserCollection.document(uid).collection('assignments').document().setData({
+       'name': name,
+       'topic': topic,
+       'deadline': deadline,
+       'questions': questions,
+     });
+
+   }
+
+
 
    //user list from snapshot
   List<StudentUser> _studentListFromSnapshot(QuerySnapshot snapshot){

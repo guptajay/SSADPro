@@ -50,13 +50,14 @@ class AuthService {
     assert(user.displayName != null);
     assert(user.photoUrl != null);
 
-    List <String> options = ['o1', 'o2', 'o3', 'o4'];
+   // List <String> options = ['o1', 'o2', 'o3', 'o4'];
+//    List <String> questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
 //    List<Question> questions = new List();
 //    List<Assignment> assignments = new List();
 //    questions.add(Question(question: 'Demo 1', options: options, answer: 'o1')) ;
 //    assignments.add(Assignment(name: 'A1', questions: questions));
-    DatabaseService(uid: user.uid).updateStudentUserData(user.displayName, 'U20', 50, '0', options);
-
+    DatabaseService(uid: user.uid).updateStudentUserData(user.displayName, 'U20', 50, '0');
+//    DatabaseService(uid: user.uid).updateAssignment('Assignment name', 'Topic', 'Deadline', questions);
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoUrl;
