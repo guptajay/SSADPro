@@ -76,7 +76,7 @@ class _WorldUIState extends State<WorldUI> {
     //---------------------------------------------------------------------------------
     //Mock Object data
 
-    Student stu1 = Student('User1', 'pass1');
+    Student stu1 = Student(userName: 'User1', password: 'pass1');
     // stu1.updateUnlockedWorld(); //to Unlock next world for this student.
 
     Section sec1 = new Section();
