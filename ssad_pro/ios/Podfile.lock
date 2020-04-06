@@ -315,6 +315,10 @@ PODS:
   - path_provider_macos (0.0.1):
     - Flutter
   - PromisesObjC (1.2.8)
+  - system_shortcuts (0.0.1):
+    - Flutter
+  - volume (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
@@ -328,6 +332,8 @@ DEPENDENCIES:
   - google_sign_in_web (from `.symlinks/plugins/google_sign_in_web/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
+  - system_shortcuts (from `.symlinks/plugins/system_shortcuts/ios`)
+  - volume (from `.symlinks/plugins/volume/ios`)
 
 SPEC REPOS:
   trunk:
@@ -379,6 +385,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider/ios"
   path_provider_macos:
     :path: ".symlinks/plugins/path_provider_macos/ios"
+  system_shortcuts:
+    :path: ".symlinks/plugins/system_shortcuts/ios"
+  volume:
+    :path: ".symlinks/plugins/volume/ios"
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -416,6 +426,8 @@ SPEC CHECKSUMS:
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
+  volume: 8f8b305a8187ed55c4ee48bda614b8129c47f38e
 
 PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
