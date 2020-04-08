@@ -4,7 +4,6 @@ import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
 
 class LoginPage extends StatefulWidget {
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -16,47 +15,58 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[50],
-        body: Container(
-            child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: SingleChildScrollView(
+        body: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: SingleChildScrollView(
+                child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [Colors.blue[300], Colors.blue[700]])),
                     child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        height: 500,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/ssadpro_logo.png'))),
-                        child: Stack(
-                          children: <Widget>[],
-                        )),
-                    SizedBox(height: 50),
-                    Center(
-                        child: Container(
-                            width: 250,
-                            child: SwitchListTile(
-                              title: Text("I'm a Instructor"),
-                              value: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                              activeTrackColor: Colors.lightBlueAccent,
-                              activeColor: Colors.blue[700],
-                            ))),
-                    _signInButton(),
-                  ],
-                )))));
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                            height: 250,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/transparent_logo.png'))),
+                            child: Stack(
+                              children: <Widget>[],
+                            )),
+                        Center(
+                            child: Container(
+                                width: 250,
+                                child: SwitchListTile(
+                                  title: Text("I'm a Instructor",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20)),
+                                  value: isSwitched,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isSwitched = value;
+                                    });
+                                  },
+                                  activeTrackColor: Colors.orangeAccent,
+                                  activeColor: Colors.deepOrange,
+                                ))),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        _signInButton(),
+                      ],
+                    )))));
   }
 
   Widget _signInButton() {
-    return OutlineButton(
-      splashColor: Colors.grey,
+    return RaisedButton(
+      splashColor: Colors.white,
+      color: Colors.white,
       onPressed: () {
         _auth.signInWithGoogle().whenComplete(() {
           if (isSwitched) {
@@ -80,7 +90,6 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -96,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.blue[600],
                 ),
               ),
             )

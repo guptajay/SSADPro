@@ -5,19 +5,7 @@ import 'mcqpage.dart';
 class CompeteMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Compete Mode',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.lightBlueAccent,
-            title: Text('Welcome to Compete Mode')),
-        body: BodyLayout(),
-      ),
-    );
+    return BodyLayout();
   }
 }
 
