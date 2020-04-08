@@ -170,7 +170,8 @@ class InstructorDashboard extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AssessmentHistory()),
+                                      builder: (context) =>
+                                          AssessmentHistory()),
                                 );
                               },
                               child: Row(
@@ -199,16 +200,16 @@ class InstructorDashboard extends StatelessWidget {
                             _auth.signOutGoogle();
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(builder: (context) {
-                                  return LoginPage();
-                                }), ModalRoute.withName('/'));
+                              return LoginPage();
+                            }), ModalRoute.withName('/'));
                           },
-                          color: Colors.blue[400],
+                          color: Colors.deepOrangeAccent,
                           child: Padding(
                             padding: const EdgeInsets.all(5),
                             child: Text(
                               'Sign Out',
-                              style: TextStyle(
-                                  fontSize: 15, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
                             ),
                           ),
                           elevation: 5,
@@ -221,16 +222,9 @@ class InstructorDashboard extends StatelessWidget {
                 ),
               ),
             );
-          }
-          else {
-            return Text(
-                'No'
-            );
+          } else {
+            return Text('No');
           }
         });
   }
-  }
-
-
-
-
+}
