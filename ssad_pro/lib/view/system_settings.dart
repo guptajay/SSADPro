@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:volume/volume.dart';
-import 'package:volume/volume.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:app_settings/app_settings.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/view/card.dart';
+import 'dart:async';
 
 class SystemSettings extends StatefulWidget {
   @override
@@ -11,151 +10,253 @@ class SystemSettings extends StatefulWidget {
 }
 
 class _SystemSettingsState extends State<SystemSettings> {
-  AudioManager audioManager;
-  AudioManager audioManager1;
-  int maxVol, currentVol;
-  int maxVol1, currentVol1;
-
   @override
   void initState() {
-    super.initState();
-    audioManager = AudioManager.STREAM_SYSTEM;
-    audioManager1 = AudioManager.STREAM_MUSIC;
-    initPlatformState1();
-    updateVolumes1();
+    /// Call out to intialize platform state.
     initPlatformState();
-    updateVolumes();
+    super.initState();
   }
 
+  /// Initialize platform state.
   Future<void> initPlatformState() async {
-    await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
-  }
-
-  Future<void> initPlatformState1() async {
-    await Volume.controlVolume(AudioManager.STREAM_MUSIC);
-  }
-
-  updateVolumes() async {
-    // get Max Volume
-    maxVol = await Volume.getMaxVol;
-    // get Current Volume
-    currentVol = await Volume.getVol;
-    setState(() {});
-  }
-
-  updateVolumes1() async {
-    // get Max Volume
-    maxVol1 = await Volume.getMaxVol;
-    // get Current Volume
-    currentVol1 = await Volume.getVol;
-    setState(() {});
-  }
-
-  setVol(int i) async {
-    await Volume.setVol(i);
-  }
-
-  setVol1(int j) async {
-    await Volume.setVol(j);
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
   }
 
   @override
   Widget build(BuildContext context) {
+    var actionItems = getListOfActionButtons();
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
           "Settings", Colors.blue[600], Colors.grey[50]),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
+      body: Center(
+          child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: SingleChildScrollView(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                              //mainAxisAlignment: MainAxisAlignment.center,
 
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 25.0),
-          ),
-          DropdownButton(
-            value: audioManager,
-            //focusColor: Colors.blueAccent.shade700,
-            icon: Icon(Icons.volume_down),
-            iconSize: 30,
-            iconEnabledColor: Colors.blueAccent.shade700,
-            //elevation: 10,
-            style: TextStyle(fontSize: 25.0, color: Colors.blueAccent.shade700),
-
-            items: [
-              DropdownMenuItem(
-                child: Text("System Volume "),
-                value: AudioManager.STREAM_SYSTEM,
-              ),
-            ],
-            isDense: true,
-            onChanged: (AudioManager aM) async {
-              AudioManager aM = AudioManager.STREAM_SYSTEM;
-              print(aM.toString());
-              setState(() {
-                audioManager = AudioManager.STREAM_SYSTEM;
-              });
-              await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 35.0),
-          ),
-          (currentVol != null || maxVol != null)
-              ? CupertinoSlider(
-                  value: currentVol / 1.0,
-                  divisions: maxVol,
-                  max: maxVol / 1.0,
-                  min: 0,
-                  onChanged: (double d) {
-                    setVol(d.toInt());
-                    updateVolumes();
-                  },
-                )
-              : Container(),
-          Padding(
-            padding: const EdgeInsets.only(top: 25.0),
-          ),
-          DropdownButton(
-            value: audioManager1,
-            //focusColor: Colors.blueAccent.shade700,
-            icon: Icon(Icons.volume_down),
-            iconSize: 30,
-            iconEnabledColor: Colors.blueAccent.shade700,
-            //elevation: 10,
-            style: TextStyle(fontSize: 25.0, color: Colors.blueAccent.shade700),
-
-            items: [
-              DropdownMenuItem(
-                child: Text("Media Volume"),
-                value: AudioManager.STREAM_MUSIC,
-              ),
-            ],
-            isDense: true,
-            onChanged: (AudioManager bm) async {
-              AudioManager bm = AudioManager.STREAM_MUSIC;
-              print(bm.toString());
-              setState(() {
-                audioManager1 = AudioManager.STREAM_MUSIC;
-              });
-              await Volume.controlVolume(AudioManager.STREAM_MUSIC);
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 35.0),
-          ),
-          (currentVol1 != null || maxVol1 != null)
-              ? CupertinoSlider(
-                  value: currentVol1 / 1.0,
-                  divisions: maxVol1,
-                  max: maxVol1 / 1.0,
-                  min: 0,
-                  onChanged: (double e) {
-                    setVol1(e.toInt());
-                    updateVolumes1();
-                  },
-                )
-              : Container(),
-        ],
-      ),
+                              children:
+                                  List.generate(actionItems.length, (index) {
+                            return Center(
+                                child: ButtonTheme(
+                              child: actionItems[index],
+                            ));
+                          }))
+                        ])
+                  ])))),
     );
+  }
+
+  /// Dispose method to close out and cleanup objects.
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  List<Widget> getListOfActionButtons() {
+    var actionItems = List<Widget>();
+
+    actionItems.addAll([
+      SizedBox(
+          width: MediaQuery.of(context).size.width * 0.65,
+          child: InkWell(
+              child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  textColor: Colors.white,
+                  color: Colors.blue[400],
+                  onPressed: () {
+                    AppSettings.openWIFISettings();
+                  },
+                  child: Center(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.wifi,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(children: <Widget>[
+                            Text(
+                              "WiFi",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ])
+                        ]),
+                  )))),
+      SizedBox(
+        height: MediaQuery.of(context).size.width * 0.05,
+      ),
+      SizedBox(
+          width: MediaQuery.of(context).size.width * 0.65,
+          child: InkWell(
+              child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  textColor: Colors.white,
+                  color: Colors.blue[400],
+                  onPressed: () {
+                    AppSettings.openAppSettings();
+                  },
+                  child: Center(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.apps,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(children: <Widget>[
+                            Text(
+                              "App Settings",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ])
+                        ]),
+                  )))),
+      SizedBox(
+        height: MediaQuery.of(context).size.width * 0.05,
+      ),
+      SizedBox(
+          width: MediaQuery.of(context).size.width * 0.65,
+          child: InkWell(
+              child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  textColor: Colors.white,
+                  color: Colors.blue[400],
+                  onPressed: () {
+                    AppSettings.openSoundSettings();
+                  },
+                  child: Center(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.surround_sound,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(children: <Widget>[
+                            Text(
+                              "Sound",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ])
+                        ]),
+                  )))),
+      SizedBox(
+        height: MediaQuery.of(context).size.width * 0.05,
+      ),
+      SizedBox(
+          width: MediaQuery.of(context).size.width * 0.65,
+          child: InkWell(
+              child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  textColor: Colors.white,
+                  color: Colors.blue[400],
+                  onPressed: () {
+                    AppSettings.openDisplaySettings();
+                  },
+                  child: Center(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.screen_lock_portrait,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(children: <Widget>[
+                            Text(
+                              "Display",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ])
+                        ]),
+                  )))),
+    ]);
+
+    return actionItems;
+  }
+
+  getSettingsCard(
+    Object o,
+    String title,
+    IconData symbol,
+  ) {
+    return SizedBox(
+        width: MediaQuery.of(context).size.width * 0.65,
+        child: InkWell(
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.white)),
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            textColor: Colors.white,
+            color: Colors.blue[400],
+            onPressed: o,
+            child: Row(children: <Widget>[
+              SizedBox(
+                width: 20,
+              ),
+              Icon(
+                symbol,
+                color: Colors.white,
+                size: 70,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(children: <Widget>[
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                )
+              ])
+            ]),
+          ),
+        ));
   }
 }

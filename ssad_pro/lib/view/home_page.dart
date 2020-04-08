@@ -10,9 +10,10 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ssadpro/view/user_list.dart';
-import 'package:ssadpro/view/compete_mode.dart';
+import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -118,7 +119,7 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CompeteMode()),
+                        MaterialPageRoute(builder: (context) => Compete()),
                       );
                     },
                     child: Row(
@@ -277,5 +278,14 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://flutter.io';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
