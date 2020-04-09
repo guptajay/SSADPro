@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
                         color: Colors.black54),
                   ),
                   StreamBuilder<UserData>(
-                      stream: DatabaseService(uid: user.uid).userData,
+                      stream: DatabaseService(email: user.email).userData,
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           UserData userData = snapshot.data;
@@ -62,13 +62,13 @@ class _ProfileState extends State<Profile> {
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: 40),
-                            CardView.getCardNoClick("Matriculation Number",
-                                userData.matric, Icons.credit_card),
+//                            CardView.getCardNoClick("Matriculation Number",
+//                                userData.matric, Icons.credit_card),
                             SizedBox(
                               height: 20,
                             ),
-                            CardView.getCardNoClick("Age",
-                                userData.age.toString(), Icons.child_care),
+//                            CardView.getCardNoClick("Age",
+//                                userData.age.toString(), Icons.child_care),
                             SizedBox(
                               height: 20,
                             ),

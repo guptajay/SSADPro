@@ -14,7 +14,7 @@ class InstructorDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
     return StreamBuilder<UserData>(
-        stream: DatabaseService(uid: user.uid).userData,
+        stream: DatabaseService(email: user.email).userData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;

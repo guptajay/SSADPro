@@ -15,7 +15,7 @@ class _UserListState extends State<UserList> {
   Widget build(BuildContext context) {
 
     final users = Provider.of<List<StudentUser>>(context) ?? [];
-    final List<StudentUser> selected_users = new List(users.length) ?? [];
+
 //    users.forEach((user)
 //        {
 //          print(user.name);

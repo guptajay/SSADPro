@@ -17,12 +17,18 @@ class AuthService {
 
   //create user object based on FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    return user != null ? User(email: user.email) : null;
   }
+
+  //create user object based on FirebaseUser
+//  String _userAssignmentFromFirebaseUser(FirebaseUser user) {
+//    return userEmail != null ? email: null;
+//  }
 
   Stream<User> get user {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
+
 
   Future signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -50,9 +56,14 @@ class AuthService {
 //    List<Assignment> assignments = new List();
 //    questions.add(Question(question: 'Demo 1', options: options, answer: 'o1')) ;
 //    assignments.add(Assignment(name: 'A1', questions: questions));
-    DatabaseService(uid: user.uid)
-        .updateStudentUserData(user.displayName, 'U20', 50, '0');
-//    DatabaseService(uid: user.uid).updateAssignment('Assignment name', 'Topic', 'Deadline', questions);
+    DatabaseService(email: user.email)
+        .updateStudentUserData(user.displayName, '0', user.email, 'W1 S1 L1', 'userDetails');
+//
+//    DatabaseService(email: user.email).updateUserAssignment('A1', 'T1','Active', 'A1');
+//    DatabaseService(email: user.email).updateUserAssignment('A2', 'T2',  'Active', 'A2');
+//    DatabaseService(email: user.email).updateUserAssignment('A3', 'T3',  'Inactive','A3');
+
+  //    DatabaseService(uid: user.uid).updateAssignment('Assignment name', 'Topic', 'Deadline', questions);
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoUrl;
@@ -61,6 +72,7 @@ class AuthService {
     if (name.contains(" ")) {
       name = name.substring(0, name.indexOf(" "));
     }
+
 
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
@@ -74,6 +86,12 @@ class AuthService {
 
     // return 'signInWithGoogle succeeded: $user';
   }
+
+  String getEmail()
+  {
+    return email;
+  }
+
 
 // sign out
   Future signOut() async {

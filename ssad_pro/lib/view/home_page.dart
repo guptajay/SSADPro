@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
+import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'package:ssadpro/view/assignmentList.dart';
+
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/profile.dart';
 import 'package:ssadpro/view/world_ui.dart';
@@ -19,6 +22,11 @@ class HomePage extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+
+    //Assignment assignment = Provider.of<Assignment>(context);
+
+    var assignments = Provider.of<List<Assignment>>(context);
+
     // return StreamProvider<List<StudentUser>>.value(
     User user = Provider.of<User>(context);
     // value: DatabaseService().users,
@@ -50,18 +58,18 @@ class HomePage extends StatelessWidget {
                     color: Colors.black54),
               ),
               StreamBuilder<UserData>(
-                  stream: DatabaseService(uid: user.uid).userData,
+                  stream: DatabaseService(email: user.email).userData,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       UserData userData = snapshot.data;
                       return Column(children: <Widget>[
-                        Text(
-                          userData.matric,
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey[600],
-                              fontWeight: FontWeight.bold),
-                        ),
+//                        Text(
+//                          userData.matric,
+//                          style: TextStyle(
+//                              fontSize: 12,
+//                              color: Colors.grey[600],
+//                              fontWeight: FontWeight.bold),
+//                        ),
                         Text(
                           userData.name,
                           style: TextStyle(
@@ -183,13 +191,19 @@ class HomePage extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.blue[700],
                     onPressed: () {
-                      /*
+                        print('StudentAssignments');
+                        /*
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DietTrackerDashboard()),
+
+                              builder: (context) => StudentAssignments()),
                         );
-                        */
+
+                         */
+
+
+
                     },
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -273,11 +287,35 @@ class HomePage extends StatelessWidget {
                   ),
                 )
                 */
-            ],
-          ),
-        ),
-      ),
-    );
+
+          StreamProvider<List<Assignment>>.value(
+              value: DatabaseService().assignments,
+              child: SizedBox(
+                        child: RaisedButton(
+                    child: Text('Asses'),
+                    color: Colors.red,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AssignmentList()),
+
+//
+                      );
+                    },
+                    )
+
+          )
+        )
+      ]
+          )
+
+
+                ),
+              )
+
+          );
+
+
   }
 }
 

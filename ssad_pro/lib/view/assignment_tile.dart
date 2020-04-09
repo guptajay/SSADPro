@@ -36,38 +36,39 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/select_student_group.dart';
 import 'package:ssadpro/view/user_list.dart';
 
-class UserTile extends StatelessWidget {
+class AssignmentTile extends StatelessWidget {
 
-  final StudentUser user;
+  final Assignment assignment;
 
-  UserTile({ this.user });
+  AssignmentTile({ this.assignment });
 
   @override
   Widget build(BuildContext context) {
-    Future navigateToSubPage(context, StudentUser user) async {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SelectStudentGroup(user)));
-    }
+//    Future navigateToSubPage(context) async {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) => SelectStudentGroup()));
+//    }
 
     return Column(
         children: <Widget>[
-      SizedBox(
-      child: RaisedButton(
-        child: Text(
-            user.email
-        ),
-        color: Colors.red,
-        onPressed: () {
-          navigateToSubPage(context, user);
-        },
-      ),
-    ),
+          SizedBox(
+            child: RaisedButton(
+              child: Text(
+                  assignment.name
+              ),
+              color: Colors.red,
+              onPressed: () {
+               // navigateToSubPage(context);
+              },
+            ),
+          ),
 
-    SizedBox(height: 20),
-    ]
+          SizedBox(height: 20),
+        ]
     );
   }
 }
