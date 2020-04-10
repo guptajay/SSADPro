@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
 
     //Assignment assignment = Provider.of<Assignment>(context);
 
-    var assignments = Provider.of<List<Assignment>>(context);
+//    var assignments = Provider.of<List<Assignment>>(context);
 
     // return StreamProvider<List<StudentUser>>.value(
     User user = Provider.of<User>(context);
@@ -288,9 +288,9 @@ class HomePage extends StatelessWidget {
                 )
                 */
 
-          StreamProvider<List<Assignment>>.value(
-              value: DatabaseService().assignments,
-              child: SizedBox(
+//          StreamProvider<List<Assignment>>.value(
+//              value: DatabaseService().assignments,
+              SizedBox(
                         child: RaisedButton(
                     child: Text('Asses'),
                     color: Colors.red,
@@ -305,7 +305,7 @@ class HomePage extends StatelessWidget {
                     )
 
           )
-        )
+//        )
       ]
           )
 

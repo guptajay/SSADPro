@@ -22,7 +22,7 @@ class Startup extends StatelessWidget {
     return MultiProvider(
     providers: [
       StreamProvider<User>.value(value: AuthService().user),
-      StreamProvider <List<Assignment>>.value(value: DatabaseService(email: AuthService().getEmail()).assignments),
+      //StreamProvider <List<Assignment>>.value(value: DatabaseService().getData()),
       ],
 
 
