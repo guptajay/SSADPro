@@ -1,19 +1,23 @@
 //Creating a user object different from the firebase user object with only the info we need
 
 class User {
-  final String uid;
+  final String email;
 
-  User({this.uid});
+  User({this.email});
+
+
 }
 
 class UserData {
-  final String uid;
-  final String name;
-  final String matric;
-  final int age;
-  final String group;
+  final String email;
 
-  UserData({this.uid, this.name, this.matric, this.age, this.group});
+  final String name;
+//  final String matric;
+//  final int age;
+  final String group;
+  final String progress;
+
+  UserData({this.name, this.group, this.email, this.progress});
 
 
 }

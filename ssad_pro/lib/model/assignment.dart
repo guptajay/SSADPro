@@ -1,12 +1,24 @@
 import 'package:ssadpro/model/question.dart';
+class Ass
+{
+  String email;
+  Ass({this.email});
+}
 
 class Assignment{
+  String email;
   String name;
   String topic;
-  String deadline;
-  List<String> questions = new List(5);
+  String status;
 
-  Assignment({this.name, this.topic, this.deadline, this.questions});
+
+  Assignment({this.name, this.topic, this.status, this.email});
+
+//  Assignment.fromJson(Map<String,dynamic> parsedJson)
+//    : name = parsedJson['name'],
+//      topic = parsedJson['topic'],
+//        status = parsedJson['status'];
+
 
 
 }

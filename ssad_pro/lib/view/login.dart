@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ssadpro/animation/animated_background.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 class LoginPage extends StatefulWidget {
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -14,49 +15,77 @@ class _LoginPageState extends State<LoginPage> {
   bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
+    final tween = MultiTrackTween([
+      Track("color1").add(Duration(seconds: 3),
+          ColorTween(begin: Color(0xffD38312), end: Colors.lightBlue.shade900)),
+      Track("color2").add(Duration(seconds: 3),
+          ColorTween(begin: Color(0xffA83279), end: Colors.blue.shade600))
+    ]);
     return Scaffold(
         backgroundColor: Colors.grey[50],
-        body: Container(
-            child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: SingleChildScrollView(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        height: 500,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/ssadpro_logo.png'))),
-                        child: Stack(
-                          children: <Widget>[],
-                        )),
-                    SizedBox(height: 50),
-                    Center(
-                        child: Container(
-                            width: 250,
-                            child: SwitchListTile(
-                              title: Text("I'm a Instructor"),
-                              value: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                              activeTrackColor: Colors.lightBlueAccent,
-                              activeColor: Colors.blue[700],
-                            ))),
-                    _signInButton(),
-                  ],
-                )))));
+        body: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: SingleChildScrollView(
+                child: ControlledAnimation(
+                    playback: Playback.MIRROR,
+                    tween: tween,
+                    duration: tween.duration,
+                    builder: (context, animation) {
+                      return Container(
+                          height: MediaQuery.of(context).size.height,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                animation["color1"],
+                                animation["color2"]
+                              ])),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              new AnimatedBackground(),
+                              Container(
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/transparent_logo.png'))),
+                                  child: Stack(
+                                    children: <Widget>[],
+                                  )),
+                              Center(
+                                  child: Container(
+                                      width: 250,
+                                      child: SwitchListTile(
+                                        title: Text("I'm a Instructor",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20)),
+                                        value: isSwitched,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            isSwitched = value;
+                                          });
+                                        },
+                                        activeTrackColor: Colors.orangeAccent,
+                                        activeColor: Colors.deepOrange,
+                                      ))),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              _signInButton(),
+                            ],
+                          ));
+                    }))));
   }
 
   Widget _signInButton() {
-    return OutlineButton(
-      splashColor: Colors.grey,
+    return RaisedButton(
+      splashColor: Colors.white,
+      color: Colors.white,
       onPressed: () {
         _auth.signInWithGoogle().whenComplete(() {
           if (isSwitched) {
@@ -80,7 +109,6 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -96,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.blue[600],
                 ),
               ),
             )

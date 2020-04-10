@@ -1,10 +1,14 @@
 //Equivalent to brew model
 class StudentUser {
 
+  final String email;
   final String name;
-  final String matric;
-  final int age;
   final String group;
+  final String progress;
 
-  StudentUser({this.name,this.matric, this.age, this.group});
+
+
+
+
+  StudentUser({this.email,this.name, this.group, this.progress});
 }
