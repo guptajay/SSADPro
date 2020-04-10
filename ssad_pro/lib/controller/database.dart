@@ -31,7 +31,7 @@ class DatabaseService {
       int total_attempts,
       String fileName) async {
     return await Firestore.instance.runTransaction((transaction) async {
-      await transaction.update(
+      await transaction.set(
           Firestore.instance.collection(USER_COLLECTION).document(this.email), {
         'name': name,
         'group': group,
@@ -55,7 +55,7 @@ class DatabaseService {
       String dueDate,
       String fileName) async {
     return await Firestore.instance.runTransaction((transaction) async {
-      await transaction.update(
+      await transaction.set(
           Firestore.instance
               .collection(USER_COLLECTION)
               .document(this.email)
