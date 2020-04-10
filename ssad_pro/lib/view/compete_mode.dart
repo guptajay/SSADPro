@@ -34,7 +34,7 @@ class BodyLayout extends StatelessWidget {
                 onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>MCQPage()),
+                    MaterialPageRoute(builder: (context) =>MCQPage("quest","1","2","3","4",4)),
                   );
                 },
                 child: const Text(

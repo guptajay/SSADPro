@@ -52,7 +52,7 @@ class _InputPageState extends State<LevelViewPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => MCQPage()),
+                        CupertinoPageRoute(builder: (context) => MCQPage("Question","1","2","3","4",4)),
                       );
                     },
                     child: Row(

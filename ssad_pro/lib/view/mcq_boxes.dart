@@ -1,35 +1,7 @@
-/**
- * This class implements the parameterised AppBar throughout the application.
- *
- * @author Jay Gupta
- */
 import 'package:flutter/material.dart';
 
-class ReusableWidgets {
-  static getAppBar(
-    String title,
-    Color border,
-    Color bgColor,
-  ) {
-    return AppBar(
-        title: Text(title,
-            style: TextStyle(
-                color: border, fontSize: 35, fontWeight: FontWeight.bold)),
-        backgroundColor: bgColor,
-        brightness: Brightness.light,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: border, //change your color here
-        ),
-        bottom: PreferredSize(
-            child: Container(
-              color: border,
-              height: 4.0,
-            ),
-            preferredSize: Size.fromHeight(4.0)));
-  }
-
-  static getBox1(){
+class MCQBoxes {
+  static getQuestionBox1(String question) {
     return Container(
       padding: EdgeInsets.only(left: 40, right: 40),
       child: SizedBox(
@@ -44,15 +16,14 @@ class ReusableWidgets {
             color: Colors.grey[300],
             onPressed: () {},
             child: Padding(
-              padding:
-              const EdgeInsets.only(top: 60.0, bottom: 60),
+              padding: const EdgeInsets.only(top: 60.0, bottom: 60),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
                       width: 10,
                     ),
-                    Text("Question to be asked",
+                    Text(question,
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -63,3 +34,4 @@ class ReusableWidgets {
     );
   }
 }
+
