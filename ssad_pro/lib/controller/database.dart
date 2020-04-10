@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ssadpro/model/assignment.dart';
@@ -7,7 +6,6 @@ import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/user_list.dart';
 
 class DatabaseService {
-
   static const String USER_COLLECTION = 'Users';
   static const String USER_DATA_COLLECTION = 'UserData';
   static const String USER_ASSIGNMENT_COLLECTION = 'UserAssignments';
@@ -18,43 +16,40 @@ class DatabaseService {
   DatabaseService({this.email});
 
   //collection reference
-  final CollectionReference studentUserCollection = Firestore.instance.collection(USER_COLLECTION);
-
-
+  final CollectionReference studentUserCollection =
+      Firestore.instance.collection(USER_COLLECTION);
 
   //Function to create a new stiudent document in the database
-  Future updateStudentUserData(String name, String group, String email, String progress,
-      String fileName) async {
+  Future updateStudentUserData(String name, String group, String email,
+      String progress, String fileName) async {
     return await Firestore.instance.runTransaction((transaction) async {
-      await transaction.set(Firestore.instance.collection(USER_COLLECTION)
-          .document(this.email),
-           {
+      await transaction.set(
+          Firestore.instance.collection(USER_COLLECTION).document(this.email), {
         'name': name,
         'group': group,
         'email': email,
-             'progress': progress,
+        'progress': progress,
       });
     });
   }
-
-
 
   //Function to create new user assignment in user data base
-  Future updateUserAssignment(String name, String topic, String status, String fileName) async {
+  Future updateUserAssignment(
+      String name, String topic, String status, String fileName) async {
     return await Firestore.instance.runTransaction((transaction) async {
-      await transaction.set(Firestore.instance.collection(USER_COLLECTION)
-          .document(this.email)
-          .collection(USER_ASSIGNMENT_COLLECTION)
-          .document(fileName), {
-        'name': name,
-        'topic': topic,
-        'status': status,
-
-      });
-
+      await transaction.set(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email)
+              .collection(USER_ASSIGNMENT_COLLECTION)
+              .document(fileName),
+          {
+            'name': name,
+            'topic': topic,
+            'status': status,
+          });
     });
   }
-
 
   //user list from snapshot
   List<StudentUser> _studentListFromSnapshot(QuerySnapshot snapshot) {
@@ -63,11 +58,9 @@ class DatabaseService {
         email: doc.data['email'] ?? '',
         name: doc.data['name'] ?? '',
         group: doc.data['group'] ?? '',
-
       );
     }).toList();
   }
-
 
 // user data from snapshots
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
@@ -75,9 +68,8 @@ class DatabaseService {
         email: email,
         name: snapshot.data['name'],
         group: snapshot.data['group'],
-    );
+        progress: snapshot.data['progress']);
   }
-
 
   //assignment list from snapshot
   List<Assignment> _assignmentListFromSnapshot(QuerySnapshot snapshot) {
@@ -86,107 +78,82 @@ class DatabaseService {
         name: doc.data['name'] ?? '',
         status: doc.data['status'] ?? 'Inactive',
         topic: doc.data['topic'] ?? '',
-
-
       );
     }).toList();
   }
 
-
-
-
   //get docs stream
   //Mapping the firebase stream to the userdata model
   //Do not want to work with snapshots but with custom models
-  
 
   //Getter to get a list of registered users from database
   Stream<List<StudentUser>> get users {
-    return studentUserCollection.snapshots()
-        .map(_studentListFromSnapshot);
+    return studentUserCollection.snapshots().map(_studentListFromSnapshot);
   }
-
 
   //Getter to get the current user details from database
   Stream<UserData> get userData {
-    return studentUserCollection.document(email).snapshots()
+    return studentUserCollection
+        .document(email)
+        .snapshots()
         .map(_userDataFromSnapshot);
   }
 
-
-
-
   Stream<List<Assignment>> get assignments {
-    return studentUserCollection.document(this.email).collection(
-        USER_ASSIGNMENT_COLLECTION).snapshots()
+    return studentUserCollection
+        .document(this.email)
+        .collection(USER_ASSIGNMENT_COLLECTION)
+        .snapshots()
         .map(_assignmentListFromSnapshot);
   }
 
-
-
   //Function to update the name of the current user in data base
-Future updateStudentName(String name) async
-{
-  return await Firestore.instance.runTransaction((transaction) async
-  {
-    await transaction.set(Firestore.instance.collection(USER_COLLECTION)
-                          .document(this.email)
-    .collection(USER_DATA_COLLECTION)
-    .document('userDetails'),{
-      'name': name
+  Future updateStudentName(String name) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.set(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email)
+              .collection(USER_DATA_COLLECTION)
+              .document('userDetails'),
+          {'name': name});
     });
-  });
-}
-
+  }
 
 //Function to update the group of the current user in the data base
-  Future updateStudentGroup(String group) async
-  {
-    return await Firestore.instance.runTransaction((transaction) async
-    {
-      await transaction.update(Firestore.instance.collection(USER_COLLECTION)
-          .document(this.email)
-          .collection(USER_DATA_COLLECTION)
-          .document('userDetails'),{
-        'group': group
-      });
+  Future updateStudentGroup(String group) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email)
+              .collection(USER_DATA_COLLECTION)
+              .document('userDetails'),
+          {'group': group});
     });
   }
-
-
 
 //Function to update the progress of the CURRENT user in the database
-  Future updateStudentProgress(String progress) async
-  {
-    return await Firestore.instance.runTransaction((transaction) async
-    {
-      await transaction.update(Firestore.instance.collection(USER_COLLECTION)
-          .document(this.email)
-          .collection(USER_DATA_COLLECTION)
-          .document('userDetails'),{
-        'progress': progress
-      });
+  Future updateStudentProgress(String progress) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email)
+              .collection(USER_DATA_COLLECTION)
+              .document('userDetails'),
+          {'progress': progress});
     });
   }
 
-
-
   //Function to update the group of ANY user in the database
-Future updateStudentGroupext(String group, String email) async
-{
-  return await Firestore.instance.runTransaction((transaction) async
-  {
-    await transaction.update(Firestore.instance.collection(USER_COLLECTION)
-        .document(email)
-        ,{
-      'group': group
+  Future updateStudentGroupext(String group, String email) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance.collection(USER_COLLECTION).document(email),
+          {'group': group});
     });
-  });
-}
-
-
-
-
+  }
 
 //
 //  Future getStudentAssignments(String name) async {
@@ -207,8 +174,6 @@ Future updateStudentGroupext(String group, String email) async
 //  }
 //
 
-
-
 //
 //    List <String> assignments = new List();
 //    QuerySnapshot qs = await studentUserCollection.document(this.email).collection(USER_ASSIGNMENT_COLLECTION).getDocuments();
@@ -218,19 +183,10 @@ Future updateStudentGroupext(String group, String email) async
 //    return assignments;
 //  }
 
-
 //
 //Stream <List<Assignment>> getReports(){
 //    return studentUserCollection.document(this.email).collection(
 //        USER_ASSIGNMENT_COLLECTION).snapshots().map((snapshot) => snapshot.documents.map((document) => Assignment.fromJson(document.data)).toList());
 //}
 
-
-
 }
-
-
-
-
-
-

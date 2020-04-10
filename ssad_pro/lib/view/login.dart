@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ssadpro/animation/animated_background.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
@@ -46,7 +45,6 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              new AnimatedBackground(),
                               Container(
                                   height: 250,
                                   decoration: BoxDecoration(

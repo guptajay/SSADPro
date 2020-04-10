@@ -4,6 +4,7 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/controller/progress.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -62,23 +63,21 @@ class _ProfileState extends State<Profile> {
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: 40),
-//                            CardView.getCardNoClick("Matriculation Number",
-//                                userData.matric, Icons.credit_card),
+                            CardView.getCardNoClick(
+                                "Group", userData.group, Icons.group),
                             SizedBox(
                               height: 20,
                             ),
 //                            CardView.getCardNoClick("Age",
 //                                userData.age.toString(), Icons.child_care),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            CardView.getCardNoClick("Adventure Mode",
-                                "Not yet Started", Icons.blur_on),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            CardView.getCardNoClick("Compete Mode",
-                                "Not yet Started", Icons.compare_arrows),
+
+                            CardView.getCardNoClickSpecial(
+                                "Adventure Mode",
+                                Icons.blur_on,
+                                Progress.getWorld(userData.progress),
+                                Progress.getSection(userData.progress),
+                                Progress.getLevel(userData.progress)),
+
                             SizedBox(
                               height: 20,
                             ),

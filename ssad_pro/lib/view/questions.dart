@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/text_field.dart';
-import 'package:ssadpro/view/questions.dart';
+import 'package:ssadpro/view/questions_layout.dart';
+import 'package:ssadpro/view/group_list.dart';
 
-class SendAssessment extends StatefulWidget {
-  State createState() => SendAssessmentStage();
+class Questions extends StatefulWidget {
+  Questions({Key key, this.course, this.topic, this.dueDate});
+  final String course;
+  final String topic;
+  final String dueDate;
+  State createState() => QuestionsState();
 }
 
-class SendAssessmentStage extends State<SendAssessment> {
+class QuestionsState extends State<Questions> {
   final formKey = GlobalKey<FormState>();
-  var _course = TextEditingController();
-  // var _gender = new TextEditingController();
-  var _topic = TextEditingController();
-  var _dueDate = TextEditingController();
+  var _q1 = TextEditingController();
+  var _a1 = TextEditingController();
+  var _q2 = TextEditingController();
+  var _a2 = TextEditingController();
+  var _q3 = TextEditingController();
+  var _a3 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Send Assignment", Colors.blue[600], Colors.grey[50]),
+            "Enter Questions", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
             onTap: () {
@@ -32,24 +38,25 @@ class SendAssessmentStage extends State<SendAssessment> {
                     child: SingleChildScrollView(
                         child: Column(children: <Widget>[
                       SizedBox(
-                        height: 70,
+                        height: 20,
                       ),
                       FadeAnimation(
                         0.5,
                         Icon(
-                          Icons.description,
+                          Icons.question_answer,
                           color: Colors.blue[600],
-                          size: 200,
+                          size: 120,
                         ),
                       ),
                       FadeAnimation(
                           0.7,
                           Padding(
                               padding:
-                                  EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
+                                  EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
                               child: Container(
                                   child: Center(
-                                      child: Text("Send an Assignment below",
+                                      child: Text(
+                                          "Enter the Questions & Answers",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 20,
@@ -61,36 +68,18 @@ class SendAssessmentStage extends State<SendAssessment> {
                               padding: EdgeInsets.all(30.0),
                               child: Column(
                                 children: <Widget>[
-                                  Container(
-                                      padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey[200],
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, .5),
-                                                blurRadius: 20.0,
-                                                offset: Offset(0, 10))
-                                          ]),
-                                      child: Column(children: <Widget>[
-                                        TextFields.getTextField(
-                                            _course,
-                                            TextInputType.text,
-                                            TextInputAction.done,
-                                            "Course"),
-                                        TextFields.getTextField(
-                                            _topic,
-                                            TextInputType.text,
-                                            TextInputAction.done,
-                                            "Topic"),
-                                        TextFields.getTextField(
-                                            _dueDate,
-                                            TextInputType.datetime,
-                                            TextInputAction.done,
-                                            "Due Date (DD/MM/YYYY)"),
-                                      ])),
+                                  QuestionLayout.getCard(
+                                      _q1, _a1, "Question 1", "Answer 1"),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  QuestionLayout.getCard(
+                                      _q2, _a2, "Question 2", "Answer 2"),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  QuestionLayout.getCard(
+                                      _q3, _a3, "Question 3", "Answer 3"),
                                   SizedBox(
                                     height: 20,
                                   ),
@@ -100,13 +89,26 @@ class SendAssessmentStage extends State<SendAssessment> {
                                           borderRadius:
                                               BorderRadius.circular(22.0)),
                                       onPressed: () {
+                                        List<String> questions = [
+                                          _q1.text,
+                                          _q2.text,
+                                          _q3.text
+                                        ];
+                                        List<String> answers = [
+                                          _a1.text,
+                                          _a2.text,
+                                          _a3.text
+                                        ];
+
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Questions(
-                                                  course: _course.text,
-                                                  topic: _topic.text,
-                                                  dueDate: _dueDate.text)),
+                                              builder: (context) => GroupList(
+                                                  course: widget.course,
+                                                  topic: widget.topic,
+                                                  dueDate: widget.dueDate,
+                                                  questions: questions,
+                                                  answers: answers)),
                                         );
                                       },
                                       color: Colors.blue[600],

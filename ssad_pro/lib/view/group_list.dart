@@ -5,9 +5,21 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/user_list.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/compete_friend_list.dart';
+import 'package:ssadpro/view/assessment_group_list.dart';
 
-class Compete extends StatelessWidget {
+class GroupList extends StatelessWidget {
+  GroupList(
+      {Key key,
+      this.course,
+      this.topic,
+      this.dueDate,
+      this.questions,
+      this.answers});
+  final String course;
+  final String topic;
+  final String dueDate;
+  final List<String> questions;
+  final List<String> answers;
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -15,7 +27,7 @@ class Compete extends StatelessWidget {
         value: DatabaseService().users,
         child: Scaffold(
             appBar: ReusableWidgets.getAppBar(
-                "Compete Mode", Colors.blue[600], Colors.grey[50]),
+                "Select Group", Colors.blue[600], Colors.grey[50]),
             body: Scaffold(
                 body: Container(
                     decoration: BoxDecoration(),
@@ -28,12 +40,13 @@ class Compete extends StatelessWidget {
                               height: 50,
                             ),
                             Container(
-                                height: 100,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                  'assets/images/google_logo.png',
-                                )))),
+                              height: 100,
+                              child: Icon(
+                                Icons.public,
+                                color: Colors.blue[600],
+                                size: 120,
+                              ),
+                            ),
                             Container(
                                 child: Stack(
                               children: <Widget>[
@@ -43,19 +56,24 @@ class Compete extends StatelessWidget {
                                             MediaQuery.of(context).size.width *
                                                 0.70,
                                         margin: EdgeInsets.only(
-                                            top: 15, bottom: 30),
+                                            top: 20, bottom: 30),
                                         child: Center(
                                             child: Text(
-                                                "Choose one of your friends on Google to compete with!",
+                                                "Select a Student Group to send the Assessment",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize: 20,
-                                                    fontWeight: FontWeight.bold,
                                                     color:
                                                         Colors.blue[600]))))),
                               ],
                             )),
-                            Expanded(child: CompeteFriendList())
+                            Expanded(
+                                child: AssessmentGroupList(
+                                    course: course,
+                                    topic: topic,
+                                    dueDate: dueDate,
+                                    questions: questions,
+                                    answers: answers))
                           ]),
                     ))
                 //UserList() Prints all the registered users of the application
