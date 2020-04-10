@@ -35,6 +35,7 @@
 //
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
@@ -43,9 +44,9 @@ import 'package:ssadpro/view/user_list.dart';
 
 class AssignmentTile extends StatelessWidget {
 
-  final Assignment assignment;
+  final DocumentSnapshot document;
 
-  AssignmentTile({ this.assignment });
+  AssignmentTile({this.document});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,7 @@ class AssignmentTile extends StatelessWidget {
           SizedBox(
             child: RaisedButton(
               child: Text(
-                  assignment.name
+                document['name'],
               ),
               color: Colors.red,
               onPressed: () {

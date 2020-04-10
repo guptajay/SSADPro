@@ -13,21 +13,21 @@ class BodyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-<<<<<<< HEAD
         child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               new RaisedButton(
                 color: Colors.blue,
-                onPressed: (){
+                onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>MCQPage("quest","1","2","3","4",4)),
+                    MaterialPageRoute(builder: (context) =>
+                        MCQPage("quest", "1", "2", "3", "4", 4)),
                   );
                 },
                 child: const Text(
                   'Play a Quiz to Compete',
-                  style: TextStyle(color: Colors. white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 splashColor: Colors.yellow[200],
                 elevation: 5.0,
@@ -36,14 +36,15 @@ class BodyLayout extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
 
                 ),
-                padding: EdgeInsets.all(30),//distance of all the sides to the //child
+                padding: EdgeInsets.all(
+                    30), //distance of all the sides to the //child
               ),
 
               SizedBox(height: 32),
 
               new RaisedButton(
                 color: Colors.blue,
-                onPressed: (){
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => QCheckList()),
@@ -51,7 +52,7 @@ class BodyLayout extends StatelessWidget {
                 },
                 child: const Text(
                   'Create your own Quiz',
-                  style: TextStyle(color: Colors. white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 splashColor: Colors.yellow[200],
                 elevation: 5.0,
@@ -60,13 +61,15 @@ class BodyLayout extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
 
                 ),
-                padding: EdgeInsets.fromLTRB(40, 30, 40, 30),//distance of all the sides to the //child
+                padding: EdgeInsets.fromLTRB(
+                    40, 30, 40, 30), //distance of all the sides to the //child
               )
             ]
         )
     );
-=======
-        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+
+    child:
+    Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       new RaisedButton(
         color: Colors.blue,
         onPressed: () {
@@ -109,7 +112,7 @@ class BodyLayout extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(
             40, 30, 40, 30), //distance of all the sides to the //child
       )
-    ]));
->>>>>>> 1d5b3e45b6c8446554fd15f98954ef2251419c42
+    ]
+    );
   }
 }

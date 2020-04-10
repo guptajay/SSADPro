@@ -19,6 +19,13 @@ class Assignment{
 //      topic = parsedJson['topic'],
 //        status = parsedJson['status'];
 
+  factory Assignment.fromMap(Map<String, dynamic> data) {
+    return Assignment(
+      name: data['name'] ?? '',
+     topic: data['topic'] ?? '',
+      status: data['status'] ?? null,
 
+    );
+  }
 
 }

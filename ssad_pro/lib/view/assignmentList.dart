@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/student_group.dart';
-import 'package:ssadpro/view/user_tile.dart';
 
-import 'assignment_tile.dart';
+import 'package:ssadpro/model/user.dart';
+
+import 'package:ssadpro/view/assignment_tile.dart';
+
+/*
 
 class AssignmentList extends StatefulWidget {
   @override
@@ -18,9 +18,23 @@ class AssignmentList extends StatefulWidget {
 class _AssignmentListState extends State<AssignmentList> {
   @override
   Widget build(BuildContext context) {
-
+    User user = Provider.of<User>(context);
 //var assignments = DatabaseService().getStudentAssignments('A1');
+
 // print (assignments);
+
+
+
+ List<String> assignments = DatabaseService(email: user.email).getData();
+ print('hi');
+print(assignments);
+
+//    assignments.forEach((assignment)
+//    {
+//      print(assignment);
+//
+//    });
+//    return Container();
 
 //    var assignments = Provider.of<List<Assignment>>(context) ?? [];
 //    print(assignments);
@@ -60,4 +74,41 @@ class _AssignmentListState extends State<AssignmentList> {
   }
 }
 
+*/
+
+
+class AssignmentList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
+    
+    return new StreamBuilder<QuerySnapshot>(
+        stream: DatabaseService(email: user.email).getAssignmentSnapshots(),
+    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      if (!snapshot.hasData) return new Text('NO');
+      return new Scaffold(
+      body: ListView(
+        children: snapshot.data.documents.map((DocumentSnapshot document) {
+          if(document.data['status'] == 'Active')
+          return new AssignmentTile(document: document);
+//            title: new Text(document['name']),
+//            subtitle: new Text(document['status']),
+
+          else return Text('');
+        }).toList(),
+      )
+      );
+    },
+    );
+
+
+    }
+  }
+
+
+//child: new ListView.builder(
+//itemCount: users.length,
+//itemBuilder: (context, index) {
+//return UserTile(user: users[index]);
+//},
 

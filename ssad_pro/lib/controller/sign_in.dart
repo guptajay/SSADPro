@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/question.dart';
@@ -50,20 +51,25 @@ class AuthService {
     assert(user.displayName != null);
     assert(user.photoUrl != null);
 
-    // List <String> options = ['o1', 'o2', 'o3', 'o4'];
-//    List <String> questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-//    List<Question> questions = new List();
-//    List<Assignment> assignments = new List();
-//    questions.add(Question(question: 'Demo 1', options: options, answer: 'o1')) ;
-//    assignments.add(Assignment(name: 'A1', questions: questions));
-    DatabaseService(email: user.email)
-        .updateStudentUserData(user.displayName, '0', user.email, 'W1 S1 L1', 'userDetails');
-//
-//    DatabaseService(email: user.email).updateUserAssignment('A1', 'T1','Active', 'A1');
-//    DatabaseService(email: user.email).updateUserAssignment('A2', 'T2',  'Active', 'A2');
-//    DatabaseService(email: user.email).updateUserAssignment('A3', 'T3',  'Inactive','A3');
 
-  //    DatabaseService(uid: user.uid).updateAssignment('Assignment name', 'Topic', 'Deadline', questions);
+
+    //Comment this part to avoid resetting the database when the user logs in
+     List <int> points = [0];
+     List <String> dates = ['10/04/20'];
+     int total_attempts = points.length-1;
+    DatabaseService(email: user.email)
+        .updateStudentUserData(user.displayName, '0', user.email, 'W1 S1 L1', points, dates, total_attempts, 'userDetails');
+    DatabaseService(email: user.email).updateUserAssignment('A1', 'T1','Active', 'A1');
+    DatabaseService(email: user.email).updateUserAssignment('A2', 'T2',  'Active', 'A2');
+    DatabaseService(email: user.email).updateUserAssignment('A3', 'T3',  'Inactive','A3');
+    DatabaseService(email: user.email).updateUserAssignment('A4', 'T4','Active', 'A4');
+    DatabaseService(email: user.email).updateUserAssignment('A5', 'T5','Active', 'A5');
+
+
+
+
+
+
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoUrl;
@@ -82,7 +88,6 @@ class AuthService {
 
     print('signInWithGoogle succeeded');
 
-    return _userFromFirebaseUser(user);
 
     // return 'signInWithGoogle succeeded: $user';
   }
