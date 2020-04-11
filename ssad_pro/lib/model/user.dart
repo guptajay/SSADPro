@@ -17,7 +17,11 @@ class UserData {
   final String group;
   final String progress;
 
-  UserData({this.name, this.group, this.email, this.progress});
+  final List <String> dates;
+  final List <int> points;
+  final int total_attempts;
+
+  UserData({this.name, this.group, this.email, this.progress, this.total_attempts, this.dates, this.points});
 
 
 }

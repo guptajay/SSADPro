@@ -101,11 +101,16 @@ class DatabaseService {
   }
 
 // user data from snapshots
+  //This function cannot retrive list based information from the database
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
       email: email,
       name: snapshot.data['name'],
       group: snapshot.data['group'],
+      progress: snapshot.data['progress'],
+//      points: snapshot.data['points'],
+//      dates: snapshot.data['dates'],
+      total_attempts: snapshot.data['total_attempts'],
     );
   }
 
@@ -134,7 +139,7 @@ class DatabaseService {
   //Getter to get the current user details from database
   Stream<UserData> get userData {
     return studentUserCollection
-        .document(email)
+        .document(this.email)
         .snapshots()
         .map(_userDataFromSnapshot);
   }
