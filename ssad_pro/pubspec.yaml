@@ -35,11 +35,8 @@ dependencies:
   volume: ^0.1.0
   url_launcher: ^5.4.2
   app_settings: 3.0.1
-<<<<<<< HEAD
-=======
   share: ^0.6.3+6
 
->>>>>>> 73038db540285dc83cd84d475a42c20b30e0dcc0
 
 
 dev_dependencies:
