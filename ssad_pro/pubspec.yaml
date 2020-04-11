@@ -18,24 +18,30 @@ environment:
 
 dependencies:
   flutter_date_picker: "^0.1.8"
-  provider: ^4.0.4
+#  provider: ^4.0.4
 #  it: git://github.com/yangyxd/flutter_picker.git
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-#  intl: ^0.15.8
+  #intl: ^0.15.8
   firebase_auth: ^0.15.5+3
   google_sign_in: ^4.2.0
   simple_animations: ^1.3.11
   path_provider: ^1.6.5
   cloud_firestore: ^0.13.4+2
+  provider: ^3.1.0
+  font_awesome_flutter: ^8.2.0
+  charts_flutter: ^0.6.0
+  volume: ^0.1.0
+  url_launcher: ^5.4.2
+  app_settings: 3.0.1
+  share: ^0.6.3+6
+
 
 
 dev_dependencies:
+    intl: ^0.16.1
+dependency_overrides:
   intl: ^0.16.1
 
   flutter_test:
@@ -58,6 +64,15 @@ flutter:
   assets:
    - assets/images/google_logo.png
    - assets/images/ssadpro_logo.png
+   - assets/images/transparent_logo.png
+   - assets/images/compete_mode.png
+   - assets/images/boy.png
+   - assets/images/boy-1.png
+   - assets/images/girl.png
+   - assets/images/girl-1.png
+   - assets/images/man.png
+   - assets/images/man-1.png
+   - assets/images/whatsapp_logo.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

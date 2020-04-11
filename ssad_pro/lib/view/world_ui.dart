@@ -194,7 +194,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.white)),
-            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
             color: Colors.blue[700],
             onPressed: () {
@@ -262,7 +262,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.white)),
-            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
             color: Colors.red[400],
             onPressed: () {},

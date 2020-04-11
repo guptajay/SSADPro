@@ -4,6 +4,7 @@ import 'package:ssadpro/view/fibpage.dart';
 import 'package:ssadpro/view/match_page.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ssadpro/view/progress.dart';
 
 class LevelViewPage extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _InputPageState extends State<LevelViewPage> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(height: 120),
+              //SizedBox(height: 120),
               Center(
                 child: Container(
 //                decoration: new BoxDecoration(
@@ -52,7 +53,7 @@ class _InputPageState extends State<LevelViewPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => MCQPage()),
+                        CupertinoPageRoute(builder: (context) => MCQPage("Question","1","2","3","4",4)),
                       );
                     },
                     child: Row(
@@ -146,6 +147,41 @@ class _InputPageState extends State<LevelViewPage> {
                 ),
               ),
               SizedBox(height: 120),
+              Center(
+                child: Container(
+                  padding: EdgeInsets.only(left: 40, right: 40),
+                  child: SizedBox(
+                      child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.white)),
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    textColor: Colors.white,
+                    color: Colors.blue[600],
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (context) => ProgressPage()),
+                      );
+                    },
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.apps,
+                            color: Colors.white,
+                            size: 60,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Progress",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold))
+                        ]),
+                  )),
+                ),
+              ),
             ],
           ),
         ));
