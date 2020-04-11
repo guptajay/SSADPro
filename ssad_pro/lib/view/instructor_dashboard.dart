@@ -30,13 +30,12 @@ class InstructorDashboard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-//              CircleAvatar(
-//                backgroundImage: NetworkImage(
-//                  _auth.imageUrl,
-//                ),
-//                radius: 40,
-//                backgroundColor: Colors.transparent,
-//              ),
+                        CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/images/man-1.png"),
+                          radius: 40,
+                          backgroundColor: Colors.transparent,
+                        ),
                         SizedBox(height: 10),
                         Text(
                           'INSTRUCTOR',
