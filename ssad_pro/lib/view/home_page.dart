@@ -154,12 +154,12 @@ class HomePage extends StatelessWidget {
                       textColor: Colors.white,
                       color: Colors.blue[700],
                       onPressed: () {
-                        /*
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Home1()),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  AssignmentList(status: "Active")),
                         );
-                        */
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -291,7 +291,9 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AssignmentList()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              AssignmentList(status: "Active")),
 
 //
                     );
@@ -300,14 +302,5 @@ class HomePage extends StatelessWidget {
 //        )
               ])),
         ));
-  }
-}
-
-_launchURL() async {
-  const url = 'https://flutter.io';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
   }
 }

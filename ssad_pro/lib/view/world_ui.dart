@@ -9,6 +9,10 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/model/user.dart';
+import 'package:provider/provider.dart';
 
 class WorldUI extends StatefulWidget {
   @override
@@ -74,8 +78,10 @@ class _WorldUIState extends State<WorldUI> {
   @override
   Widget build(BuildContext context) {
     //---------------------------------------------------------------------------------
-    //Mock Object data
+    //Logged in user
+    User user = Provider.of<User>(context);
 
+    //Mock Data
     Student stu1 = Student(userName: 'User1', password: 'pass1');
     // stu1.updateUnlockedWorld(); //to Unlock next world for this student.
 
@@ -150,27 +156,47 @@ class _WorldUIState extends State<WorldUI> {
 //    Map<String, dynamic> user = jsonDecode(json);
 //    print(user['worldInt']);
 //    user['world1']
+
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "Adventure", Colors.blue[600], Colors.grey[50]),
         body: Center(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 60),
-              WorldBox(worldlist[0].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 0),
-              SizedBox(height: 20),
-              WorldBox(worldlist[1].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 1),
-              SizedBox(height: 20),
-              WorldBox(worldlist[2].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 2),
-              SizedBox(height: 20),
-              WorldBox(worldlist[3].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 3),
-              SizedBox(height: 20),
-              WorldBox(worldlist[4].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 4),
+              StreamBuilder<UserData>(
+                  stream: DatabaseService(email: user.email).userData,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      UserData userData = snapshot.data;
+                      String worldProgress =
+                          Progress.getWorld(userData.progress);
+                      int unlockedLength = stu1.unlockedWorldBool.length;
+                      for (int i = unlockedLength;
+                          i < int.parse(worldProgress);
+                          i++) {
+                        stu1.unlockedWorldBool.add(true);
+                      }
+                    }
+                    return Column(
+                      children: <Widget>[
+                        SizedBox(height: 60),
+                        WorldBox(worldlist[0].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 0),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[1].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 1),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[2].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 2),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[3].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 3),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[4].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 4),
+                      ],
+                    );
+                  })
             ],
           ),
         ));

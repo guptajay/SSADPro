@@ -3,6 +3,7 @@ import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/model/Instructor.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
+import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/view/text_field.dart';
 import 'package:ssadpro/view/questions.dart';
 
@@ -25,11 +26,9 @@ class Sucessfull extends StatefulWidget {
 class SucessfullState extends State<Sucessfull> {
   @override
   Widget build(BuildContext context) {
-    print(widget.course);
-    print(widget.topic);
-    print(widget.dueDate);
-    print(widget.questions);
-    print(widget.answers);
+    DatabaseService db = new DatabaseService();
+    db.updateUserAssignment(widget.topic, widget.topic, "Active", widget.course,
+        widget.questions, widget.answers, widget.dueDate, widget.topic);
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
