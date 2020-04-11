@@ -35,6 +35,11 @@ dependencies:
   volume: ^0.1.0
   url_launcher: ^5.4.2
   app_settings: 3.0.1
+<<<<<<< HEAD
+=======
+  share: ^0.6.3+6
+
+>>>>>>> 73038db540285dc83cd84d475a42c20b30e0dcc0
 
 
 dev_dependencies:
@@ -63,6 +68,14 @@ flutter:
    - assets/images/google_logo.png
    - assets/images/ssadpro_logo.png
    - assets/images/transparent_logo.png
+   - assets/images/compete_mode.png
+   - assets/images/boy.png
+   - assets/images/boy-1.png
+   - assets/images/girl.png
+   - assets/images/girl-1.png
+   - assets/images/man.png
+   - assets/images/man-1.png
+   - assets/images/whatsapp_logo.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/question.dart';
@@ -29,7 +30,6 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-
   Future signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
@@ -50,20 +50,34 @@ class AuthService {
     assert(user.displayName != null);
     assert(user.photoUrl != null);
 
-    // List <String> options = ['o1', 'o2', 'o3', 'o4'];
-//    List <String> questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-//    List<Question> questions = new List();
-//    List<Assignment> assignments = new List();
-//    questions.add(Question(question: 'Demo 1', options: options, answer: 'o1')) ;
-//    assignments.add(Assignment(name: 'A1', questions: questions));
-    DatabaseService(email: user.email)
-        .updateStudentUserData(user.displayName, '0', user.email, 'W1 S1 L1', 'userDetails');
-//
-//    DatabaseService(email: user.email).updateUserAssignment('A1', 'T1','Active', 'A1');
-//    DatabaseService(email: user.email).updateUserAssignment('A2', 'T2',  'Active', 'A2');
-//    DatabaseService(email: user.email).updateUserAssignment('A3', 'T3',  'Inactive','A3');
+    //Comment this part to avoid resetting the database when the user logs in
+    List<int> points = [0];
+    List<String> dates = ['10/04/20'];
+    int total_attempts = points.length - 1;
 
-  //    DatabaseService(uid: user.uid).updateAssignment('Assignment name', 'Topic', 'Deadline', questions);
+    List<String> questions = ['q1', 'q2', 'q3'];
+    List<String> answers = ['a1', 'a2', 'a3'];
+
+    DatabaseService(email: user.email).updateStudentUserData(
+        user.displayName,
+        '0',
+        user.email,
+        'W1 S1 L1',
+        points,
+        dates,
+        total_attempts,
+        'userDetails');
+
+    DatabaseService(email: user.email).updateUserAssignment(
+        'A1', 'T1', 'Active', 'C1', questions, answers, 'Due Date', 'A1');
+    DatabaseService(email: user.email).updateUserAssignment(
+        'A2', 'T2', 'Active', 'C2', questions, answers, 'Due Date', 'A2');
+    DatabaseService(email: user.email).updateUserAssignment(
+        'A3', 'T3', 'Inactive', 'C3', questions, answers, 'Due Date', 'A3');
+
+    DatabaseService().updateQuestions(questions, answers, 'easy');
+    DatabaseService().updateQuestions(questions, answers, 'difficult');
+
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoUrl;
@@ -73,7 +87,6 @@ class AuthService {
       name = name.substring(0, name.indexOf(" "));
     }
 
-
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
 
@@ -82,16 +95,12 @@ class AuthService {
 
     print('signInWithGoogle succeeded');
 
-    return _userFromFirebaseUser(user);
-
     // return 'signInWithGoogle succeeded: $user';
   }
 
-  String getEmail()
-  {
+  String getEmail() {
     return email;
   }
-
 
 // sign out
   Future signOut() async {

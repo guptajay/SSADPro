@@ -4,7 +4,9 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
+import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/view/student_group.dart';
 
 class InstructorDashboard extends StatelessWidget {
@@ -29,13 +31,12 @@ class InstructorDashboard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-//              CircleAvatar(
-//                backgroundImage: NetworkImage(
-//                  _auth.imageUrl,
-//                ),
-//                radius: 40,
-//                backgroundColor: Colors.transparent,
-//              ),
+                        CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/images/man-1.png"),
+                          radius: 40,
+                          backgroundColor: Colors.transparent,
+                        ),
                         SizedBox(height: 10),
                         Text(
                           'INSTRUCTOR',
@@ -96,12 +97,11 @@ class InstructorDashboard extends StatelessWidget {
                               textColor: Colors.white,
                               color: Colors.blue[700],
                               onPressed: () {
-                                /*
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Gr()),
-                        );
-                        */
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SendAssessment()),
+                                );
                               },
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -215,7 +215,11 @@ class InstructorDashboard extends StatelessWidget {
                           elevation: 5,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(40)),
-                        )
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        SocialMedia(),
                       ],
                     ),
                   ),
