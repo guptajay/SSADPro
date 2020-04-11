@@ -317,6 +317,8 @@ PODS:
   - path_provider_macos (0.0.1):
     - Flutter
   - PromisesObjC (1.2.8)
+  - share (0.5.2):
+    - Flutter
   - system_shortcuts (0.0.1):
     - Flutter
   - url_launcher (0.0.1):
@@ -341,6 +343,7 @@ DEPENDENCIES:
   - google_sign_in_web (from `.symlinks/plugins/google_sign_in_web/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
+  - share (from `.symlinks/plugins/share/ios`)
   - system_shortcuts (from `.symlinks/plugins/system_shortcuts/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
   - url_launcher_macos (from `.symlinks/plugins/url_launcher_macos/ios`)
@@ -399,6 +402,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider/ios"
   path_provider_macos:
     :path: ".symlinks/plugins/path_provider_macos/ios"
+  share:
+    :path: ".symlinks/plugins/share/ios"
   system_shortcuts:
     :path: ".symlinks/plugins/system_shortcuts/ios"
   url_launcher:
@@ -447,6 +452,7 @@ SPEC CHECKSUMS:
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  share: bae0a282aab4483288913fc4dc0b935d4b491f2e
   system_shortcuts: fa91743cc51eed3811f5ea5461e23f972b9de780
   url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313

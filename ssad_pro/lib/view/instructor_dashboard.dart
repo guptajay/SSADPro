@@ -6,6 +6,7 @@ import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/view/student_group.dart';
 
 class InstructorDashboard extends StatelessWidget {
@@ -214,7 +215,11 @@ class InstructorDashboard extends StatelessWidget {
                           elevation: 5,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(40)),
-                        )
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        SocialMedia(),
                       ],
                     ),
                   ),

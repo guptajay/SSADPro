@@ -18,14 +18,13 @@ class Startup extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final DatabaseService _db = DatabaseService(email: AuthService().getEmail());
+    final DatabaseService _db =
+        DatabaseService(email: AuthService().getEmail());
     return MultiProvider(
-    providers: [
-      StreamProvider<User>.value(value: AuthService().user),
-      //StreamProvider <List<Assignment>>.value(value: DatabaseService().getData()),
+      providers: [
+        StreamProvider<User>.value(value: AuthService().user),
+        //StreamProvider <List<Assignment>>.value(value: DatabaseService().getData()),
       ],
-
-
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: "SSADPro",
