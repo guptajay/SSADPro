@@ -13,7 +13,6 @@ class BodyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-<<<<<<< HEAD
         child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -65,51 +64,5 @@ class BodyLayout extends StatelessWidget {
             ]
         )
     );
-=======
-        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-      new RaisedButton(
-        color: Colors.blue,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MCQPage()),
-          );
-        },
-        child: const Text(
-          'Play a Quiz to Compete',
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        splashColor: Colors.yellow[200],
-        elevation: 5.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(18.0),
-          side: BorderSide(color: Colors.black),
-        ),
-        padding: EdgeInsets.all(30), //distance of all the sides to the //child
-      ),
-      SizedBox(height: 32),
-      new RaisedButton(
-        color: Colors.blue,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => QCheckList()),
-          );
-        },
-        child: const Text(
-          'Create your own Quiz',
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        splashColor: Colors.yellow[200],
-        elevation: 5.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(18.0),
-          side: BorderSide(color: Colors.black),
-        ),
-        padding: EdgeInsets.fromLTRB(
-            40, 30, 40, 30), //distance of all the sides to the //child
-      )
-    ]));
->>>>>>> 1d5b3e45b6c8446554fd15f98954ef2251419c42
   }
 }
