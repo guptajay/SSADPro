@@ -87,43 +87,43 @@ class _WorldUIState extends State<WorldUI> {
 
     Section sec1 = new Section();
     sec1.sectionInt = 1;
-    sec1.sectionName = 'W1S1';
+    sec1.sectionName = 'Requirements Elicitation';
 
     Section sec2 = new Section();
     sec2.sectionInt = 2;
-    sec2.sectionName = 'W1S2';
+    sec2.sectionName = 'Requirements Analysis';
 
     Section sec3 = new Section();
     sec3.sectionInt = 3;
-    sec3.sectionName = 'W2S1';
+    sec3.sectionName = 'Strategy Pattern';
 
     Section sec4 = new Section();
     sec4.sectionInt = 4;
-    sec4.sectionName = 'W1S2';
+    sec4.sectionName = 'Observer Pattern';
 
     Section sec5 = new Section();
     sec5.sectionInt = 5;
-    sec5.sectionName = 'W1S3';
+    sec5.sectionName = 'Software Architecture';
 
     Section sec6 = new Section();
     sec6.sectionInt = 6;
-    sec6.sectionName = 'W1S4';
+    sec6.sectionName = 'SRS';
 
     Section sec7 = new Section();
     sec7.sectionInt = 7;
-    sec7.sectionName = 'W2S3';
+    sec7.sectionName = 'Factory Pattern';
 
     Section sec8 = new Section();
     sec8.sectionInt = 8;
-    sec8.sectionName = 'W2S4';
+    sec8.sectionName = 'Facade Pattern';
 
     Section sec9 = new Section();
     sec9.sectionInt = 9;
-    sec9.sectionName = 'W1 Final';
+    sec9.sectionName = 'World Quiz';
 
     Section sec10 = new Section();
-    sec9.sectionInt = 10;
-    sec9.sectionName = 'W2 Final';
+    sec10.sectionInt = 10;
+    sec10.sectionName = 'World Quiz';
 
     World world1 = new World();
     World world2 = new World();
@@ -185,20 +185,30 @@ class _WorldUIState extends State<WorldUI> {
                     return Column(
                       children: <Widget>[
                         SizedBox(height: 60),
-                        WorldBox(worldlist[0].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 0),
+                        WorldBox(
+                            worldlist[0].worldInt.toString(),
+                            context,
+                            stu1.unlockedWorldBool,
+                            worldlist,
+                            0,
+                            "Requirements Specification"),
                         SizedBox(height: 20),
                         WorldBox(worldlist[1].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 1),
+                            stu1.unlockedWorldBool, worldlist, 1, "Design"),
                         SizedBox(height: 20),
-                        WorldBox(worldlist[2].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 2),
+                        WorldBox(
+                            worldlist[2].worldInt.toString(),
+                            context,
+                            stu1.unlockedWorldBool,
+                            worldlist,
+                            2,
+                            "Implementation"),
                         SizedBox(height: 20),
                         WorldBox(worldlist[3].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 3),
+                            stu1.unlockedWorldBool, worldlist, 3, "Testing"),
                         SizedBox(height: 20),
                         WorldBox(worldlist[4].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 4),
+                            stu1.unlockedWorldBool, worldlist, 4, "Maintenance")
                       ],
                     );
                   })
@@ -209,7 +219,7 @@ class _WorldUIState extends State<WorldUI> {
 }
 
 Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
-    List<World> wlist, int index) {
+    List<World> wlist, int index, String title) {
   bool unlocked = false;
 
   if (index < unlockedList.length) {
@@ -220,7 +230,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
     return Stack(
       children: <Widget>[
         SizedBox(
-          width: 300.0,
+          width: 350.0,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
@@ -235,23 +245,41 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                   builder: (cont) => SectionUI(
                     list: wlist[index].sectionList,
                     worldInt: wlist[index].worldInt,
+                    title: title,
                   ),
                 ),
               );
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("World $WorldID",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("World $WorldID",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Icon(
+                      Icons.lock_open,
+                      size: 40,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.lock_open,
-                  size: 40,
-                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -288,7 +316,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
     return Stack(
       children: <Widget>[
         SizedBox(
-          width: 300.0,
+          width: 350.0,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
@@ -297,19 +325,36 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
             textColor: Colors.white,
             color: Colors.red[400],
             onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("World $WorldID",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("World $WorldID",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Icon(
+                      Icons.lock_outline,
+                      size: 40,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.lock_outline,
-                  size: 40,
-                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
