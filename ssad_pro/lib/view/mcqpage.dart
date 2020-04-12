@@ -100,6 +100,7 @@ class _InputPageState extends State<MCQPage> {
                               );
                             } else {
                               createRecord("Wrong", "mcq");
+                              _showWrongDialog();
                             }
                           },
                           child: Center(
@@ -159,6 +160,7 @@ class _InputPageState extends State<MCQPage> {
                               );
                             } else {
                               createRecord("Wrong", "mcq");
+                              _showWrongDialog();
                             }
                           },
                           child: Center(
@@ -220,6 +222,7 @@ class _InputPageState extends State<MCQPage> {
                               );
                             } else {
                               createRecord("Wrong", "mcq");
+                              _showWrongDialog();
                             }
                           },
                           child: Center(
@@ -279,6 +282,7 @@ class _InputPageState extends State<MCQPage> {
                               );
                             } else {
                               createRecord("Wrong", "mcq");
+                              _showWrongDialog();
                             }
                           },
                           child: Center(
@@ -311,5 +315,28 @@ class _InputPageState extends State<MCQPage> {
             // )
           ],
         ));
+  }
+
+  void _showWrongDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Wrong Answer"),
+          content: new Text("Give it another try!"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

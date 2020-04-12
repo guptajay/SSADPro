@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/drag_objects.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/view/mcq_boxes.dart';
+import 'package:ssadpro/view/section.dart';
+import 'package:flutter/cupertino.dart';
+import 'mcq_boxes.dart';
+import 'package:ssadpro/view/section.dart';
 
 class MatchPage extends StatefulWidget {
   @override
@@ -73,11 +78,11 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Option 1',
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue)),
+                                            // child: Text('Option 1',
+                                            //     style: TextStyle(
+                                            //         fontSize: 25,
+                                            //         fontWeight: FontWeight.bold,
+                                            //         color: Colors.blue)),
                                           ),
                                         ),
                                       ),
@@ -101,11 +106,6 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Option 2',
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue)),
                                           ),
                                         ),
                                       ),
@@ -129,11 +129,6 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Option 3',
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue)),
                                           ),
                                         ),
                                       ),
@@ -157,11 +152,6 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Option 4',
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue)),
                                           ),
                                         ),
                                       ),
@@ -170,26 +160,46 @@ class _InputPageState extends State<MatchPage> {
                                 ),
                               ),
                               Container(
-                                  color: Colors.blue[600],
-                                  height: 55,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        "Confirm Answer",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      )
-                                    ],
-                                  )),
-//                          Stack(
-//                            children: <Widget>[
-//                              Container(
-//                                  child: DragBox(Offset(0.0, 0.0), 'Box One', Colors.blueAccent)),
-//                            ],
-//                          )
+                                padding: EdgeInsets.only(left: 20, right: 20),
+                                child: SizedBox(
+                                    width: 55.0,
+                                    child: RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                          side:
+                                              BorderSide(color: Colors.white)),
+                                      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      textColor: Colors.white,
+                                      color: Colors.blue[600],
+                                      onPressed: () {
+                                        Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        SectionUI()),
+                              );
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 10.0, bottom: 10),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text("Confirm Answer",
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold))
+                                            ]),
+                                      ),
+                                    )),
+                              ),
+                              SizedBox(height: 10),
                             ]),
                       ),
                     )))),
@@ -197,126 +207,10 @@ class _InputPageState extends State<MatchPage> {
         DragBox(Offset(220.0, 440.0), 'Option 2', Colors.blueAccent),
         DragBox(Offset(10.0, 520.0), 'Option 3', Colors.blueAccent),
         DragBox(Offset(220.0, 520.0), 'Option 4', Colors.blueAccent),
-        Positioned(
-          left: 209.0,
-          top: 109,
-          child: DragTarget(
-            onAccept: (String label) {
-              text1 = label;
-              abc = Colors.black;
-            },
-            builder: (
-              BuildContext context,
-              List<dynamic> accepted,
-              List<dynamic> rejected,
-            ) {
-              return Container(
-                width: 197.0,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: accepted.isEmpty ? abc : Colors.red[100],
-                ),
-                child: Center(
-                  child: Text(text1,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue)),
-                ),
-              );
-            },
-          ),
-        ),
-        Positioned(
-          left: 209.0,
-          top: 189,
-          child: DragTarget(
-            onAccept: (String label) {
-              text2 = label;
-              abc = Colors.black;
-            },
-            builder: (
-              BuildContext context,
-              List<dynamic> accepted,
-              List<dynamic> rejected,
-            ) {
-              return Container(
-                width: 197.0,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: accepted.isEmpty ? abc : Colors.red[100],
-                ),
-                child: Center(
-                  child: Text(text2,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue)),
-                ),
-              );
-            },
-          ),
-        ),
-        Positioned(
-          left: 209.0,
-          top: 269,
-          child: DragTarget(
-            onAccept: (String label) {
-              text3 = label;
-              abc = Colors.black;
-            },
-            builder: (
-              BuildContext context,
-              List<dynamic> accepted,
-              List<dynamic> rejected,
-            ) {
-              return Container(
-                width: 197.0,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: accepted.isEmpty ? abc : Colors.red[100],
-                ),
-                child: Center(
-                  child: Text(text3,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue)),
-                ),
-              );
-            },
-          ),
-        ),
-        Positioned(
-          left: 209.0,
-          top: 349,
-          child: DragTarget(
-            onAccept: (String label) {
-              text4 = label;
-              abc = Colors.black;
-            },
-            builder: (
-              BuildContext context,
-              List<dynamic> accepted,
-              List<dynamic> rejected,
-            ) {
-              return Container(
-                width: 197.0,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: accepted.isEmpty ? abc : Colors.red[100],
-                ),
-                child: Center(
-                  child: Text(text4,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue)),
-                ),
-              );
-            },
-          ),
-        )
+        MCQBoxes.getTargetBox(abc, text1, 209.0, 109),
+        MCQBoxes.getTargetBox(abc, text2, 209.0, 189),
+        MCQBoxes.getTargetBox(abc, text3, 209.0, 269),
+        MCQBoxes.getTargetBox(abc, text4, 209.0, 349),
       ],
     );
   }

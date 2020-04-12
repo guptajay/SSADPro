@@ -5,7 +5,7 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/user_list.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/compete_friend_list.dart';
+import 'package:ssadpro/view/progress_student_list.dart';
 
 class ProgressList extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -55,7 +55,7 @@ class ProgressList extends StatelessWidget {
                                                         Colors.blue[600]))))),
                               ],
                             )),
-                            Expanded(child: CompeteFriendList())
+                            Expanded(child: ProgressStudentList())
                           ]),
                     ))
                 //UserList() Prints all the registered users of the application

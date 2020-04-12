@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/view/mcq_boxes.dart';
+import 'mcq_boxes.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:ssadpro/view/match_page.dart';
 
 class FIBPage extends StatefulWidget {
   @override
@@ -41,90 +45,9 @@ class _InputPageState extends State<FIBPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           SizedBox(height: 100),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(left: 20, right: 20),
-                              child: SizedBox(
-                                  width: 300.0,
-                                  child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        side: BorderSide(color: Colors.white)),
-                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                    textColor: Colors.white,
-                                    color: Colors.grey[400],
-                                    onPressed: () {},
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 40.0, bottom: 40),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(question,
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20,
-                                                )),
-                                          ]),
-                                    ),
-                                  )),
-                            ),
-                          ),
+                          MCQBoxes.getFibQuestion(question),
                           SizedBox(height: 20),
-                          Center(
-                            child: Container(
-                              decoration: new BoxDecoration(boxShadow: [
-                                new BoxShadow(
-                                  color: Colors.grey[400],
-                                  blurRadius: 50.0,
-                                ),
-                              ]),
-                              padding: EdgeInsets.only(left: 20, right: 20),
-                              child: SizedBox(
-                                  child: RaisedButton(
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    side: BorderSide(color: Colors.white)),
-                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                textColor: Colors.black,
-                                color: Colors.white,
-                                onPressed: () {},
-                                child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, bottom: 10),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10),
-                                                child: TextField(
-                                                  style: TextStyle(
-                                                      color: Colors.black),
-                                                  controller: myController,
-                                                  decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText:
-                                                          'Enter your answer here...',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.black)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                              )),
-                            ),
-                          ),
+                          MCQBoxes.getAnswerBox(myController),
                           SizedBox(height: 50),
                           Container(
                             padding: EdgeInsets.only(left: 20, right: 20),
@@ -137,11 +60,19 @@ class _InputPageState extends State<FIBPage> {
                                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                   textColor: Colors.white,
                                   color: Colors.blue[600],
-                                  onPressed: () {
-                                    if (myController.text == "correct") {
+                                  onPressed: () async {
+                                    if (myController.text == answer) {
                                       createRecord("Correct", "fib");
+                                      await new Future.delayed(
+                                          const Duration(seconds: 1));
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => MatchPage()),
+                                      );
                                     } else {
                                       createRecord("Wrong", "fib");
+                                      _showWrongDialog();
                                     }
                                   },
                                   child: Padding(
@@ -162,22 +93,32 @@ class _InputPageState extends State<FIBPage> {
                                   ),
                                 )),
                           ),
-                          // RaisedButton(
-                          //   child: Text('Retrieve Data'),
-                          //   onPressed: () async {
-                          //     print(await getData("fib"));
-                          //     print(
-                          //         "____________________________________________");
-                          //   },
-                          // ),
-                          // RaisedButton(
-                          //   child: Text('Delete Data'),
-                          //   onPressed: () {
-                          //     deleteData("fib");
-                          //   },
-                          // )
+                          SizedBox(height: 10),
                         ]),
                   ),
                 ))));
+  }
+
+  void _showWrongDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Wrong Answer"),
+          content: new Text("Give it another try!"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
