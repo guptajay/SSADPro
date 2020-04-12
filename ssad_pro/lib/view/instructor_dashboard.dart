@@ -4,6 +4,7 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
+import 'package:ssadpro/view/progress_page.dart';
 import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/social_media.dart';
@@ -131,13 +132,11 @@ class InstructorDashboard extends StatelessWidget {
                               textColor: Colors.white,
                               color: Colors.blue[700],
                               onPressed: () {
-                                /*
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DietTrackerDashboard()),
-                        );
-                        */
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProgressPage()),
+                                );
                               },
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,

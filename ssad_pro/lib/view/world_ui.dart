@@ -82,7 +82,7 @@ class _WorldUIState extends State<WorldUI> {
     User user = Provider.of<User>(context);
 
     //Mock Data
-    Student stu1 = Student(userName: 'User1', password: 'pass1');
+    Student stu1 = Student(userName: user.email);
     // stu1.updateUnlockedWorld(); //to Unlock next world for this student.
 
     Section sec1 = new Section();
@@ -121,6 +121,10 @@ class _WorldUIState extends State<WorldUI> {
     sec9.sectionInt = 9;
     sec9.sectionName = 'W1 Final';
 
+    Section sec10 = new Section();
+    sec9.sectionInt = 10;
+    sec9.sectionName = 'W2 Final';
+
     World world1 = new World();
     World world2 = new World();
     World world3 = new World();
@@ -139,6 +143,7 @@ class _WorldUIState extends State<WorldUI> {
     world2.addSection(sec4);
     world2.addSection(sec7);
     world2.addSection(sec8);
+    world2.addSection(sec10);
 
     world3.worldInt = 3;
     world4.worldInt = 4;

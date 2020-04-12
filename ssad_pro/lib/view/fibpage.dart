@@ -4,7 +4,11 @@ import 'package:ssadpro/view/appbar.dart';
 
 class FIBPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState();
+  _InputPageState createState() => _InputPageState(question, answer);
+
+  final String question;
+  final String answer;
+  FIBPage(this.question, this.answer);
 }
 
 class _InputPageState extends State<FIBPage> {
@@ -15,6 +19,10 @@ class _InputPageState extends State<FIBPage> {
     myController.dispose();
     super.dispose();
   }
+
+  final String question;
+  final String answer;
+  _InputPageState(this.question, this.answer);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +62,7 @@ class _InputPageState extends State<FIBPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text("Question to be asked",
+                                            Text(question,
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 20,
@@ -154,20 +162,20 @@ class _InputPageState extends State<FIBPage> {
                                   ),
                                 )),
                           ),
-                          RaisedButton(
-                            child: Text('Retrieve Data'),
-                            onPressed: () async {
-                              print(await getData("fib"));
-                              print(
-                                  "____________________________________________");
-                            },
-                          ),
-                          RaisedButton(
-                            child: Text('Delete Data'),
-                            onPressed: () {
-                              deleteData("fib");
-                            },
-                          )
+                          // RaisedButton(
+                          //   child: Text('Retrieve Data'),
+                          //   onPressed: () async {
+                          //     print(await getData("fib"));
+                          //     print(
+                          //         "____________________________________________");
+                          //   },
+                          // ),
+                          // RaisedButton(
+                          //   child: Text('Delete Data'),
+                          //   onPressed: () {
+                          //     deleteData("fib");
+                          //   },
+                          // )
                         ]),
                   ),
                 ))));

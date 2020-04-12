@@ -3,10 +3,12 @@ import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ssadpro/view/fibpage.dart';
 
 class MCQPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState(question,option1,option2,option3,option4,correctAnswer);
+  _InputPageState createState() => _InputPageState(
+      question, option1, option2, option3, option4, correctAnswer);
 
   final String question;
   final String option1;
@@ -15,8 +17,8 @@ class MCQPage extends StatefulWidget {
   final String option4;
   final int correctAnswer;
 
-
-  MCQPage(this.question, this.option1,this.option2,this.option3,this.option4,this.correctAnswer );
+  MCQPage(this.question, this.option1, this.option2, this.option3, this.option4,
+      this.correctAnswer);
 }
 
 class _InputPageState extends State<MCQPage> {
@@ -24,7 +26,6 @@ class _InputPageState extends State<MCQPage> {
   int pressAttention2 = 0;
   int pressAttention3 = 0;
   int pressAttention4 = 0;
-  
 
   final String question;
   final String option1;
@@ -33,8 +34,8 @@ class _InputPageState extends State<MCQPage> {
   final String option4;
   final int correctAnswer;
 
-
-  _InputPageState(this.question, this.option1,this.option2,this.option3,this.option4,this.correctAnswer );
+  _InputPageState(this.question, this.option1, this.option2, this.option3,
+      this.option4, this.correctAnswer);
 
   @override
   Widget build(BuildContext context) {
@@ -87,22 +88,24 @@ class _InputPageState extends State<MCQPage> {
                               pressAttention3 = 2;
                               pressAttention4 = 2;
                             });
-                            correctAnswer == 1
-                                ? createRecord("Right", "mcq")
-                                : createRecord("Wrong", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => MCQPage("quest","1","2","3","4",1)),
-                            );
+                            if (correctAnswer == 1) {
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        FIBPage("questfib", "answerfib")),
+                              );
+                            } else {
+                              createRecord("Wrong", "mcq");
+                            }
                           },
                           child: Center(
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  
                                   Text(option1,
                                       style: TextStyle(
                                           fontSize: 25,
@@ -144,22 +147,24 @@ class _InputPageState extends State<MCQPage> {
                               pressAttention3 = 2;
                               pressAttention4 = 2;
                             });
-                            correctAnswer == 2
-                                ? createRecord("Right", "mcq")
-                                : createRecord("Wrong", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => MCQPage("quest","1","2","3","4",2)),
-                            );
+                            if (correctAnswer == 2) {
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        FIBPage("questfib", "answerfib")),
+                              );
+                            } else {
+                              createRecord("Wrong", "mcq");
+                            }
                           },
                           child: Center(
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  
                                   Text(option2,
                                       style: TextStyle(
                                           fontSize: 25,
@@ -203,22 +208,24 @@ class _InputPageState extends State<MCQPage> {
                               pressAttention2 = 2;
                               pressAttention4 = 2;
                             });
-                            correctAnswer == 3
-                                ? createRecord("Right", "mcq")
-                                : createRecord("Wrong", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => MCQPage("quest","1","2","3","4",3)),
-                            );
+                            if (correctAnswer == 3) {
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        FIBPage("questfib", "answerfib")),
+                              );
+                            } else {
+                              createRecord("Wrong", "mcq");
+                            }
                           },
                           child: Center(
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  
                                   Text(option3,
                                       style: TextStyle(
                                           fontSize: 25,
@@ -260,22 +267,24 @@ class _InputPageState extends State<MCQPage> {
                               pressAttention3 = 2;
                               pressAttention1 = 2;
                             });
-                            correctAnswer == 4
-                                ? createRecord("Right", "mcq")
-                                : createRecord("Wrong", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => MCQPage("quest","1","2","3","4",4)),
-                            );
+                            if (correctAnswer == 4) {
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        FIBPage("questfib", "answerfib")),
+                              );
+                            } else {
+                              createRecord("Wrong", "mcq");
+                            }
                           },
                           child: Center(
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  
                                   Text(option4,
                                       style: TextStyle(
                                           fontSize: 25,
@@ -287,19 +296,19 @@ class _InputPageState extends State<MCQPage> {
                 ),
               ],
             )),
-            RaisedButton(
-              child: Text('Retrieve Data'),
-              onPressed: () async {
-                print(await getData("mcq"));
-                print("____________________________________________");
-              },
-            ),
-            RaisedButton(
-              child: Text('Delete Data'),
-              onPressed: () {
-                deleteData("mcq");
-              },
-            )
+            // RaisedButton(
+            //   child: Text('Retrieve Data'),
+            //   onPressed: () async {
+            //     print(await getData("mcq"));
+            //     print("____________________________________________");
+            //   },
+            // ),
+            // RaisedButton(
+            //   child: Text('Delete Data'),
+            //   onPressed: () {
+            //     deleteData("mcq");
+            //   },
+            // )
           ],
         ));
   }

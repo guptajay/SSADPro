@@ -34,7 +34,9 @@ class _DatabaseDemoScreen extends State<DatabaseDemo> {
             child: Text('FibPage'),
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => FIBPage()));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FIBPage("quest", "ans")));
             },
           ),
 

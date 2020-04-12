@@ -4,7 +4,7 @@ import 'package:ssadpro/view/fibpage.dart';
 import 'package:ssadpro/view/match_page.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ssadpro/view/progress.dart';
+import 'package:ssadpro/view/progress_page.dart';
 
 class LevelViewPage extends StatefulWidget {
   @override
@@ -53,7 +53,9 @@ class _InputPageState extends State<LevelViewPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => MCQPage("Question","1","2","3","4",4)),
+                        CupertinoPageRoute(
+                            builder: (context) =>
+                                MCQPage("Question", "1", "2", "3", "4", 4)),
                       );
                     },
                     child: Row(
@@ -89,7 +91,8 @@ class _InputPageState extends State<LevelViewPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => FIBPage()),
+                        CupertinoPageRoute(
+                            builder: (context) => FIBPage("quest", "fib")),
                       );
                     },
                     child: Row(
@@ -161,7 +164,8 @@ class _InputPageState extends State<LevelViewPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => ProgressPage()),
+                        CupertinoPageRoute(
+                            builder: (context) => ProgressPage()),
                       );
                     },
                     child: Row(

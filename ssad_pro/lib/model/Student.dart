@@ -2,7 +2,6 @@ import 'StudentGroup.dart';
 
 class Student {
   String userName; //For simplicity, _userName = email;
-  String password;
   String _userNickname; //Name displayed in game
   List<bool> _unlockedWorldBool = [
     true
@@ -13,7 +12,7 @@ class Student {
 
   //---------------------------------------------------------
   //Constructor
-  Student({this.userName, this.password});
+  Student({this.userName});
 
   //---------------------------------------------------------
   //Getters
@@ -44,5 +43,4 @@ class Student {
   List<String> updateProgressOfLevels(String levelCompleted) {
     _progressOfLevels.add(levelCompleted);
   }
-  
 }
