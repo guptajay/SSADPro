@@ -23,11 +23,16 @@ class MCQBoxes {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(question,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white))
+                    Flexible(
+                        child: Text(
+                      question,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.visible,
+                    ))
                   ]),
             ),
           )),
@@ -53,11 +58,16 @@ class MCQBoxes {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(ques,
+                      Flexible(
+                        child: Text(
+                          ques,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                          )),
+                          ),
+                          overflow: TextOverflow.visible,
+                        ),
+                      )
                     ]),
               ),
             )),

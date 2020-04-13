@@ -5,14 +5,18 @@ import 'package:ssadpro/view/mcq_boxes.dart';
 import 'mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/match_page.dart';
+import 'package:ssadpro/controller/match_generator.dart';
 
 class FIBPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState(question, answer);
+  _InputPageState createState() =>
+      _InputPageState(question, answer, world, section);
 
   final String question;
   final String answer;
-  FIBPage(this.question, this.answer);
+  int world;
+  int section;
+  FIBPage(this.question, this.answer, this.world, this.section);
 }
 
 class _InputPageState extends State<FIBPage> {
@@ -26,10 +30,13 @@ class _InputPageState extends State<FIBPage> {
 
   final String question;
   final String answer;
-  _InputPageState(this.question, this.answer);
+  final int world;
+  final int section;
+  _InputPageState(this.question, this.answer, this.world, this.section);
 
   @override
   Widget build(BuildContext context) {
+    List<String> match = GenerateMatch().question(world, section);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: ReusableWidgets.getAppBar(
@@ -68,7 +75,16 @@ class _InputPageState extends State<FIBPage> {
                                       Navigator.push(
                                         context,
                                         CupertinoPageRoute(
-                                            builder: (context) => MatchPage()),
+                                            builder: (context) => MatchPage(
+                                                match[0],
+                                                match[1],
+                                                match[2],
+                                                match[3],
+                                                match[4],
+                                                match[5],
+                                                match[6],
+                                                match[7],
+                                                world)),
                                       );
                                     } else {
                                       createRecord("Wrong", "fib");

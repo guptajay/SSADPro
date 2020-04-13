@@ -10,6 +10,7 @@ import 'package:ssadpro/controller/progress.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/mcqpage.dart';
+import 'package:ssadpro/controller/mcq_generator.dart';
 
 class SectionUI extends StatefulWidget {
   final List<Section> list;
@@ -82,19 +83,19 @@ class _SectionUIState extends State<SectionUI> {
                     ),
                     SizedBox(height: 20),
                     SectionBox(list[0].sectionName, Colors.blue[700], context,
-                        sect_progress[0], '1'),
+                        sect_progress[0], '1', worldInt),
                     SizedBox(height: 20),
                     SectionBox(list[1].sectionName, Colors.blue[700], context,
-                        sect_progress[1], '2'),
+                        sect_progress[1], '2', worldInt),
                     SizedBox(height: 20),
                     SectionBox(list[2].sectionName, Colors.blue[700], context,
-                        sect_progress[2], '3'),
+                        sect_progress[2], '3', worldInt),
                     SizedBox(height: 20),
                     SectionBox(list[3].sectionName, Colors.blue[700], context,
-                        sect_progress[3], '4'),
+                        sect_progress[3], '4', worldInt),
                     SizedBox(height: 50),
                     SectionBox(list[4].sectionName, Color(0xffffa41b), context,
-                        sect_progress[4], 'Final')
+                        sect_progress[4], '5', worldInt)
                   ]);
                 })
 //          Row(
@@ -108,7 +109,7 @@ class _SectionUIState extends State<SectionUI> {
 }
 
 SizedBox SectionBox(String boxname, Color color, BuildContext cont,
-    bool sect_progress, String section) {
+    bool sect_progress, String section, int world) {
   return SizedBox(
     width: 350.0,
     child: RaisedButton(
@@ -119,11 +120,22 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
       textColor: Colors.white,
       color: (sect_progress == true) ? color : Colors.red,
       onPressed: () {
-        if (sect_progress == true)
+        if (sect_progress == true) {
+          List<String> question =
+              GenerateMCQ().question(world, int.parse(section));
           Navigator.push(
               cont,
               MaterialPageRoute(
-                  builder: (cont) => MCQPage("Q", "1", "2", "3", "4", 3)));
+                  builder: (cont) => MCQPage(
+                      question[0],
+                      question[1],
+                      question[2],
+                      question[3],
+                      question[4],
+                      int.parse(question[5]),
+                      world,
+                      int.parse(section))));
+        }
       },
       child: Column(
         children: <Widget>[

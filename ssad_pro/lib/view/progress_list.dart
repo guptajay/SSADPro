@@ -15,7 +15,7 @@ class ProgressList extends StatelessWidget {
         value: DatabaseService().users,
         child: Scaffold(
             appBar: ReusableWidgets.getAppBar(
-                "Compete Mode", Colors.blue[600], Colors.grey[50]),
+                "Track Progress", Colors.blue[600], Colors.grey[50]),
             body: Scaffold(
                 body: Container(
                     decoration: BoxDecoration(),
@@ -27,13 +27,6 @@ class ProgressList extends StatelessWidget {
                             SizedBox(
                               height: 50,
                             ),
-                            Container(
-                                height: 100,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                  'assets/images/google_logo.png',
-                                )))),
                             Container(
                                 child: Stack(
                               children: <Widget>[

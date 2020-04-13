@@ -180,11 +180,9 @@ class DatabaseService {
   Future updateStudentProgress(String progress) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
-          Firestore.instance
-              .collection(USER_COLLECTION)
-              .document(this.email)
-              .collection(USER_DATA_COLLECTION)
-              .document('userDetails'),
+          Firestore.instance.collection(USER_COLLECTION).document(this.email),
+          // .collection(USER_DATA_COLLECTION)
+          // .document('userDetails'),
           {'progress': progress});
     });
   }

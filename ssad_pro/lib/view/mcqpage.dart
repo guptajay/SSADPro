@@ -4,11 +4,12 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/fibpage.dart';
+import 'package:ssadpro/controller/fib_generator.dart';
 
 class MCQPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState(
-      question, option1, option2, option3, option4, correctAnswer);
+  _InputPageState createState() => _InputPageState(question, option1, option2,
+      option3, option4, correctAnswer, world, section);
 
   final String question;
   final String option1;
@@ -16,9 +17,11 @@ class MCQPage extends StatefulWidget {
   final String option3;
   final String option4;
   final int correctAnswer;
+  final int world;
+  final int section;
 
   MCQPage(this.question, this.option1, this.option2, this.option3, this.option4,
-      this.correctAnswer);
+      this.correctAnswer, this.world, this.section);
 }
 
 class _InputPageState extends State<MCQPage> {
@@ -33,12 +36,15 @@ class _InputPageState extends State<MCQPage> {
   final String option3;
   final String option4;
   final int correctAnswer;
+  final int world;
+  final int section;
 
   _InputPageState(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.correctAnswer);
+      this.option4, this.correctAnswer, this.world, this.section);
 
   @override
   Widget build(BuildContext context) {
+    List<String> fib = GenerateFIB().question(world, section);
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "MCQs", Colors.blue[600], Colors.grey[50]),
@@ -95,8 +101,8 @@ class _InputPageState extends State<MCQPage> {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) =>
-                                        FIBPage("questfib", "answerfib")),
+                                    builder: (context) => FIBPage(
+                                        fib[0], fib[1], world, section)),
                               );
                             } else {
                               createRecord("Wrong", "mcq");
@@ -107,10 +113,14 @@ class _InputPageState extends State<MCQPage> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(option1,
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
+                                  Flexible(
+                                      child: Text(
+                                    option1,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.visible,
+                                  ))
                                 ]),
                           ),
                         )),
@@ -155,8 +165,8 @@ class _InputPageState extends State<MCQPage> {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) =>
-                                        FIBPage("questfib", "answerfib")),
+                                    builder: (context) => FIBPage(
+                                        fib[0], fib[1], world, section)),
                               );
                             } else {
                               createRecord("Wrong", "mcq");
@@ -167,10 +177,14 @@ class _InputPageState extends State<MCQPage> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(option2,
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
+                                  Flexible(
+                                      child: Text(
+                                    option2,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.visible,
+                                  ))
                                 ]),
                           ),
                         )),
@@ -217,8 +231,8 @@ class _InputPageState extends State<MCQPage> {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) =>
-                                        FIBPage("questfib", "answerfib")),
+                                    builder: (context) => FIBPage(
+                                        fib[0], fib[1], world, section)),
                               );
                             } else {
                               createRecord("Wrong", "mcq");
@@ -229,10 +243,14 @@ class _InputPageState extends State<MCQPage> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(option3,
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
+                                  Flexible(
+                                      child: Text(
+                                    option3,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.visible,
+                                  ))
                                 ]),
                           ),
                         )),
@@ -277,8 +295,8 @@ class _InputPageState extends State<MCQPage> {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) =>
-                                        FIBPage("questfib", "answerfib")),
+                                    builder: (context) => FIBPage(
+                                        fib[0], fib[1], world, section)),
                               );
                             } else {
                               createRecord("Wrong", "mcq");
@@ -289,10 +307,14 @@ class _InputPageState extends State<MCQPage> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(option4,
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold))
+                                  Flexible(
+                                      child: Text(
+                                    option4,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.visible,
+                                  ))
                                 ]),
                           ),
                         )),
