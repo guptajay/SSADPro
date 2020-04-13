@@ -5,6 +5,7 @@ import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/user_list.dart';
+import 'package:ssadpro/model/Student.dart';
 
 class DatabaseService {
   static const String USER_COLLECTION = 'Users';
@@ -75,6 +76,34 @@ class DatabaseService {
     });
   }
 
+  Future createUserAssignmentExt(
+      String name,
+      String email,
+      String topic,
+      String status,
+      String course,
+      List<String> questions,
+      List<String> answers,
+      String dueDate,
+      String fileName) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.set(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(email)
+              .collection(USER_ASSIGNMENT_COLLECTION)
+              .document(fileName),
+          {
+            'name': name,
+            'topic': topic,
+            'status': status,
+            'questions': questions,
+            'answers': answers,
+            'course': course,
+            'dueDate': dueDate,
+          });
+    });
+  }
 
   //Function to update user assignment in user data base
   Future updateUserAssignment(
@@ -104,8 +133,6 @@ class DatabaseService {
           });
     });
   }
-
-
 
   //Function to send user assignment to OTHER user data base
   Future sendUserAssignment(
@@ -137,42 +164,33 @@ class DatabaseService {
     });
   }
 
-
-
-
   //Function to create group documents in database
   Future createGroup(
-      String name,
-      List <String> students,
-      ) async {
+    String name,
+    List<String> students,
+  ) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.set(
           Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
         'name': name,
         'students': students,
-
       });
     });
   }
 
-
 //Function to update the documents of the collection 'Groups'
   Future updateGroup(
-      String name,
-      List <String> students,
-) async {
+    String name,
+    List<String> students,
+  ) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
           Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
         'name': name,
         'students': students,
-
       });
     });
   }
-
-
-
 
   //Function to create or update questions and answers in user data base
   //fileName - Difficulty of the question
@@ -255,9 +273,7 @@ class DatabaseService {
   Future updateStudentName(String name) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.set(
-          Firestore.instance
-              .collection(USER_COLLECTION)
-              .document(this.email),
+          Firestore.instance.collection(USER_COLLECTION).document(this.email),
           {'name': name});
     });
   }
@@ -266,9 +282,7 @@ class DatabaseService {
   Future updateStudentGroup(String group) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
-          Firestore.instance
-              .collection(USER_COLLECTION)
-              .document(this.email),
+          Firestore.instance.collection(USER_COLLECTION).document(this.email),
           {'group': group});
     });
   }
@@ -277,9 +291,7 @@ class DatabaseService {
   Future updateStudentProgress(String progress) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
-          Firestore.instance
-              .collection(USER_COLLECTION)
-              .document(this.email),
+          Firestore.instance.collection(USER_COLLECTION).document(this.email),
           {'progress': progress});
     });
   }
@@ -292,6 +304,24 @@ class DatabaseService {
           {'group': group});
     });
   }
+
+//   Future<int> getWorldProgress(String userEmail) async {
+//    try {
+//      DocumentSnapshot ds = await Firestore.instance
+//          .collection('Users')
+//          .document('$userEmail')
+//          .get();
+//
+//      String str = ds['progress'];
+//      int num = int.parse(str[1]);
+//      print('GWP : $num');
+//
+//      return num;
+//    } catch (e) {
+//      print(e);
+//      return null;
+//    }
+//  }
 
 //
 //  Future getStudentAssignments(String name) async {
@@ -367,15 +397,8 @@ class DatabaseService {
         .snapshots();
   }
 
-
   //Function to get all the groups in the Groups Collection
   Stream<QuerySnapshot> getGroupsSnapshots() {
-    return Firestore.instance
-        .collection('Groups')
-        .snapshots();
+    return Firestore.instance.collection('Groups').snapshots();
   }
-
-
-
-
 }

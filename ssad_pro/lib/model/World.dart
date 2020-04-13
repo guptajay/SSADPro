@@ -14,6 +14,9 @@ class World {
         '_worldInt': _worldInt,
         '_sectionList': _sectionList,
       };
+  Map<String, dynamic> toJso() => {
+        '_worldInt': _worldInt,
+      };
 
   int get worldInt => _worldInt;
 

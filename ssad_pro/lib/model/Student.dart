@@ -30,10 +30,27 @@ class Student {
     _userNickname = value;
   }
 
-  //---------------------------------------------------------
+  set unlockedWorldBool(List<bool> value) {
+    _unlockedWorldBool = value;
+  } //---------------------------------------------------------
+
   //Method
   void updateUnlockedWorld() {
     _unlockedWorldBool.add(true);
+  }
+
+  void initiateWorld(int World) {
+    List<bool> list = new List();
+
+    for (int i = 0; i < World; i++) {
+      list.add(true);
+    }
+
+//    for (int i = 0; i < World; i++) {
+//      list.add(true);
+//    }
+
+    this._unlockedWorldBool = list;
   }
 
   List<String> updateProgressOfSection(String sectionCompleted) {

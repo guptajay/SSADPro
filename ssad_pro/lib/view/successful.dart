@@ -6,16 +6,21 @@ import 'package:ssadpro/view/instructor_dashboard.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/view/text_field.dart';
 import 'package:ssadpro/view/questions.dart';
+import 'package:ssadpro/model/student_user.dart';
 
 class Sucessfull extends StatefulWidget {
   SucessfullState createState() => SucessfullState();
   Sucessfull(
       {Key key,
+      this.user,
+      this.allStudent,
       this.course,
       this.topic,
       this.dueDate,
       this.questions,
       this.answers});
+  final StudentUser user;
+  final List<StudentUser> allStudent;
   final String course;
   final String topic;
   final String dueDate;
@@ -27,8 +32,28 @@ class SucessfullState extends State<Sucessfull> {
   @override
   Widget build(BuildContext context) {
     DatabaseService db = new DatabaseService();
-    db.updateUserAssignment(widget.topic, widget.topic, "Active", widget.course,
-        widget.questions, widget.answers, widget.dueDate, widget.topic);
+
+    List<StudentUser> students = widget.allStudent;
+    List<StudentUser> selectedStudents = new List();
+
+    for (StudentUser i in students) {
+      if (i.group == widget.user.group) {
+        selectedStudents.add(i);
+      }
+    }
+
+    for (StudentUser S in selectedStudents) {
+      db.createUserAssignmentExt(
+          widget.topic,
+          S.email,
+          widget.topic,
+          "Active",
+          widget.course,
+          widget.questions,
+          widget.answers,
+          widget.dueDate,
+          widget.topic);
+    }
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(

@@ -48,7 +48,6 @@ class HomePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
 
-
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -179,7 +178,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -217,7 +216,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -249,9 +248,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(
-                  height: 20,
-                ),
+
                 RaisedButton(
                   onPressed: () {
                     _auth.signOutGoogle();

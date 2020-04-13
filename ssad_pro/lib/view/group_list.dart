@@ -24,59 +24,60 @@ class GroupList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<StudentUser>>.value(
-        value: DatabaseService().users,
-        child: Scaffold(
-            appBar: ReusableWidgets.getAppBar(
-                "Select Group", Colors.blue[600], Colors.grey[50]),
-            body: Scaffold(
-                body: Container(
-                    decoration: BoxDecoration(),
-                    child: Center(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 50,
-                            ),
-                            Container(
-                              height: 100,
-                              child: Icon(
-                                Icons.public,
-                                color: Colors.blue[600],
-                                size: 120,
-                              ),
-                            ),
-                            Container(
-                                child: Stack(
-                              children: <Widget>[
-                                Positioned(
-                                    child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.70,
-                                        margin: EdgeInsets.only(
-                                            top: 20, bottom: 30),
-                                        child: Center(
-                                            child: Text(
-                                                "Select a Student Group to send the Assessment",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color:
-                                                        Colors.blue[600]))))),
-                              ],
-                            )),
-                            Expanded(
-                                child: AssessmentGroupList(
-                                    course: course,
-                                    topic: topic,
-                                    dueDate: dueDate,
-                                    questions: questions,
-                                    answers: answers))
-                          ]),
-                    ))
-                //UserList() Prints all the registered users of the application
-                )));
+      value: DatabaseService().users,
+      child: Scaffold(
+        appBar: ReusableWidgets.getAppBar(
+            "Select Group", Colors.blue[600], Colors.grey[50]),
+        body: Scaffold(
+            body: Container(
+          decoration: BoxDecoration(),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  height: 100,
+                  child: Icon(
+                    Icons.public,
+                    color: Colors.blue[600],
+                    size: 120,
+                  ),
+                ),
+                Container(
+                    child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.70,
+                            margin: EdgeInsets.only(top: 20, bottom: 30),
+                            child: Center(
+                                child: Text(
+                                    "Select a Student Group to send the Assessment",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.blue[600]))))),
+                  ],
+                )),
+                Expanded(
+                  child: AssessmentGroupList(
+                      course: course,
+                      topic: topic,
+                      dueDate: dueDate,
+                      questions: questions,
+                      answers: answers),
+                )
+              ],
+            ),
+          ),
+        )
+            //UserList() Prints all the registered users of the application
+            ),
+      ),
+    );
   }
 }
