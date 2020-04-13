@@ -209,8 +209,8 @@ class DatabaseService {
       name: snapshot.data['name'],
       group: snapshot.data['group'],
       progress: snapshot.data['progress'],
-//      points: snapshot.data['points'],
-//      dates: snapshot.data['dates'],
+      points: snapshot.data['points'],
+      dates: snapshot.data['dates'],
       total_attempts: snapshot.data['total_attempts'],
     );
   }
@@ -374,6 +374,7 @@ class DatabaseService {
         .collection('Groups')
         .snapshots();
   }
+
 
 
 

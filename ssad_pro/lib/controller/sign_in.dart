@@ -51,7 +51,7 @@ class AuthService {
     assert(user.photoUrl != null);
 
 
-    List<int> points = [0];
+    List<int> points = [0,1,2,3];
     List<String> dates = ['10/04/20'];
     int total_attempts = points.length - 1;
 

@@ -41,6 +41,28 @@ class GenerateMCQ {
       option3 = 'SRS';
       option4 = 'All';
       correct_ans = '4';
+    } else if (world_no == 99 && sect_no == 99) {
+      question =
+          'Which of the following is NOT a strength of Layered Architecture?';
+      option1 = 'Low Coupling';
+      option2 = 'Concurrency';
+      option3 = 'Extensibility';
+      option4 = 'Reusability';
+      correct_ans = '2';
+    } else if (world_no == 99 && sect_no == 100) {
+      question = 'Which of the following is a Behavorial design pattern?';
+      option1 = 'Factory Method';
+      option2 = 'Facade';
+      option3 = 'Bridge';
+      option4 = 'Observer';
+      correct_ans = '4';
+    } else if (world_no == 99 && sect_no == 101) {
+      question = 'Which of the following words should NOT be used in a SRS?';
+      option1 = 'Effective';
+      option2 = 'Applicable';
+      option3 = 'Must';
+      option4 = 'Shall';
+      correct_ans = '1';
     }
     List<String> mcq = [
       question,
