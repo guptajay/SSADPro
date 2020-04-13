@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
 
-                SizedBox(height: 10),
+
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
                         return Text('Error retreiving Information');
                       }
                     }),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -145,7 +145,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(

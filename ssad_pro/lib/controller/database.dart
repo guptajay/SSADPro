@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ssadpro/model/assignment.dart';
+import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/user_list.dart';
@@ -11,6 +12,7 @@ class DatabaseService {
   static const String USER_ASSIGNMENT_COLLECTION = 'UserAssignments';
   static const String USER_DATA_DOCUMENT = 'userDetails';
   static const String QUESTIONS_COLLECTION = 'Questions';
+  static const String GROUPS_COLLECTION = 'Groups';
 
   final String email;
 
@@ -20,7 +22,7 @@ class DatabaseService {
   final CollectionReference studentUserCollection =
       Firestore.instance.collection(USER_COLLECTION);
 
-  //Function to create a new stiudent document in the database
+  //Function to create a new student document in the database
   Future updateStudentUserData(
       String name,
       String group,
@@ -44,8 +46,8 @@ class DatabaseService {
     });
   }
 
-  //Function to create or update user assignment in user data base
-  Future updateUserAssignment(
+  //Function to create user assignment in user data base
+  Future createUserAssignment(
       String name,
       String topic,
       String status,
@@ -72,6 +74,103 @@ class DatabaseService {
           });
     });
   }
+
+
+  //Function to update user assignment in user data base
+  Future updateUserAssignment(
+      String name,
+      String topic,
+      String status,
+      String course,
+      List<String> questions,
+      List<String> answers,
+      String dueDate,
+      String fileName) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email)
+              .collection(USER_ASSIGNMENT_COLLECTION)
+              .document(fileName),
+          {
+            'name': name,
+            'topic': topic,
+            'status': status,
+            'questions': questions,
+            'answers': answers,
+            'course': course,
+            'dueDate': dueDate,
+          });
+    });
+  }
+
+
+
+  //Function to send user assignment to OTHER user data base
+  Future sendUserAssignment(
+      String email,
+      String name,
+      String topic,
+      String status,
+      String course,
+      List<String> questions,
+      List<String> answers,
+      String dueDate,
+      String fileName) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(email)
+              .collection(USER_ASSIGNMENT_COLLECTION)
+              .document(fileName),
+          {
+            'name': name,
+            'topic': topic,
+            'status': status,
+            'questions': questions,
+            'answers': answers,
+            'course': course,
+            'dueDate': dueDate,
+          });
+    });
+  }
+
+
+
+
+  //Function to create group documents in database
+  Future createGroup(
+      String name,
+      List <String> students,
+      ) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.set(
+          Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
+        'name': name,
+        'students': students,
+
+      });
+    });
+  }
+
+  Future updateGroup(
+      String name,
+      List <String> students,
+) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
+        'name': name,
+        'students': students,
+
+      });
+    });
+  }
+
+
+
 
   //Function to create or update questions and answers in user data base
   //fileName - Difficulty of the question
@@ -180,9 +279,9 @@ class DatabaseService {
   Future updateStudentProgress(String progress) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
-          Firestore.instance.collection(USER_COLLECTION).document(this.email),
-          // .collection(USER_DATA_COLLECTION)
-          // .document('userDetails'),
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(this.email),
           {'progress': progress});
     });
   }
@@ -269,4 +368,13 @@ class DatabaseService {
         .collection('UserAssignments')
         .snapshots();
   }
+
+  Stream<QuerySnapshot> getGroupsSnapshots() {
+    return Firestore.instance
+        .collection('Groups')
+        .snapshots();
+  }
+
+
+
 }
