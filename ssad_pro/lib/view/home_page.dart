@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/assignmentList.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/profile.dart';
@@ -158,8 +159,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  AssignmentList(status: "Active")),
+                              builder: (context) => AssessmentHistory()),
                         );
                       },
                       child: Row(
@@ -285,21 +285,21 @@ class HomePage extends StatelessWidget {
 
 //          StreamProvider<List<Assignment>>.value(
 //              value: DatabaseService().assignments,
-                SizedBox(
-                    child: RaisedButton(
-                  child: Text('Asses'),
-                  color: Colors.red,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              AssignmentList(status: "Active")),
+//                 SizedBox(
+//                     child: RaisedButton(
+//                   child: Text('Asses'),
+//                   color: Colors.red,
+//                   onPressed: () {
+//                     Navigator.push(
+//                       context,
+//                       MaterialPageRoute(
+//                           builder: (context) =>
+//                               AssignmentList(status: "Active")),
 
-//
-                    );
-                  },
-                ))
+// //
+//                     );
+//                   },
+//                 ))
 //        )
               ])),
         ));
