@@ -155,6 +155,8 @@ class DatabaseService {
     });
   }
 
+
+//Function to update the documents of the collection 'Groups'
   Future updateGroup(
       String name,
       List <String> students,
@@ -255,9 +257,7 @@ class DatabaseService {
       await transaction.set(
           Firestore.instance
               .collection(USER_COLLECTION)
-              .document(this.email)
-              .collection(USER_DATA_COLLECTION)
-              .document('userDetails'),
+              .document(this.email),
           {'name': name});
     });
   }
@@ -268,9 +268,7 @@ class DatabaseService {
       await transaction.update(
           Firestore.instance
               .collection(USER_COLLECTION)
-              .document(this.email)
-              .collection(USER_DATA_COLLECTION)
-              .document('userDetails'),
+              .document(this.email),
           {'group': group});
     });
   }
@@ -369,6 +367,8 @@ class DatabaseService {
         .snapshots();
   }
 
+
+  //Function to get all the groups in the Groups Collection
   Stream<QuerySnapshot> getGroupsSnapshots() {
     return Firestore.instance
         .collection('Groups')

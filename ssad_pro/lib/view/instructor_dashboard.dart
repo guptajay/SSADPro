@@ -5,6 +5,7 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/group_test.dart';
+import 'package:ssadpro/view/progress_list.dart';
 import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/social_media.dart';
