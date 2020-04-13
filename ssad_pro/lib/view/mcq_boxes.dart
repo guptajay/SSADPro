@@ -37,31 +37,36 @@ class MCQBoxes {
   static getFibQuestion(String ques) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
-        child: SizedBox(
+          height: 250,
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: SizedBox(
             width: 300.0,
             child: RaisedButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: BorderSide(color: Colors.white)),
-              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
               textColor: Colors.white,
               color: Colors.blue[600],
               onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.only(top: 40.0, bottom: 40),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(ques,
+              //child: Padding(
+              //padding: const EdgeInsets.only(top: 40.0, bottom: 40),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(ques,textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          )),
-                    ]),
-              ),
-            )),
-      ),
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
+                    ),
+                  ]),
+            ),
+          )
+
+          //),
+          ),
     );
   }
 

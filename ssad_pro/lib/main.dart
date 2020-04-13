@@ -34,7 +34,7 @@ class Startup extends StatelessWidget {
               textTheme: Theme.of(context).textTheme.apply(
                     fontFamily: 'Open Sans',
                   )),
-          home: Wrapper()),
+          home: LevelViewPage()),
     );
   }
 }
