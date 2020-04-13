@@ -4,15 +4,55 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:ssadpro/view/section.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ssadpro/view/world_ui.dart';
 import 'mcq_boxes.dart';
 import 'package:ssadpro/view/section.dart';
+import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/model/user.dart';
+import 'package:provider/provider.dart';
 
 class MatchPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState();
+  _InputPageState createState() => _InputPageState(question1, question2,
+      question3, question4, option1, option2, option3, option4, world);
+
+  final String question1;
+  final String question2;
+  final String question3;
+  final String question4;
+  final String option1;
+  final String option2;
+  final String option3;
+  final String option4;
+  final int world;
+
+  MatchPage(this.question1, this.question2, this.question3, this.question4,
+      this.option1, this.option2, this.option3, this.option4, this.world);
 }
 
 class _InputPageState extends State<MatchPage> {
+  final String question1;
+  final String question2;
+  final String question3;
+  final String question4;
+  final String option1;
+  final String option2;
+  final String option3;
+  final String option4;
+  final int world;
+
+  _InputPageState(
+      this.question1,
+      this.question2,
+      this.question3,
+      this.question4,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.world);
+
   final myController = TextEditingController();
   double width = 200.0, height = 60.0;
   Offset position;
@@ -36,6 +76,7 @@ class _InputPageState extends State<MatchPage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -47,7 +88,7 @@ class _InputPageState extends State<MatchPage> {
                     removeTop: true,
                     child: SingleChildScrollView(
                       child: Container(
-                        height: 600,
+                        height: 720,
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
@@ -64,7 +105,7 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Question 1',
+                                            child: Text(question1,
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize: 25,
@@ -93,7 +134,7 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Question 2',
+                                            child: Text(question2,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -116,7 +157,7 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Question 3',
+                                            child: Text(question3,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -139,7 +180,7 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            child: Text('Question 4',
+                                            child: Text(question4,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -174,11 +215,11 @@ class _InputPageState extends State<MatchPage> {
                                       color: Colors.blue[600],
                                       onPressed: () {
                                         Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                        SectionUI()),
-                              );
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  WorldUI(1, world)),
+                                        );
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(
@@ -188,7 +229,7 @@ class _InputPageState extends State<MatchPage> {
                                                 MainAxisAlignment.center,
                                             children: <Widget>[
                                               SizedBox(
-                                                width: 10,
+                                                width: 0,
                                               ),
                                               Text("Confirm Answer",
                                                   style: TextStyle(
@@ -203,14 +244,14 @@ class _InputPageState extends State<MatchPage> {
                             ]),
                       ),
                     )))),
-        DragBox(Offset(10.0, 440.0), 'Option 1', Colors.blueAccent),
-        DragBox(Offset(220.0, 440.0), 'Option 2', Colors.blueAccent),
-        DragBox(Offset(10.0, 520.0), 'Option 3', Colors.blueAccent),
-        DragBox(Offset(220.0, 520.0), 'Option 4', Colors.blueAccent),
-        MCQBoxes.getTargetBox(abc, text1, 209.0, 109),
-        MCQBoxes.getTargetBox(abc, text2, 209.0, 189),
-        MCQBoxes.getTargetBox(abc, text3, 209.0, 269),
-        MCQBoxes.getTargetBox(abc, text4, 209.0, 349),
+        DragBox(Offset(10.0, 540.0), option1, Colors.blueAccent),
+        DragBox(Offset(220.0, 540.0), option2, Colors.blueAccent),
+        DragBox(Offset(10.0, 620.0), option3, Colors.blueAccent),
+        DragBox(Offset(220.0, 620.0), option4, Colors.blueAccent),
+        MCQBoxes.getTargetBox(abc, text1, 209.0, 149),
+        MCQBoxes.getTargetBox(abc, text2, 209.0, 230),
+        MCQBoxes.getTargetBox(abc, text3, 209.0, 310),
+        MCQBoxes.getTargetBox(abc, text4, 209.0, 390),
       ],
     );
   }

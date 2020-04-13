@@ -4,7 +4,8 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
-import 'package:ssadpro/view/progress_page.dart';
+import 'package:ssadpro/view/group_test.dart';
+import 'package:ssadpro/view/progress_list.dart';
 import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/social_media.dart';
@@ -135,7 +136,7 @@ class InstructorDashboard extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ProgressPage()),
+                                      builder: (context) => ProgressList()),
                                 );
                               },
                               child: Row(
@@ -219,6 +220,28 @@ class InstructorDashboard extends StatelessWidget {
                           height: 30,
                         ),
                         SocialMedia(),
+
+
+
+                        SizedBox(
+                            child: RaisedButton(
+                              child: Text('Groups'),
+                              color: Colors.red,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => GroupListTest()),
+
+//
+                                );
+                              },
+                            ))
+//        )
+
+
+
+
+
                       ],
                     ),
                   ),

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/assignmentList.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/pointstest.dart';
 import 'package:ssadpro/view/profile.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
@@ -46,7 +48,7 @@ class HomePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
 
-                SizedBox(height: 10),
+
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -79,7 +81,7 @@ class HomePage extends StatelessWidget {
                         return Text('Error retreiving Information');
                       }
                     }),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -92,7 +94,8 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => WorldUI()),
+                          MaterialPageRoute(
+                              builder: (context) => WorldUI(0, 0)),
                         );
                       },
                       child: Row(
@@ -111,7 +114,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -143,7 +146,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -157,8 +160,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  AssignmentList(status: "Active")),
+                              builder: (context) => AssessmentHistory()),
                         );
                       },
                       child: Row(
@@ -284,21 +286,22 @@ class HomePage extends StatelessWidget {
 
 //          StreamProvider<List<Assignment>>.value(
 //              value: DatabaseService().assignments,
-                SizedBox(
-                    child: RaisedButton(
-                  child: Text('Asses'),
-                  color: Colors.red,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              AssignmentList(status: "Active")),
+                 SizedBox(
+                     child: RaisedButton(
+                   child: Text('Points'),
+                   color: Colors.red,
+                   onPressed: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                           builder: (context) =>
+                               PointsTest()),
 
-//
-                    );
-                  },
-                ))
+                       //
+                     );
+
+                   },
+                 ))
 //        )
               ])),
         ));

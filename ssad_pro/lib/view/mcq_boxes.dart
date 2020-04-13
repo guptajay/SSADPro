@@ -23,11 +23,16 @@ class MCQBoxes {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(question,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white))
+                    Flexible(
+                        child: Text(
+                      question,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.visible,
+                    ))
                   ]),
             ),
           )),

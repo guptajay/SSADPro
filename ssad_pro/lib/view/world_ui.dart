@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
+import 'package:ssadpro/view/settings.dart';
 import 'section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
@@ -16,7 +17,11 @@ import 'package:provider/provider.dart';
 
 class WorldUI extends StatefulWidget {
   @override
-  _WorldUIState createState() => _WorldUIState();
+  _WorldUIState createState() => _WorldUIState(renderForward, worldToRender);
+  final int renderForward;
+  final int worldToRender;
+
+  WorldUI(this.renderForward, this.worldToRender);
 }
 
 class _WorldUIState extends State<WorldUI> {
@@ -74,6 +79,18 @@ class _WorldUIState extends State<WorldUI> {
 //    this.setState(() => fileContent = json.decode(jsonFile.readAsStringSync()));
 //    print(fileContent);
 //  }
+
+  final int renderForward;
+  final int worldToRender;
+  _WorldUIState(this.renderForward, this.worldToRender);
+
+  final List<String> titles = [
+    "Requirements Specification",
+    "Design",
+    "Implementation",
+    "Testing",
+    "Maintenance"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -171,8 +188,9 @@ class _WorldUIState extends State<WorldUI> {
               StreamBuilder<UserData>(
                   stream: DatabaseService(email: user.email).userData,
                   builder: (context, snapshot) {
+                    UserData userData;
                     if (snapshot.hasData) {
-                      UserData userData = snapshot.data;
+                      userData = snapshot.data;
                       String worldProgress =
                           Progress.getWorld(userData.progress);
                       int unlockedLength = stu1.unlockedWorldBool.length;
@@ -184,31 +202,24 @@ class _WorldUIState extends State<WorldUI> {
                     }
                     return Column(
                       children: <Widget>[
-                        SizedBox(height: 60),
-                        WorldBox(
-                            worldlist[0].worldInt.toString(),
-                            context,
-                            stu1.unlockedWorldBool,
-                            worldlist,
-                            0,
-                            "Requirements Specification"),
+                        Container(
+                            child: nextPage(context, renderForward, worldlist,
+                                worldToRender, titles, userData)),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[0].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 0, titles[0]),
                         SizedBox(height: 20),
                         WorldBox(worldlist[1].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 1, "Design"),
+                            stu1.unlockedWorldBool, worldlist, 1, titles[1]),
                         SizedBox(height: 20),
-                        WorldBox(
-                            worldlist[2].worldInt.toString(),
-                            context,
-                            stu1.unlockedWorldBool,
-                            worldlist,
-                            2,
-                            "Implementation"),
+                        WorldBox(worldlist[2].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 2, titles[2]),
                         SizedBox(height: 20),
                         WorldBox(worldlist[3].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 3, "Testing"),
+                            stu1.unlockedWorldBool, worldlist, 3, titles[3]),
                         SizedBox(height: 20),
                         WorldBox(worldlist[4].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 4, "Maintenance")
+                            stu1.unlockedWorldBool, worldlist, 4, titles[4])
                       ],
                     );
                   })
@@ -425,4 +436,48 @@ Future<String> getData() async {
     print("Couldn't read file");
   }
   return text;
+}
+
+nextPage(BuildContext context, int renderForward, List<World> worldlist,
+    int worldToRender, List<String> titles, UserData userData) {
+  String message;
+  Color btnColor;
+  if (renderForward == 0) {
+    message = "Please complete all activies in the Level to unlock a Section";
+    btnColor = Colors.grey[300];
+  } else {
+    message =
+        "Congrats! You have completed the level. Proceed to the next section";
+    btnColor = Colors.greenAccent;
+  }
+
+  return RaisedButton(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: Text(
+        message,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+      color: btnColor,
+      onPressed: () async {
+        if (renderForward == 1) {
+          int section = int.parse(Progress.getSection(userData.progress));
+          String newProgress = '';
+          if (section == 5)
+            newProgress = 'W2 S1 L1';
+          else {
+            section += 1;
+            newProgress = 'W1 S' + section.toString() + ' L1';
+          }
+          await DatabaseService(email: userData.email)
+              .updateStudentProgress(newProgress);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SectionUI(
+                      list: worldlist[worldToRender - 1].sectionList,
+                      worldInt: worldToRender,
+                      title: titles[worldToRender - 1])));
+        }
+      });
 }
