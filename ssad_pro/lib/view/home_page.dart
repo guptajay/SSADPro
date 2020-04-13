@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/assignmentList.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/profile.dart';
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
 
-                SizedBox(height: 10),
+
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -79,7 +80,7 @@ class HomePage extends StatelessWidget {
                         return Text('Error retreiving Information');
                       }
                     }),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -92,7 +93,8 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => WorldUI()),
+                          MaterialPageRoute(
+                              builder: (context) => WorldUI(0, 0)),
                         );
                       },
                       child: Row(
@@ -111,7 +113,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -143,7 +145,7 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-                SizedBox(height: 20),
+
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -154,12 +156,11 @@ class HomePage extends StatelessWidget {
                       textColor: Colors.white,
                       color: Colors.blue[700],
                       onPressed: () {
-                        /*
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Home1()),
+                          MaterialPageRoute(
+                              builder: (context) => AssessmentHistory()),
                         );
-                        */
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -284,30 +285,23 @@ class HomePage extends StatelessWidget {
 
 //          StreamProvider<List<Assignment>>.value(
 //              value: DatabaseService().assignments,
-                SizedBox(
-                    child: RaisedButton(
-                  child: Text('Asses'),
-                  color: Colors.red,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AssignmentList()),
+//                 SizedBox(
+//                     child: RaisedButton(
+//                   child: Text('Asses'),
+//                   color: Colors.red,
+//                   onPressed: () {
+//                     Navigator.push(
+//                       context,
+//                       MaterialPageRoute(
+//                           builder: (context) =>
+//                               AssignmentList(status: "Active")),
 
-//
-                    );
-                  },
-                ))
+// //
+//                     );
+//                   },
+//                 ))
 //        )
               ])),
         ));
-  }
-}
-
-_launchURL() async {
-  const url = 'https://flutter.io';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
   }
 }

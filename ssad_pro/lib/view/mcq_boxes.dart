@@ -13,7 +13,7 @@ class MCQBoxes {
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: Colors.white,
-            color: Colors.grey[300],
+            color: Colors.blue[800],
             onPressed: () {},
             child: Padding(
               padding: const EdgeInsets.only(top: 60.0, bottom: 60),
@@ -23,15 +23,137 @@ class MCQBoxes {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(question,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black))
+                    Flexible(
+                        child: Text(
+                      question,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.visible,
+                    ))
                   ]),
             ),
           )),
     );
   }
-}
 
+  static getFibQuestion(String ques) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: SizedBox(
+            width: 300.0,
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(color: Colors.white)),
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              textColor: Colors.white,
+              color: Colors.blue[600],
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40.0, bottom: 40),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        child: Text(
+                          ques,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                          overflow: TextOverflow.visible,
+                        ),
+                      )
+                    ]),
+              ),
+            )),
+      ),
+    );
+  }
+
+  static getAnswerBox(TextEditingController mycont) {
+    return Center(
+      child: Container(
+        decoration: new BoxDecoration(boxShadow: [
+          new BoxShadow(
+            color: Colors.grey[400],
+            blurRadius: 50.0,
+          ),
+        ]),
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: SizedBox(
+            child: RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: BorderSide(color: Colors.white)),
+          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+          textColor: Colors.black,
+          color: Colors.white,
+          onPressed: () {},
+          child: Padding(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: TextField(
+                            style: TextStyle(color: Colors.black),
+                            controller: mycont,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Enter your answer here...',
+                                hintStyle: TextStyle(color: Colors.black)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )),
+        )),
+      ),
+    );
+  }
+
+  static getTargetBox(Color abc, String text, double left, double top) {
+    return Positioned(
+      left: left,
+      top: top,
+      child: DragTarget(
+        onAccept: (String label) {
+          text = label;
+          abc = Colors.black;
+        },
+        builder: (
+          BuildContext context,
+          List<dynamic> accepted,
+          List<dynamic> rejected,
+        ) {
+          return Container(
+            width: 197.0,
+            height: 70.0,
+            decoration: BoxDecoration(
+              color: accepted.isEmpty ? abc : Colors.red[100],
+            ),
+            child: Center(
+              child: Text(text,
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue)),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

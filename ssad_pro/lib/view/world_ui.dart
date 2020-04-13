@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
+import 'package:ssadpro/view/settings.dart';
 import 'section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
@@ -9,10 +10,18 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/model/user.dart';
+import 'package:provider/provider.dart';
 
 class WorldUI extends StatefulWidget {
   @override
-  _WorldUIState createState() => _WorldUIState();
+  _WorldUIState createState() => _WorldUIState(renderForward, worldToRender);
+  final int renderForward;
+  final int worldToRender;
+
+  WorldUI(this.renderForward, this.worldToRender);
 }
 
 class _WorldUIState extends State<WorldUI> {
@@ -71,49 +80,67 @@ class _WorldUIState extends State<WorldUI> {
 //    print(fileContent);
 //  }
 
+  final int renderForward;
+  final int worldToRender;
+  _WorldUIState(this.renderForward, this.worldToRender);
+
+  final List<String> titles = [
+    "Requirements Specification",
+    "Design",
+    "Implementation",
+    "Testing",
+    "Maintenance"
+  ];
+
   @override
   Widget build(BuildContext context) {
     //---------------------------------------------------------------------------------
-    //Mock Object data
+    //Logged in user
+    User user = Provider.of<User>(context);
 
-    Student stu1 = Student(userName: 'User1', password: 'pass1');
+    //Mock Data
+    Student stu1 = Student(userName: user.email);
     // stu1.updateUnlockedWorld(); //to Unlock next world for this student.
 
     Section sec1 = new Section();
     sec1.sectionInt = 1;
-    sec1.sectionName = 'W1S1';
+    sec1.sectionName = 'Requirements Elicitation';
 
     Section sec2 = new Section();
     sec2.sectionInt = 2;
-    sec2.sectionName = 'W1S2';
+    sec2.sectionName = 'Requirements Analysis';
 
     Section sec3 = new Section();
     sec3.sectionInt = 3;
-    sec3.sectionName = 'W2S1';
+    sec3.sectionName = 'Strategy Pattern';
 
     Section sec4 = new Section();
     sec4.sectionInt = 4;
-    sec4.sectionName = 'W1S2';
+    sec4.sectionName = 'Observer Pattern';
 
     Section sec5 = new Section();
     sec5.sectionInt = 5;
-    sec5.sectionName = 'W1S3';
+    sec5.sectionName = 'Software Architecture';
 
     Section sec6 = new Section();
     sec6.sectionInt = 6;
-    sec6.sectionName = 'W1S4';
+    sec6.sectionName = 'SRS';
 
     Section sec7 = new Section();
     sec7.sectionInt = 7;
-    sec7.sectionName = 'W2S3';
+    sec7.sectionName = 'Factory Pattern';
 
     Section sec8 = new Section();
     sec8.sectionInt = 8;
-    sec8.sectionName = 'W2S4';
+    sec8.sectionName = 'Facade Pattern';
 
     Section sec9 = new Section();
     sec9.sectionInt = 9;
-    sec9.sectionName = 'W1 Final';
+    sec9.sectionName = 'World Quiz';
+
+    Section sec10 = new Section();
+    sec10.sectionInt = 10;
+    sec10.sectionName = 'World Quiz';
 
     World world1 = new World();
     World world2 = new World();
@@ -133,6 +160,7 @@ class _WorldUIState extends State<WorldUI> {
     world2.addSection(sec4);
     world2.addSection(sec7);
     world2.addSection(sec8);
+    world2.addSection(sec10);
 
     world3.worldInt = 3;
     world4.worldInt = 4;
@@ -150,27 +178,51 @@ class _WorldUIState extends State<WorldUI> {
 //    Map<String, dynamic> user = jsonDecode(json);
 //    print(user['worldInt']);
 //    user['world1']
+
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "Adventure", Colors.blue[600], Colors.grey[50]),
         body: Center(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 60),
-              WorldBox(worldlist[0].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 0),
-              SizedBox(height: 20),
-              WorldBox(worldlist[1].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 1),
-              SizedBox(height: 20),
-              WorldBox(worldlist[2].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 2),
-              SizedBox(height: 20),
-              WorldBox(worldlist[3].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 3),
-              SizedBox(height: 20),
-              WorldBox(worldlist[4].worldInt.toString(), context,
-                  stu1.unlockedWorldBool, worldlist, 4),
+              StreamBuilder<UserData>(
+                  stream: DatabaseService(email: user.email).userData,
+                  builder: (context, snapshot) {
+                    UserData userData;
+                    if (snapshot.hasData) {
+                      userData = snapshot.data;
+                      String worldProgress =
+                          Progress.getWorld(userData.progress);
+                      int unlockedLength = stu1.unlockedWorldBool.length;
+                      for (int i = unlockedLength;
+                          i < int.parse(worldProgress);
+                          i++) {
+                        stu1.unlockedWorldBool.add(true);
+                      }
+                    }
+                    return Column(
+                      children: <Widget>[
+                        Container(
+                            child: nextPage(context, renderForward, worldlist,
+                                worldToRender, titles, userData)),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[0].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 0, titles[0]),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[1].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 1, titles[1]),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[2].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 2, titles[2]),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[3].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 3, titles[3]),
+                        SizedBox(height: 20),
+                        WorldBox(worldlist[4].worldInt.toString(), context,
+                            stu1.unlockedWorldBool, worldlist, 4, titles[4])
+                      ],
+                    );
+                  })
             ],
           ),
         ));
@@ -178,7 +230,7 @@ class _WorldUIState extends State<WorldUI> {
 }
 
 Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
-    List<World> wlist, int index) {
+    List<World> wlist, int index, String title) {
   bool unlocked = false;
 
   if (index < unlockedList.length) {
@@ -189,7 +241,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
     return Stack(
       children: <Widget>[
         SizedBox(
-          width: 300.0,
+          width: 350.0,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
@@ -204,23 +256,41 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                   builder: (cont) => SectionUI(
                     list: wlist[index].sectionList,
                     worldInt: wlist[index].worldInt,
+                    title: title,
                   ),
                 ),
               );
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("World $WorldID",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("World $WorldID",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Icon(
+                      Icons.lock_open,
+                      size: 40,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.lock_open,
-                  size: 40,
-                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -257,7 +327,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
     return Stack(
       children: <Widget>[
         SizedBox(
-          width: 300.0,
+          width: 350.0,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
@@ -266,19 +336,36 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
             textColor: Colors.white,
             color: Colors.red[400],
             onPressed: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("World $WorldID",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("World $WorldID",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Icon(
+                      Icons.lock_outline,
+                      size: 40,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.lock_outline,
-                  size: 40,
-                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -349,4 +436,48 @@ Future<String> getData() async {
     print("Couldn't read file");
   }
   return text;
+}
+
+nextPage(BuildContext context, int renderForward, List<World> worldlist,
+    int worldToRender, List<String> titles, UserData userData) {
+  String message;
+  Color btnColor;
+  if (renderForward == 0) {
+    message = "Please complete all activies in the Level to unlock a Section";
+    btnColor = Colors.grey[300];
+  } else {
+    message =
+        "Congrats! You have completed the level. Proceed to the next section";
+    btnColor = Colors.greenAccent;
+  }
+
+  return RaisedButton(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: Text(
+        message,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+      color: btnColor,
+      onPressed: () async {
+        if (renderForward == 1) {
+          int section = int.parse(Progress.getSection(userData.progress));
+          String newProgress = '';
+          if (section == 5)
+            newProgress = 'W2 S1 L1';
+          else {
+            section += 1;
+            newProgress = 'W1 S' + section.toString() + ' L1';
+          }
+          await DatabaseService(email: userData.email)
+              .updateStudentProgress(newProgress);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SectionUI(
+                      list: worldlist[worldToRender - 1].sectionList,
+                      worldInt: worldToRender,
+                      title: titles[worldToRender - 1])));
+        }
+      });
 }

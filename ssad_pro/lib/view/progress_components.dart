@@ -29,7 +29,7 @@ class ProgressComponents{
   }
 
   static getBarChart(data){
-    charts.BarChart(
+    return charts.BarChart(
                             data,
                             animate: true,
                             barGroupingType: charts.BarGroupingType.grouped,

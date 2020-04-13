@@ -50,7 +50,7 @@ class AuthService {
     assert(user.displayName != null);
     assert(user.photoUrl != null);
 
-    //Comment this part to avoid resetting the database when the user logs in
+
     List<int> points = [0];
     List<String> dates = ['10/04/20'];
     int total_attempts = points.length - 1;
@@ -58,6 +58,9 @@ class AuthService {
     List<String> questions = ['q1', 'q2', 'q3'];
     List<String> answers = ['a1', 'a2', 'a3'];
 
+    List<String> students = ['Ritwik', 'Jay', 'Chean'];
+
+    //Comment this part to avoid resetting the database when the user logs in
     DatabaseService(email: user.email).updateStudentUserData(
         user.displayName,
         '0',
@@ -77,6 +80,12 @@ class AuthService {
 
     DatabaseService().updateQuestions(questions, answers, 'easy');
     DatabaseService().updateQuestions(questions, answers, 'difficult');
+
+    DatabaseService().createGroup('SS1', students);
+    DatabaseService().createGroup('SS2', students);
+    DatabaseService().createGroup('SS3', students);
+    DatabaseService().createGroup('SS4', students);
+    DatabaseService().createGroup('SS5', students);
 
     name = user.displayName;
     email = user.email;

@@ -87,6 +87,50 @@ class CardView {
         ));
   }
 
+  static getCardNoClickColor(String heading, String title, String dueDate,
+      IconData symbol, Color color) {
+    return SizedBox(
+        width: 300.0,
+        child: InkWell(
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.white)),
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            textColor: Colors.white,
+            color: color,
+            onPressed: () {},
+            child: Row(children: <Widget>[
+              SizedBox(
+                width: 20,
+              ),
+              Icon(
+                symbol,
+                color: Colors.white,
+                size: 70,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(children: <Widget>[
+                Text(
+                  heading,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 15),
+                ),
+                Text(
+                  "Due Date: " + dueDate,
+                  style: TextStyle(fontSize: 15),
+                )
+              ])
+            ]),
+          ),
+        ));
+  }
+
   static getCardNoClickSpecial(
     String heading,
     IconData symbol,
