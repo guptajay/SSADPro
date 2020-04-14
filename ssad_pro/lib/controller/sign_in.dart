@@ -58,9 +58,9 @@ class AuthService {
     List<String> questions = ['q1', 'q2', 'q3'];
     List<String> answers = ['a1', 'a2', 'a3'];
 
-    List<String> students1 = ['Ritwik', 'Jay', 'Chean'];
+    List<String> students1 = ['Ritwik Kanodia', 'Yap Jay', 'Koh Chean'];
     List<String> students2 = ['Ritik', 'Yusuf', 'Divyesh'];
-    List<String> students3 = ['Mac', 'Arduc', 'Soham'];
+    List<String> students3 = ['Mac Milin', 'Arduc', 'Soham'];
     List<String> students4 = ['Gaurav', 'Arjun', 'Jay Gupta'];
     List<String> students5 = ['Rachel', 'Michael', 'Johnson'];
 
