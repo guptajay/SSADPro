@@ -14,7 +14,8 @@ description: Flutter Application built for CZ3003 Software Systems Analysis &amp
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  #sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter_date_picker: "^0.1.8"

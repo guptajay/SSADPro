@@ -11,6 +11,7 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/login.dart';
+import 'package:ssadpro/view/progress_page.dart';
 import 'package:ssadpro/view/wrapper.dart';
 import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/levelview.dart';
@@ -35,7 +36,7 @@ class Startup extends StatelessWidget {
               textTheme: Theme.of(context).textTheme.apply(
                     fontFamily: 'Open Sans',
                   )),
-          home: Wrapper()),
+          home: ProgressPage()),
     );
   }
 }

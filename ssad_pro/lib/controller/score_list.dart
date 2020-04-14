@@ -21,6 +21,7 @@ class ScoreList extends StatelessWidget {
                 new DatabaseService(email: user.email);
             UserData userData = snapshot.data;
             List<dynamic> points = userData.points;
+
             return Text(points[1].toString());
           }
         } else {
