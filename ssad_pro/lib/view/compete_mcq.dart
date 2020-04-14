@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/assessment_history.dart';
+import 'package:ssadpro/view/compete_end.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/home_page.dart';
@@ -10,7 +11,7 @@ import 'package:ssadpro/controller/mcq_generator.dart';
 class CompeteMCQPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState(question, option1, option2,
-      option3, option4, correctAnswer, world, section, state);
+      option3, option4, correctAnswer, world, section, state, points);
 
   final String question;
   final String option1;
@@ -21,9 +22,19 @@ class CompeteMCQPage extends StatefulWidget {
   final int world;
   final int section;
   final int state;
+  final int points;
 
-  CompeteMCQPage(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.correctAnswer, this.world, this.section, this.state);
+  CompeteMCQPage(
+      this.question,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.correctAnswer,
+      this.world,
+      this.section,
+      this.state,
+      this.points);
 }
 
 class _InputPageState extends State<CompeteMCQPage> {
@@ -41,9 +52,19 @@ class _InputPageState extends State<CompeteMCQPage> {
   final int world;
   final int section;
   final int state;
+  int points;
 
-  _InputPageState(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.correctAnswer, this.world, this.section, this.state);
+  _InputPageState(
+      this.question,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.correctAnswer,
+      this.world,
+      this.section,
+      this.state,
+      this.points);
 
   @override
   Widget build(BuildContext context) {
@@ -97,54 +118,56 @@ class _InputPageState extends State<CompeteMCQPage> {
                               pressAttention3 = 2;
                               pressAttention4 = 2;
                             });
-                            if (correctAnswer == 1) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              if (state == 1) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 100);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          2),
-                                    ));
-                              } else if (state == 2) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 101);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          3),
-                                    ));
-                              } else if (state == 3) {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => AssessmentHistory(),
-                                    ));
-                              }
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
+
+                            createRecord("Right", "mcq");
+                            await new Future.delayed(
+                                const Duration(seconds: 2));
+                            if (state == 1) {
+                              if (correctAnswer == 1) points = 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 100);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        2,
+                                        points),
+                                  ));
+                            } else if (state == 2) {
+                              if (correctAnswer == 1) points = points + 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 101);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        3,
+                                        points),
+                                  ));
+                            } else if (state == 3) {
+                              if (correctAnswer == 1) points = points + 1;
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        CompeteEnd(points: points),
+                                  ));
                             }
                           },
                           child: Center(
@@ -196,16 +219,36 @@ class _InputPageState extends State<CompeteMCQPage> {
                               pressAttention3 = 2;
                               pressAttention4 = 2;
                             });
-                            if (correctAnswer == 2) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              if (state == 1) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 100);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
+
+                            createRecord("Right", "mcq");
+                            await new Future.delayed(
+                                const Duration(seconds: 2));
+                            if (state == 1) {
+                              if (correctAnswer == 2) points = 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 100);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        2,
+                                        points),
+                                  ));
+                            } else if (state == 2) {
+                              if (correctAnswer == 2) points = points + 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 101);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
                                       builder: (context) => CompeteMCQPage(
                                           question[0],
                                           question[1],
@@ -215,35 +258,16 @@ class _InputPageState extends State<CompeteMCQPage> {
                                           int.parse(question[5]),
                                           99,
                                           100,
-                                          2),
-                                    ));
-                              } else if (state == 2) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 101);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          3),
-                                    ));
-                              } else if (state == 3) {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => AssessmentHistory(),
-                                    ));
-                              }
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
+                                          3,
+                                          points)));
+                            } else if (state == 3) {
+                              if (correctAnswer == 2) points = points + 1;
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        CompeteEnd(points: points),
+                                  ));
                             }
                           },
                           child: Center(
@@ -297,54 +321,56 @@ class _InputPageState extends State<CompeteMCQPage> {
                               pressAttention2 = 2;
                               pressAttention4 = 2;
                             });
-                            if (correctAnswer == 3) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              if (state == 1) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 100);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          2),
-                                    ));
-                              } else if (state == 2) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 101);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          3),
-                                    ));
-                              } else if (state == 3) {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => AssessmentHistory(),
-                                    ));
-                              }
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
+
+                            createRecord("Right", "mcq");
+                            await new Future.delayed(
+                                const Duration(seconds: 2));
+                            if (state == 1) {
+                              if (correctAnswer == 3) points = 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 100);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        2,
+                                        points),
+                                  ));
+                            } else if (state == 2) {
+                              if (correctAnswer == 3) points = points + 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 101);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        3,
+                                        points),
+                                  ));
+                            } else if (state == 3) {
+                              if (correctAnswer == 3) points = points + 1;
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        CompeteEnd(points: points),
+                                  ));
                             }
                           },
                           child: Center(
@@ -396,54 +422,56 @@ class _InputPageState extends State<CompeteMCQPage> {
                               pressAttention3 = 2;
                               pressAttention1 = 2;
                             });
-                            if (correctAnswer == 4) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              if (state == 1) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 100);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          2),
-                                    ));
-                              } else if (state == 2) {
-                                List<String> question =
-                                    GenerateMCQ().question(99, 101);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => CompeteMCQPage(
-                                          question[0],
-                                          question[1],
-                                          question[2],
-                                          question[3],
-                                          question[4],
-                                          int.parse(question[5]),
-                                          99,
-                                          100,
-                                          3),
-                                    ));
-                              } else if (state == 3) {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => AssessmentHistory(),
-                                    ));
-                              }
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
+
+                            createRecord("Right", "mcq");
+                            await new Future.delayed(
+                                const Duration(seconds: 2));
+                            if (state == 1) {
+                              if (correctAnswer == 4) points = 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 100);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        2,
+                                        points),
+                                  ));
+                            } else if (state == 2) {
+                              if (correctAnswer == 4) points = points + 1;
+                              List<String> question =
+                                  GenerateMCQ().question(99, 101);
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) => CompeteMCQPage(
+                                        question[0],
+                                        question[1],
+                                        question[2],
+                                        question[3],
+                                        question[4],
+                                        int.parse(question[5]),
+                                        99,
+                                        100,
+                                        3,
+                                        points),
+                                  ));
+                            } else if (state == 3) {
+                              if (correctAnswer == 4) points = points + 1;
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        CompeteEnd(points: points),
+                                  ));
                             }
                           },
                           child: Center(

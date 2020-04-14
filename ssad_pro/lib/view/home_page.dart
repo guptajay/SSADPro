@@ -47,7 +47,9 @@ class HomePage extends StatelessWidget {
                   radius: 40,
                   backgroundColor: Colors.transparent,
                 ),
-
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -80,7 +82,9 @@ class HomePage extends StatelessWidget {
                         return Text('Error retreiving Information');
                       }
                     }),
-
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -113,7 +117,9 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -145,7 +151,9 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -178,7 +186,9 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -216,7 +226,9 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-
+                SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                     width: 300.0,
                     child: RaisedButton(
@@ -248,7 +260,9 @@ class HomePage extends StatelessWidget {
                                     fontSize: 25, fontWeight: FontWeight.bold))
                           ]),
                     )),
-
+                SizedBox(
+                  height: 20,
+                ),
                 RaisedButton(
                   onPressed: () {
                     _auth.signOutGoogle();
@@ -283,22 +297,19 @@ class HomePage extends StatelessWidget {
 
 //          StreamProvider<List<Assignment>>.value(
 //              value: DatabaseService().assignments,
-                 SizedBox(
-                     child: RaisedButton(
-                   child: Text('Points'),
-                   color: Colors.red,
-                   onPressed: () {
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                           builder: (context) =>
-                               PointsTest()),
+                SizedBox(
+                    child: RaisedButton(
+                  child: Text('Points'),
+                  color: Colors.red,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PointsTest()),
 
-                       //
-                     );
-
-                   },
-                 ))
+                      //
+                    );
+                  },
+                ))
 //        )
               ])),
         ));

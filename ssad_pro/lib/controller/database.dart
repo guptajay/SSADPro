@@ -305,6 +305,14 @@ class DatabaseService {
     });
   }
 
+  Future updateStudentPoints(List<dynamic> points) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance.collection(USER_COLLECTION).document(this.email),
+          {'points': points});
+    });
+  }
+
 //   Future<int> getWorldProgress(String userEmail) async {
 //    try {
 //      DocumentSnapshot ds = await Firestore.instance
