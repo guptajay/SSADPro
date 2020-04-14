@@ -4,19 +4,16 @@ import 'package:ssadpro/controller/add_compete_score.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/compete.dart';
 
-class CompeteEnd extends StatefulWidget {
-  CompeteEndState createState() => CompeteEndState();
-  CompeteEnd({Key key, this.points, this.email});
-  final int points;
-  final String email;
+class CheckChallenged extends StatefulWidget {
+  CheckChallengedState createState() => CheckChallengedState();
 }
 
-class CompeteEndState extends State<CompeteEnd> {
+class CheckChallengedState extends State<CheckChallenged> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Completed", Colors.blue[600], Colors.grey[50]),
+            "Compete Mode", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
             onTap: () {
@@ -28,14 +25,13 @@ class CompeteEndState extends State<CompeteEnd> {
                     removeTop: true,
                     child: SingleChildScrollView(
                         child: Column(children: <Widget>[
-                      AddCompeteScore(totalPoints: widget.points),
                       SizedBox(
                         height: 70,
                       ),
                       FadeAnimation(
                         0.5,
                         Icon(
-                          Icons.done_all,
+                          Icons.compare_arrows,
                           color: Colors.blue[600],
                           size: 200,
                         ),
@@ -48,10 +44,10 @@ class CompeteEndState extends State<CompeteEnd> {
                               child: Container(
                                   child: Center(
                                       child: Text(
-                                          "Challenge to your selected friend sent successfully!",
+                                          "You have been challenged by Jay!",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 35,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.blue[400])))))),
                       FadeAnimation(
@@ -61,18 +57,7 @@ class CompeteEndState extends State<CompeteEnd> {
                               child: Column(
                                 children: <Widget>[
                                   Container(
-                                      child: Column(children: <Widget>[
-                                    Container(
-                                        child: Center(
-                                            child: Text(
-                                                "Your Score: " +
-                                                    widget.points.toString(),
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize: 35,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.blue[400])))),
-                                  ])),
+                                      child: Column(children: <Widget>[])),
                                   SizedBox(
                                     height: 20,
                                   ),
@@ -85,15 +70,14 @@ class CompeteEndState extends State<CompeteEnd> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => Compete(
-                                                isChallenged: 0,
-                                              ),
+                                              builder: (context) =>
+                                                  Compete(isChallenged: 1),
                                             ));
                                       },
                                       color: Colors.blue[600],
                                       child: Center(
                                           child: Text(
-                                        "Back to Compete Mode",
+                                        "Complete Challenge",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       )))

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/compete_end.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CompeteMCQPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState(question, option1, option2,
-      option3, option4, correctAnswer, world, section, state, points);
+      option3, option4, correctAnswer, world, section, state, points, email);
 
   final String question;
   final String option1;
@@ -23,6 +21,7 @@ class CompeteMCQPage extends StatefulWidget {
   final int section;
   final int state;
   final int points;
+  final String email;
 
   CompeteMCQPage(
       this.question,
@@ -34,7 +33,8 @@ class CompeteMCQPage extends StatefulWidget {
       this.world,
       this.section,
       this.state,
-      this.points);
+      this.points,
+      this.email);
 }
 
 class _InputPageState extends State<CompeteMCQPage> {
@@ -53,6 +53,7 @@ class _InputPageState extends State<CompeteMCQPage> {
   final int section;
   final int state;
   int points;
+  final String email;
 
   _InputPageState(
       this.question,
@@ -64,7 +65,8 @@ class _InputPageState extends State<CompeteMCQPage> {
       this.world,
       this.section,
       this.state,
-      this.points);
+      this.points,
+      this.email);
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +141,8 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         2,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 1) points = points + 1;
@@ -158,15 +161,16 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         3,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 1) points = points + 1;
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                    builder: (context) =>
-                                        CompeteEnd(points: points),
+                                    builder: (context) => CompeteEnd(
+                                        points: points, email: email),
                                   ));
                             }
                           },
@@ -240,7 +244,8 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         2,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 2) points = points + 1;
@@ -259,14 +264,15 @@ class _InputPageState extends State<CompeteMCQPage> {
                                           99,
                                           100,
                                           3,
-                                          points)));
+                                          points,
+                                          email)));
                             } else if (state == 3) {
                               if (correctAnswer == 2) points = points + 1;
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                    builder: (context) =>
-                                        CompeteEnd(points: points),
+                                    builder: (context) => CompeteEnd(
+                                        points: points, email: email),
                                   ));
                             }
                           },
@@ -342,7 +348,8 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         2,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 3) points = points + 1;
@@ -361,15 +368,16 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         3,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 3) points = points + 1;
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                    builder: (context) =>
-                                        CompeteEnd(points: points),
+                                    builder: (context) => CompeteEnd(
+                                        points: points, email: email),
                                   ));
                             }
                           },
@@ -443,7 +451,8 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         2,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 4) points = points + 1;
@@ -462,15 +471,16 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         99,
                                         100,
                                         3,
-                                        points),
+                                        points,
+                                        email),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 4) points = points + 1;
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                    builder: (context) =>
-                                        CompeteEnd(points: points),
+                                    builder: (context) => CompeteEnd(
+                                        points: points, email: email),
                                   ));
                             }
                           },
@@ -508,28 +518,5 @@ class _InputPageState extends State<CompeteMCQPage> {
             // )
           ],
         ));
-  }
-
-  void _showWrongDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Wrong Answer"),
-          content: new Text("Give it another try!"),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }

@@ -8,7 +8,10 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/compete_friend_list.dart';
 
 class Compete extends StatelessWidget {
+  Compete({Key key, this.isChallenged});
+  final int isChallenged;
   final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<StudentUser>>.value(
@@ -61,4 +64,28 @@ class Compete extends StatelessWidget {
                 //UserList() Prints all the registered users of the application
                 )));
   }
+}
+
+void _showDialogBox(BuildContext context) {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        title: new Text("Alert"),
+        content: new Text(
+            "You have been challenged by another friend! Please complete the challenge by clicking on the button below"),
+        actions: <Widget>[
+          // usually buttons at the bottom of the dialog
+          new FlatButton(
+            child: new Text("Complete Challenge"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

@@ -5,6 +5,7 @@ import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/assignmentList.dart';
+import 'package:ssadpro/view/check_challenged.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/pointstest.dart';
 import 'package:ssadpro/view/profile.dart';
@@ -132,7 +133,8 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Compete()),
+                          MaterialPageRoute(
+                              builder: (context) => CheckChallenged()),
                         );
                       },
                       child: Row(
