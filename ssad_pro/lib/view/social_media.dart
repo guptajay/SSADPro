@@ -8,14 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class SocialMedia extends StatefulWidget {
+  SocialMedia({this.text, this.image, this.shareText});
+  final String text;
+  final String image;
+  final String shareText;
   @override
   SocialMediaState createState() => SocialMediaState();
 }
 
 class SocialMediaState extends State<SocialMedia> {
-  String text = '';
-  String subject = '';
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,14 +36,11 @@ class SocialMediaState extends State<SocialMedia> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image(
-                            image:
-                                AssetImage("assets/images/whatsapp_logo.png"),
-                            height: 35.0),
+                        Image(image: AssetImage(widget.image), height: 35.0),
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
-                            'Invite Students via WhatsApp',
+                            widget.text,
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -59,8 +57,7 @@ class SocialMediaState extends State<SocialMedia> {
                 // a RenderObjectWidget. The RaisedButton's RenderObject
                 // has its position and size after it's built.
                 final RenderBox box = context.findRenderObject();
-                Share.share(
-                    "Hey there, I'm an Instructor at SSADPro. Download the app now to start your learning journey on Software Systems Analysis & Design at https://github.com/guptajay/SSADPro",
+                Share.share(widget.shareText,
                     subject: "No Subject",
                     sharePositionOrigin:
                         box.localToGlobal(Offset.zero) & box.size);

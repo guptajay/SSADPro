@@ -17,6 +17,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ssadpro/view/user_list.dart';
 import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/settings.dart';
+import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -273,7 +274,7 @@ class HomePage extends StatelessWidget {
                       return LoginPage();
                     }), ModalRoute.withName('/'));
                   },
-                  color: Colors.blue[400],
+                  color: Colors.deepOrangeAccent,
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
@@ -285,6 +286,16 @@ class HomePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40)),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+
+                SocialMedia(
+                    text: "Invite your Friends via LinkedIn",
+                    image: "assets/images/linkedin_logo.png",
+                    shareText:
+                        "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
+
                 /*
                 SizedBox(
                   child: RaisedButton(
@@ -297,21 +308,6 @@ class HomePage extends StatelessWidget {
                 )
                 */
 
-//          StreamProvider<List<Assignment>>.value(
-//              value: DatabaseService().assignments,
-                SizedBox(
-                    child: RaisedButton(
-                  child: Text('Points'),
-                  color: Colors.red,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PointsTest()),
-
-                      //
-                    );
-                  },
-                ))
 //        )
               ])),
         ));

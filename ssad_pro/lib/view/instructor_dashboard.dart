@@ -219,29 +219,27 @@ class InstructorDashboard extends StatelessWidget {
                         SizedBox(
                           height: 30,
                         ),
-                        SocialMedia(),
-
-
+                        SocialMedia(
+                            text: "Invite Students via WhatsApp",
+                            image: "assets/images/whatsapp_logo.png",
+                            shareText:
+                                "Hey there, I'm an Instructor at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
 
                         SizedBox(
                             child: RaisedButton(
-                              child: Text('Groups'),
-                              color: Colors.red,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => GroupListTest()),
+                          child: Text('Groups'),
+                          color: Colors.red,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GroupListTest()),
 
 //
-                                );
-                              },
-                            ))
+                            );
+                          },
+                        ))
 //        )
-
-
-
-
-
                       ],
                     ),
                   ),
