@@ -114,561 +114,315 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                 ],
               ),
             ),
-             Expanded(
+            Expanded(
                 child: Row(
-               children: <Widget>[
-            //     AnimatedBuilder(
-            //         animation: offsetAnimation1,
-            //         builder: (buildContext, child) {
-            //           if (offsetAnimation1.value < 0.0)
-            //             print('${offsetAnimation1.value + 8.0}');
-            //           return Expanded(
-            //             child: Container(
-            //               width: 100,
-            //               //padding: EdgeInsets.only(left: 40),
-            //               padding: EdgeInsets.only(
-            //                   left: offsetAnimation1.value + 10.0,
-            //                   right: 10.0 - offsetAnimation1.value),
-            //               child: SizedBox(
-            //                   width: 300.0,
-            //                   child: RaisedButton(
-            //                     shape: RoundedRectangleBorder(
-            //                         borderRadius: BorderRadius.circular(10.0),
-            //                         side: BorderSide(color: Colors.white)),
-            //                     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-            //                     textColor: Colors.white,
-            //                     color: correctAnswer == 1
-            //                         ? (pressAttention1 == 1
-            //                             ? Colors.green[800]
-            //                             : (pressAttention1 == 2
-            //                                 ? Colors.grey
-            //                                 : Colors.blue[700]))
-            //                         : pressAttention1 == 1
-            //                             ? Colors.red[800]
-            //                             : (pressAttention1 == 2
-            //                                 ? Colors.grey
-            //                                 : Colors.blue[700]),
-            //                     onPressed: () async {
-            //                       setState(() {
-            //                         pressAttention1 = 1;
-            //                         pressAttention2 = 2;
-            //                         pressAttention3 = 2;
-            //                         pressAttention4 = 2;
-            //                       });
-            //                       if (correctAnswer == 1) {
-            //                         createRecord("Right", "mcq");
-            //                         await new Future.delayed(
-            //                             const Duration(seconds: 2));
-            //                         Navigator.push(
-            //                           context,
-            //                           CupertinoPageRoute(
-            //                               builder: (context) =>
-            //                                   FIBPage("questfib", "answerfib")),
-            //                         );
-            //                       } else {
-            //                         createRecord("Wrong", "mcq");
-            //                         controller1.forward(from: 0.0);
-            //                         await new Future.delayed(
-            //                             const Duration(seconds: 2));
-            //                         _showWrongDialog();
-            //                       }
-            //                     },
-            //                     child: Center(
-            //                       child: Row(
-            //                           mainAxisAlignment:
-            //                               MainAxisAlignment.center,
-            //                           children: <Widget>[
-            //                             Flexible(
-            //                               child: Text(option1,textAlign: TextAlign.center,
-            //                                   style: TextStyle(
-            //                                       fontSize: 25,
-            //                                       fontWeight: FontWeight.bold)),
-            //                             )
-            //                           ]),
-            //                     ),
-            //                   )),
-            //             ),
-            //           );
-            //         }),
-            //     SizedBox(
-            //       width: 20,
-            //     ),
-            //     AnimatedBuilder(
-            //         animation: offsetAnimation2,
-            //         builder: (buildContext, child) {
-            //           if (offsetAnimation2.value < 0.0)
-            //             print('${offsetAnimation2.value + 8.0}');
-            //           return Expanded(
-            //             child: Container(
-            //               //padding: EdgeInsets.only(right: 40),
-            //               padding: EdgeInsets.only(
-            //                   left: 10.0 - offsetAnimation2.value,
-            //                   right: 10.0 + offsetAnimation2.value),
-            //               child: SizedBox(
-            //                   width: 300.0,
-            //                   child: RaisedButton(
-            //                     shape: RoundedRectangleBorder(
-            //                         borderRadius: BorderRadius.circular(10.0),
-            //                         side: BorderSide(color: Colors.white)),
-            //                     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-            //                     textColor: Colors.white,
-            //                     color: correctAnswer == 2
-            //                         ? (pressAttention2 == 1
-            //                             ? Colors.green[800]
-            //                             : (pressAttention2 == 2
-            //                                 ? Colors.grey
-            //                                 : Colors.blue[700]))
-            //                         : pressAttention2 == 1
-            //                             ? Colors.red[800]
-            //                             : (pressAttention2 == 2
-            //                                 ? Colors.grey
-            //                                 : Colors.blue[700]),
-            //                     onPressed: () async {
-            //                       setState(() {
-            //                         pressAttention2 = 1;
-            //                         pressAttention1 = 2;
-            //                         pressAttention3 = 2;
-            //                         pressAttention4 = 2;
-            //                       });
-            //                       if (correctAnswer == 2) {
-            //                         createRecord("Right", "mcq");
-            //                         await new Future.delayed(
-            //                             const Duration(seconds: 2));
-            //                         Navigator.push(
-            //                           context,
-            //                           CupertinoPageRoute(
-            //                               builder: (context) =>
-            //                                   FIBPage("questfib", "answerfib")),
-            //                         );
-            //                       } else {
-            //                         createRecord("Wrong", "mcq");
-            //                         controller2.forward(from: 0.0);
-            //                         await new Future.delayed(
-            //                             const Duration(seconds: 2));
-            //                         _showWrongDialog();
-            //                       }
-            //                     },
-            //                     child: Center(
-            //                       child: Row(
-            //                           mainAxisAlignment:
-            //                               MainAxisAlignment.center,
-            //                           children: <Widget>[
-            //                             Flexible(
-            //                               child: Text(option2,textAlign: TextAlign.center,
-            //                                   style: TextStyle(
-            //                                       fontSize: 25,
-            //                                       fontWeight: FontWeight.bold)),
-            //                             )
-            //                           ]),
-            //                     ),
-            //                   )),
-            //             ),
-            //           );
-            //         }),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 1
-                              ? (pressAttention1 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention1 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention1 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention1 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention1 = 1;
-                              pressAttention2 = 2;
-                              pressAttention3 = 2;
-                              pressAttention4 = 2;
-                            });
-                            if (correctAnswer == 1) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => FIBPage(
-                                        fib[0], fib[1], world, section)),
-                              );
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option1,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
+              children: <Widget>[
+                AnimatedBuilder(
+                    animation: offsetAnimation1,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation1.value < 0.0)
+                        print('${offsetAnimation1.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation1.value + 10.0,
+                              right: 10.0 - offsetAnimation1.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 1
+                                    ? (pressAttention1 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention1 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention1 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention1 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention1 = 1;
+                                    pressAttention2 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 1) {
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => FIBPage(
+                                              fib[0], fib[1], world, section)),
+                                    );
+                                  } else {
+                                    createRecord("Wrong", "mcq");
+                                    controller1.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Flexible(
+                                            child: Text(
+                                          option1,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        ))
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
                 SizedBox(
                   width: 20,
                 ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 2
-                              ? (pressAttention2 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention2 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention2 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention2 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention2 = 1;
-                              pressAttention1 = 2;
-                              pressAttention3 = 2;
-                              pressAttention4 = 2;
-                            });
-                            if (correctAnswer == 2) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => FIBPage(
-                                        fib[0], fib[1], world, section)),
-                              );
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option2,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
+                AnimatedBuilder(
+                    animation: offsetAnimation2,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation2.value < 0.0)
+                        print('${offsetAnimation2.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10.0 - offsetAnimation2.value,
+                              right: 10.0 + offsetAnimation2.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 2
+                                    ? (pressAttention2 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention2 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention2 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention2 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention2 = 1;
+                                    pressAttention1 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 2) {
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => FIBPage(
+                                              fib[0], fib[1], world, section)),
+                                    );
+                                  } else {
+                                    createRecord("Wrong", "mcq");
+                                    controller2.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Flexible(
+                                            child: Text(
+                                          option2,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        ))
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
               ],
             )),
             SizedBox(height: 20),
             Expanded(
                 child: Row(
               children: <Widget>[
-                // AnimatedBuilder(
-                //     animation: offsetAnimation3,
-                //     builder: (buildContext, child) {
-                //       if (offsetAnimation3.value < 0.0)
-                //         print('${offsetAnimation3.value + 8.0}');
-                //       return Expanded(
-                //         child: Container(
-                //           //padding: EdgeInsets.only(left: 40),
-                //           padding: EdgeInsets.only(
-                //               left: offsetAnimation3.value + 10.0,
-                //               right: 10.0 - offsetAnimation3.value),
-                //           child: SizedBox(
-                //               width: 300.0,
-                //               child: RaisedButton(
-                //                 shape: RoundedRectangleBorder(
-                //                     borderRadius: BorderRadius.circular(10.0),
-                //                     side: BorderSide(color: Colors.white)),
-                //                 padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                //                 textColor: Colors.white,
-                //                 color: correctAnswer == 3
-                //                     ? (pressAttention3 == 1
-                //                         ? Colors.green[800]
-                //                         : (pressAttention3 == 2
-                //                             ? Colors.grey
-                //                             : Colors.blue[700]))
-                //                     : pressAttention3 == 1
-                //                         ? Colors.red[800]
-                //                         : (pressAttention3 == 2
-                //                             ? Colors.grey
-                //                             : Colors.blue[700]),
-                //                 onPressed: () async {
-                //                   setState(() {
-                //                     pressAttention3 = 1;
-                //                     pressAttention1 = 2;
-                //                     pressAttention2 = 2;
-                //                     pressAttention4 = 2;
-                //                   });
-                //                   if (correctAnswer == 3) {
-                //                     createRecord("Right", "mcq");
-                //                     await new Future.delayed(
-                //                         const Duration(seconds: 2));
-                //                     Navigator.push(
-                //                       context,
-                //                       CupertinoPageRoute(
-                //                           builder: (context) =>
-                //                               FIBPage("questfib", "answerfib")),
-                //                     );
-                //                   } else {
-                //                     createRecord("Wrong", "mcq");
-                //                     controller3.forward(from: 0.0);
-                //                     await new Future.delayed(
-                //                         const Duration(seconds: 2));
-                //                     _showWrongDialog();
-                //                   }
-                //                 },
-                //                 child: Center(
-                //                   child: Row(
-                //                       mainAxisAlignment:
-                //                           MainAxisAlignment.center,
-                //                       children: <Widget>[
-                //                         Flexible(
-                //                           child: Text(option3,textAlign: TextAlign.center,
-                //                               style: TextStyle(
-                //                                   fontSize: 25,
-                //                                   fontWeight: FontWeight.bold)),
-                //                         )
-                //                       ]),
-                //                 ),
-                //               )),
-                //         ),
-                //       );
-                //     }),
-                // SizedBox(
-                //   width: 20,
-                // ),
-                // AnimatedBuilder(
-                //     animation: offsetAnimation4,
-                //     builder: (buildContext, child) {
-                //       if (offsetAnimation4.value < 0.0)
-                //         print('${offsetAnimation4.value + 8.0}');
-                //       return Expanded(
-                //         child: Container(
-                //           //padding: EdgeInsets.only(right: 40),
-                //           padding: EdgeInsets.only(
-                //               left: 10.0 - offsetAnimation4.value,
-                //               right: 10.0 + offsetAnimation4.value),
-                //           child: SizedBox(
-                //               width: 300.0,
-                //               child: RaisedButton(
-                //                 shape: RoundedRectangleBorder(
-                //                     borderRadius: BorderRadius.circular(10.0),
-                //                     side: BorderSide(color: Colors.white)),
-                //                 padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                //                 textColor: Colors.white,
-                //                 color: correctAnswer == 4
-                //                     ? (pressAttention4 == 1
-                //                         ? Colors.green[800]
-                //                         : (pressAttention4 == 2
-                //                             ? Colors.grey
-                //                             : Colors.blue[700]))
-                //                     : pressAttention4 == 1
-                //                         ? Colors.red[800]
-                //                         : (pressAttention4 == 2
-                //                             ? Colors.grey
-                //                             : Colors.blue[700]),
-                //                 onPressed: () async {
-                //                   setState(() {
-                //                     pressAttention4 = 1;
-                //                     pressAttention2 = 2;
-                //                     pressAttention3 = 2;
-                //                     pressAttention1 = 2;
-                //                   });
-                //                   if (correctAnswer == 4) {
-                //                     createRecord("Right", "mcq");
-                //                     await new Future.delayed(
-                //                         const Duration(seconds: 2));
-                //                     Navigator.push(
-                //                       context,
-                //                       CupertinoPageRoute(
-                //                           builder: (context) => FIBPage(
-                //                               "questfibhfjdshjkdhfjhadsjhdjghjahkfhjgfajkhga",
-                //                               "answerfib")),
-                //                     );
-                //                   } else {
-                //                     createRecord("Wrong", "mcq");
-                //                     controller4.forward(from: 0.0);
-                //                     await new Future.delayed(
-                //                         const Duration(seconds: 2));
-                //                     _showWrongDialog();
-                //                   }
-                //                 },
-                //                 child: Center(
-                //                   child: Row(
-                //                       mainAxisAlignment:
-                //                           MainAxisAlignment.center,
-                //                       children: <Widget>[
-                //                         Flexible(
-                //                           child: Text(option4,textAlign: TextAlign.center,
-                //                               style: TextStyle(
-                //                                   fontSize: 25,
-                //                                   fontWeight: FontWeight.bold)),
-                //                         )
-                //                       ]),
-                //                 ),
-                //               )),
-                //         ),
-                //       );
-                //     }),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 3
-                              ? (pressAttention3 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention3 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention3 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention3 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention3 = 1;
-                              pressAttention1 = 2;
-                              pressAttention2 = 2;
-                              pressAttention4 = 2;
-                            });
-                            if (correctAnswer == 3) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => FIBPage(
-                                        fib[0], fib[1], world, section)),
-                              );
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option3,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
+                AnimatedBuilder(
+                    animation: offsetAnimation3,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation3.value < 0.0)
+                        print('${offsetAnimation3.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation3.value + 10.0,
+                              right: 10.0 - offsetAnimation3.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 3
+                                    ? (pressAttention3 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention3 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention3 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention3 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention3 = 1;
+                                    pressAttention1 = 2;
+                                    pressAttention2 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 3) {
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => FIBPage(
+                                              fib[0], fib[1], world, section)),
+                                    );
+                                  } else {
+                                    createRecord("Wrong", "mcq");
+                                    controller3.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Flexible(
+                                            child: Text(
+                                          option3,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        ))
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
                 SizedBox(
                   width: 20,
                 ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 4
-                              ? (pressAttention4 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention4 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention4 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention4 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention4 = 1;
-                              pressAttention2 = 2;
-                              pressAttention3 = 2;
-                              pressAttention1 = 2;
-                            });
-                            if (correctAnswer == 4) {
-                              createRecord("Right", "mcq");
-                              await new Future.delayed(
-                                  const Duration(seconds: 2));
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => FIBPage(
-                                        fib[0], fib[1], world, section)),
-                              );
-                            } else {
-                              createRecord("Wrong", "mcq");
-                              _showWrongDialog();
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option4,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
+                AnimatedBuilder(
+                    animation: offsetAnimation4,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation4.value < 0.0)
+                        print('${offsetAnimation4.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation4.value + 10.0,
+                              right: 10.0 - offsetAnimation4.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 4
+                                    ? (pressAttention4 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention4 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention4 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention4 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention4 = 1;
+                                    pressAttention2 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention1 = 2;
+                                  });
+                                  if (correctAnswer == 4) {
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => FIBPage(
+                                              fib[0], fib[1], world, section)),
+                                    );
+                                  } else {
+                                    createRecord("Wrong", "mcq");
+                                    controller4.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Flexible(
+                                            child: Text(
+                                          option4,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        ))
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
               ],
             )),
             SizedBox(height: 20),
@@ -712,3 +466,77 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
     );
   }
 }
+
+ //     AnimatedBuilder(
+                //         animation: offsetAnimation1,
+                //         builder: (buildContext, child) {
+                //           if (offsetAnimation1.value < 0.0)
+                //             print('${offsetAnimation1.value + 8.0}');
+                //           return Expanded(
+                //             child: Container(
+                //               width: 100,
+                //               //padding: EdgeInsets.only(left: 40),
+                //               padding: EdgeInsets.only(
+                //                   left: offsetAnimation1.value + 10.0,
+                //                   right: 10.0 - offsetAnimation1.value),
+                //               child: SizedBox(
+                //                   width: 300.0,
+                //                   child: RaisedButton(
+                //                     shape: RoundedRectangleBorder(
+                //                         borderRadius: BorderRadius.circular(10.0),
+                //                         side: BorderSide(color: Colors.white)),
+                //                     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                //                     textColor: Colors.white,
+                //                     color: correctAnswer == 1
+                //                         ? (pressAttention1 == 1
+                //                             ? Colors.green[800]
+                //                             : (pressAttention1 == 2
+                //                                 ? Colors.grey
+                //                                 : Colors.blue[700]))
+                //                         : pressAttention1 == 1
+                //                             ? Colors.red[800]
+                //                             : (pressAttention1 == 2
+                //                                 ? Colors.grey
+                //                                 : Colors.blue[700]),
+                //                     onPressed: () async {
+                //                       setState(() {
+                //                         pressAttention1 = 1;
+                //                         pressAttention2 = 2;
+                //                         pressAttention3 = 2;
+                //                         pressAttention4 = 2;
+                //                       });
+                //                       if (correctAnswer == 1) {
+                //                         createRecord("Right", "mcq");
+                //                         await new Future.delayed(
+                //                             const Duration(seconds: 2));
+                //                         Navigator.push(
+                //                           context,
+                //                           CupertinoPageRoute(
+                //                               builder: (context) =>
+                //                                   FIBPage("questfib", "answerfib")),
+                //                         );
+                //                       } else {
+                //                         createRecord("Wrong", "mcq");
+                //                         controller1.forward(from: 0.0);
+                //                         await new Future.delayed(
+                //                             const Duration(seconds: 2));
+                //                         _showWrongDialog();
+                //                       }
+                //                     },
+                //                     child: Center(
+                //                       child: Row(
+                //                           mainAxisAlignment:
+                //                               MainAxisAlignment.center,
+                //                           children: <Widget>[
+                //                             Flexible(
+                //                               child: Text(option1,textAlign: TextAlign.center,
+                //                                   style: TextStyle(
+                //                                       fontSize: 25,
+                //                                       fontWeight: FontWeight.bold)),
+                //                             )
+                //                           ]),
+                //                     ),
+                //                   )),
+                //             ),
+                //           );
+                //         }),
