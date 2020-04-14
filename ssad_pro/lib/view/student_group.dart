@@ -82,7 +82,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                   width: MediaQuery
                       .of(context)
                       .size
-                      .width * 0.175,
+                      .width * 0.19,
                   height: MediaQuery
                       .of(context)
                       .size
