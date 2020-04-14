@@ -18,114 +18,129 @@ class StudentGroupPage extends StatefulWidget {
 }
 
 class _StudentGroupState extends State<StudentGroupPage> {
-  var refreshKey = GlobalKey<RefreshIndicatorState>();
-  int indexOfDeleted;
-//  Future writeStudentGroup(Map<String, dynamic> studentGroup) async {
-//    return await Firestore.instance.runTransaction((transaction) async {
-//      await transaction.set(
-//          Firestore.instance
-//              .document('/Users/'),
-//          json.encode(studentGroup));
-//    });
-//  }
-
-  static List<StudentGroup> studentGroups = [
-    StudentGroup(
-        groupId: 'CZ1001',
-        groupName: 'SS2',
-        members: ['Jay Gupta', 'Ritik', 'Mac']),
-    StudentGroup(
-        groupId: 'CZ1001',
-        groupName: 'SS3',
-        members: ['Yusuf', 'Soham', 'Arduc']),
-    StudentGroup(
-        groupId: 'CZ1001',
-        groupName: 'SS4',
-        members: ['Divyesh', 'Arjun', 'Gaurav']),
-    StudentGroup(
-        groupId: 'CZ1002',
-        groupName: 'TS1',
-        members: ['Divyesh', 'Soham', 'Yusuf']),
-    StudentGroup(
-        groupId: 'CZ1002',
-        groupName: 'SSP1',
-        members: ['Arjun', 'Yusuf', 'Jay Gupta']),
-    StudentGroup(
-        groupId: 'CZ1002',
-        groupName: 'TS2',
-        members: ['Ritwik', 'Ritik', 'Mac']),
-    StudentGroup(
-        groupId: 'CZ1002',
-        groupName: 'TS3',
-        members: ['Chean', 'Jay', 'Arduc']),
-    StudentGroup(
-        groupId: 'CZ2002',
-        groupName: 'SS1',
-        members: ['Chean', 'Ritik', 'Yusuf']),
-    StudentGroup(
-        groupId: 'CZ2002',
-        groupName: 'SS2',
-        members: ['Ritwik', 'Arjun', 'Yusuf']),
-    StudentGroup(
-        groupId: 'CZ2002',
-        groupName: 'SS3',
-        members: ['Arduc', 'Divyesh', 'Soham']),
-    StudentGroup(
-        groupId: 'CZ1005',
-        groupName: 'SS1',
-        members: ['Mac', 'Jay Gupta', 'Gaurav']),
-    StudentGroup(
-        groupId: 'CZ1005',
-        groupName: 'SS2',
-        members: ['Divyesh', 'Jay', 'Soham'])
-  ];
-  List<StudentGroup> list = studentGroups;
-  Future refreshList() async {
-    refreshKey.currentState?.show();
-    await Future.delayed(Duration(seconds: 1));
-
-    setState(() {
-      list = studentGroups;
-    });
-  }
-
-  Future<bool> passingIndex(var snapshot, int index) async{
+  Future<bool> passingIndex(var snapshot, int index) async {
     bool isDelete = await deleteGroupDialog(context, snapshot, index);
-    if (isDelete){
-      await Firestore.instance.runTransaction((Transaction myTransaction) async {
+    if (isDelete) {
+      await Firestore.instance.runTransaction((
+          Transaction myTransaction) async {
         await myTransaction.delete(snapshot.data.documents[index].reference);
       });
     }
   }
-
-  Future<bool> deleteGroupDialog(BuildContext context, var snapshot, int index) {
+  Future showDetailDialog(BuildContext context, var snapshot, int index){
     DocumentSnapshot document = snapshot.data.documents[index];
     String course = document['course'];
     String name = document['name'];
-    int membersStringLength = document['students'].toString().length;
-    String members = document['students'].toString().substring(1,membersStringLength-1);
+    int membersStringLength = document['students']
+        .toString()
+        .length;
+    int memberListLength = document['students'].length;
+    String members;
+    if (memberListLength == 0)
+      members = 'None';
+    else
+      members = document['students'].toString().substring(
+          1, membersStringLength - 1);
+
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
               title: Text(
                   "Course: $course\nGroup: $name\n"
-                  "Members: $members",
+                      "Members: $members",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
+                  )),
+
+              actions: <Widget>[
+                SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
+                    child: RaisedButton(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
+                        color: Colors.blue[600],
+                        child: Text('OK',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold)),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        })),
+                SizedBox(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.175,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.05
+                )
+              ]);
+        });
+  }
+  Future<bool> deleteGroupDialog(BuildContext context, var snapshot,
+      int index) {
+    DocumentSnapshot document = snapshot.data.documents[index];
+    String course = document['course'];
+    String name = document['name'];
+    int membersStringLength = document['students']
+        .toString()
+        .length;
+    int memberListLength = document['students'].length;
+    String members;
+    if (memberListLength == 0)
+      members = 'None';
+    else
+      members = document['students'].toString().substring(
+        1, membersStringLength - 1);
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Text(
+                  "Course: $course\nGroup: $name\n"
+                      "Members: $members",
+                  style: TextStyle(
+                    fontSize: 18,
                   )),
               content: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.height * 0.05,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.6,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.07,
                   child: Text("Are you sure you want to delete this group?",
                       style: TextStyle(
                           color: Colors.blueGrey[30],
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold))),
               actions: <Widget>[
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
                     child: RaisedButton(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -142,12 +157,24 @@ class _StudentGroupState extends State<StudentGroupPage> {
                           Navigator.of(context).pop(false);
                         })),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
-                  height: MediaQuery.of(context).size.height * 0.08,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.05,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.08,
                 ),
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
                     child: RaisedButton(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -166,18 +193,170 @@ class _StudentGroupState extends State<StudentGroupPage> {
               ]);
         });
   }
-
-  Future<List> createGroupDialog(BuildContext context) {
-    TextEditingController customController1 = TextEditingController();
-    TextEditingController customController2 = TextEditingController();
-    TextEditingController customController3 = TextEditingController();
+  Future<List> addMembersDialog(BuildContext context, var groupSnapshot, int index) {
+    List<String> listOfSelectedUsers = [];
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
               content: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.6,
-                height: MediaQuery.of(context).size.height * 0.25,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.6,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.5,
+                child: StreamBuilder(
+                  stream: Firestore.instance.collection('Users').snapshots(),
+                  builder: (context, userSnapshot) {
+                    if (!userSnapshot.hasData) return const Text('Loading...');
+
+                    return ListView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: userSnapshot.data.documents.length,
+                        itemBuilder: (context, indexOfUsers) {
+                          DocumentSnapshot users = userSnapshot.data
+                              .documents[indexOfUsers];
+                          bool isChecked = false;
+                          String studentName = users['name'];
+                          DocumentSnapshot groups = groupSnapshot.data.documents[index];
+
+                          for (String memberName in groups['students']){
+                            if (memberName == studentName){
+                              isChecked = true;
+                              listOfSelectedUsers.add(studentName);
+                            }
+                          }
+                          return Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                            elevation: 0,
+                            color: Colors.grey[300],
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  StatefulBuilder(
+                                      builder: (context, _setState) => CheckboxListTile(
+                                        title: Row(
+                                          children: <Widget>[
+                                            Icon(Icons.person),
+                                            SizedBox(
+                                              width: 15.0
+                                            ),
+                                            Text(studentName,
+                                                style: TextStyle(
+                                                    color: Colors.black45,
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold)),
+                                          ],
+                                        ),
+                                        onChanged: (newValue) {
+                                          _setState(() => isChecked=newValue?true:false);
+                                          if(isChecked){
+                                            if(!listOfSelectedUsers.contains(studentName))
+                                              listOfSelectedUsers.add(studentName);
+                                          }
+                                          else{
+                                            if(listOfSelectedUsers.contains(studentName))
+                                              listOfSelectedUsers.remove(studentName);
+                                          }
+                                        },
+                                        value: isChecked
+                                    ),
+                                  ),
+
+                                ]),
+                          );
+                        });
+                  },
+                ),
+              ),
+              actions: <Widget>[
+                SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
+                    child: RaisedButton(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
+                        color: Colors.blue[600],
+                        child: Text('Cancel',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold)),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        })),
+                SizedBox(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.1,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.05,
+                ),
+                SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
+                    child: RaisedButton(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                        textColor: Colors.white,
+                        color: Colors.blue[600],
+                        child: Text('Confirm',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold)),
+                        onPressed: () {
+                          Navigator.of(context).pop(listOfSelectedUsers);
+                        }))
+              ]);
+        });
+  }
+
+  Future<List> createGroupDialog(BuildContext context) {
+    TextEditingController customController1 = TextEditingController();
+    TextEditingController customController2 = TextEditingController();
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              content: SizedBox(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.6,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.2,
                 child: Column(children: <Widget>[
                   TextField(
                     decoration: InputDecoration(
@@ -202,24 +381,36 @@ class _StudentGroupState extends State<StudentGroupPage> {
                     ),
                     controller: customController2,
                   ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: "Members (separated by ',')",
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(),
-                      ),
-                    ),
-                    controller: customController3,
-                  ),
+//                  SizedBox(height: 10),
+//                  RaisedButton(
+//                      elevation: 0,
+//                      shape: RoundedRectangleBorder(
+//                          borderRadius: BorderRadius.circular(18.0),
+//                          side: BorderSide(color: Colors.white)),
+//                      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+//                      textColor: Colors.white,
+//                      color: Colors.blue[600],
+//                      child: Text('Members',
+//                          style: TextStyle(
+//                              color: Colors.white,
+//                              fontSize: 23,
+//                              fontWeight: FontWeight.bold)),
+//                      onPressed: () {
+//
+//                        DatabaseService().createGroup('CZ3003','SS5', []);
+//                      }),
                 ]),
               ),
               actions: <Widget>[
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
                     child: RaisedButton(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -236,12 +427,24 @@ class _StudentGroupState extends State<StudentGroupPage> {
                           Navigator.of(context).pop();
                         })),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.1,
-                  height: MediaQuery.of(context).size.height * 0.05,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.1,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.05,
                 ),
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.05,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.3,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.05,
                     child: RaisedButton(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -258,18 +461,13 @@ class _StudentGroupState extends State<StudentGroupPage> {
                         onPressed: () {
                           Navigator.of(context).pop([
                             customController1?.text.toString(),
-                            customController2?.text.toString(),
-                            customController3?.text.toString().split(",")
+                            customController2?.text.toString()
                           ]);
                         }))
               ]);
         });
   }
-//  Widget _buildListItem(BuildContext context, DocumentSnapshot document){
-//    print("hello");
-//    print(document['name']);
-//
-//  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,86 +480,104 @@ class _StudentGroupState extends State<StudentGroupPage> {
                 height: 20,
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.90,
-                height: MediaQuery.of(context).size.height * 0.75,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.90,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.75,
                 child: StreamBuilder(
-                  stream: Firestore.instance.collection('Groups').snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return const Text('Loading...');
+                    stream: Firestore.instance.collection('Groups').snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return const Text('Loading...');
 
-                    return ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: snapshot.data.documents.length,
-                        itemBuilder: (context, index) {
-                          DocumentSnapshot document = snapshot.data.documents[index];
-                          return Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                            ),
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                            elevation: 0,
-                            color: Colors.grey[300],
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  ListTile(
-                                    onTap: () {
-
-                                    },
-                                    leading: Icon(
-                                      Icons.group,
-                                      size: 60,
+                      return ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: snapshot.data.documents.length,
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot document = snapshot.data.documents[index];
+                            String groupName = document['name'];
+                            String course = document['course'];
+                            return Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              elevation: 0,
+                              color: Colors.grey[300],
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      onTap: () {
+                                        showDetailDialog(context, snapshot, index);
+                                      },
+                                      leading: Icon(
+                                        Icons.group,
+                                        size: 60,
+                                      ),
+                                      isThreeLine: true,
+                                      contentPadding:
+                                      EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                      title: Text(
+                                          'Course: ' + document['course'],
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                      subtitle: Text(
+                                          'Group: ' + document['name'] +
+                                              '   ' +
+                                              'Members: ' +
+                                              document['students'].length
+                                                  .toString(),
+                                          style: TextStyle(fontSize: 18)),
+                                      trailing: Wrap(
+                                        spacing: 5, // space between two icons
+                                        children: <Widget>[
+                                          IconButton(
+                                            icon: Icon(
+                                              Icons.group_add,
+                                              size: 40),
+                                            onPressed: () {
+                                              addMembersDialog(context, snapshot, index).then((onValue){
+                                                if (onValue != null)
+                                                  DatabaseService().updateGroup(course, groupName, onValue);
+                                              });
+                                            },
+                                          ), // icon-1
+                                          IconButton(
+                                              icon: Icon(
+                                                Icons.delete,
+                                                size: 40),
+                                              onPressed: () {
+                                                passingIndex(snapshot, index);
+                                              }
+                                          ), // icon-2
+                                        ],
+                                      ),
                                     ),
-                                    isThreeLine: true,
-                                    contentPadding:
-                                    EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                    title: Text(
-                                        'Course: ' + document['course'],
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold)),
-                                    subtitle: Text(
-                                        'Group: ' + document['name'] +
-                                            '   ' +
-                                            'Members: ' + document['students'].length.toString(),
-                                        style: TextStyle(fontSize: 18)),
-                                    trailing: Wrap(
-                                      spacing: 5, // space between two icons
-                                      children: <Widget>[
-                                        IconButton(
-                                          icon: Icon(
-                                          Icons.group_add,
-                                          size: 40),
-                                          onPressed:(){
 
-                                          } ,
-                                        ), // icon-1
-                                        IconButton(
-                                          icon: Icon(
-                                              Icons.delete,
-                                          size: 40),
-                                          onPressed: (){
-                                            passingIndex(snapshot, index);
-                                          }
-                                        ), // icon-2
-                                      ],
-                                    ),
-                                  ),
-
-                                ]),
-                          );
-
-                        });
-                  }
+                                  ]),
+                            );
+                          });
+                    }
                 ),
               ),
               SizedBox(height: 10),
               Center(
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.90,
-                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.90,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 0.07,
                   child: RaisedButton(
                     elevation: 4.0,
                     shape: RoundedRectangleBorder(
@@ -372,10 +588,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                     color: Colors.blue[600],
                     onPressed: () {
                       createGroupDialog(context).then((onValue) {
-                        studentGroups.add(StudentGroup(
-                            groupName: onValue[0],
-                            groupId: onValue[1],
-                            members: onValue[2]));
+                        DatabaseService().createGroup(onValue[0],onValue[1], []);
                       });
                     },
                     child: Row(
@@ -399,11 +612,8 @@ class _StudentGroupState extends State<StudentGroupPage> {
             ]),
           ),
         ));
-
   }
 }
-
-
 
 
 
