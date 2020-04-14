@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
-import 'package:ssadpro/controller/add_compete_score.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/compete.dart';
+import 'package:ssadpro/view/compete_mcq.dart';
+import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CheckChallenged extends StatefulWidget {
   CheckChallengedState createState() => CheckChallengedState();
@@ -67,11 +67,24 @@ class CheckChallengedState extends State<CheckChallenged> {
                                           borderRadius:
                                               BorderRadius.circular(22.0)),
                                       onPressed: () {
+                                        List<String> question =
+                                            GenerateMCQ().question(99, 99);
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  Compete(isChallenged: 1),
+                                                  CompeteMCQPage(
+                                                      question[0],
+                                                      question[1],
+                                                      question[2],
+                                                      question[3],
+                                                      question[4],
+                                                      int.parse(question[5]),
+                                                      99,
+                                                      99,
+                                                      1,
+                                                      0,
+                                                      "user.email"),
                                             ));
                                       },
                                       color: Colors.blue[600],
