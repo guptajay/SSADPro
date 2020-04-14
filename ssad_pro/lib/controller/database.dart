@@ -166,12 +166,14 @@ class DatabaseService {
 
   //Function to create group documents in database
   Future createGroup(
+    String course,
     String name,
     List<String> students,
   ) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.set(
           Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
+        'course': course,
         'name': name,
         'students': students,
       });
@@ -180,12 +182,14 @@ class DatabaseService {
 
 //Function to update the documents of the collection 'Groups'
   Future updateGroup(
+      String course,
     String name,
     List<String> students,
   ) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.update(
           Firestore.instance.collection(GROUPS_COLLECTION).document(name), {
+        'course': course,
         'name': name,
         'students': students,
       });
@@ -220,7 +224,7 @@ class DatabaseService {
   }
 
 // user data from snapshots
-  //This function cannot retrive list based information from the database
+  //This function cannot retrieve list based information from the database
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
       email: email,

@@ -58,7 +58,11 @@ class AuthService {
     List<String> questions = ['q1', 'q2', 'q3'];
     List<String> answers = ['a1', 'a2', 'a3'];
 
-    List<String> students = ['Ritwik', 'Jay', 'Chean'];
+    List<String> students1 = ['Ritwik', 'Jay', 'Chean'];
+    List<String> students2 = ['Ritik', 'Yusuf', 'Divyesh'];
+    List<String> students3 = ['Mac', 'Arduc', 'Soham'];
+    List<String> students4 = ['Gaurav', 'Arjun', 'Jay Gupta'];
+    List<String> students5 = ['Rachel', 'Michael', 'Johnson'];
 
     //Comment this part to avoid resetting the database when the user logs in
     DatabaseService(email: user.email).updateStudentUserData(
@@ -81,11 +85,11 @@ class AuthService {
     DatabaseService().updateQuestions(questions, answers, 'easy');
     DatabaseService().updateQuestions(questions, answers, 'difficult');
 
-    DatabaseService().createGroup('SS1', students);
-    DatabaseService().createGroup('SS2', students);
-    DatabaseService().createGroup('SS3', students);
-    DatabaseService().createGroup('SS4', students);
-    DatabaseService().createGroup('SS5', students);
+    DatabaseService().createGroup('CZ3003', 'SS1', students1);
+    DatabaseService().createGroup('CZ3003','SS2', students2);
+    DatabaseService().createGroup('CZ3003','SS3', students3);
+    DatabaseService().createGroup('CZ3003','SS4', students4);
+    DatabaseService().createGroup('CZ3003','SS5', students5);
 
     name = user.displayName;
     email = user.email;
