@@ -260,12 +260,18 @@ class _HomePageState extends State<ProgressPage> {
   }
 
   _generateData() {
+    
     var data1 = [
-      for (var i = 0; i < len; i++) {new Score(1, i + 1, points[i])},
-       new Score(1, 0, 30),
+      new Score(1, 0, 30)
+      ];
+      //for (var i = 0; i < len; i++) {new Score(1, i + 1, points[i])},
+      // new Score(1, 0, 30),
       //  new Score(1, 1, 40),
       //  new Score(1, 2, 80),
-    ];
+  
+    // for (var i=0;i<len;i++){
+    //   data1.add(points[i]);
+    // }
 
     var piedata = [
       new Task('Worlds Completed', worlds, Colors.blue[600]),
