@@ -5,7 +5,6 @@ import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/controller/progress.dart';
-import 'my_flutter_app_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatefulWidget {
