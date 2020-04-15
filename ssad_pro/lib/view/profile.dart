@@ -21,71 +21,82 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
-    return Scaffold(
-        appBar: ReusableWidgets.getAppBar(
-            "Profile", Colors.blue[600], Colors.grey[50]),
-        backgroundColor: Colors.grey[50],
-        body: Container(
-            decoration: BoxDecoration(),
-            child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                  /*
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      imageUrl,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/space.jpg"),
+        )
+      ),
+      child: Scaffold(
+          appBar: ReusableWidgets.getAppBar(
+              "Profile", Colors.blue[600], Colors.grey[50]),
+          backgroundColor: Colors.transparent,
+          body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/space.jpg"),
+                )
+              ),
+              child: Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                    /*
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        imageUrl,
+                      ),
+                      radius: 40,
+                      backgroundColor: Colors.transparent,
                     ),
-                    radius: 40,
-                    backgroundColor: Colors.transparent,
-                  ),
-                  */
-                  SizedBox(height: 10),
-                  Text(
-                    'STUDENT',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54),
-                  ),
-                  StreamBuilder<UserData>(
-                      stream: DatabaseService(email: user.email).userData,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          UserData userData = snapshot.data;
-                          return Column(children: <Widget>[
-                            Text(
-                              userData.name,
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.blue[600],
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 40),
-                            CardView.getCardNoClick(
-                                "Group", userData.group, Icons.group),
-                            SizedBox(
-                              height: 20,
-                            ),
+                    */
+                    SizedBox(height: 10),
+                    Text(
+                      'STUDENT',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    StreamBuilder<UserData>(
+                        stream: DatabaseService(email: user.email).userData,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            UserData userData = snapshot.data;
+                            return Column(children: <Widget>[
+                              Text(
+                                userData.name,
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Color(0xFFF7B32B),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 40),
+                              CardView.getCardNoClick(
+                                  "Group", userData.group, Icons.group),
+                              SizedBox(
+                                height: 20,
+                              ),
 //                            CardView.getCardNoClick("Age",
 //                                userData.age.toString(), Icons.child_care),
 
-                            CardView.getCardNoClickSpecial(
-                                "Adventure Mode",
-                                Icons.blur_on,
-                                Progress.getWorld(userData.progress),
-                                Progress.getSection(userData.progress),
-                                Progress.getLevel(userData.progress)),
+                              CardView.getCardNoClickSpecial(
+                                  "Adventure Mode",
+                                  Icons.blur_on,
+                                  Progress.getWorld(userData.progress),
+                                  Progress.getSection(userData.progress),
+                                  Progress.getLevel(userData.progress)),
 
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ]);
-                        } else {
-                          return Text('Error retreiving Information');
-                        }
-                      }),
-                ]))));
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ]);
+                          } else {
+                            return Text('Error retreiving Information');
+                          }
+                        }),
+                  ])))),
+    );
   }
 }
