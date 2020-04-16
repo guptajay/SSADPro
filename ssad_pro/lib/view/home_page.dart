@@ -14,7 +14,6 @@ import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
-import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -252,7 +251,7 @@ class HomePage extends StatelessWidget {
                       return LoginPage();
                     }), ModalRoute.withName('/'));
                   },
-                  color: Colors.deepOrangeAccent,
+                  color: Colors.blue[400],
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
