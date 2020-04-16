@@ -3,7 +3,7 @@ import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/challenged_list.dart';
 import 'package:ssadpro/view/compete.dart';
-import 'package:ssadpro/view/compete_mcq.dart';
+import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CheckChallenged extends StatefulWidget {
@@ -89,7 +89,15 @@ class CheckChallengedState extends State<CheckChallenged> {
                                         "Challenge a new Friend!",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 20),
-                                      )))
+                                      ))),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  SocialMedia(
+                                      text: "Invite your Friends via LinkedIn",
+                                      image: "assets/images/linkedin_logo.png",
+                                      shareText:
+                                          "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
                                 ],
                               )))
                     ]))))));

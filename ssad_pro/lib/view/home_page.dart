@@ -259,14 +259,6 @@ class HomePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40)),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                SocialMedia(
-                    text: "Invite your Friends via LinkedIn",
-                    image: "assets/images/linkedin_logo.png",
-                    shareText:
-                        "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
               ])),
         ));
   }
