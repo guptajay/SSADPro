@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/view/challenged_list.dart';
+import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/compete_mcq.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
 
@@ -43,13 +45,19 @@ class CheckChallengedState extends State<CheckChallenged> {
                                   EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                               child: Container(
                                   child: Center(
-                                      child: Text(
-                                          "You have been challenged by Jay!",
+                                      child: Text("You have been challenged by",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 35,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.blue[400])))))),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 300,
+                        child: ChallengedList(),
+                      ),
                       FadeAnimation(
                           0.7,
                           Padding(
@@ -72,25 +80,13 @@ class CheckChallengedState extends State<CheckChallenged> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CompeteMCQPage(
-                                                      question[0],
-                                                      question[1],
-                                                      question[2],
-                                                      question[3],
-                                                      question[4],
-                                                      int.parse(question[5]),
-                                                      99,
-                                                      99,
-                                                      1,
-                                                      0,
-                                                      "user.email"),
+                                              builder: (context) => Compete(),
                                             ));
                                       },
                                       color: Colors.blue[600],
                                       child: Center(
                                           child: Text(
-                                        "Complete Challenge",
+                                        "Challenge a new Friend!",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       )))

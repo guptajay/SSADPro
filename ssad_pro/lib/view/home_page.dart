@@ -16,7 +16,6 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/social_media.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.image});
@@ -29,10 +28,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage("assets/images/space.jpg"),
-          )),
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +46,7 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
                 StreamBuilder<UserData>(
                     stream: DatabaseService(email: user.email).userData,
@@ -63,7 +58,7 @@ class HomePage extends StatelessWidget {
                             userData.name,
                             style: TextStyle(
                                 fontSize: 25,
-                                color: Color(0xFFF7B32B),
+                                color: Colors.blue[600],
                                 fontWeight: FontWeight.bold),
                           )
                         ]);
@@ -94,7 +89,7 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
-                              FontAwesomeIcons.rocket,
+                              Icons.blur_on,
                               color: Colors.white,
                               size: 70,
                             ),
