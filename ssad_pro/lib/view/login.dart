@@ -1,7 +1,12 @@
+/**
+ * This class implements the layout of the login
+ * page for users to login through their gmail account.
+ *
+ * @author Jay Gupta
+ */
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/avatar.dart';
-import 'package:ssadpro/view/home_page.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
 import 'package:simple_animations/simple_animations.dart';
 

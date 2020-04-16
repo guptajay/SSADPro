@@ -1,14 +1,17 @@
+/**
+ * This class implements the layout match the column 
+ * type of questions
+ *
+ * @author Divyesh Mundhra
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/drag_objects.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
-import 'package:ssadpro/view/section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'mcq_boxes.dart';
-import 'package:ssadpro/view/section.dart';
-import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/progress.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
 
@@ -119,11 +122,6 @@ class _InputPageState extends State<MatchPage> {
                                           padding: const EdgeInsets.all(10.0),
                                           child: Container(
                                             height: 60,
-                                            // child: Text('Option 1',
-                                            //     style: TextStyle(
-                                            //         fontSize: 25,
-                                            //         fontWeight: FontWeight.bold,
-                                            //         color: Colors.blue)),
                                           ),
                                         ),
                                       ),

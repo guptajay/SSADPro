@@ -4,7 +4,6 @@ import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'levelview.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/progress.dart';
 import 'package:ssadpro/model/user.dart';

@@ -1,27 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/**
+ * This class implements the layout of the home page for
+ * students to select different functionalities of the app.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/assessment_history.dart';
-import 'package:ssadpro/view/assignmentList.dart';
 import 'package:ssadpro/view/check_challenged.dart';
 import 'package:ssadpro/view/login.dart';
-import 'package:ssadpro/view/pointstest.dart';
-import 'package:ssadpro/view/profile.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ssadpro/view/user_list.dart';
-import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/settings.dart';
-import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.image});
@@ -29,22 +23,15 @@ class HomePage extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    //Assignment assignment = Provider.of<Assignment>(context);
-
-//    var assignments = Provider.of<List<Assignment>>(context);
-
-    // return StreamProvider<List<StudentUser>>.value(
     User user = Provider.of<User>(context);
-    // value: DatabaseService().users,
 
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/space.jpg"),
-              )
-          ),
+            image: AssetImage("assets/images/space.jpg"),
+          )),
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -71,13 +58,6 @@ class HomePage extends StatelessWidget {
                       if (snapshot.hasData) {
                         UserData userData = snapshot.data;
                         return Column(children: <Widget>[
-//                        Text(
-//                          userData.matric,
-//                          style: TextStyle(
-//                              fontSize: 12,
-//                              color: Colors.grey[600],
-//                              fontWeight: FontWeight.bold),
-//                        ),
                           Text(
                             userData.name,
                             style: TextStyle(
@@ -209,15 +189,6 @@ class HomePage extends StatelessWidget {
                       color: Colors.blue[700],
                       onPressed: () {
                         print('StudentAssignments');
-                        /*
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-
-                              builder: (context) => StudentAssignments()),
-                        );
-
-                         */
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -280,7 +251,7 @@ class HomePage extends StatelessWidget {
                       return LoginPage();
                     }), ModalRoute.withName('/'));
                   },
-                  color: Colors.deepOrangeAccent,
+                  color: Colors.blue[400],
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
@@ -295,26 +266,11 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-
                 SocialMedia(
                     text: "Invite your Friends via LinkedIn",
                     image: "assets/images/linkedin_logo.png",
                     shareText:
                         "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
-
-                /*
-                SizedBox(
-                  child: RaisedButton(
-                    child: Text('Profile'),
-                    color: Colors.red,
-                    onPressed: () {
-                      navigateToSubPage(context);
-                    },
-                  ),
-                )
-                */
-
-//        )
               ])),
         ));
   }
