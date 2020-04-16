@@ -15,6 +15,7 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
+import 'package:ssadpro/view/social_media.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
