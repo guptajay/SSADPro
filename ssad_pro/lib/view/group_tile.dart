@@ -1,3 +1,10 @@
+/**
+ * This class implements the layout of the different groups 
+ * to select students from.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/card.dart';
@@ -34,7 +41,7 @@ class GroupTile extends StatelessWidget {
             questions: questions,
             answers: answers,
           ),
-          user.group, //take note
+          user.group,
           Icons.group),
       SizedBox(height: 20),
     ]);

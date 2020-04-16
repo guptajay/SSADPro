@@ -1,3 +1,10 @@
+/**
+ * This class implements the layout of some components
+ * which have been reused in many classes of the app.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 
 class MCQBoxes {
@@ -54,13 +61,12 @@ class MCQBoxes {
               textColor: Colors.white,
               color: Colors.blue[600],
               onPressed: () {},
-              //child: Padding(
-              //padding: const EdgeInsets.only(top: 40.0, bottom: 40),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Flexible(
-                      child: Text(ques,textAlign: TextAlign.center,
+                      child: Text(ques,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
@@ -68,10 +74,7 @@ class MCQBoxes {
                     ),
                   ]),
             ),
-          )
-
-          //),
-          ),
+          )),
     );
   }
 

@@ -1,3 +1,10 @@
+/**
+ * This class implements the layout of the 
+ * profile of the student.
+ *
+ * @author Mac Milin
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
@@ -24,34 +31,23 @@ class _ProfileState extends State<Profile> {
     User user = Provider.of<User>(context);
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/space.jpg"),
-        )
-      ),
+          image: DecorationImage(
+        image: AssetImage("assets/images/space.jpg"),
+      )),
       child: Scaffold(
           appBar: ReusableWidgets.getAppBar(
               "Profile", Colors.blue[600], Colors.grey[50]),
           backgroundColor: Colors.transparent,
           body: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("images/space.jpg"),
-                )
-              ),
+                  image: DecorationImage(
+                image: AssetImage("images/space.jpg"),
+              )),
               child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                    /*
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        imageUrl,
-                      ),
-                      radius: 40,
-                      backgroundColor: Colors.transparent,
-                    ),
-                    */
                     SizedBox(height: 10),
                     Text(
                       'STUDENT',
@@ -79,16 +75,12 @@ class _ProfileState extends State<Profile> {
                               SizedBox(
                                 height: 20,
                               ),
-//                            CardView.getCardNoClick("Age",
-//                                userData.age.toString(), Icons.child_care),
-
                               CardView.getCardNoClickSpecial(
                                   "Adventure Mode",
                                   FontAwesomeIcons.rocket,
                                   Progress.getWorld(userData.progress),
                                   Progress.getSection(userData.progress),
                                   Progress.getLevel(userData.progress)),
-
                               SizedBox(
                                 height: 20,
                               ),

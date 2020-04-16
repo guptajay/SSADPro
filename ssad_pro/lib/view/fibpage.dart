@@ -1,3 +1,10 @@
+/**
+ * This class implements the layout of the fill in the blanks
+ * question displayed as one of the levels in each section.
+ *
+ * @author Divyesh Mundhra
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
@@ -215,16 +222,13 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
   }
 
   void _showWrongDialog() {
-    // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return AlertDialog(
           title: new Text("Wrong Answer"),
           content: new Text("Give it another try!"),
           actions: <Widget>[
-            // usually buttons at the bottom of the dialog
             new FlatButton(
               child: new Text("Close"),
               onPressed: () {

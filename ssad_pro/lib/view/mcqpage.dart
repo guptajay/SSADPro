@@ -1,3 +1,10 @@
+/**
+ * This class implements the layout of multiple 
+ * choice question.
+ *
+ * @author Divyesh Mundhra
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
@@ -452,34 +459,18 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
               ],
             )),
             SizedBox(height: 20),
-            // RaisedButton(
-            //   child: Text('Retrieve Data'),
-            //   onPressed: () async {
-            //     print(await getData("mcq"));
-            //     print("____________________________________________");
-            //   },
-            // ),
-            // RaisedButton(
-            //   child: Text('Delete Data'),
-            //   onPressed: () {
-            //     deleteData("mcq");
-            //   },
-            // )
           ],
         ));
   }
 
   void _showWrongDialog() {
-    // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return AlertDialog(
           title: new Text("Wrong Answer"),
           content: new Text("Give it another try!"),
           actions: <Widget>[
-            // usually buttons at the bottom of the dialog
             new FlatButton(
               child: new Text("Close"),
               onPressed: () {
@@ -492,77 +483,3 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
     );
   }
 }
-
-//     AnimatedBuilder(
-//         animation: offsetAnimation1,
-//         builder: (buildContext, child) {
-//           if (offsetAnimation1.value < 0.0)
-//             print('${offsetAnimation1.value + 8.0}');
-//           return Expanded(
-//             child: Container(
-//               width: 100,
-//               //padding: EdgeInsets.only(left: 40),
-//               padding: EdgeInsets.only(
-//                   left: offsetAnimation1.value + 10.0,
-//                   right: 10.0 - offsetAnimation1.value),
-//               child: SizedBox(
-//                   width: 300.0,
-//                   child: RaisedButton(
-//                     shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(10.0),
-//                         side: BorderSide(color: Colors.white)),
-//                     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-//                     textColor: Colors.white,
-//                     color: correctAnswer == 1
-//                         ? (pressAttention1 == 1
-//                             ? Colors.green[800]
-//                             : (pressAttention1 == 2
-//                                 ? Colors.grey
-//                                 : Colors.blue[700]))
-//                         : pressAttention1 == 1
-//                             ? Colors.red[800]
-//                             : (pressAttention1 == 2
-//                                 ? Colors.grey
-//                                 : Colors.blue[700]),
-//                     onPressed: () async {
-//                       setState(() {
-//                         pressAttention1 = 1;
-//                         pressAttention2 = 2;
-//                         pressAttention3 = 2;
-//                         pressAttention4 = 2;
-//                       });
-//                       if (correctAnswer == 1) {
-//                         createRecord("Right", "mcq");
-//                         await new Future.delayed(
-//                             const Duration(seconds: 2));
-//                         Navigator.push(
-//                           context,
-//                           CupertinoPageRoute(
-//                               builder: (context) =>
-//                                   FIBPage("questfib", "answerfib")),
-//                         );
-//                       } else {
-//                         createRecord("Wrong", "mcq");
-//                         controller1.forward(from: 0.0);
-//                         await new Future.delayed(
-//                             const Duration(seconds: 2));
-//                         _showWrongDialog();
-//                       }
-//                     },
-//                     child: Center(
-//                       child: Row(
-//                           mainAxisAlignment:
-//                               MainAxisAlignment.center,
-//                           children: <Widget>[
-//                             Flexible(
-//                               child: Text(option1,textAlign: TextAlign.center,
-//                                   style: TextStyle(
-//                                       fontSize: 25,
-//                                       fontWeight: FontWeight.bold)),
-//                             )
-//                           ]),
-//                     ),
-//                   )),
-//             ),
-//           );
-//         }),

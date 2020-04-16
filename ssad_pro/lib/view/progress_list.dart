@@ -1,9 +1,15 @@
+/**
+ * This class return the list of students whose 
+ * progress can be viewed by their instructors.
+ *
+ * @author Divyesh Mundhra
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/user_list.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/progress_student_list.dart';
 
@@ -50,8 +56,6 @@ class ProgressList extends StatelessWidget {
                             )),
                             Expanded(child: ProgressStudentList())
                           ]),
-                    ))
-                //UserList() Prints all the registered users of the application
-                )));
+                    )))));
   }
 }

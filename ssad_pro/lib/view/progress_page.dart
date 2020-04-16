@@ -1,3 +1,11 @@
+/**
+ * This class return the layout of the page showing
+ * progress of each student in adventure mode as well
+ * as compete mode.
+ *
+ * @author Divyesh Mundhra
+ */
+
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

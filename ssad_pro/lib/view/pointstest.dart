@@ -1,15 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/**
+ * This class return the list of scores of a student 
+ * for compete mode
+ *
+ * @author Ritwik Kanodia
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/grouptest2.dart';
-
 
 class PointsTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     User user = Provider.of<User>(context);
 
     return new StreamBuilder<UserData>(
@@ -18,11 +21,8 @@ class PointsTest extends StatelessWidget {
         if (snapshot.hasData) {
           UserData userData = snapshot.data;
           List<dynamic> points = userData.points;
-
           return Text(points[1].toString());
-        }
-        else
-        {
+        } else {
           return Text('No');
         }
       },
