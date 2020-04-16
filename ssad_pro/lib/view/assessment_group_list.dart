@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/group_tile.dart';
-import 'package:ssadpro/controller/list_modifier.dart';
+//import 'package:ssadpro/controller/list_modifier.dart';
 import 'package:ssadpro/controller/database.dart';
 
 class AssessmentGroupList extends StatefulWidget {
