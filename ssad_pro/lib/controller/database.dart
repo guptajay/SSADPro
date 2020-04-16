@@ -14,6 +14,7 @@ class DatabaseService {
   static const String USER_DATA_DOCUMENT = 'userDetails';
   static const String QUESTIONS_COLLECTION = 'Questions';
   static const String GROUPS_COLLECTION = 'Groups';
+  static const String USER_CHALLENGE_COLLECTION = 'UserChallenges';
 
   final String email;
 
@@ -163,6 +164,49 @@ class DatabaseService {
           });
     });
   }
+
+  //Function to send user assignment to OTHER user data base
+  Future sendChallenge(
+      String challengee_email,
+      int challenger_points,
+      String fileName) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.set(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(challengee_email)
+              .collection(USER_CHALLENGE_COLLECTION)
+              .document(fileName),
+          {
+            'challenger_points': challenger_points,
+            'challenger_email': this.email,
+
+          });
+    });
+  }
+
+  //Function to send user assignment to OTHER user data base
+  Future updateChallenge(
+      String challengee_email,
+      int challenger_points,
+      String fileName) async {
+    return await Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(
+          Firestore.instance
+              .collection(USER_COLLECTION)
+              .document(challengee_email)
+              .collection(USER_CHALLENGE_COLLECTION)
+              .document(fileName),
+          {
+            'challenger_points': challenger_points,
+            'challenger_email': this.email,
+
+          });
+    });
+  }
+
+
+
 
   //Function to create group documents in database
   Future createGroup(
@@ -413,4 +457,20 @@ class DatabaseService {
   Stream<QuerySnapshot> getGroupsSnapshots() {
     return Firestore.instance.collection('Groups').snapshots();
   }
+
+//Function to get all the challenges in the UserChallenges Collection
+  Stream<QuerySnapshot> getChallengesSnapshots() {
+
+    return Firestore.instance
+        .collection('Users')
+        .document(this.email)
+        .collection('UserChallenges')
+        .snapshots();
+  }
+
+
+
+
+
+
 }
