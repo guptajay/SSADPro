@@ -103,9 +103,9 @@ flutter:
           weight: 400
 
 
-    - family:  MyFlutterApp
-      fonts:
-        - asset: fonts/MyFlutterApp.ttf
+   # - family:  MyFlutterApp
+   #   fonts:
+   #     - asset: fonts/MyFlutterApp.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

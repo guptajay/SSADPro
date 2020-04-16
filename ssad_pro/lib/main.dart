@@ -1,20 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 /**
  * This is the controller class which initialises the application.
  *
- * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/model/assignment.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/login.dart';
-import 'package:ssadpro/view/progress_page.dart';
 import 'package:ssadpro/view/wrapper.dart';
-import 'package:ssadpro/view/home_page.dart';
-import 'package:ssadpro/view/levelview.dart';
 
 void main() => runApp(Startup());
 
@@ -27,7 +20,6 @@ class Startup extends StatelessWidget {
     return MultiProvider(
       providers: [
         StreamProvider<User>.value(value: AuthService().user),
-        //StreamProvider <List<Assignment>>.value(value: DatabaseService().getData()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
