@@ -8,8 +8,20 @@ import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CompeteMCQPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState(question, option1, option2,
-      option3, option4, correctAnswer, world, section, state, points, email);
+  _InputPageState createState() => _InputPageState(
+      question,
+      option1,
+      option2,
+      option3,
+      option4,
+      correctAnswer,
+      world,
+      section,
+      state,
+      points,
+      email,
+      isChallenged,
+      friendPoints);
 
   final String question;
   final String option1;
@@ -22,6 +34,8 @@ class CompeteMCQPage extends StatefulWidget {
   final int state;
   final int points;
   final String email;
+  final int isChallenged;
+  final int friendPoints;
 
   CompeteMCQPage(
       this.question,
@@ -34,7 +48,9 @@ class CompeteMCQPage extends StatefulWidget {
       this.section,
       this.state,
       this.points,
-      this.email);
+      this.email,
+      this.isChallenged,
+      this.friendPoints);
 }
 
 class _InputPageState extends State<CompeteMCQPage> {
@@ -54,6 +70,8 @@ class _InputPageState extends State<CompeteMCQPage> {
   final int state;
   int points;
   final String email;
+  final int isChallenged;
+  final int friendPoints;
 
   _InputPageState(
       this.question,
@@ -66,7 +84,9 @@ class _InputPageState extends State<CompeteMCQPage> {
       this.section,
       this.state,
       this.points,
-      this.email);
+      this.email,
+      this.isChallenged,
+      this.friendPoints);
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +162,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         2,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 1) points = points + 1;
@@ -162,7 +184,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         3,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 1) points = points + 1;
@@ -170,7 +194,11 @@ class _InputPageState extends State<CompeteMCQPage> {
                                   context,
                                   CupertinoPageRoute(
                                     builder: (context) => CompeteEnd(
-                                        points: points, email: email),
+                                      points: points,
+                                      friendEmail: email,
+                                      isChallenged: isChallenged,
+                                      friendPoints: friendPoints,
+                                    ),
                                   ));
                             }
                           },
@@ -245,7 +273,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         2,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 2) points = points + 1;
@@ -265,14 +295,19 @@ class _InputPageState extends State<CompeteMCQPage> {
                                           100,
                                           3,
                                           points,
-                                          email)));
+                                          email,
+                                          isChallenged,
+                                          friendPoints)));
                             } else if (state == 3) {
                               if (correctAnswer == 2) points = points + 1;
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
                                     builder: (context) => CompeteEnd(
-                                        points: points, email: email),
+                                        points: points,
+                                        friendEmail: email,
+                                        isChallenged: isChallenged,
+                                        friendPoints: friendPoints),
                                   ));
                             }
                           },
@@ -349,7 +384,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         2,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 3) points = points + 1;
@@ -369,7 +406,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         3,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 3) points = points + 1;
@@ -377,7 +416,10 @@ class _InputPageState extends State<CompeteMCQPage> {
                                   context,
                                   CupertinoPageRoute(
                                     builder: (context) => CompeteEnd(
-                                        points: points, email: email),
+                                        points: points,
+                                        friendEmail: email,
+                                        isChallenged: isChallenged,
+                                        friendPoints: friendPoints),
                                   ));
                             }
                           },
@@ -452,7 +494,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         2,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 2) {
                               if (correctAnswer == 4) points = points + 1;
@@ -472,7 +516,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                                         100,
                                         3,
                                         points,
-                                        email),
+                                        email,
+                                        isChallenged,
+                                        friendPoints),
                                   ));
                             } else if (state == 3) {
                               if (correctAnswer == 4) points = points + 1;
@@ -480,7 +526,10 @@ class _InputPageState extends State<CompeteMCQPage> {
                                   context,
                                   CupertinoPageRoute(
                                     builder: (context) => CompeteEnd(
-                                        points: points, email: email),
+                                        points: points,
+                                        friendEmail: email,
+                                        isChallenged: isChallenged,
+                                        friendPoints: friendPoints),
                                   ));
                             }
                           },

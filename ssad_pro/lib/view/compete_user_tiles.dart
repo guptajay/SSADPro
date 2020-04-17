@@ -14,8 +14,20 @@ class CompeteUserTile extends StatelessWidget {
     return Column(children: <Widget>[
       CardView.getCard(
           context,
-          CompeteMCQPage(question[0], question[1], question[2], question[3],
-              question[4], int.parse(question[5]), 99, 99, 1, 0, user.email),
+          CompeteMCQPage(
+              question[0],
+              question[1],
+              question[2],
+              question[3],
+              question[4],
+              int.parse(question[5]),
+              99,
+              99,
+              1,
+              0,
+              user.email,
+              0,
+              0),
           user.name,
           Icons.face),
       SizedBox(height: 20),
