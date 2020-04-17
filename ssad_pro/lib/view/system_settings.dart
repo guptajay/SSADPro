@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:ssadpro/view/appbar.dart';
+import 'package:ssadpro/view/background.dart';
 import 'package:ssadpro/view/card.dart';
 import 'dart:async';
 
@@ -32,28 +33,33 @@ class _SystemSettingsState extends State<SystemSettings> {
       appBar: ReusableWidgets.getAppBar(
           "Settings", Colors.blue[600], Colors.grey[50]),
       body: Center(
-          child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: SingleChildScrollView(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+          child: Container(
+        decoration: Background.getBackground(),
+        height: MediaQuery.of(context).size.height,
+        alignment: Alignment.center,
+        child: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Column(
-                              //mainAxisAlignment: MainAxisAlignment.center,
+                        Column(
+                            //mainAxisAlignment: MainAxisAlignment.center,
 
-                              children:
-                                  List.generate(actionItems.length, (index) {
-                            return Center(
-                                child: ButtonTheme(
-                              child: actionItems[index],
-                            ));
-                          }))
-                        ])
-                  ])))),
+                            children:
+                                List.generate(actionItems.length, (index) {
+                          return Center(
+                              child: ButtonTheme(
+                            child: actionItems[index],
+                          ));
+                        }))
+                      ])
+                ]))),
+      )),
     );
   }
 

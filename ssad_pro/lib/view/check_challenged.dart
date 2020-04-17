@@ -55,7 +55,7 @@ class CheckChallengedState extends State<CheckChallenged> {
                         height: 10,
                       ),
                       Container(
-                        height: 300,
+                        height: 250,
                         child: ChallengedList(),
                       ),
                       FadeAnimation(

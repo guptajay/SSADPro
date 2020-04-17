@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/user.dart';
+import 'package:ssadpro/view/background.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/controller/progress.dart';
@@ -30,19 +31,12 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
     return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage("assets/images/space.jpg"),
-      )),
       child: Scaffold(
           appBar: ReusableWidgets.getAppBar(
               "Profile", Colors.blue[600], Colors.grey[50]),
           backgroundColor: Colors.transparent,
           body: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage("images/space.jpg"),
-              )),
+              decoration: Background.getBackground(),
               child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +48,7 @@ class _ProfileState extends State<Profile> {
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                     StreamBuilder<UserData>(
                         stream: DatabaseService(email: user.email).userData,
@@ -66,7 +60,7 @@ class _ProfileState extends State<Profile> {
                                 userData.name,
                                 style: TextStyle(
                                     fontSize: 25,
-                                    color: Color(0xFFF7B32B),
+                                    color: Colors.blue[600],
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 40),

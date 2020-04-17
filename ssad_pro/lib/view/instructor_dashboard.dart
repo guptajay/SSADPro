@@ -16,6 +16,7 @@ import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/view/student_group.dart';
+import 'package:ssadpro/view/background.dart';
 
 class InstructorDashboard extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -33,7 +34,7 @@ class InstructorDashboard extends StatelessWidget {
               child: Scaffold(
                 backgroundColor: Colors.grey[50],
                 body: Container(
-                  decoration: BoxDecoration(),
+                  decoration: Background.getBackground(),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

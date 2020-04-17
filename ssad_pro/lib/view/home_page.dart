@@ -15,7 +15,7 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/social_media.dart';
+import 'package:ssadpro/view/background.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.image});
@@ -28,12 +28,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/space_background.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: Background.getBackground(),
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

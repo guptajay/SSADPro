@@ -7,6 +7,7 @@ import 'package:ssadpro/view/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/profile.dart';
 import 'package:ssadpro/view/system_settings.dart';
+import 'package:ssadpro/view/background.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -16,13 +17,18 @@ class Settings extends StatelessWidget {
         appBar: ReusableWidgets.getAppBar(
             "Settings", Colors.blue[600], Colors.grey[50]),
         body: Center(
-            child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: SingleChildScrollView(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+            child: Container(
+          decoration: Background.getBackground(),
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: SingleChildScrollView(
+                  child: Container(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
                       Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -56,6 +62,8 @@ class Settings extends StatelessWidget {
                             CardView.getCard(context, SystemSettings(),
                                 "Settings", Icons.settings)
                           ])
-                    ])))));
+                    ]),
+              ))),
+        )));
   }
 }
