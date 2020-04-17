@@ -71,13 +71,14 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                     width: 300.0,
+                    height: 75,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                          side: BorderSide(color: Color(0xff8F2D56))),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
-                      color: Colors.blue[700],
+                      color: Color(0xff8F2D56),//0xFFA559D1,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -86,12 +87,12 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Icon(
                               Icons.blur_on,
                               color: Colors.white,
-                              size: 70,
+                              size: 50,
                             ),
                             SizedBox(
                               width: 10,
@@ -106,13 +107,14 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                     width: 300.0,
+                    height: 75,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                          side: BorderSide(color: Color(0xffFF8A2B))),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
-                      color: Colors.blue[700],
+                      color: Color(0xffFF8A2B),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -121,12 +123,12 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Icon(
-                              Icons.compare_arrows,
+                              FontAwesomeIcons.trophy,
                               color: Colors.white,
-                              size: 70,
+                              size: 50,
                             ),
                             SizedBox(
                               width: 10,
@@ -141,13 +143,14 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                     width: 300.0,
+                    height: 75,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                          side: BorderSide(color: Color(0xff139CC1))),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
-                      color: Colors.blue[700],
+                      color: Color(0xff139CC1),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -156,12 +159,12 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Icon(
                               Icons.assignment,
                               color: Colors.white,
-                              size: 60,
+                              size: 50,
                             ),
                             SizedBox(
                               width: 10,
@@ -176,23 +179,24 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                     width: 300.0,
+                    height: 75,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                          side: BorderSide(color: Color(0xff5B62AD))),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
-                      color: Colors.blue[700],
+                      color: Color(0xff5B62AD),
                       onPressed: () {
                         print('StudentAssignments');
                       },
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Icon(
-                              Icons.show_chart,
+                              FontAwesomeIcons.medal,
                               color: Colors.white,
-                              size: 70,
+                              size: 50,
                             ),
                             SizedBox(
                               width: 10,
@@ -207,13 +211,14 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                     width: 300.0,
+                    height: 75,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                          side: BorderSide(color: Color(0xff0B555B))),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
-                      color: Colors.blue[700],
+                      color: Color(0xff0B555B),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -221,12 +226,12 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Icon(
                               Icons.settings,
                               color: Colors.white,
-                              size: 60,
+                              size: 50,
                             ),
                             SizedBox(
                               width: 10,
