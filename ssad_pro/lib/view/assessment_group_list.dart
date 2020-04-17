@@ -31,7 +31,7 @@ class _AssessmentGroupListState extends State<AssessmentGroupList> {
     List<String> Groups = new List();
     for (StudentUser i in users) {
       Groups.add(i.group);
-    }
+    } 
     Groups = Set.of(Groups).toList();
     Groups.sort();
     final List<StudentUser> selecteduser = new List();

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/check_challenged.dart';
+import 'package:ssadpro/view/leaderboard.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
@@ -185,7 +186,11 @@ class HomePage extends StatelessWidget {
                       textColor: Colors.white,
                       color: Colors.blue[700],
                       onPressed: () {
-                        print('StudentAssignments');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaderboardPage()),
+                        );
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
