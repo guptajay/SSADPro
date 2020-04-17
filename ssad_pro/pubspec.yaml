@@ -37,6 +37,7 @@ dependencies:
   url_launcher: ^5.4.2
   app_settings: 3.0.1
   share: ^0.6.3+6
+  animated_background: ^1.0.5
 
 
 
@@ -75,6 +76,8 @@ flutter:
    - assets/images/man-1.png
    - assets/images/whatsapp_logo.png
    - assets/images/linkedin_logo.png
+   - assets/images/space_background.jpg
+   - assets/images/space_background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -28,6 +28,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/space_background.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -247,7 +253,7 @@ class HomePage extends StatelessWidget {
                       return LoginPage();
                     }), ModalRoute.withName('/'));
                   },
-                  color: Colors.blue[400],
+                  color: Colors.deepOrangeAccent,
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Text(
