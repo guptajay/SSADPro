@@ -52,58 +52,67 @@ class _SectionUIState extends State<SectionUI> {
       appBar: ReusableWidgets.getAppBar(
           "World $worldInt", Colors.blue[600], Colors.grey[50]),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              StreamBuilder<UserData>(
-                  stream: DatabaseService(email: user.email).userData,
-                  builder: (context, snapshot) {
-                    List<bool> sect_progress = [true, false, false, false, false];
-                    if (snapshot.hasData) {
-                      UserData userData = snapshot.data;
-                      if (worldInt <
-                          int.parse(Progress.getWorld(userData.progress)))
-                        sect_progress = [true, true, true, true, true];
-                      else {
-                        String sectionProgress =
-                            Progress.getSection(userData.progress);
-                        for (int i = 0; i < int.parse(sectionProgress); i++)
-                          sect_progress[i] = true;
+        child: Container(
+          decoration: BoxDecoration(
+              image: new DecorationImage(
+                  image: AssetImage("assets/images/space.jpg"),
+                  fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+              )
+          ),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                StreamBuilder<UserData>(
+                    stream: DatabaseService(email: user.email).userData,
+                    builder: (context, snapshot) {
+                      List<bool> sect_progress = [true, false, false, false, false];
+                      if (snapshot.hasData) {
+                        UserData userData = snapshot.data;
+                        if (worldInt <
+                            int.parse(Progress.getWorld(userData.progress)))
+                          sect_progress = [true, true, true, true, true];
+                        else {
+                          String sectionProgress =
+                              Progress.getSection(userData.progress);
+                          for (int i = 0; i < int.parse(sectionProgress); i++)
+                            sect_progress[i] = true;
+                        }
                       }
-                    }
-                    return Column(children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border(
-                          bottom: BorderSide(color: Colors.lightBlue.shade900),
-                        )),
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        height: 40,
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(title,
-                            textAlign: TextAlign.center,
-                            style:
-                                TextStyle(color: Colors.blue[600], fontSize: 20)),
-                      ),
-                      SizedBox(height: 20),
-                      SectionBox(list[0].sectionName, Colors.blue[700], context,
-                          sect_progress[0], '1', worldInt),
-                      SizedBox(height: 20),
-                      SectionBox(list[1].sectionName, Colors.blue[700], context,
-                          sect_progress[1], '2', worldInt),
-                      SizedBox(height: 20),
-                      SectionBox(list[2].sectionName, Colors.blue[700], context,
-                          sect_progress[2], '3', worldInt),
-                      SizedBox(height: 20),
-                      SectionBox(list[3].sectionName, Colors.blue[700], context,
-                          sect_progress[3], '4', worldInt),
-                      SizedBox(height: 50),
-                      SectionBox(list[4].sectionName, Color(0xffffa41b), context,
-                          sect_progress[4], '5', worldInt)
-                    ]);
-                  })
-            ],
+                      return Column(children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border(
+                            bottom: BorderSide(color: Colors.white),//lightBlue.shade900),
+                          )),
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          height: 40,
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(title,
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                        ),
+                        SizedBox(height: 20),
+                        SectionBox(list[0].sectionName, Colors.blue[700], context,
+                            sect_progress[0], '1', worldInt),
+                        SizedBox(height: 20),
+                        SectionBox(list[1].sectionName, Colors.blue[700], context,
+                            sect_progress[1], '2', worldInt),
+                        SizedBox(height: 20),
+                        SectionBox(list[2].sectionName, Colors.blue[700], context,
+                            sect_progress[2], '3', worldInt),
+                        SizedBox(height: 20),
+                        SectionBox(list[3].sectionName, Colors.blue[700], context,
+                            sect_progress[3], '4', worldInt),
+                        SizedBox(height: 50),
+                        SectionBox(list[4].sectionName, Color(0xffffa41b), context,
+                            sect_progress[4], '5', worldInt)
+                      ]);
+                    })
+              ],
+            ),
           ),
         ),
       ),
@@ -121,7 +130,7 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
           side: BorderSide(color: Colors.white)),
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       textColor: Colors.white,
-      color: (sect_progress == true) ? color : Colors.red,
+      color: (sect_progress == true) ? Color(0xffE2950F) : Color(0xffC17211),
       onPressed: () {
         if (sect_progress == true) {
           List<String> question =
