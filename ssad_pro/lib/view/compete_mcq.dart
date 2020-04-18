@@ -1,3 +1,10 @@
+/**
+ * This class return the mcq pages for 
+ * compete mode of each student.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
@@ -552,19 +559,6 @@ class _InputPageState extends State<CompeteMCQPage> {
                 ),
               ],
             )),
-            // RaisedButton(
-            //   child: Text('Retrieve Data'),
-            //   onPressed: () async {
-            //     print(await getData("mcq"));
-            //     print("____________________________________________");
-            //   },
-            // ),
-            // RaisedButton(
-            //   child: Text('Delete Data'),
-            //   onPressed: () {
-            //     deleteData("mcq");
-            //   },
-            // )
           ],
         ));
   }

@@ -1,3 +1,10 @@
+/**
+ * This class implements logic to end a test and display
+ * the achieved score based on answers inputted.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/controller/add_compete_score.dart';
@@ -24,8 +31,6 @@ class CompeteEndState extends State<CompeteEnd> {
   @override
   Widget build(BuildContext context) {
     String userMsg;
-
-    // User user = Provider.of<User>(context);
     print(widget.isChallenged);
     if (widget.isChallenged == 0) {
       userMsg = "Challenge to your selected friend sent successfully!";

@@ -1,5 +1,6 @@
 /**
- * This class implements the parameterised card button. 
+ * This class implements the parameterised card button
+ * which is used in subsequent classes. 
  *
  * @author Jay Gupta
  */

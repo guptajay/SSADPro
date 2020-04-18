@@ -1,9 +1,14 @@
+/**
+ * This class implements the logic and home page for 
+ * the compete mode of the application.
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/user_list.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/compete_friend_list.dart';
 
@@ -61,23 +66,19 @@ class Compete extends StatelessWidget {
                             Expanded(child: CompeteFriendList())
                           ]),
                     ))
-                //UserList() Prints all the registered users of the application
                 )));
   }
 }
 
 void _showDialogBox(BuildContext context) {
-  // flutter defined function
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      // return object of type Dialog
       return AlertDialog(
         title: new Text("Alert"),
         content: new Text(
             "You have been challenged by another friend! Please complete the challenge by clicking on the button below"),
         actions: <Widget>[
-          // usually buttons at the bottom of the dialog
           new FlatButton(
             child: new Text("Complete Challenge"),
             onPressed: () {

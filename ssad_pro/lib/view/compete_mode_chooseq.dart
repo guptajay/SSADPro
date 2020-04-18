@@ -1,5 +1,11 @@
-import 'package:flutter/material.dart';
+/**
+ * This class return the list of questions to 
+ * choose from in compete mode.
+ *
+ * @author Mac Milin
+ */
 
+import 'package:flutter/material.dart';
 
 class QCheckList extends StatelessWidget {
   @override
@@ -10,13 +16,9 @@ class QCheckList extends StatelessWidget {
             title: Text("Questions Select"),
           ),
           body: SafeArea(
-              child : Center(
-
-                child:CheckboxWidget(),
-
-              )
-          )
-      ),
+              child: Center(
+            child: CheckboxWidget(),
+          ))),
     );
   }
 }
@@ -27,7 +29,6 @@ class CheckboxWidget extends StatefulWidget {
 }
 
 class CheckboxWidgetState extends State {
-
   Map<String, bool> values = {
     'Q1': false,
     'Q2': false,
@@ -38,7 +39,6 @@ class CheckboxWidgetState extends State {
     'O7': false,
     'O8': false,
     'O9': false,
-
   };
 
   var tmpArray = [];
@@ -49,23 +49,15 @@ class CheckboxWidgetState extends State {
         tmpArray.add(key);
       }
     });
-
-    // Printing all selected items on Terminal screen.
     print(tmpArray);
-    // Here you will get all your selected Checkbox items.
-
-    // Clear array after use.
     tmpArray.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-
-
       Expanded(
-        child:
-        ListView(
+        child: ListView(
           children: values.keys.map((String key) {
             return new CheckboxListTile(
               title: new Text(key),
@@ -82,7 +74,10 @@ class CheckboxWidgetState extends State {
         ),
       ),
       RaisedButton(
-        child: Text(" Add Questions ", style: TextStyle(fontSize: 18),),
+        child: Text(
+          " Add Questions ",
+          style: TextStyle(fontSize: 18),
+        ),
         onPressed: getCheckboxItems,
         color: Colors.blueGrey,
         textColor: Colors.white,

@@ -1,3 +1,10 @@
+/**
+ * This class return the list of students who
+ * can be challenged in compete mode.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/model/student_user.dart';
