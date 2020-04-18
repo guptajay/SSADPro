@@ -127,7 +127,7 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
     child: RaisedButton(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
-          side: BorderSide(color: Colors.white)),
+          side: BorderSide(color: Colors.black)),
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       textColor: Colors.white,
       color: (sect_progress == true) ? Color(0xff2C8E29) : Color(0xffD35A26),

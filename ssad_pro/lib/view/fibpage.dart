@@ -71,6 +71,13 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                 removeTop: true,
                 child: SingleChildScrollView(
                   child: Container(
+                    decoration: BoxDecoration(
+                        image: new DecorationImage(
+                            image: AssetImage("assets/images/space.jpg"),
+                            fit: BoxFit.cover,
+                            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                        )
+                    ),
                     height: 600,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,

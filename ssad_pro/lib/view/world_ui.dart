@@ -192,7 +192,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+                side: BorderSide(color: Colors.black)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
             color: Color(0xff2C8E29), //Colors.blue[700],
@@ -252,10 +252,10 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+                side: BorderSide(color: Colors.black)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
-            disabledColor: Color(0xffD35A26),//(0xffD35A26),//0xffD34C13),//0,//Colors.red[400],
+            disabledColor: Color(0xffD3550C),//(0xffD35A26),//0xffD34C13),//0,//Colors.red[400],
             onPressed: null,
             child: Column(
               children: <Widget>[
