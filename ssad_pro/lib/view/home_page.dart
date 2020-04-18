@@ -31,7 +31,13 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.grey[50],
         body: SingleChildScrollView(
           child: Container(
-            decoration: Background.getBackground(),
+            decoration: BoxDecoration(
+                image: new DecorationImage(
+                  image: AssetImage("assets/images/space.jpg"),
+                  fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.75), BlendMode.dstATop)
+              )
+            ),//Background.getBackground(),
             child: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +56,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Colors.white),
                   ),
                   StreamBuilder<UserData>(
                       stream: DatabaseService(email: user.email).userData,
@@ -62,7 +68,7 @@ class HomePage extends StatelessWidget {
                               userData.name,
                               style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.blue[600],
+                                  color: Color(0xffFFAF02),
                                   fontWeight: FontWeight.bold),
                             )
                           ]);
@@ -75,6 +81,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                       width: 300.0,
+                      height: 75,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -90,12 +97,12 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(
-                                Icons.blur_on,
+                                FontAwesomeIcons.rocket,
                                 color: Colors.white,
-                                size: 70,
+                                size: 50,
                               ),
                               SizedBox(
                                 width: 10,
@@ -110,6 +117,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                       width: 300.0,
+                      height: 75,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -125,7 +133,7 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(
                                 FontAwesomeIcons.trophy,
@@ -145,6 +153,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                       width: 300.0,
+                      height: 75,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -160,7 +169,7 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(
                                 Icons.assignment,
@@ -180,6 +189,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                       width: 300.0,
+                      height: 75,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -195,12 +205,12 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(
                                 FontAwesomeIcons.medal,
                                 color: Colors.white,
-                                size: 60,
+                                size: 50,
                               ),
                               SizedBox(
                                 width: 10,
@@ -215,6 +225,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                       width: 300.0,
+                      height: 75,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -229,7 +240,7 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(
                                 Icons.settings,
