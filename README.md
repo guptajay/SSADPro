@@ -56,10 +56,11 @@ Run the following steps to set up your environment:
 
 To run an example, switch to that SSADPro's directory, and use `flutter run`. Make sure you have an emulator running, or a device connected over USB and debugging enabled on that device.
 
-> Flutter Environment Setup Guide retrieved from [here](https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment).
-
 * `cd SSADPro/ssad_pro`
 * `flutter run`
+
+> Flutter Environment Setup Guide retrieved from [here](https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment).
+
 
 ## Authors
 
