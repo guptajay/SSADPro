@@ -195,7 +195,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
-            color: Color(0xffE2950F), //Colors.blue[700],
+            color: Color(0xff2C8E29), //Colors.blue[700],
             onPressed: () {
               Navigator.push(
                 cont,
@@ -255,7 +255,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
-            disabledColor: Color(0xffC17211),//Colors.red[400],
+            disabledColor: Color(0xffD35A26),//(0xffD35A26),//0xffD34C13),//0,//Colors.red[400],
             onPressed: null,
             child: Column(
               children: <Widget>[

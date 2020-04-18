@@ -130,7 +130,7 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
           side: BorderSide(color: Colors.white)),
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       textColor: Colors.white,
-      color: (sect_progress == true) ? Color(0xffE2950F) : Color(0xffC17211),
+      color: (sect_progress == true) ? Color(0xff2C8E29) : Color(0xffD35A26),
       onPressed: () {
         if (sect_progress == true) {
           List<String> question =
