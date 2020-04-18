@@ -65,7 +65,8 @@ class AuthService {
     List<String> students5 = ['Rachel', 'Michael', 'Johnson'];
 
     //Comment this part to avoid resetting the database when the user logs in
-    DatabaseService(email: user.email).updateStudentUserData(
+    if(DatabaseService(email: user.email).getRegState() == 0) {
+      DatabaseService(email: user.email).updateStudentUserData(
         user.displayName,
         '0',
         user.email,
@@ -73,23 +74,45 @@ class AuthService {
         points,
         dates,
         total_attempts,
-        'userDetails');
+        1);
 
-    DatabaseService(email: user.email).updateUserAssignment(
-        'A1', 'T1', 'Active', 'C1', questions, answers, 'Due Date', 'A1');
-    DatabaseService(email: user.email).updateUserAssignment(
-        'A2', 'T2', 'Active', 'C2', questions, answers, 'Due Date', 'A2');
-    DatabaseService(email: user.email).updateUserAssignment(
-        'A3', 'T3', 'Inactive', 'C3', questions, answers, 'Due Date', 'A3');
+      DatabaseService(email: user.email).updateUserAssignment(
+          'A1',
+          'T1',
+          'Active',
+          'C1',
+          questions,
+          answers,
+          'Due Date',
+          'A1');
+      DatabaseService(email: user.email).updateUserAssignment(
+          'A2',
+          'T2',
+          'Active',
+          'C2',
+          questions,
+          answers,
+          'Due Date',
+          'A2');
+      DatabaseService(email: user.email).updateUserAssignment(
+          'A3',
+          'T3',
+          'Inactive',
+          'C3',
+          questions,
+          answers,
+          'Due Date',
+          'A3');
 
-    DatabaseService().updateQuestions(questions, answers, 'easy');
-    DatabaseService().updateQuestions(questions, answers, 'difficult');
+      DatabaseService().updateQuestions(questions, answers, 'easy');
+      DatabaseService().updateQuestions(questions, answers, 'difficult');
 
-    DatabaseService().createGroup('CZ3003', 'SS1', students1);
-    DatabaseService().createGroup('CZ3003','SS2', students2);
-    DatabaseService().createGroup('CZ3003','SS3', students3);
-    DatabaseService().createGroup('CZ3003','SS4', students4);
-    DatabaseService().createGroup('CZ3003','SS5', students5);
+      DatabaseService().createGroup('CZ3003', 'SS1', students1);
+      DatabaseService().createGroup('CZ3003', 'SS2', students2);
+      DatabaseService().createGroup('CZ3003', 'SS3', students3);
+      DatabaseService().createGroup('CZ3003', 'SS4', students4);
+      DatabaseService().createGroup('CZ3003', 'SS5', students5);
+    }
 
     name = user.displayName;
     email = user.email;

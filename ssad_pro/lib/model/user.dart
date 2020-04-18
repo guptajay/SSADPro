@@ -20,8 +20,9 @@ class UserData {
   final List <dynamic> dates;
   final List <dynamic> points;
   final int total_attempts;
+  final int reg_state;
 
-  UserData({this.name, this.group, this.email, this.progress, this.total_attempts, this.dates, this.points});
+  UserData({this.name, this.group, this.email, this.progress, this.total_attempts, this.dates, this.points, this.reg_state});
 
 
 }
