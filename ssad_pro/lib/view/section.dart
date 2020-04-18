@@ -1,8 +1,14 @@
+/**
+ * This class return the page layout displaying
+ * sections of each world.
+ * 
+ * @author Ritik Bhatia
+ */
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/progress.dart';
@@ -37,7 +43,7 @@ class _SectionUIState extends State<SectionUI> {
       {Key key,
       @required this.list,
       @required this.worldInt,
-      @required this.title}); //: super(key: key);
+      @required this.title});
   @override
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
@@ -52,7 +58,6 @@ class _SectionUIState extends State<SectionUI> {
             StreamBuilder<UserData>(
                 stream: DatabaseService(email: user.email).userData,
                 builder: (context, snapshot) {
-                  //five entries in section progress: 4 sections and 1 final
                   List<bool> sect_progress = [true, false, false, false, false];
                   if (snapshot.hasData) {
                     UserData userData = snapshot.data;
@@ -97,9 +102,6 @@ class _SectionUIState extends State<SectionUI> {
                         sect_progress[4], '5', worldInt)
                   ]);
                 })
-//          Row(
-//            children: <Widget>[SectionBox('abc'), SectionBox('abc')],
-//          ),
           ],
         ),
       ),

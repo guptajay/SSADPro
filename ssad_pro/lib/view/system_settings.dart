@@ -1,8 +1,14 @@
+/**
+ * This class return the page layout displaying
+ * system setting of the application.
+ * 
+ * @author Ritik Bhatia
+ */
+
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/background.dart';
-import 'package:ssadpro/view/card.dart';
 import 'dart:async';
 
 class SystemSettings extends StatefulWidget {
@@ -13,16 +19,12 @@ class SystemSettings extends StatefulWidget {
 class _SystemSettingsState extends State<SystemSettings> {
   @override
   void initState() {
-    /// Call out to intialize platform state.
     initPlatformState();
     super.initState();
   }
 
   /// Initialize platform state.
   Future<void> initPlatformState() async {
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
   }
 
@@ -48,8 +50,6 @@ class _SystemSettingsState extends State<SystemSettings> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Column(
-                            //mainAxisAlignment: MainAxisAlignment.center,
-
                             children:
                                 List.generate(actionItems.length, (index) {
                           return Center(
@@ -63,7 +63,6 @@ class _SystemSettingsState extends State<SystemSettings> {
     );
   }
 
-  /// Dispose method to close out and cleanup objects.
   @override
   void dispose() {
     super.dispose();

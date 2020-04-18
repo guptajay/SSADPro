@@ -1,5 +1,6 @@
 /**
- * This class implements the UI of the text fields. 
+ * This class implements the UI of the text fields.
+ * which are used in the application.
  *
  * @author Jay Gupta
  */

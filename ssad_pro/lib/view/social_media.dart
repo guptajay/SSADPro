@@ -1,8 +1,9 @@
-// Copyright 2019 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// ignore_for_file: public_member_api_docs
+/**
+ * This class return the logic of incorporating
+ * social media in the application.
+ * 
+ * @author Jay Gupta
+ */
 
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -49,13 +50,6 @@ class SocialMediaState extends State<SocialMedia> {
                         )
                       ])),
               onPressed: () {
-                // A builder is used to retrieve the context immediately
-                // surrounding the RaisedButton.
-                //
-                // The context's `findRenderObject` returns the first
-                // RenderObject in its descendent tree when it's not
-                // a RenderObjectWidget. The RaisedButton's RenderObject
-                // has its position and size after it's built.
                 final RenderBox box = context.findRenderObject();
                 Share.share(widget.shareText,
                     subject: "No Subject",

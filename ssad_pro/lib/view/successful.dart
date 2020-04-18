@@ -1,11 +1,15 @@
+/**
+ * This class return the successful message when 
+ * assignment is sent by one student to another.
+ * 
+ * @author Ritik Bhatia
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
-import 'package:ssadpro/model/Instructor.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
 import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/view/text_field.dart';
-import 'package:ssadpro/view/questions.dart';
 import 'package:ssadpro/model/student_user.dart';
 
 class Sucessfull extends StatefulWidget {
@@ -32,7 +36,6 @@ class SucessfullState extends State<Sucessfull> {
   @override
   Widget build(BuildContext context) {
     DatabaseService db = new DatabaseService();
-
     List<StudentUser> students = widget.allStudent;
     List<StudentUser> selectedStudents = new List();
 

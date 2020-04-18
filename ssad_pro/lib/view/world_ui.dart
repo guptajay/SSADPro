@@ -1,14 +1,19 @@
+/**
+ * This class return the page layout displaying
+ * the 5 Worlds of our application.
+ *  
+ * @author Ritik Bhatia
+ */
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/Section.dart';
-import 'package:ssadpro/view/settings.dart';
 import 'section.dart';
 import 'package:ssadpro/model/World.dart';
 import 'package:ssadpro/model/Student.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'dart:convert';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/progress.dart';
@@ -25,61 +30,6 @@ class WorldUI extends StatefulWidget {
 }
 
 class _WorldUIState extends State<WorldUI> {
-//  TextEditingController keyInputController = new TextEditingController();
-//  TextEditingController valueInputController = new TextEditingController();
-//
-//  File jsonFile;
-//  Directory dir;
-//  String fileName = 'myJSONFile.json';
-//  bool fileExists = false;
-//  Map<String, String> fileContent;
-//
-//  @override
-//  void initState() {
-//    super.initState();
-//    getApplicationDocumentsDirectory().then((Directory directory) {
-//      dir = directory;
-//      jsonFile = new File(dir.path + "/" + fileName);
-//      fileExists = jsonFile.existsSync();
-//      if (fileExists)
-//        this.setState(
-//            () => fileContent = json.decode(jsonFile.readAsStringSync()));
-//    });
-//  }
-//
-//  @override
-//  void dispose() {
-//    keyInputController.dispose();
-//    valueInputController.dispose();
-//    super.dispose();
-//  }
-//
-//  void createFile(
-//      Map<String, dynamic> content, Directory dir, String fileName) {
-//    print("Creating file!");
-//    File file = new File(dir.path + "/" + fileName);
-//    file.createSync();
-//    fileExists = true;
-//    file.writeAsStringSync(json.encode(content));
-//  }
-//
-//  void writeToFile(String key, dynamic value) {
-//    print("Writing to file!");
-//    Map<String, dynamic> content = {key: value};
-//    if (fileExists) {
-//      print("File exists");
-//      Map<String, dynamic> jsonFileContent =
-//          json.decode(jsonFile.readAsStringSync());
-//      jsonFileContent.addAll(content);
-//      jsonFile.writeAsStringSync(json.encode(jsonFileContent));
-//    } else {
-//      print("File does not exist!");
-//      createFile(content, dir, fileName);
-//    }
-//    this.setState(() => fileContent = json.decode(jsonFile.readAsStringSync()));
-//    print(fileContent);
-//  }
-
   final int renderForward;
   final int worldToRender;
   _WorldUIState(this.renderForward, this.worldToRender);
@@ -94,13 +44,9 @@ class _WorldUIState extends State<WorldUI> {
 
   @override
   Widget build(BuildContext context) {
-    //---------------------------------------------------------------------------------
-    //Logged in user
     User user = Provider.of<User>(context);
 
-    //Mock Data
     Student stu1 = Student(userName: user.email);
-    // stu1.updateUnlockedWorld(); //to Unlock next world for this student.
 
     Section sec1 = new Section();
     sec1.sectionInt = 1;
@@ -166,18 +112,7 @@ class _WorldUIState extends State<WorldUI> {
     world4.worldInt = 4;
     world5.worldInt = 5;
 
-    List<World> worldlist = [
-      world1,
-      world2,
-      world3,
-      world4,
-      world5
-    ]; //Each world consists of 4 section . but now only world1,world2 has sections.
-//--------------------------------------------------------------------------------------
-//    String json = jsonEncode(world1);
-//    Map<String, dynamic> user = jsonDecode(json);
-//    print(user['worldInt']);
-//    user['world1']
+    List<World> worldlist = [world1, world2, world3, world4, world5];
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
@@ -297,32 +232,6 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
         ),
       ],
     );
-
-//    return Stack(
-//      children: <Widget>[
-//        Container(
-//          margin: EdgeInsets.only(left: 80, top: 60),
-//          width: 100,
-//          height: 100,
-//          color: Colors.blue[300],
-//          child: FlatButton(
-//            child: Text('World $WorldID'),
-//            onPressed: () {
-//              Navigator.push(
-//                cont,
-//                MaterialPageRoute(
-//                  builder: (cont) => SectionUI(
-//                    list: wlist[index].sectionList,
-//                    worldInt: wlist[index].worldInt,
-//                  ),
-//                ),
-//              );
-//            },
-//          ),
-//        ),
-//      ],
-//    );
-
   } else {
     return Stack(
       children: <Widget>[
@@ -374,35 +283,6 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
     );
   }
 }
-//
-//Column(
-//crossAxisAlignment: CrossAxisAlignment.center,
-//children: <Widget>[
-//SizedBox(height: 50),
-//Row(
-//children: <Widget>[
-//WorldBox(worldlist[0].worldInt.toString(), context,
-//stu1.unlockedWorldBool, worldlist, 0),
-//WorldBox(worldlist[1].worldInt.toString(), context,
-//stu1.unlockedWorldBool, worldlist, 1),
-//],
-//),
-//Row(
-//children: <Widget>[
-//WorldBox(worldlist[2].worldInt.toString(), context,
-//stu1.unlockedWorldBool, worldlist, 2),
-//WorldBox(worldlist[3].worldInt.toString(), context,
-//stu1.unlockedWorldBool, worldlist, 3),
-//],
-//),
-//Row(
-//children: <Widget>[
-//WorldBox(worldlist[4].worldInt.toString(), context,
-//stu1.unlockedWorldBool, worldlist, 4),
-//],
-//),
-//],
-//),
 
 Future<String> get _localPath async {
   final directory = await getApplicationDocumentsDirectory();
