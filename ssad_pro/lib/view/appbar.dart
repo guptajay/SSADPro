@@ -19,7 +19,7 @@ class ReusableWidgets {
         brightness: Brightness.light,
         elevation: 0,
         iconTheme: IconThemeData(
-          color: border, //change your color here
+          color: border,
         ),
         bottom: PreferredSize(
             child: Container(
@@ -29,7 +29,7 @@ class ReusableWidgets {
             preferredSize: Size.fromHeight(4.0)));
   }
 
-  static getBox1(){
+  static getBox1() {
     return Container(
       padding: EdgeInsets.only(left: 40, right: 40),
       child: SizedBox(
@@ -44,8 +44,7 @@ class ReusableWidgets {
             color: Colors.grey[300],
             onPressed: () {},
             child: Padding(
-              padding:
-              const EdgeInsets.only(top: 60.0, bottom: 60),
+              padding: const EdgeInsets.only(top: 60.0, bottom: 60),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

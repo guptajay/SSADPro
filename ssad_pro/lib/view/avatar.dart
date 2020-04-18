@@ -1,23 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/**
+ * This class implements layout of page
+ * which shows avatars to choose from.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/assignmentList.dart';
 import 'package:ssadpro/view/home_page.dart';
-import 'package:ssadpro/view/background.dart';
-import 'package:ssadpro/view/login.dart';
-import 'package:ssadpro/view/profile.dart';
-import 'package:ssadpro/view/world_ui.dart';
 import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/compete.dart';
-import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:ssadpro/view/background.dart';
 
 /**
  * Avatar Credits
@@ -33,14 +28,7 @@ class Avatar extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    //Assignment assignment = Provider.of<Assignment>(context);
-
-//    var assignments = Provider.of<List<Assignment>>(context);
-
-    // return StreamProvider<List<StudentUser>>.value(
     User user = Provider.of<User>(context);
-    // value: DatabaseService().users,
-
     return Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: ReusableWidgets.getAppBar(

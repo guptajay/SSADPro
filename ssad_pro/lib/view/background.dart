@@ -1,3 +1,8 @@
+/**
+ * This class gets the image used as a theme
+ * for our application.
+ */
+
 import 'package:flutter/material.dart';
 
 class Background {

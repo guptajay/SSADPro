@@ -1,10 +1,14 @@
+/**
+ * This class implements logic to fetch the list of
+ * groups to which different students belong.
+ *
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/group_tile.dart';
-//import 'package:ssadpro/controller/list_modifier.dart';
-import 'package:ssadpro/controller/database.dart';
 
 class AssessmentGroupList extends StatefulWidget {
   @override
@@ -27,7 +31,6 @@ class _AssessmentGroupListState extends State<AssessmentGroupList> {
   @override
   Widget build(BuildContext context) {
     final users = Provider.of<List<StudentUser>>(context) ?? [];
-    // final List<StudentUser> selected_users = new List(users.length) ?? [];
     List<String> Groups = new List();
     for (StudentUser i in users) {
       Groups.add(i.group);
