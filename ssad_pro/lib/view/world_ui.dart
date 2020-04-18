@@ -117,6 +117,7 @@ class _WorldUIState extends State<WorldUI> {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "Adventure", Colors.blue[600], Colors.grey[50]),
+        //extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(
@@ -194,7 +195,7 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
-            color: Colors.blue[700],
+            color: Color(0xffE2950F), //Colors.blue[700],
             onPressed: () {
               Navigator.push(
                 cont,
@@ -254,8 +255,8 @@ Stack WorldBox(String WorldID, BuildContext cont, List<bool> unlockedList,
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             textColor: Colors.white,
-            color: Colors.red[400],
-            onPressed: () {},
+            disabledColor: Color(0xffC17211),//Colors.red[400],
+            onPressed: null,
             child: Column(
               children: <Widget>[
                 Row(
@@ -335,7 +336,7 @@ nextPage(BuildContext context, int renderForward, List<World> worldlist,
   Color btnColor;
   if (renderForward == 0) {
     message = "Please complete all activies in the Level to unlock a Section";
-    btnColor = Colors.grey[300];
+    btnColor = Colors.white.withOpacity(0.5); //Colors.grey[300];
   } else {
     message =
         "Congrats! You have completed the level. Proceed to the next section";

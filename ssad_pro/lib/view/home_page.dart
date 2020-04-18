@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                         textColor: Colors.white,
-                        color: Color(0xff9E0041),
+                        color: Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -124,7 +124,7 @@ class HomePage extends StatelessWidget {
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                         textColor: Colors.white,
-                        color: Color(0xffE2950F),
+                        color: Color(0xff49A5B7),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -160,7 +160,7 @@ class HomePage extends StatelessWidget {
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                         textColor: Colors.white,
-                        color: Color(0xff38B5B2),
+                        color: Color(0xff9E0041),
                         onPressed: () {
                           Navigator.push(
                             context,
