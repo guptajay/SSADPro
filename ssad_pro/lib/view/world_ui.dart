@@ -117,48 +117,59 @@ class _WorldUIState extends State<WorldUI> {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "Adventure", Colors.blue[600], Colors.grey[50]),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              StreamBuilder<UserData>(
-                  stream: DatabaseService(email: user.email).userData,
-                  builder: (context, snapshot) {
-                    UserData userData;
-                    if (snapshot.hasData) {
-                      userData = snapshot.data;
-                      String worldProgress =
-                          Progress.getWorld(userData.progress);
-                      int unlockedLength = stu1.unlockedWorldBool.length;
-                      for (int i = unlockedLength;
-                          i < int.parse(worldProgress);
-                          i++) {
-                        stu1.unlockedWorldBool.add(true);
-                      }
-                    }
-                    return Column(
-                      children: <Widget>[
-                        Container(
-                            child: nextPage(context, renderForward, worldlist,
-                                worldToRender, titles, userData)),
-                        SizedBox(height: 20),
-                        WorldBox(worldlist[0].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 0, titles[0]),
-                        SizedBox(height: 20),
-                        WorldBox(worldlist[1].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 1, titles[1]),
-                        SizedBox(height: 20),
-                        WorldBox(worldlist[2].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 2, titles[2]),
-                        SizedBox(height: 20),
-                        WorldBox(worldlist[3].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 3, titles[3]),
-                        SizedBox(height: 20),
-                        WorldBox(worldlist[4].worldInt.toString(), context,
-                            stu1.unlockedWorldBool, worldlist, 4, titles[4])
-                      ],
-                    );
-                  })
-            ],
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+                image: new DecorationImage(
+                    image: AssetImage("assets/images/space.jpg"),
+                    fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                )
+            ),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  StreamBuilder<UserData>(
+                      stream: DatabaseService(email: user.email).userData,
+                      builder: (context, snapshot) {
+                        UserData userData;
+                        if (snapshot.hasData) {
+                          userData = snapshot.data;
+                          String worldProgress =
+                              Progress.getWorld(userData.progress);
+                          int unlockedLength = stu1.unlockedWorldBool.length;
+                          for (int i = unlockedLength;
+                              i < int.parse(worldProgress);
+                              i++) {
+                            stu1.unlockedWorldBool.add(true);
+                          }
+                        }
+                        return Column(
+                          children: <Widget>[
+                            Container(
+                                child: nextPage(context, renderForward, worldlist,
+                                    worldToRender, titles, userData)),
+                            SizedBox(height: 20),
+                            WorldBox(worldlist[0].worldInt.toString(), context,
+                                stu1.unlockedWorldBool, worldlist, 0, titles[0]),
+                            SizedBox(height: 20),
+                            WorldBox(worldlist[1].worldInt.toString(), context,
+                                stu1.unlockedWorldBool, worldlist, 1, titles[1]),
+                            SizedBox(height: 20),
+                            WorldBox(worldlist[2].worldInt.toString(), context,
+                                stu1.unlockedWorldBool, worldlist, 2, titles[2]),
+                            SizedBox(height: 20),
+                            WorldBox(worldlist[3].worldInt.toString(), context,
+                                stu1.unlockedWorldBool, worldlist, 3, titles[3]),
+                            SizedBox(height: 20),
+                            WorldBox(worldlist[4].worldInt.toString(), context,
+                                stu1.unlockedWorldBool, worldlist, 4, titles[4])
+                          ],
+                        );
+                      })
+                ],
+              ),
+            ),
           ),
         ));
   }
