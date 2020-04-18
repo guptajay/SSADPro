@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/background.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.image});
@@ -112,7 +113,7 @@ class HomePage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side: BorderSide(color: Colors.white)),
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                       textColor: Colors.white,
                       color: Colors.blue[700],
                       onPressed: () {
@@ -126,12 +127,12 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
-                              Icons.compare_arrows,
+                              FontAwesomeIcons.trophy,
                               color: Colors.white,
-                              size: 70,
+                              size: 50,
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 15,
                             ),
                             Text("Compete",
                                 style: TextStyle(
@@ -196,9 +197,9 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
-                              Icons.show_chart,
+                              FontAwesomeIcons.medal,
                               color: Colors.white,
-                              size: 70,
+                              size: 60,
                             ),
                             SizedBox(
                               width: 10,

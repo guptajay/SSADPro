@@ -12,6 +12,17 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/model/user.dart';
+import 'package:ssadpro/view/background.dart';
+
+/**
+ * Avatar Credits
+ * Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ * Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ * Icons made by <a href="https://www.flaticon.com/authors/payungkead" title="Payungkead">Payungkead</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ * Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ * Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ * Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+ */
 
 class Avatar extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -23,7 +34,7 @@ class Avatar extends StatelessWidget {
         appBar: ReusableWidgets.getAppBar(
             "Choose Avatar", Colors.blue[600], Colors.grey[50]),
         body: Container(
-          decoration: BoxDecoration(),
+          decoration: Background.getBackground(),
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -33,9 +44,9 @@ class Avatar extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       CircleImage(
-                          image: "assets/images/boy.png", title: "Gentle"),
+                          image: "assets/images/ufo.png", title: "Alien"),
                       CircleImage(
-                          image: "assets/images/boy-1.png", title: "Cool"),
+                          image: "assets/images/alien.png", title: "Monster"),
                     ],
                   ),
                   SizedBox(
@@ -44,9 +55,10 @@ class Avatar extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       CircleImage(
-                          image: "assets/images/girl.png", title: "Obedient"),
+                          image: "assets/images/monster.png", title: "One Eye"),
                       CircleImage(
-                          image: "assets/images/girl-1.png", title: "Genius"),
+                          image: "assets/images/astronaut.png",
+                          title: "Astronaut"),
                     ],
                   ),
                   SizedBox(
@@ -55,9 +67,11 @@ class Avatar extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       CircleImage(
-                          image: "assets/images/man.png", title: "Swaggy"),
+                          image: "assets/images/satellite.png",
+                          title: "Swag Satellite"),
                       CircleImage(
-                          image: "assets/images/man-1.png", title: "Boss"),
+                          image: "assets/images/rocket.png",
+                          title: "Super Rocket"),
                     ],
                   )
                 ]),
@@ -99,6 +113,7 @@ class CircleImage extends StatelessWidget {
                   height: _size,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      color: Colors.grey[200],
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(

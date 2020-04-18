@@ -14,26 +14,25 @@ import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/controller/score_list.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/controller/progress.dart';
 
 class ProgressPage extends StatefulWidget {
-  final UserData userdata;
-  final Widget child;
+  final String userdata;
+  // final Widget child;
 
-  ProgressPage({Key key, this.child, this.userdata}) : super(key: key);
+  ProgressPage({this.userdata});
 
-  _HomePageState createState() => _HomePageState();
+  _ProgressPageState createState() => _ProgressPageState();
 }
 
-class _HomePageState extends State<ProgressPage> {
+class _ProgressPageState extends State<ProgressPage> {
   List<charts.Series<Score, String>> _seriesData;
   List<charts.Series<Task, String>> _seriesPieData;
   List<charts.Series<Task, String>> _seriesPieData1;
   List<charts.Series<Task, String>> _seriesPieData2;
 
-  double worlds = 3;
-  double sections = 7;
-  double levels = 2;
   final abc = ScoreList();
+  // final String userProgress;
   int flag = 0;
   int len;
 
@@ -50,7 +49,7 @@ class _HomePageState extends State<ProgressPage> {
   @override
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
-
+    print(widget.userdata);
     return StreamBuilder<UserData>(
       stream: DatabaseService(email: user.email).userData,
       builder: (context, snapshot) {
@@ -58,8 +57,83 @@ class _HomePageState extends State<ProgressPage> {
           UserData userData = snapshot.data;
           List<dynamic> points = userData.points.toList();
           print(points);
-          _generateData(points);
           len = points.length;
+          double worlds = double.parse(Progress.getWorld(widget.userdata));
+          double sections = (worlds - 1) * 5 +
+              double.parse(Progress.getSection(widget.userdata));
+          double levels = (worlds - 1) * 15 +
+              double.parse(Progress.getLevel(widget.userdata));
+          //_generateData(points);
+          print(widget.userdata);
+          // function body of generatePoints
+          List<Score> data1 = [];
+
+          for (var i = 0; i < len; i++) {
+            data1.add(Score(1, i + 1, points[i]));
+          }
+
+          var piedata = [
+            new Task('Worlds Completed', worlds, Colors.blue[600]),
+            new Task('Worlds Left', 5.0 - worlds, Colors.blue[100]),
+          ];
+
+          var sectiondata = [
+            new Task('Sections Completed', sections, Colors.blue[600]),
+            new Task('Sections Left', 5.0 * 5.0 - sections, Colors.blue[100]),
+          ];
+
+          var leveldata = [
+            new Task('Levels Completed', levels, Colors.blue[600]),
+            new Task('Levels Left', 5.0 * 5.0 * 3.0 - levels, Colors.blue[100]),
+          ];
+
+          _seriesData.add(
+            charts.Series(
+              domainFn: (Score score, _) => score.date.toString(),
+              measureFn: (Score score, _) => score.quantity,
+              id: '1',
+              data: data1,
+              fillPatternFn: (_, __) => charts.FillPatternType.solid,
+              fillColorFn: (Score score, _) =>
+                  charts.ColorUtil.fromDartColor(Colors.blue[100]),
+            ),
+          );
+
+          _seriesPieData.add(
+            charts.Series(
+              domainFn: (Task task, _) => task.task,
+              measureFn: (Task task, _) => task.taskvalue,
+              colorFn: (Task task, _) =>
+                  charts.ColorUtil.fromDartColor(task.colorval),
+              id: 'World Progress',
+              data: piedata,
+              labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+            ),
+          );
+
+          _seriesPieData1.add(
+            charts.Series(
+              domainFn: (Task task, _) => task.task,
+              measureFn: (Task task, _) => task.taskvalue,
+              colorFn: (Task task, _) =>
+                  charts.ColorUtil.fromDartColor(task.colorval),
+              id: 'Section Progress',
+              data: sectiondata,
+              labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+            ),
+          );
+
+          _seriesPieData2.add(
+            charts.Series(
+              domainFn: (Task task, _) => task.task,
+              measureFn: (Task task, _) => task.taskvalue,
+              colorFn: (Task task, _) =>
+                  charts.ColorUtil.fromDartColor(task.colorval),
+              id: 'Level Progress',
+              data: leveldata,
+              labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+            ),
+          );
 
           return Scaffold(
             body: DefaultTabController(
@@ -193,84 +267,84 @@ class _HomePageState extends State<ProgressPage> {
     );
   }
 
-  _generateData(List<dynamic> points) {
-    var data1 = [Score(1, 0, 30), Score(1, 1, 60)];
-    // data1.add(Score(1, 2, points[1]));
+  // _generateData(List<dynamic> points) {
+  //   var data1 = [Score(1, 0, 30), Score(1, 1, 60)];
+  //   // data1.add(Score(1, 2, points[1]));
 
-    for (var i = 0; i < len; i++) {
-      data1.add(Score(1, i + 1, points[i]));
-    }
-    //new Score(1, 0, 30);
-    //  new Score(1, 1, 40),
-    //  new Score(1, 2, 80),
+  //   for (var i = 0; i < len; i++) {
+  //     data1.add(Score(1, i + 1, points[i]));
+  //   }
+  //   //new Score(1, 0, 30);
+  //   //  new Score(1, 1, 40),
+  //   //  new Score(1, 2, 80),
 
-    // for (var i=0;i<len;i++){
-    //   data1.add(points[i]);
-    // }
+  //   // for (var i=0;i<len;i++){
+  //   //   data1.add(points[i]);
+  //   // }
 
-    var piedata = [
-      new Task('Worlds Completed', worlds, Colors.blue[600]),
-      new Task('Worlds Left', 5.0 - worlds, Colors.blue[100]),
-    ];
+  //   var piedata = [
+  //     new Task('Worlds Completed', worlds, Colors.blue[600]),
+  //     new Task('Worlds Left', 5.0 - worlds, Colors.blue[100]),
+  //   ];
 
-    var sectiondata = [
-      new Task('Sections Completed', sections, Colors.blue[600]),
-      new Task('Sections Left', 12.0 - sections, Colors.blue[100]),
-    ];
+  //   var sectiondata = [
+  //     new Task('Sections Completed', sections, Colors.blue[600]),
+  //     new Task('Sections Left', 12.0 - sections, Colors.blue[100]),
+  //   ];
 
-    var leveldata = [
-      new Task('Levels Completed', levels, Colors.blue[600]),
-      new Task('Levels Left', 9.0 - levels, Colors.blue[100]),
-    ];
+  //   var leveldata = [
+  //     new Task('Levels Completed', levels, Colors.blue[600]),
+  //     new Task('Levels Left', 9.0 - levels, Colors.blue[100]),
+  //   ];
 
-    _seriesData.add(
-      charts.Series(
-        domainFn: (Score score, _) => score.date.toString(),
-        measureFn: (Score score, _) => score.quantity,
-        id: '1',
-        data: data1,
-        fillPatternFn: (_, __) => charts.FillPatternType.solid,
-        fillColorFn: (Score score, _) =>
-            charts.ColorUtil.fromDartColor(Colors.blue[100]),
-      ),
-    );
+  //   _seriesData.add(
+  //     charts.Series(
+  //       domainFn: (Score score, _) => score.date.toString(),
+  //       measureFn: (Score score, _) => score.quantity,
+  //       id: '1',
+  //       data: data1,
+  //       fillPatternFn: (_, __) => charts.FillPatternType.solid,
+  //       fillColorFn: (Score score, _) =>
+  //           charts.ColorUtil.fromDartColor(Colors.blue[100]),
+  //     ),
+  //   );
 
-    _seriesPieData.add(
-      charts.Series(
-        domainFn: (Task task, _) => task.task,
-        measureFn: (Task task, _) => task.taskvalue,
-        colorFn: (Task task, _) =>
-            charts.ColorUtil.fromDartColor(task.colorval),
-        id: 'World Progress',
-        data: piedata,
-        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-      ),
-    );
+  //   _seriesPieData.add(
+  //     charts.Series(
+  //       domainFn: (Task task, _) => task.task,
+  //       measureFn: (Task task, _) => task.taskvalue,
+  //       colorFn: (Task task, _) =>
+  //           charts.ColorUtil.fromDartColor(task.colorval),
+  //       id: 'World Progress',
+  //       data: piedata,
+  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+  //     ),
+  //   );
 
-    _seriesPieData1.add(
-      charts.Series(
-        domainFn: (Task task, _) => task.task,
-        measureFn: (Task task, _) => task.taskvalue,
-        colorFn: (Task task, _) =>
-            charts.ColorUtil.fromDartColor(task.colorval),
-        id: 'Section Progress',
-        data: sectiondata,
-        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-      ),
-    );
+  //   _seriesPieData1.add(
+  //     charts.Series(
+  //       domainFn: (Task task, _) => task.task,
+  //       measureFn: (Task task, _) => task.taskvalue,
+  //       colorFn: (Task task, _) =>
+  //           charts.ColorUtil.fromDartColor(task.colorval),
+  //       id: 'Section Progress',
+  //       data: sectiondata,
+  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+  //     ),
+  //   );
 
-    _seriesPieData2.add(
-      charts.Series(
-        domainFn: (Task task, _) => task.task,
-        measureFn: (Task task, _) => task.taskvalue,
-        colorFn: (Task task, _) =>
-            charts.ColorUtil.fromDartColor(task.colorval),
-        id: 'Level Progress',
-        data: leveldata,
-        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-      ),
-    );
-  }
+  //   _seriesPieData2.add(
+  //     charts.Series(
+  //       domainFn: (Task task, _) => task.task,
+  //       measureFn: (Task task, _) => task.taskvalue,
+  //       colorFn: (Task task, _) =>
+  //           charts.ColorUtil.fromDartColor(task.colorval),
+  //       id: 'Level Progress',
+  //       data: leveldata,
+  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+  //     ),
+  //   );
+  // }
 }
 
 class Score {

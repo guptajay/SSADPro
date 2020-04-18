@@ -453,7 +453,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                                   Icon(Icons.delete, size: 40),
                                               onPressed: () {
                                                 passingIndex(snapshot, index);
-                                              }),
+                                              }), // icon-2
                                         ],
                                       ),
                                     ),
