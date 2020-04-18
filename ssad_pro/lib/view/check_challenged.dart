@@ -5,6 +5,7 @@ import 'package:ssadpro/view/challenged_list.dart';
 import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CheckChallenged extends StatefulWidget {
   CheckChallengedState createState() => CheckChallengedState();
@@ -33,9 +34,9 @@ class CheckChallengedState extends State<CheckChallenged> {
                       FadeAnimation(
                         0.5,
                         Icon(
-                          Icons.compare_arrows,
+                          FontAwesomeIcons.trophy,
                           color: Colors.blue[600],
-                          size: 200,
+                          size: 150,
                         ),
                       ),
                       FadeAnimation(

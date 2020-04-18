@@ -9,7 +9,8 @@ class ProgressUserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      CardView.getCard(context, ProgressPage(), user.name, Icons.face),
+      CardView.getCard(context, ProgressPage(userdata: user.progress),
+          user.name, Icons.face),
       SizedBox(height: 20),
     ]);
   }

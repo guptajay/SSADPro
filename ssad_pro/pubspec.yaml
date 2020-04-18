@@ -40,7 +40,6 @@ dependencies:
   animated_background: ^1.0.5
 
 
-
 dev_dependencies:
     intl: ^0.16.1
 dependency_overrides:
@@ -68,6 +67,12 @@ flutter:
    - assets/images/ssadpro_logo.png
    - assets/images/transparent_logo.png
    - assets/images/compete_mode.png
+   - assets/images/ufo.png
+   - assets/images/alien.png
+   - assets/images/monster.png
+   - assets/images/astronaut.png
+   - assets/images/satellite.png
+   - assets/images/rocket.png
    - assets/images/boy.png
    - assets/images/boy-1.png
    - assets/images/girl.png
