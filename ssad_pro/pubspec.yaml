@@ -63,26 +63,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/google_logo.png
-   - assets/images/ssadpro_logo.png
-   - assets/images/transparent_logo.png
-   - assets/images/compete_mode.png
-   - assets/images/ufo.png
-   - assets/images/alien.png
-   - assets/images/monster.png
-   - assets/images/astronaut.png
-   - assets/images/satellite.png
-   - assets/images/rocket.png
-   - assets/images/boy.png
-   - assets/images/boy-1.png
-   - assets/images/girl.png
-   - assets/images/girl-1.png
-   - assets/images/man.png
-   - assets/images/man-1.png
-   - assets/images/whatsapp_logo.png
-   - assets/images/linkedin_logo.png
-   - assets/images/space_background.jpg
-   - assets/images/space_background.png
+   - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
