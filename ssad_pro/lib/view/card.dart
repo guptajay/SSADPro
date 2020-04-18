@@ -58,10 +58,10 @@ class CardView {
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+                side: BorderSide(color: Colors.black)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: Colors.white,
-            color: Colors.blue[400],
+            color: Color(0xff216869),
             onPressed: () {},
             child: Row(children: <Widget>[
               SizedBox(
@@ -206,10 +206,10 @@ class CardView {
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+                side: BorderSide(color: Colors.black)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: Colors.white,
-            color: Colors.blue[400],
+            color: Color(0xff216869),
             onPressed: () {},
             child: Row(children: <Widget>[
               SizedBox(

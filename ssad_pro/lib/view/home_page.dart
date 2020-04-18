@@ -232,7 +232,7 @@ class HomePage extends StatelessWidget {
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                         textColor: Colors.white,
-                        color: Color(0xff236D5F),
+                        color: Color(0xff216869),
                         onPressed: () {
                           Navigator.push(
                             context,

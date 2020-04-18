@@ -36,7 +36,13 @@ class _ProfileState extends State<Profile> {
               "Profile", Colors.blue[600], Colors.grey[50]),
           backgroundColor: Colors.transparent,
           body: Container(
-              decoration: Background.getBackground(),
+              decoration: BoxDecoration(
+                  image: new DecorationImage(
+                      image: AssetImage("assets/images/space.jpg"),
+                      fit: BoxFit.cover,
+                      colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                  )
+              ),//Background.getBackground(),
               child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +54,7 @@ class _ProfileState extends State<Profile> {
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.white),
                     ),
                     StreamBuilder<UserData>(
                         stream: DatabaseService(email: user.email).userData,
@@ -60,7 +66,7 @@ class _ProfileState extends State<Profile> {
                                 userData.name,
                                 style: TextStyle(
                                     fontSize: 25,
-                                    color: Colors.blue[600],
+                                    color: Color(0xffFFAF02),
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 40),
