@@ -23,15 +23,15 @@ class CheckChallengedState extends State<CheckChallenged> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Compete Mode", Colors.blue[600], Colors.grey[50]),
-        backgroundColor: Colors.grey[50],
+            "Compete Mode", Colors.white, Color(0xff1F3668)),
+        backgroundColor: Colors.transparent,
         body: Container(
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.90), BlendMode.dstATop))),
+                      Colors.black.withOpacity(0.75), BlendMode.dstATop))),
           child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());

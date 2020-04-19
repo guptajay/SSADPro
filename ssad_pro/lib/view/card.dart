@@ -142,10 +142,10 @@ class CardView {
           child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+                side: BorderSide(color: Colors.black)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: Colors.white,
-            color: color,
+            color: Color(0xffFFAF02),
             onPressed: () {
               List<String> question = GenerateMCQ().question(99, 99, 0);
               Navigator.push(

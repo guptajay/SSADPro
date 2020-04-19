@@ -22,11 +22,14 @@ class ChallengedList extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return new Text('NO');
         return new Scaffold(
-            body: ListView(
+            body: Container(
+              color: Color(0xff1F3668),
+              child: ListView(
           children: snapshot.data.documents.map((DocumentSnapshot document) {
-            return new ChallengedTile(document: document);
+              return new ChallengedTile(document: document);
           }).toList(),
-        ));
+        ),
+            ));
       },
     );
   }
