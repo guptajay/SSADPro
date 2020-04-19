@@ -36,11 +36,11 @@ class HomePage extends StatelessWidget {
               //height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                   image: new DecorationImage(
-                    image: AssetImage("assets/images/space.jpg"),
-                    fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
-                )
-              ),//Background.getBackground(),
+                      image: AssetImage("assets/images/space.jpg"),
+                      fit: BoxFit.cover,
+                      colorFilter: new ColorFilter.mode(
+                          Colors.black.withOpacity(0.90),
+                          BlendMode.dstATop))), //Background.getBackground(),
               child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +91,8 @@ class HomePage extends StatelessWidget {
                               side: BorderSide(color: Colors.white)),
                           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           textColor: Colors.white,
-                          color: Color(0xff49A5B7), //Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
+                          color: Color(
+                              0xff49A5B7), //Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -112,7 +113,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Text("Adventure",
                                     style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold))
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))
                               ]),
                         )),
                     SizedBox(
@@ -148,7 +150,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Text("Compete",
                                     style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold))
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))
                               ]),
                         )),
                     SizedBox(
@@ -184,7 +187,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Text("Assessments",
                                     style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold))
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))
                               ]),
                         )),
                     SizedBox(
@@ -220,7 +224,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Text("Leaderboard",
                                     style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold))
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))
                               ]),
                         )),
                     SizedBox(
@@ -239,7 +244,8 @@ class HomePage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Settings()),
+                              MaterialPageRoute(
+                                  builder: (context) => Settings()),
                             );
                           },
                           child: Row(
@@ -255,7 +261,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 Text("Configuration",
                                     style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold))
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold))
                               ]),
                         )),
                     SizedBox(

@@ -2,7 +2,7 @@
  * This class implements the layout of multiple 
  * choice question.
  *
- * @author Divyesh Mundhra
+ * @author Divyesh Mundhra and Ritik Bhatia
  */
 
 import 'package:flutter/material.dart';
@@ -12,11 +12,12 @@ import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/fibpage.dart';
 import 'package:ssadpro/controller/fib_generator.dart';
+import 'package:ssadpro/controller/mcq_generator.dart';
 
 class MCQPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState(question, option1, option2,
-      option3, option4, correctAnswer, world, section);
+      option3, option4, correctAnswer, world, section, attempt);
 
   final String question;
   final String option1;
@@ -26,9 +27,10 @@ class MCQPage extends StatefulWidget {
   final int correctAnswer;
   final int world;
   final int section;
+  final int attempt;
 
   MCQPage(this.question, this.option1, this.option2, this.option3, this.option4,
-      this.correctAnswer, this.world, this.section);
+      this.correctAnswer, this.world, this.section, this.attempt);
 }
 
 class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
@@ -49,9 +51,12 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
   AnimationController controller4;
   final int world;
   final int section;
+  final int attempt;
 
   _InputPageState(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.correctAnswer, this.world, this.section);
+      this.option4, this.correctAnswer, this.world, this.section, this.attempt);
+
+  int firstAttempt = -1; // not yet attempted
 
   @override
   void initState() {
@@ -103,372 +108,477 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
               controller4.reverse();
             }
           });
-    List<String> fib = GenerateFIB().question(world, section);
+    List<String> fib = GenerateFIB().question(world, section, 1);
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "MCQs", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.white,
-        body: Container(
-          decoration: BoxDecoration(
-              image: new DecorationImage(
-                  image: AssetImage("assets/images/space.jpg"),
-                  fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
-              )
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                height: 300,
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: MCQBoxes.getQuestionBox1(question),
-                    ),
-                  ],
-                ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              height: 300,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: MCQBoxes.getQuestionBox1(question),
+                  ),
+                ],
               ),
-              Expanded(
-                  child: Row(
-                children: <Widget>[
-                  AnimatedBuilder(
-                      animation: offsetAnimation1,
-                      builder: (buildContext, child) {
-                        if (offsetAnimation1.value < 0.0)
-                          print('${offsetAnimation1.value + 8.0}');
-                        return Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: offsetAnimation1.value + 10.0,
-                                right: 10.0 - offsetAnimation1.value),
-                            child: SizedBox(
-                                width: 300.0,
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                  textColor: Colors.white,
-                                  color: correctAnswer == 1
-                                      ? (pressAttention1 == 1
-                                          ? Colors.green[800]
-                                          : (pressAttention1 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]))
-                                      : pressAttention1 == 1
-                                          ? Colors.red[800]
-                                          : (pressAttention1 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]),
-                                  onPressed: () async {
-                                    setState(() {
-                                      pressAttention1 = 1;
-                                      pressAttention2 = 2;
-                                      pressAttention3 = 2;
-                                      pressAttention4 = 2;
-                                    });
-                                    if (correctAnswer == 1) {
-                                      createRecord("Right", "mcq");
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
+            ),
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                AnimatedBuilder(
+                    animation: offsetAnimation1,
+                    builder: (buildContext, child) {
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation1.value + 10.0,
+                              right: 10.0 - offsetAnimation1.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 1
+                                    ? (pressAttention1 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention1 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention1 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention1 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention1 = 1;
+                                    pressAttention2 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 1) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
                                       Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) => FIBPage(
-                                                fib[0], fib[1], world, section)),
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
                                       );
-                                    } else {
-                                      createRecord("Wrong", "mcq");
-                                      controller1.forward(from: 0.0);
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
-                                      _showWrongDialog();
                                     }
-                                  },
-                                  child: Center(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                              child: Text(
-                                            option1,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            overflow: TextOverflow.visible,
-                                          )),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ]),
-                                  ),
-                                )),
-                          ),
-                        );
-                      }),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  AnimatedBuilder(
-                      animation: offsetAnimation2,
-                      builder: (buildContext, child) {
-                        if (offsetAnimation2.value < 0.0)
-                          print('${offsetAnimation2.value + 8.0}');
-                        return Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0 - offsetAnimation2.value,
-                                right: 10.0 + offsetAnimation2.value),
-                            child: SizedBox(
-                                width: 300.0,
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                  textColor: Colors.white,
-                                  color: correctAnswer == 2
-                                      ? (pressAttention2 == 1
-                                          ? Colors.green[800]
-                                          : (pressAttention2 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]))
-                                      : pressAttention2 == 1
-                                          ? Colors.red[800]
-                                          : (pressAttention2 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]),
-                                  onPressed: () async {
-                                    setState(() {
-                                      pressAttention2 = 1;
-                                      pressAttention1 = 2;
-                                      pressAttention3 = 2;
-                                      pressAttention4 = 2;
-                                    });
-                                    if (correctAnswer == 2) {
-                                      createRecord("Right", "mcq");
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
+                                  } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
+                                    createRecord("Wrong", "mcq");
+                                    controller1.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Flexible(
+                                            child: Text(
+                                          option1,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        )),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
+                SizedBox(
+                  width: 20,
+                ),
+                AnimatedBuilder(
+                    animation: offsetAnimation2,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation2.value < 0.0)
+                        print('${offsetAnimation2.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10.0 - offsetAnimation2.value,
+                              right: 10.0 + offsetAnimation2.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 2
+                                    ? (pressAttention2 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention2 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention2 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention2 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention2 = 1;
+                                    pressAttention1 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 2) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
                                       Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) => FIBPage(
-                                                fib[0], fib[1], world, section)),
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
                                       );
-                                    } else {
-                                      createRecord("Wrong", "mcq");
-                                      controller2.forward(from: 0.0);
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
-                                      _showWrongDialog();
                                     }
-                                  },
-                                  child: Center(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                              child: Text(
-                                            option2,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            overflow: TextOverflow.visible,
-                                          )),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ]),
-                                  ),
-                                )),
-                          ),
-                        );
-                      }),
-                ],
-              )),
-              SizedBox(height: 20),
-              Expanded(
-                  child: Row(
-                children: <Widget>[
-                  AnimatedBuilder(
-                      animation: offsetAnimation3,
-                      builder: (buildContext, child) {
-                        if (offsetAnimation3.value < 0.0)
-                          print('${offsetAnimation3.value + 8.0}');
-                        return Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: offsetAnimation3.value + 10.0,
-                                right: 10.0 - offsetAnimation3.value),
-                            child: SizedBox(
-                                width: 300.0,
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                  textColor: Colors.white,
-                                  color: correctAnswer == 3
-                                      ? (pressAttention3 == 1
-                                          ? Colors.green[800]
-                                          : (pressAttention3 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]))
-                                      : pressAttention3 == 1
-                                          ? Colors.red[800]
-                                          : (pressAttention3 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]),
-                                  onPressed: () async {
-                                    setState(() {
-                                      pressAttention3 = 1;
-                                      pressAttention1 = 2;
-                                      pressAttention2 = 2;
-                                      pressAttention4 = 2;
-                                    });
-                                    if (correctAnswer == 3) {
-                                      createRecord("Right", "mcq");
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
+                                  } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
+                                    createRecord("Wrong", "mcq");
+                                    controller2.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Flexible(
+                                            child: Text(
+                                          option2,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        )),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
+              ],
+            )),
+            SizedBox(height: 20),
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                AnimatedBuilder(
+                    animation: offsetAnimation3,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation3.value < 0.0)
+                        print('${offsetAnimation3.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation3.value + 10.0,
+                              right: 10.0 - offsetAnimation3.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 3
+                                    ? (pressAttention3 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention3 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention3 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention3 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention3 = 1;
+                                    pressAttention1 = 2;
+                                    pressAttention2 = 2;
+                                    pressAttention4 = 2;
+                                  });
+                                  if (correctAnswer == 3) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
                                       Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) => FIBPage(
-                                                fib[0], fib[1], world, section)),
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
                                       );
-                                    } else {
-                                      createRecord("Wrong", "mcq");
-                                      controller3.forward(from: 0.0);
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
-                                      _showWrongDialog();
                                     }
-                                  },
-                                  child: Center(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                              child: Text(
-                                            option3,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            overflow: TextOverflow.visible,
-                                          )),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ]),
-                                  ),
-                                )),
-                          ),
-                        );
-                      }),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  AnimatedBuilder(
-                      animation: offsetAnimation4,
-                      builder: (buildContext, child) {
-                        if (offsetAnimation4.value < 0.0)
-                          print('${offsetAnimation4.value + 8.0}');
-                        return Expanded(
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: offsetAnimation4.value + 10.0,
-                                right: 10.0 - offsetAnimation4.value),
-                            child: SizedBox(
-                                width: 300.0,
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(color: Colors.white)),
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                  textColor: Colors.white,
-                                  color: correctAnswer == 4
-                                      ? (pressAttention4 == 1
-                                          ? Colors.green[800]
-                                          : (pressAttention4 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]))
-                                      : pressAttention4 == 1
-                                          ? Colors.red[800]
-                                          : (pressAttention4 == 2
-                                              ? Colors.grey
-                                              : Colors.blue[700]),
-                                  onPressed: () async {
-                                    setState(() {
-                                      pressAttention4 = 1;
-                                      pressAttention2 = 2;
-                                      pressAttention3 = 2;
-                                      pressAttention1 = 2;
-                                    });
-                                    if (correctAnswer == 4) {
-                                      createRecord("Right", "mcq");
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
+                                  } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
+                                    createRecord("Wrong", "mcq");
+                                    controller3.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Flexible(
+                                            child: Text(
+                                          option3,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        )),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
+                SizedBox(
+                  width: 20,
+                ),
+                AnimatedBuilder(
+                    animation: offsetAnimation4,
+                    builder: (buildContext, child) {
+                      if (offsetAnimation4.value < 0.0)
+                        print('${offsetAnimation4.value + 8.0}');
+                      return Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: offsetAnimation4.value + 10.0,
+                              right: 10.0 - offsetAnimation4.value),
+                          child: SizedBox(
+                              width: 300.0,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: Colors.white)),
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                textColor: Colors.white,
+                                color: correctAnswer == 4
+                                    ? (pressAttention4 == 1
+                                        ? Colors.green[800]
+                                        : (pressAttention4 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]))
+                                    : pressAttention4 == 1
+                                        ? Colors.red[800]
+                                        : (pressAttention4 == 2
+                                            ? Colors.grey
+                                            : Colors.blue[700]),
+                                onPressed: () async {
+                                  setState(() {
+                                    pressAttention4 = 1;
+                                    pressAttention2 = 2;
+                                    pressAttention3 = 2;
+                                    pressAttention1 = 2;
+                                  });
+                                  if (correctAnswer == 4) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
+                                    createRecord("Right", "mcq");
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
                                       Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) => FIBPage(
-                                                fib[0], fib[1], world, section)),
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
                                       );
-                                    } else {
-                                      createRecord("Wrong", "mcq");
-                                      controller4.forward(from: 0.0);
-                                      await new Future.delayed(
-                                          const Duration(seconds: 2));
-                                      _showWrongDialog();
                                     }
-                                  },
-                                  child: Center(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                              child: Text(
-                                            option4,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            overflow: TextOverflow.visible,
-                                          )),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ]),
-                                  ),
-                                )),
-                          ),
-                        );
-                      }),
-                ],
-              )),
-              SizedBox(height: 20),
-            ],
-          ),
+                                  } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
+                                    createRecord("Wrong", "mcq");
+                                    controller4.forward(from: 0.0);
+                                    await new Future.delayed(
+                                        const Duration(seconds: 2));
+                                    _showWrongDialog();
+                                  }
+                                },
+                                child: Center(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Flexible(
+                                            child: Text(
+                                          option4,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.visible,
+                                        )),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ]),
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
+              ],
+            )),
+            SizedBox(height: 20),
+          ],
         ));
   }
 

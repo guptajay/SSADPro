@@ -30,9 +30,8 @@ class CheckChallengedState extends State<CheckChallenged> {
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
                   fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
-              )
-          ),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.90), BlendMode.dstATop))),
           child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
@@ -61,14 +60,17 @@ class CheckChallengedState extends State<CheckChallenged> {
                                     EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                                 child: Container(
                                     child: Center(
-                                        child: Text("You have been challenged by",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xffE2950F),
-                                              backgroundColor: Paint().color = Color(0xff1F3668),
-                                            )))))),
+                                        child:
+                                            Text("You have been challenged by",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color(0xffE2950F),
+                                                  backgroundColor:
+                                                      Paint().color =
+                                                          Color(0xff1F3668),
+                                                )))))),
                         SizedBox(
                           height: 10,
                         ),
@@ -94,7 +96,7 @@ class CheckChallengedState extends State<CheckChallenged> {
                                                 BorderRadius.circular(22.0)),
                                         onPressed: () {
                                           List<String> question =
-                                              GenerateMCQ().question(99, 99);
+                                              GenerateMCQ().question(99, 99, 0);
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -106,14 +108,17 @@ class CheckChallengedState extends State<CheckChallenged> {
                                             child: Text(
                                           "Challenge a new Friend!",
                                           style: TextStyle(
-                                              color: Colors.black, fontSize: 20),
+                                              color: Colors.black,
+                                              fontSize: 20),
                                         ))),
                                     SizedBox(
                                       height: 20,
                                     ),
                                     SocialMedia(
-                                        text: "Invite your Friends via LinkedIn",
-                                        image: "assets/images/linkedin_logo.png",
+                                        text:
+                                            "Invite your Friends via LinkedIn",
+                                        image:
+                                            "assets/images/linkedin_logo.png",
                                         shareText:
                                             "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
                                   ],

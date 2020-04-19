@@ -154,7 +154,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             if (state == 1) {
                               if (correctAnswer == 1) points = 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 100);
+                                  GenerateMCQ().question(99, 100, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -176,7 +176,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             } else if (state == 2) {
                               if (correctAnswer == 1) points = points + 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 101);
+                                  GenerateMCQ().question(99, 101, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -265,7 +265,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             if (state == 1) {
                               if (correctAnswer == 2) points = 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 100);
+                                  GenerateMCQ().question(99, 100, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -287,7 +287,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             } else if (state == 2) {
                               if (correctAnswer == 2) points = points + 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 101);
+                                  GenerateMCQ().question(99, 101, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -376,7 +376,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             if (state == 1) {
                               if (correctAnswer == 3) points = 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 100);
+                                  GenerateMCQ().question(99, 100, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -398,7 +398,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             } else if (state == 2) {
                               if (correctAnswer == 3) points = points + 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 101);
+                                  GenerateMCQ().question(99, 101, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -486,7 +486,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             if (state == 1) {
                               if (correctAnswer == 4) points = 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 100);
+                                  GenerateMCQ().question(99, 100, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -508,7 +508,7 @@ class _InputPageState extends State<CompeteMCQPage> {
                             } else if (state == 2) {
                               if (correctAnswer == 4) points = points + 1;
                               List<String> question =
-                                  GenerateMCQ().question(99, 101);
+                                  GenerateMCQ().question(99, 101, 0);
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(

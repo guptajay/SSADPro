@@ -14,11 +14,22 @@ import 'package:ssadpro/view/world_ui.dart';
 import 'mcq_boxes.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
+import 'package:ssadpro/controller/match_generator.dart';
 
 class MatchPage extends StatefulWidget {
   @override
-  _InputPageState createState() => _InputPageState(question1, question2,
-      question3, question4, option1, option2, option3, option4, world);
+  _InputPageState createState() => _InputPageState(
+      question1,
+      question2,
+      question3,
+      question4,
+      option1,
+      option2,
+      option3,
+      option4,
+      world,
+      section,
+      attempt);
 
   final String question1;
   final String question2;
@@ -29,9 +40,21 @@ class MatchPage extends StatefulWidget {
   final String option3;
   final String option4;
   final int world;
+  final int section;
+  final int attempt;
 
-  MatchPage(this.question1, this.question2, this.question3, this.question4,
-      this.option1, this.option2, this.option3, this.option4, this.world);
+  MatchPage(
+      this.question1,
+      this.question2,
+      this.question3,
+      this.question4,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.world,
+      this.section,
+      this.attempt);
 }
 
 class _InputPageState extends State<MatchPage> {
@@ -44,6 +67,8 @@ class _InputPageState extends State<MatchPage> {
   final String option3;
   final String option4;
   final int world;
+  final int section;
+  final int attempt;
 
   _InputPageState(
       this.question1,
@@ -54,7 +79,9 @@ class _InputPageState extends State<MatchPage> {
       this.option2,
       this.option3,
       this.option4,
-      this.world);
+      this.world,
+      this.section,
+      this.attempt);
 
   final myController = TextEditingController();
   double width = 200.0, height = 60.0;
@@ -212,12 +239,34 @@ class _InputPageState extends State<MatchPage> {
                                       textColor: Colors.white,
                                       color: Colors.blue[600],
                                       onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  WorldUI(1, world)),
-                                        );
+                                        if (attempt < 3) {
+                                          List<String> match = GenerateMatch()
+                                              .question(
+                                                  world, section, attempt + 1);
+                                          Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) => MatchPage(
+                                                    match[0],
+                                                    match[1],
+                                                    match[2],
+                                                    match[3],
+                                                    match[4],
+                                                    match[5],
+                                                    match[6],
+                                                    match[7],
+                                                    world,
+                                                    section,
+                                                    attempt + 1)),
+                                          );
+                                        } else {
+                                          Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    WorldUI(1, world)),
+                                          );
+                                        }
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(
