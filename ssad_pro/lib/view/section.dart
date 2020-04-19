@@ -50,7 +50,7 @@ class _SectionUIState extends State<SectionUI> {
 
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
-          "World $worldInt", Colors.blue[600], Colors.grey[50]),
+          "World $worldInt", Colors.white, Color(0xff1F3668)),
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(

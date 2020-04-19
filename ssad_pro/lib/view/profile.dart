@@ -33,8 +33,8 @@ class _ProfileState extends State<Profile> {
     return Container(
       child: Scaffold(
           appBar: ReusableWidgets.getAppBar(
-              "Profile", Colors.blue[600], Colors.grey[50]),
-          backgroundColor: Colors.transparent,
+              "Profile", Colors.white, Color(0xff1F3668)),
+          backgroundColor: Colors.grey,
           body: Container(
               decoration: BoxDecoration(
                   image: new DecorationImage(

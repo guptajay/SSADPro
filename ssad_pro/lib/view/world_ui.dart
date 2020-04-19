@@ -116,7 +116,7 @@ class _WorldUIState extends State<WorldUI> {
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Adventure", Colors.blue[600], Colors.grey[50]),
+            "Adventure", Colors.white, Color(0xff1F3668)),
         //extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Container(
