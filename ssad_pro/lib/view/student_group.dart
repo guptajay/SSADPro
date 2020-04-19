@@ -381,13 +381,9 @@ class _StudentGroupState extends State<StudentGroupPage> {
     for (String groupMember in usersOfGroup){
       allUsersDocs.documents.forEach((doc) async=>{
           if (doc['name'] == groupMember){
-            print(!previousGroup[count].contains(doc['group'])),
-            print(!previousGroup[count].contains(doc['name'])),
             if(!previousGroup[count].contains(doc['group']) || !previousGroup[count].contains(doc['name'])){
-              print(groupMember),
               count++,
               previousGroup.add([doc['group'],doc['name']]),
-              print(previousGroup),
               await Firestore.instance
                   .collection('Users')
                   .document('${doc['email']}')
@@ -397,8 +393,6 @@ class _StudentGroupState extends State<StudentGroupPage> {
       });
     }
     previousGroup.removeAt(0);
-    print(previousGroup);
-
     int finalCount = 0;
     List<List> finalStudents = [];
 
@@ -410,7 +404,6 @@ class _StudentGroupState extends State<StudentGroupPage> {
           if(f['students'].contains(i[1])){
             finalStudents.add(f['students']),
             finalStudents[finalCount].remove(i[1]),
-            print(finalStudents),
             await Firestore.instance.collection('Groups').document('${i[0]}').updateData({'students': finalStudents[finalCount]}),
             finalCount++
           }
@@ -511,9 +504,6 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                                         course,
                                                         groupName,
                                                         output);
-                                                    print("output output2~~~~~~");
-                                                    print(output);
-                                                    print(output2);
                                                     await syncUsersGroup(output2, groupName);
                                                   }
                                               });
