@@ -23,7 +23,7 @@ class Compete extends StatelessWidget {
         value: DatabaseService().users,
         child: Scaffold(
             appBar: ReusableWidgets.getAppBar(
-                "Compete Mode", Colors.blue[600], Colors.grey[50]),
+                "Compete Mode", Colors.white, Color(0xff1F3668)),
             body: Scaffold(
                 body: Container(
                     decoration: BoxDecoration(
@@ -62,7 +62,7 @@ class Compete extends StatelessWidget {
                                             child: const DecoratedBox(
                                                 decoration: const BoxDecoration(
                                                     color: Color(0xff1F3668),
-                                                  borderRadius: BorderRadius.all(Radius.circular(15))
+                                                  borderRadius: BorderRadius.all(Radius.circular(10))
                                                 ),
                                               child: const Text(
                                                   "Choose one of your friends on Google to compete with!",
