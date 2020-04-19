@@ -11,6 +11,7 @@ class Background {
       image: DecorationImage(
         image: AssetImage("assets/images/space_background.png"),
         fit: BoxFit.cover,
+          //colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.75), BlendMode.dstATop)
       ),
     );
   }

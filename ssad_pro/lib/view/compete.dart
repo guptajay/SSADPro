@@ -23,10 +23,16 @@ class Compete extends StatelessWidget {
         value: DatabaseService().users,
         child: Scaffold(
             appBar: ReusableWidgets.getAppBar(
-                "Compete Mode", Colors.blue[600], Colors.grey[50]),
+                "Compete Mode", Colors.white, Color(0xff1F3668)),
             body: Scaffold(
                 body: Container(
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                        image: new DecorationImage(
+                            image: AssetImage("assets/images/space.jpg"),
+                            fit: BoxFit.cover,
+                            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                        )
+                    ),
                     child: Center(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,14 +59,31 @@ class Compete extends StatelessWidget {
                                         margin: EdgeInsets.only(
                                             top: 15, bottom: 30),
                                         child: Center(
-                                            child: Text(
+                                            child: const DecoratedBox(
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xff1F3668),
+                                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                                ),
+                                              child: const Text(
+                                                  "Choose one of your friends on Google to compete with!",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color(0xffFFB600),//0xffE2950F
+                                              )
+                                              ),
+                                            )
+                                           /* Text(
                                                 "Choose one of your friends on Google to compete with!",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.bold,
-                                                    color:
-                                                        Colors.blue[600]))))),
+                                                    color: Color(0xffE2950F),
+                                                  backgroundColor: Paint().color = Color(0xff1F3668),
+                                                ))*/
+                            ))),
                               ],
                             )),
                             Expanded(child: CompeteFriendList())

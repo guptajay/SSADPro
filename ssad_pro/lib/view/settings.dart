@@ -1,7 +1,11 @@
-import 'package:ssadpro/view/mcqpage.dart';
+/**
+ * This class return the page layout displaying
+ * settings of the application.
+ * 
+ * @author Jay Gupta
+ */
+
 import 'package:flutter/material.dart';
-import 'package:ssadpro/view/fibpage.dart';
-import 'package:ssadpro/view/match_page.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:flutter/cupertino.dart';

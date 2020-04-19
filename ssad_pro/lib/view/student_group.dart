@@ -1,16 +1,14 @@
-import 'dart:convert';
+/**
+ * This class return the page layout displaying
+ * all the student groups.
+ * 
+ * @author Ritik Bhatia
+ */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/sign_in.dart';
-import 'package:ssadpro/model/Student.dart';
-import 'package:ssadpro/model/StudentGroup.dart';
-import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/user_list.dart';
 
 class StudentGroupPage extends StatefulWidget {
   @override
@@ -316,24 +314,6 @@ class _StudentGroupState extends State<StudentGroupPage> {
                     ),
                     controller: customController2,
                   ),
-//                  SizedBox(height: 10),
-//                  RaisedButton(
-//                      elevation: 0,
-//                      shape: RoundedRectangleBorder(
-//                          borderRadius: BorderRadius.circular(18.0),
-//                          side: BorderSide(color: Colors.white)),
-//                      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-//                      textColor: Colors.white,
-//                      color: Colors.blue[600],
-//                      child: Text('Members',
-//                          style: TextStyle(
-//                              color: Colors.white,
-//                              fontSize: 23,
-//                              fontWeight: FontWeight.bold)),
-//                      onPressed: () {
-//
-//                        DatabaseService().createGroup('CZ3003','SS5', []);
-//                      }),
                 ]),
               ),
               actions: <Widget>[
@@ -451,7 +431,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                                   .toString(),
                                           style: TextStyle(fontSize: 18)),
                                       trailing: Wrap(
-                                        spacing: 5, // space between two icons
+                                        spacing: 5,
                                         children: <Widget>[
                                           IconButton(
                                             icon:
@@ -467,7 +447,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                                       onValue);
                                               });
                                             },
-                                          ), // icon-1
+                                          ),
                                           IconButton(
                                               icon:
                                                   Icon(Icons.delete, size: 40),
@@ -524,45 +504,3 @@ class _StudentGroupState extends State<StudentGroupPage> {
         ));
   }
 }
-
-//Listing all the users
-//
-//import 'package:ssadpro/model/student_user.dart';
-//import 'package:flutter/material.dart';
-//
-//class UserTile extends StatelessWidget {
-//
-//  final StudentUser user;
-//  UserTile({ this.user });
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Padding(
-//      padding: const EdgeInsets.only(top: 8.0),
-//      child: Card(
-//        margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
-//        child: ListTile(
-//          leading: CircleAvatar(
-//            radius: 25.0,
-//            backgroundColor: Colors.brown,
-//          ),
-//          title: Text(.name),
-//          subtitle: Text('Takes ${brew.sugars} sugar(s)'),
-//        ),
-//      ),
-//    );
-//  }
-//}
-
-//class StudentGroupPage extends StatelessWidget {
-//  final AuthService _auth = AuthService();
-//  @override
-//  Widget build(BuildContext context) {
-//    return  StreamProvider<List<StudentUser>>.value(
-//    value: DatabaseService().users,
-//    child: Scaffold(
-//    body: UserList(), //UserList() Prints all the registered users of the application
-//    )
-//    );
-//  }
-//}

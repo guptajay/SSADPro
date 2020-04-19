@@ -33,7 +33,7 @@ class DatabaseService {
       List<int> points,
       List<String> dates,
       int total_attempts,
-      String fileName) async {
+      int reg_state) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.set(
           Firestore.instance.collection(USER_COLLECTION).document(this.email), {
@@ -44,6 +44,7 @@ class DatabaseService {
         'points': points,
         'dates': dates,
         'total_attempts': total_attempts,
+        'reg_state': reg_state,
       });
     });
   }
@@ -311,20 +312,8 @@ class DatabaseService {
         .map(_userDataFromSnapshot);
   }
 
-//
-//  Stream<List<Assignment>> get assignments {
-//    return  Firestore.instance.collection('Users').document(this.email).collection('UserAssignments').snapshots()
-//        .map(_assignmentListFromSnapshot);
-//  }
 
-  //Function to update the name of the current user in data base
-  Future updateStudentName(String name) async {
-    return await Firestore.instance.runTransaction((transaction) async {
-      await transaction.set(
-          Firestore.instance.collection(USER_COLLECTION).document(this.email),
-          {'name': name});
-    });
-  }
+
 
 //Function to update the group of the current user in the data base
   Future updateStudentGroup(String group) async {
@@ -469,7 +458,15 @@ class DatabaseService {
   }
 
 
+  Future<int> getRegState() async {
 
+    QuerySnapshot qs = await studentUserCollection.getDocuments();
+    for (DocumentSnapshot ds in qs.documents) {
+        if(ds.data['email'] == this.email)
+         return ds.data['reg_state'];
+    }
+
+  }
 
 
 

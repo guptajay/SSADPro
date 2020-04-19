@@ -1,5 +1,6 @@
 /**
  * This class implements the parameterised card button. 
+ * This class shows the layout of questions diplayed.
  *
  * @author Jay Gupta
  */

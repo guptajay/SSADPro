@@ -20,7 +20,7 @@ class MCQBoxes {
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: Colors.white,
-            color: Colors.blue[800],
+            color: Color(0xff49A5B7),//Colors.blue[800],
             onPressed: () {},
             child: Padding(
               padding: const EdgeInsets.only(top: 60.0, bottom: 60),
@@ -59,7 +59,7 @@ class MCQBoxes {
                   side: BorderSide(color: Colors.white)),
               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
               textColor: Colors.white,
-              color: Colors.blue[600],
+              color: Color(0xff49A5B7),
               onPressed: () {},
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
