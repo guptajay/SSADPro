@@ -253,7 +253,7 @@ class HomePage extends StatelessWidget {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text("Settings",
+                                Text("Configuration",
                                     style: TextStyle(
                                         fontSize: 25, fontWeight: FontWeight.bold))
                               ]),

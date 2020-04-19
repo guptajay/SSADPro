@@ -137,7 +137,7 @@ class _SystemSettingsState extends State<SystemSettings> {
                           ),
                           Column(children: <Widget>[
                             Text(
-                              "App Settings",
+                              "App Info",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
