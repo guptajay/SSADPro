@@ -76,8 +76,9 @@ class HomePage extends StatelessWidget {
                     width: 300.0,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)),
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.white),
+                      ),
                       padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                       textColor: Colors.white,
                       color: Colors.blue[700],

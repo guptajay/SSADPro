@@ -13,17 +13,19 @@ import 'mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/match_page.dart';
 import 'package:ssadpro/controller/match_generator.dart';
+import 'package:ssadpro/controller/fib_generator.dart';
 
 class FIBPage extends StatefulWidget {
   @override
   _InputPageState createState() =>
-      _InputPageState(question, answer, world, section);
+      _InputPageState(question, answer, world, section, attempt);
 
   final String question;
   final String answer;
   int world;
   int section;
-  FIBPage(this.question, this.answer, this.world, this.section);
+  int attempt;
+  FIBPage(this.question, this.answer, this.world, this.section, this.attempt);
 }
 
 class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
@@ -41,7 +43,11 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
   int confirmButton = 0;
   final int world;
   final int section;
-  _InputPageState(this.question, this.answer, this.world, this.section);
+  final int attempt;
+  _InputPageState(
+      this.question, this.answer, this.world, this.section, this.attempt);
+
+  int firstAttempt = -1; // not yet attempted
 
   @override
   void initState() {
@@ -60,7 +66,7 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
               controller.reverse();
             }
           });
-    List<String> match = GenerateMatch().question(world, section);
+    List<String> match = GenerateMatch().question(world, section, 1);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: ReusableWidgets.getAppBar(
@@ -170,25 +176,49 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                   color: Colors.blue[600],
                                   onPressed: () async {
                                     if (myController.text == answer) {
+                                      if (firstAttempt == -1) {
+                                        firstAttempt = 1;
+                                      }
                                       confirmButton = 1;
                                       createRecord("Correct", "fib");
                                       await new Future.delayed(
                                           const Duration(seconds: 2));
-                                      Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (context) => MatchPage(
-                                                match[0],
-                                                match[1],
-                                                match[2],
-                                                match[3],
-                                                match[4],
-                                                match[5],
-                                                match[6],
-                                                match[7],
-                                                world)),
-                                      );
+                                      if (attempt < 3) {
+                                        List<String> fib = GenerateFIB()
+                                            .question(
+                                                world, section, attempt + 1);
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => FIBPage(
+                                                  fib[0],
+                                                  fib[1],
+                                                  world,
+                                                  section,
+                                                  attempt + 1)),
+                                        );
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MatchPage(
+                                                  match[0],
+                                                  match[1],
+                                                  match[2],
+                                                  match[3],
+                                                  match[4],
+                                                  match[5],
+                                                  match[6],
+                                                  match[7],
+                                                  world,
+                                                  section,
+                                                  1)),
+                                        );
+                                      }
                                     } else {
+                                      if (firstAttempt == -1) {
+                                        firstAttempt = 0;
+                                      }
                                       confirmButton = 2;
                                       createRecord("Wrong", "fib");
                                       controller.forward(from: 0.0);

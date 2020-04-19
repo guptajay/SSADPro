@@ -84,7 +84,7 @@ class CheckChallengedState extends State<CheckChallenged> {
                                               BorderRadius.circular(22.0)),
                                       onPressed: () {
                                         List<String> question =
-                                            GenerateMCQ().question(99, 99);
+                                            GenerateMCQ().question(99, 99, 0);
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(

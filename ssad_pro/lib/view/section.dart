@@ -121,7 +121,7 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
       onPressed: () {
         if (sect_progress == true) {
           List<String> question =
-              GenerateMCQ().question(world, int.parse(section));
+              GenerateMCQ().question(world, int.parse(section), 1);
           Navigator.push(
               cont,
               MaterialPageRoute(
@@ -133,7 +133,8 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
                       question[4],
                       int.parse(question[5]),
                       world,
-                      int.parse(section))));
+                      int.parse(section),
+                      1)));
         }
       },
       child: Column(

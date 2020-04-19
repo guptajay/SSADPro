@@ -2,7 +2,7 @@
  * This class implements the layout of multiple 
  * choice question.
  *
- * @author Divyesh Mundhra
+ * @author Divyesh Mundhra and Ritik Bhatia
  */
 
 import 'package:flutter/material.dart';
@@ -12,11 +12,12 @@ import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/fibpage.dart';
 import 'package:ssadpro/controller/fib_generator.dart';
+import 'package:ssadpro/controller/mcq_generator.dart';
 
 class MCQPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState(question, option1, option2,
-      option3, option4, correctAnswer, world, section);
+      option3, option4, correctAnswer, world, section, attempt);
 
   final String question;
   final String option1;
@@ -26,9 +27,10 @@ class MCQPage extends StatefulWidget {
   final int correctAnswer;
   final int world;
   final int section;
+  final int attempt;
 
   MCQPage(this.question, this.option1, this.option2, this.option3, this.option4,
-      this.correctAnswer, this.world, this.section);
+      this.correctAnswer, this.world, this.section, this.attempt);
 }
 
 class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
@@ -49,9 +51,12 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
   AnimationController controller4;
   final int world;
   final int section;
+  final int attempt;
 
   _InputPageState(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.correctAnswer, this.world, this.section);
+      this.option4, this.correctAnswer, this.world, this.section, this.attempt);
+
+  int firstAttempt = -1; // not yet attempted
 
   @override
   void initState() {
@@ -103,7 +108,7 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
               controller4.reverse();
             }
           });
-    List<String> fib = GenerateFIB().question(world, section);
+    List<String> fib = GenerateFIB().question(world, section, 1);
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
             "MCQs", Colors.blue[600], Colors.grey[50]),
@@ -127,8 +132,6 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                 AnimatedBuilder(
                     animation: offsetAnimation1,
                     builder: (buildContext, child) {
-                      if (offsetAnimation1.value < 0.0)
-                        print('${offsetAnimation1.value + 8.0}');
                       return Expanded(
                         child: Container(
                           padding: EdgeInsets.only(
@@ -161,16 +164,45 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                     pressAttention4 = 2;
                                   });
                                   if (correctAnswer == 1) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
                                     createRecord("Right", "mcq");
                                     await new Future.delayed(
                                         const Duration(seconds: 2));
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) => FIBPage(
-                                              fib[0], fib[1], world, section)),
-                                    );
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => FIBPage(
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
+                                      );
+                                    }
                                   } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
                                     createRecord("Wrong", "mcq");
                                     controller1.forward(from: 0.0);
                                     await new Future.delayed(
@@ -244,16 +276,45 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                     pressAttention4 = 2;
                                   });
                                   if (correctAnswer == 2) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
                                     createRecord("Right", "mcq");
                                     await new Future.delayed(
                                         const Duration(seconds: 2));
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) => FIBPage(
-                                              fib[0], fib[1], world, section)),
-                                    );
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => FIBPage(
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
+                                      );
+                                    }
                                   } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
                                     createRecord("Wrong", "mcq");
                                     controller2.forward(from: 0.0);
                                     await new Future.delayed(
@@ -330,16 +391,45 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                     pressAttention4 = 2;
                                   });
                                   if (correctAnswer == 3) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
                                     createRecord("Right", "mcq");
                                     await new Future.delayed(
                                         const Duration(seconds: 2));
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) => FIBPage(
-                                              fib[0], fib[1], world, section)),
-                                    );
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => FIBPage(
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
+                                      );
+                                    }
                                   } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
                                     createRecord("Wrong", "mcq");
                                     controller3.forward(from: 0.0);
                                     await new Future.delayed(
@@ -413,16 +503,45 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                     pressAttention1 = 2;
                                   });
                                   if (correctAnswer == 4) {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 1;
+                                    }
                                     createRecord("Right", "mcq");
                                     await new Future.delayed(
                                         const Duration(seconds: 2));
-                                    Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) => FIBPage(
-                                              fib[0], fib[1], world, section)),
-                                    );
+                                    if (attempt < 3) {
+                                      List<String> question = GenerateMCQ()
+                                          .question(
+                                              world, section, attempt + 1);
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) => MCQPage(
+                                                  question[0],
+                                                  question[1],
+                                                  question[2],
+                                                  question[3],
+                                                  question[4],
+                                                  int.parse(question[5]),
+                                                  world,
+                                                  section,
+                                                  attempt + 1)));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) => FIBPage(
+                                                fib[0],
+                                                fib[1],
+                                                world,
+                                                section,
+                                                1)),
+                                      );
+                                    }
                                   } else {
+                                    if (firstAttempt == -1) {
+                                      firstAttempt = 0;
+                                    }
                                     createRecord("Wrong", "mcq");
                                     controller4.forward(from: 0.0);
                                     await new Future.delayed(
