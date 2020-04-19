@@ -26,7 +26,13 @@ class Compete extends StatelessWidget {
                 "Compete Mode", Colors.blue[600], Colors.grey[50]),
             body: Scaffold(
                 body: Container(
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                        image: new DecorationImage(
+                            image: AssetImage("assets/images/space.jpg"),
+                            fit: BoxFit.cover,
+                            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                        )
+                    ),
                     child: Center(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

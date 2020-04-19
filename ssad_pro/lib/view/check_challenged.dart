@@ -25,89 +25,100 @@ class CheckChallengedState extends State<CheckChallenged> {
         appBar: ReusableWidgets.getAppBar(
             "Compete Mode", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
-        body: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
-            },
-            child: Container(
-                child: MediaQuery.removePadding(
-                    context: context,
-                    removeTop: true,
-                    child: SingleChildScrollView(
-                        child: Column(children: <Widget>[
-                      SizedBox(
-                        height: 70,
-                      ),
-                      FadeAnimation(
-                        0.5,
-                        Icon(
-                          FontAwesomeIcons.trophy,
-                          color: Colors.blue[600],
-                          size: 150,
+        body: Container(
+          decoration: BoxDecoration(
+              image: new DecorationImage(
+                  image: AssetImage("assets/images/space.jpg"),
+                  fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+              )
+          ),
+          child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).requestFocus(new FocusNode());
+              },
+              child: Container(
+                  child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      child: SingleChildScrollView(
+                          child: Column(children: <Widget>[
+                        SizedBox(
+                          height: 70,
                         ),
-                      ),
-                      FadeAnimation(
-                          0.7,
-                          Padding(
-                              padding:
-                                  EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
-                              child: Container(
-                                  child: Center(
-                                      child: Text("You have been challenged by",
-                                          textAlign: TextAlign.center,
+                        FadeAnimation(
+                          0.5,
+                          Icon(
+                            FontAwesomeIcons.trophy,
+                            color: Color(0xffE2950F),
+                            size: 150,
+                          ),
+                        ),
+                        FadeAnimation(
+                            0.7,
+                            Padding(
+                                padding:
+                                    EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
+                                child: Container(
+                                    child: Center(
+                                        child: Text("You have been challenged by",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xffE2950F),
+                                              backgroundColor: Paint().color = Color(0xff1F3668),
+                                            )))))),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 250,
+                          child: ChallengedList(),
+                        ),
+                        FadeAnimation(
+                            0.7,
+                            Padding(
+                                padding: EdgeInsets.all(30.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                        child: Column(children: <Widget>[])),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    MaterialButton(
+                                        height: 50,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(22.0)),
+                                        onPressed: () {
+                                          List<String> question =
+                                              GenerateMCQ().question(99, 99);
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Compete(),
+                                              ));
+                                        },
+                                        color: Color(0xffE2950F),
+                                        child: Center(
+                                            child: Text(
+                                          "Challenge a new Friend!",
                                           style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blue[400])))))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 250,
-                        child: ChallengedList(),
-                      ),
-                      FadeAnimation(
-                          0.7,
-                          Padding(
-                              padding: EdgeInsets.all(30.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                      child: Column(children: <Widget>[])),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  MaterialButton(
-                                      height: 50,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(22.0)),
-                                      onPressed: () {
-                                        List<String> question =
-                                            GenerateMCQ().question(99, 99);
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => Compete(),
-                                            ));
-                                      },
-                                      color: Colors.blue[600],
-                                      child: Center(
-                                          child: Text(
-                                        "Challenge a new Friend!",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      ))),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  SocialMedia(
-                                      text: "Invite your Friends via LinkedIn",
-                                      image: "assets/images/linkedin_logo.png",
-                                      shareText:
-                                          "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
-                                ],
-                              )))
-                    ]))))));
+                                              color: Colors.black, fontSize: 20),
+                                        ))),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    SocialMedia(
+                                        text: "Invite your Friends via LinkedIn",
+                                        image: "assets/images/linkedin_logo.png",
+                                        shareText:
+                                            "Hey there, I'm an student at SSADPro. Download the app now to start your learning journey on Software Engineering at https://github.com/guptajay/SSADPro"),
+                                  ],
+                                )))
+                      ]))))),
+        ));
   }
 }
