@@ -6,8 +6,10 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/controller/add_compete_score.dart';
+import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/controller/database.dart';
@@ -30,16 +32,18 @@ class CompeteEnd extends StatefulWidget {
 class CompeteEndState extends State<CompeteEnd> {
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
     String userMsg;
     print(widget.isChallenged);
     if (widget.isChallenged == 0) {
       userMsg = "Challenge to your selected friend sent successfully!";
-      DatabaseService db = new DatabaseService(email: "jaygupta2607@gmail.com");
+      DatabaseService db = new DatabaseService(email: user.email);
       var rng = new Random();
       int rand = rng.nextInt(100);
       String challengeName = rand.toString();
       db.sendChallenge(
-          widget.friendEmail, widget.points, "challenge_" + challengeName);
+
+          widget.friendEmail, widget.points);
     } else {
       userMsg = "You have successfully completed the challenge!";
       // destroy exisiting document

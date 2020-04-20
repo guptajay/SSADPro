@@ -170,14 +170,14 @@ class DatabaseService {
   Future sendChallenge(
       String challengee_email,
       int challenger_points,
-      String fileName) async {
+      ) async {
     return await Firestore.instance.runTransaction((transaction) async {
       await transaction.set(
           Firestore.instance
-              .collection(USER_COLLECTION)
+              .collection('Users')
               .document(challengee_email)
-              .collection(USER_CHALLENGE_COLLECTION)
-              .document(fileName),
+              .collection('UserChallenges')
+              .document(),
           {
             'challenger_points': challenger_points,
             'challenger_email': this.email,
