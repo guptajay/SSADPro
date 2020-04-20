@@ -17,59 +17,80 @@ class AssessmentHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<StudentUser>>.value(
-        value: DatabaseService().users,
-        child: DefaultTabController(
-            length: 2,
-            child: Scaffold(
-              appBar: AppBar(
-                  title: Text("Assessments",
-                      style: TextStyle(
-                          color: Colors.blue[600],
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold)),
-                  backgroundColor: Colors.grey[50],
-                  brightness: Brightness.light,
-                  elevation: 0,
-                  iconTheme: IconThemeData(
-                    color: Colors.blue[600],
+      value: DatabaseService().users,
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "Assessments",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Color(0xff1F3668),
+            brightness: Brightness.light,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(70.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white,
+                    height: 4.0,
                   ),
-                  bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(100.0),
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                        child: TabBar(
-                          tabs: [
-                            Tab(
-                              icon: Icon(
-                                Icons.check,
-                                color: Colors.blue[600],
-                                size: 40,
-                              ),
-                              child: Text("Present",
-                                  style: TextStyle(
-                                      color: Colors.blue[600], fontSize: 15)),
-                            ),
-                            Tab(
-                              icon: Icon(
-                                Icons.history,
-                                color: Colors.blue[600],
-                                size: 40,
-                              ),
-                              child: Text("History",
-                                  style: TextStyle(
-                                      color: Colors.blue[600], fontSize: 15)),
-                            ),
-                          ],
+                  Container(
+                    child: TabBar(
+                      tabs: [
+                        Tab(
+                          icon: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                          child: Text("Present",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15)),
                         ),
-                      ))),
-
-              body: TabBarView(
-                children: [
-                  AssignmentList(status: "Active"),
-                  AssignmentList(status: "Inactive")
+                        Tab(
+                          icon: Icon(
+                            Icons.history,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                          child: Text("History",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15)),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-
-            )));
+            ),
+          ),
+          body: Container(
+            decoration: BoxDecoration(
+              image: new DecorationImage(
+                image: AssetImage("assets/images/space.jpg"),
+                fit: BoxFit.cover,
+                colorFilter: new ColorFilter.mode(
+                    Colors.black.withOpacity(0.75), BlendMode.dstATop),
+              ),
+            ),
+            child: TabBarView(
+              children: [
+                AssignmentList(status: "Active"),
+                AssignmentList(status: "Inactive")
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
