@@ -33,10 +33,15 @@ class _SystemSettingsState extends State<SystemSettings> {
     var actionItems = getListOfActionButtons();
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
-          "Settings", Colors.blue[600], Colors.grey[50]),
+          "Settings", Colors.white, Color(0xff1F3668)),
       body: Center(
           child: Container(
-        decoration: Background.getBackground(),
+        decoration: BoxDecoration(
+            image: new DecorationImage(
+                image: AssetImage("assets/images/space.jpg"),
+                fit: BoxFit.cover,
+                colorFilter: new ColorFilter.mode(
+                    Colors.black.withOpacity(0.90), BlendMode.dstATop))),
         height: MediaQuery.of(context).size.height,
         alignment: Alignment.center,
         child: MediaQuery.removePadding(

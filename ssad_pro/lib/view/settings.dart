@@ -19,10 +19,15 @@ class Settings extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: ReusableWidgets.getAppBar(
-            "Settings", Colors.blue[600], Colors.grey[50]),
+            "Settings", Colors.white, Color(0xff1F3668)),
         body: Center(
             child: Container(
-          decoration: Background.getBackground(),
+          decoration: BoxDecoration(
+              image: new DecorationImage(
+                  image: AssetImage("assets/images/space.jpg"),
+                  fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.90), BlendMode.dstATop))),
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
           child: MediaQuery.removePadding(
@@ -45,16 +50,19 @@ class Settings extends StatelessWidget {
                                 child: Stack(
                                   children: <Widget>[
                                     Positioned(
-                                        child: Container(
-                                            margin: EdgeInsets.only(top: 270),
-                                            child: Center(
-                                                child: Text("SSADPro v1.0",
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors
-                                                            .blue[600]))))),
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 270),
+                                        child: Center(
+                                          child: Text(
+                                            "SSADPro v1.0",
+                                            style: TextStyle(
+                                                fontSize: 40,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 )),
                             SizedBox(height: 50),
