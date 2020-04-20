@@ -7,19 +7,19 @@ class GenerateMCQ {
     String option4 = '';
     String correct_ans = '';
 
-    List<List<String>> MCQ_Easy_1= [['q1', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q2', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q3', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q4', 'o1', 'o2', 'o3', 'o4', '1']];
+    List<List<String>> MCQ_Easy_1= [['q1Easy', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q2Easy', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q3Easy', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q4Easy', 'o1', 'o2', 'o3', 'o4', '1']];
 
-    List<List<String>> MCQ_Medium_1= [['q5', 'o1', 'o2', 'o3', 'o4', '1'],
-                                      ['q6', 'o1', 'o2', 'o3', 'o4', '1'],
-                                      ['q7', 'o1', 'o2', 'o3', 'o4', '1']];
+    List<List<String>> MCQ_Medium_1= [['q5Medium', 'o1', 'o2', 'o3', 'o4', '1'],
+                                      ['q6Medium', 'o1', 'o2', 'o3', 'o4', '1'],
+                                      ['q7Medium', 'o1', 'o2', 'o3', 'o4', '1']];
 
 
-    List<List<String>> MCQ_Hard_1= [['q8', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q9', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q10', 'o1', 'o2', 'o3', 'o4', '1']];
+    List<List<String>> MCQ_Hard_1= [['q8Hard', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q9Hard', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q10Hard', 'o1', 'o2', 'o3', 'o4', '1']];
 
 
     if (world_no == 1 && sect_no == 1) {
