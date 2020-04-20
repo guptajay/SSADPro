@@ -264,6 +264,7 @@ class DatabaseService {
         email: doc.data['email'] ?? '',
         name: doc.data['name'] ?? '',
         group: doc.data['group'] ?? '',
+        progress: doc.data['progress'] ?? '',
       );
     }).toList();
   }
