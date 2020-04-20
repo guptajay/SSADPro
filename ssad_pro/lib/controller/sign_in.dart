@@ -64,7 +64,7 @@ class AuthService {
     List<String> students4 = ['Gaurav', 'Arjun Vaish', 'Jay Gupta'];
 
     //Comment this part to avoid resetting the database when the user logs in
-    if(DatabaseService(email: user.email).getRegState() == 0) {
+    if(DatabaseService(email: user.email).getRegState() == 0 || DatabaseService(email: user.email).getRegState() == null ) {
       DatabaseService(email: user.email).updateStudentUserData(
         user.displayName,
         '0',

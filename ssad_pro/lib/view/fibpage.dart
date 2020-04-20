@@ -6,6 +6,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:ssadpro/controller/dynamic_predictor.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
@@ -18,14 +19,15 @@ import 'package:ssadpro/controller/fib_generator.dart';
 class FIBPage extends StatefulWidget {
   @override
   _InputPageState createState() =>
-      _InputPageState(question, answer, world, section, attempt);
+      _InputPageState(question, answer, world, section, attempt, section_state);
 
   final String question;
   final String answer;
   int world;
   int section;
   int attempt;
-  FIBPage(this.question, this.answer, this.world, this.section, this.attempt);
+  int section_state;
+  FIBPage(this.question, this.answer, this.world, this.section, this.attempt, this.section_state);
 }
 
 class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
@@ -44,8 +46,9 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
   final int world;
   final int section;
   final int attempt;
+  int section_state;
   _InputPageState(
-      this.question, this.answer, this.world, this.section, this.attempt);
+      this.question, this.answer, this.world, this.section, this.attempt, this.section_state);
 
   int firstAttempt = -1; // not yet attempted
 
@@ -66,7 +69,7 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
               controller.reverse();
             }
           });
-    List<String> match = GenerateMatch().question(world, section, 1);
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: ReusableWidgets.getAppBar(
@@ -175,10 +178,13 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                   textColor: Colors.white,
                                   color: Colors.blue[600],
                                   onPressed: () async {
+
+                                    if(myController.text == answer && firstAttempt == -1)
+                                    firstAttempt =1;
+                                    else if(firstAttempt ==-1)
+                                    firstAttempt = 0;
+
                                     if (myController.text == answer) {
-                                      if (firstAttempt == -1) {
-                                        firstAttempt = 1;
-                                      }
                                       confirmButton = 1;
                                       createRecord("Correct", "fib");
                                       await new Future.delayed(
@@ -186,7 +192,7 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                       if (attempt < 3) {
                                         List<String> fib = GenerateFIB()
                                             .question(
-                                                world, section, attempt + 1);
+                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -195,9 +201,11 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                                   fib[1],
                                                   world,
                                                   section,
-                                                  attempt + 1)),
+                                                  attempt + 1,
+                                              DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
                                         );
                                       } else {
+                                        List<String> match = GenerateMatch().question(world, section, 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -212,7 +220,8 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                                   match[7],
                                                   world,
                                                   section,
-                                                  1)),
+                                                  1,
+                                                  DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
                                         );
                                       }
                                     } else {

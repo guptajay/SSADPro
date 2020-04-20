@@ -1,33 +1,106 @@
 class GenerateMCQ {
-  List<String> question(int world_no, int sect_no, int attempt) {
+  List<String> question(int world_no, int sect_no, int attempt, int section_state) {
     String question = '';
     String option1 = '';
     String option2 = '';
     String option3 = '';
     String option4 = '';
     String correct_ans = '';
+
+    List<List<String>> MCQ_Easy_1= [['q1', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q2', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q3', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q4', 'o1', 'o2', 'o3', 'o4', '1']];
+
+    List<List<String>> MCQ_Medium_1= [['q5', 'o1', 'o2', 'o3', 'o4', '1'],
+                                      ['q6', 'o1', 'o2', 'o3', 'o4', '1'],
+                                      ['q7', 'o1', 'o2', 'o3', 'o4', '1']];
+
+
+    List<List<String>> MCQ_Hard_1= [['q8', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q9', 'o1', 'o2', 'o3', 'o4', '1'],
+                                    ['q10', 'o1', 'o2', 'o3', 'o4', '1']];
+
+
     if (world_no == 1 && sect_no == 1) {
       if (attempt == 1) {
-        question = 'Which of the following is not there in Elicitation?';
-        option1 = 'Project Mission Statement';
-        option2 = 'Review Requirements';
-        option3 = 'Omit Requirements';
-        option4 = 'Validate Requirements';
-        correct_ans = '3';
-      } else if (attempt == 2) {
-        question = 'Attempt 2';
-        option1 = '1';
-        option2 = '2';
-        option3 = '3';
-        option4 = '4';
-        correct_ans = '3';
+        if (section_state == 0 || section_state == 1) {
+          question = MCQ_Easy_1[attempt - 1][0];
+          option1 = MCQ_Easy_1[attempt - 1][1];
+          option2 = MCQ_Easy_1[attempt - 1][2];
+          option3 = MCQ_Easy_1[attempt - 1][3];
+          option4 = MCQ_Easy_1[attempt - 1][4];
+          correct_ans = MCQ_Easy_1[attempt - 1][5];
+        }
+        if (section_state == 2 || section_state == 3) {
+          question = MCQ_Medium_1[attempt - 1][0];
+          option1 = MCQ_Medium_1[attempt - 1][1];
+          option2 = MCQ_Medium_1[attempt - 1][2];
+          option3 = MCQ_Medium_1[attempt - 1][3];
+          option4 = MCQ_Medium_1[attempt - 1][4];
+          correct_ans = MCQ_Medium_1[attempt - 1][5];
+        }
+        if (section_state == 4 || section_state == 5) {
+          question = MCQ_Hard_1[attempt - 1][0];
+          option1 = MCQ_Hard_1[attempt - 1][1];
+          option2 = MCQ_Hard_1[attempt - 1][2];
+          option3 = MCQ_Hard_1[attempt - 1][3];
+          option4 = MCQ_Hard_1[attempt - 1][4];
+          correct_ans = MCQ_Hard_1[attempt - 1][5];
+        }
+      }
+
+      else if (attempt == 2) {
+        if (section_state == 0 || section_state == 1) {
+          question = MCQ_Easy_1[attempt - 1][0];
+          option1 = MCQ_Easy_1[attempt - 1][1];
+          option2 = MCQ_Easy_1[attempt - 1][2];
+          option3 = MCQ_Easy_1[attempt - 1][3];
+          option4 = MCQ_Easy_1[attempt - 1][4];
+          correct_ans = MCQ_Easy_1[attempt - 1][5];
+        }
+        if (section_state == 2 || section_state == 3) {
+          question = MCQ_Medium_1[attempt - 1][0];
+          option1 = MCQ_Medium_1[attempt - 1][1];
+          option2 = MCQ_Medium_1[attempt - 1][2];
+          option3 = MCQ_Medium_1[attempt - 1][3];
+          option4 = MCQ_Medium_1[attempt - 1][4];
+          correct_ans = MCQ_Medium_1[attempt - 1][5];
+        }
+        if (section_state == 4 || section_state == 5) {
+          question = MCQ_Hard_1[attempt - 1][0];
+          option1 = MCQ_Hard_1[attempt - 1][1];
+          option2 = MCQ_Hard_1[attempt - 1][2];
+          option3 = MCQ_Hard_1[attempt - 1][3];
+          option4 = MCQ_Hard_1[attempt - 1][4];
+          correct_ans = MCQ_Hard_1[attempt - 1][5];
+        }
+
       } else {
-        question = 'Attempt 3';
-        option1 = '1';
-        option2 = '2';
-        option3 = '3';
-        option4 = '4';
-        correct_ans = '3';
+        if (section_state == 0 || section_state == 1) {
+          question = MCQ_Easy_1[attempt - 1][0];
+          option1 = MCQ_Easy_1[attempt - 1][1];
+          option2 = MCQ_Easy_1[attempt - 1][2];
+          option3 = MCQ_Easy_1[attempt - 1][3];
+          option4 = MCQ_Easy_1[attempt - 1][4];
+          correct_ans = MCQ_Easy_1[attempt - 1][5];
+        }
+        if (section_state == 2 || section_state == 3) {
+          question = MCQ_Medium_1[attempt - 1][0];
+          option1 = MCQ_Medium_1[attempt - 1][1];
+          option2 = MCQ_Medium_1[attempt - 1][2];
+          option3 = MCQ_Medium_1[attempt - 1][3];
+          option4 = MCQ_Medium_1[attempt - 1][4];
+          correct_ans = MCQ_Medium_1[attempt - 1][5];
+        }
+        if (section_state == 4 || section_state == 5) {
+          question = MCQ_Hard_1[attempt - 1][0];
+          option1 = MCQ_Hard_1[attempt - 1][1];
+          option2 = MCQ_Hard_1[attempt - 1][2];
+          option3 = MCQ_Hard_1[attempt - 1][3];
+          option4 = MCQ_Hard_1[attempt - 1][4];
+          correct_ans = MCQ_Hard_1[attempt - 1][5];
+        }
       }
     } else if (world_no == 1 && sect_no == 2) {
       if (attempt == 1) {
