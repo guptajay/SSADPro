@@ -26,6 +26,7 @@ class CheckChallengedState extends State<CheckChallenged> {
             "Compete Mode", Colors.white, Color(0xff1F3668)),
         backgroundColor: Colors.transparent,
         body: Container(
+          height: MediaQuery.of(context).size.height * 0.90,
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
