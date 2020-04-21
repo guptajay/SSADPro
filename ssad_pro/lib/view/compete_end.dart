@@ -15,6 +15,8 @@ import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'dart:math';
 
+import 'package:ssadpro/view/home_page.dart';
+
 class CompeteEnd extends StatefulWidget {
   CompeteEndState createState() => CompeteEndState();
   CompeteEnd(
@@ -27,6 +29,7 @@ class CompeteEnd extends StatefulWidget {
   final int points;
   final String friendEmail;
   final int friendPoints;
+  int flag = 0;
 }
 
 class CompeteEndState extends State<CompeteEnd> {
@@ -36,14 +39,15 @@ class CompeteEndState extends State<CompeteEnd> {
     String userMsg;
     print(widget.isChallenged);
     if (widget.isChallenged == 0) {
-      userMsg = "Challenge to your selected friend sent successfully!";
-      DatabaseService db = new DatabaseService(email: user.email);
-      var rng = new Random();
-      int rand = rng.nextInt(100);
-      String challengeName = rand.toString();
-      db.sendChallenge(
-
-          widget.friendEmail, widget.points);
+      if (widget.flag == 0) {
+        widget.flag = 1;
+        userMsg = "Challenge to your selected friend sent successfully!";
+        DatabaseService db = new DatabaseService(email: user.email);
+        var rng = new Random();
+        int rand = rng.nextInt(100);
+        String challengeName = rand.toString();
+        db.sendChallenge(widget.friendEmail, widget.points);
+      }
     } else {
       userMsg = "You have successfully completed the challenge!";
       // destroy exisiting document
@@ -120,15 +124,13 @@ class CompeteEndState extends State<CompeteEnd> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => Compete(
-                                                isChallenged: 0,
-                                              ),
+                                              builder: (context) => HomePage(),
                                             ));
                                       },
                                       color: Colors.blue[600],
                                       child: Center(
                                           child: Text(
-                                        "Back to Compete Mode",
+                                        "Back to Home",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       )))

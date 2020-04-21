@@ -16,16 +16,19 @@ import 'package:ssadpro/controller/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/background.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.image});
-  final String image;
+  String image;
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
+
+    if (image == null) {
+      image = "assets/images/astronaut.png";
+    }
 
     return Scaffold(
         backgroundColor: Colors.grey[50],

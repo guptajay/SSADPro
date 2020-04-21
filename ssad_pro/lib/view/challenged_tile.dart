@@ -20,11 +20,11 @@ class ChallengedTile extends StatelessWidget {
       CardView.getCardChallenged(
           context,
           document['challenger_email'],
-          document['challenger_points'],
+          document['challenger_points'].toString(),
           Icons.supervised_user_circle,
           Colors.blue[400],
           document['challenger_email'],
-          int.parse(document['challenger_points'])),
+          document['challenger_points']),
       SizedBox(height: 20),
     ]);
   }
