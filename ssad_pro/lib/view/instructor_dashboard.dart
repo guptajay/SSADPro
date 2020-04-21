@@ -52,7 +52,7 @@ class InstructorDashboard extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black54),
+                              color: Colors.white),
                         ),
                         Text(
                           userData.name,

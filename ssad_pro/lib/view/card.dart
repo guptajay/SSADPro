@@ -22,8 +22,8 @@ class CardView {
               borderRadius: BorderRadius.circular(18.0),
               side: BorderSide(color: Colors.white)),
           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-          textColor: Color(0xff1F3668),//Colors.black,
-          color: Color(0xffFFB600),
+          textColor: Colors.white, //Colors.black,
+          color: Colors.deepOrange[400],
           onPressed: () {
             Navigator.push(
               context,
@@ -35,7 +35,7 @@ class CardView {
               children: <Widget>[
                 Icon(
                   symbol,
-                  color: Color(0xff1F3668),
+                  color: Colors.brown[600],
                   size: 70,
                 ),
                 SizedBox(
