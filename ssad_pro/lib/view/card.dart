@@ -147,7 +147,7 @@ class CardView {
             textColor: Colors.white,
             color: Color(0xffFFAF02),
             onPressed: () {
-              List<String> question = GenerateMCQ().question(99, 99, 0);
+              List<String> question = GenerateMCQ().question(99, 99, 0, 0);
               Navigator.push(
                   context,
                   MaterialPageRoute(

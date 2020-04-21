@@ -16,7 +16,7 @@ class CompeteUserTile extends StatelessWidget {
   CompeteUserTile({this.user});
   @override
   Widget build(BuildContext context) {
-    List<String> question = GenerateMCQ().question(99, 99, 0);
+    List<String> question = GenerateMCQ().question(99, 99, 0, 0);
 
     return Column(children: <Widget>[
       CardView.getCard(

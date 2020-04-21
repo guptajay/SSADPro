@@ -4,8 +4,13 @@ class Section {
   int _sectionInt;
   List<Level> _levelList = [];
   String _sectionName;
+  int _section_state;
 
-  // Section(this._sectionInt, this._levelList, this._sectionName);
+  int get section_state => _section_state;
+
+  set section_state(int value) {
+    _section_state = value;
+  } // Section(this._sectionInt, this._levelList, this._sectionName);
   Section();
 
   Map<String, dynamic> toJson() => {

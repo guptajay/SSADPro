@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/drag_objects.dart';
+import 'package:ssadpro/controller/dynamic_predictor.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,7 +30,8 @@ class MatchPage extends StatefulWidget {
       option4,
       world,
       section,
-      attempt);
+      attempt,
+  section_state);
 
   final String question1;
   final String question2;
@@ -42,6 +44,7 @@ class MatchPage extends StatefulWidget {
   final int world;
   final int section;
   final int attempt;
+  final int section_state;
 
   MatchPage(
       this.question1,
@@ -54,7 +57,8 @@ class MatchPage extends StatefulWidget {
       this.option4,
       this.world,
       this.section,
-      this.attempt);
+      this.attempt,
+      this.section_state);
 }
 
 class _InputPageState extends State<MatchPage> {
@@ -69,6 +73,7 @@ class _InputPageState extends State<MatchPage> {
   final int world;
   final int section;
   final int attempt;
+  final int section_state;
 
   _InputPageState(
       this.question1,
@@ -81,7 +86,8 @@ class _InputPageState extends State<MatchPage> {
       this.option4,
       this.world,
       this.section,
-      this.attempt);
+      this.attempt,
+      this.section_state);
 
   final myController = TextEditingController();
   double width = 200.0, height = 60.0;
@@ -242,7 +248,7 @@ class _InputPageState extends State<MatchPage> {
                                         if (attempt < 3) {
                                           List<String> match = GenerateMatch()
                                               .question(
-                                                  world, section, attempt + 1);
+                                                  world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, 1));
                                           Navigator.push(
                                             context,
                                             CupertinoPageRoute(
@@ -257,7 +263,8 @@ class _InputPageState extends State<MatchPage> {
                                                     match[7],
                                                     world,
                                                     section,
-                                                    attempt + 1)),
+                                                    attempt + 1,
+                                                    DynamicPrediction().dynamicprediction(section_state, 1))),
                                           );
                                         } else {
                                           Navigator.push(
