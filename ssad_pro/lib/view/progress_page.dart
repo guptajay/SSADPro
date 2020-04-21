@@ -73,17 +73,17 @@ class _ProgressPageState extends State<ProgressPage> {
           }
 
           var piedata = [
-            new Task('Worlds Completed', worlds, Colors.deepOrange[400]),
+            new Task('Worlds Completed', worlds, Color(0xffFC963E)),
             new Task('Worlds Left', 5.0 - worlds, Colors.blue),
           ];
 
           var sectiondata = [
-            new Task('Sections Completed', sections, Colors.deepOrange[400]),
+            new Task('Sections Completed', sections, Color(0xffFC963E)),
             new Task('Sections Left', 5.0 * 5.0 - sections, Colors.blue),
           ];
 
           var leveldata = [
-            new Task('Levels Completed', levels, Colors.deepOrange[400]),
+            new Task('Levels Completed', levels, Color(0xffFC963E)),
             new Task('Levels Left', 5.0 * 5.0 * 3.0 - levels, Colors.blue),
           ];
 
@@ -95,7 +95,7 @@ class _ProgressPageState extends State<ProgressPage> {
               data: data1,
               fillPatternFn: (_, __) => charts.FillPatternType.solid,
               fillColorFn: (Score score, _) =>
-                  charts.ColorUtil.fromDartColor(Colors.deepOrange[400]),
+                  charts.ColorUtil.fromDartColor(Color(0xffFC963E)),
             ),
           );
 
