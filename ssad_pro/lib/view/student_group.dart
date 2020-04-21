@@ -43,11 +43,14 @@ class _StudentGroupState extends State<StudentGroupPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
+              backgroundColor: Colors.amber[100],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
               title: Text(
                   "Course: $course\nGroup: $name\n"
                   "Members: $members",
                   style: TextStyle(
                     fontSize: 20,
+                    color: Colors.brown[600]
                   )),
               actions: <Widget>[
                 SizedBox(
@@ -59,17 +62,17 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[300],
                         child: Text('OK',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         })),
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.19,
+                    width: MediaQuery.of(context).size.width * 0.20,
                     height: MediaQuery.of(context).size.height * 0.05)
               ]);
         });
@@ -93,18 +96,21 @@ class _StudentGroupState extends State<StudentGroupPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
+              backgroundColor: Colors.amber[100],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
               title: Text(
                   "Course: $course\nGroup: $name\n"
                   "Members: $members",
                   style: TextStyle(
                     fontSize: 18,
+                    color: Colors.brown[600]
                   )),
               content: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   height: MediaQuery.of(context).size.height * 0.07,
                   child: Text("Are you sure you want to delete this group?",
                       style: TextStyle(
-                          color: Colors.blueGrey[30],
+                          color: Colors.brown[700],
                           fontSize: 18,
                           fontWeight: FontWeight.bold))),
               actions: <Widget>[
@@ -117,10 +123,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[200],
                         child: Text('No',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
@@ -139,10 +145,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[400],
                         child: Text('Yes',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
@@ -178,6 +184,8 @@ class _StudentGroupState extends State<StudentGroupPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
+              backgroundColor: Colors.amber[100],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
               content: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.6,
                 height: MediaQuery.of(context).size.height * 0.5,
@@ -206,7 +214,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             ),
                             margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
                             elevation: 0,
-                            color: Colors.grey[300],
+                            color: Colors.deepOrange[300],
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -217,12 +225,13 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                         CheckboxListTile(
                                             title: Row(
                                               children: <Widget>[
-                                                Icon(Icons.person),
+                                                Icon(Icons.person,
+                                                color: Colors.brown[600]),
                                                 SizedBox(width: 15.0),
                                                 Text(studentName,
                                                     style: TextStyle(
-                                                        color: Colors.black45,
-                                                        fontSize: 18,
+                                                        color: Colors.brown[700],
+                                                        fontSize: 19,
                                                         fontWeight:
                                                             FontWeight.bold)),
                                               ],
@@ -254,10 +263,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[200],
                         child: Text('Cancel',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
@@ -277,10 +286,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                         textColor: Colors.white,
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[400],
                         child: Text('Confirm',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
@@ -297,15 +306,20 @@ class _StudentGroupState extends State<StudentGroupPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-              content: SizedBox(
+              backgroundColor: Colors.amber[100],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+              content: Container(
+                color: Colors.amber[100],
                 width: MediaQuery.of(context).size.width * 0.6,
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.18,
                 child: Column(children: <Widget>[
                   TextField(
                     decoration: InputDecoration(
                       labelText: "Course ID",
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
+                      labelStyle: TextStyle(
+                        color: Colors.brown[800],
+                    ),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide(),
                       ),
@@ -316,7 +330,9 @@ class _StudentGroupState extends State<StudentGroupPage> {
                   TextField(
                     decoration: InputDecoration(
                       labelText: "Group ID",
-                      fillColor: Colors.white,
+                      labelStyle: TextStyle(
+                        color: Colors.brown[800]
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide(),
@@ -336,17 +352,17 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                        color: Colors.blue[600],
+                        color: Colors.deepOrange[200],
                         child: Text('Cancel',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         })),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.05,
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 SizedBox(
@@ -358,18 +374,23 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.white)),
                         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                        textColor: Colors.white,
-                        color: Colors.blue[600],
+                        textColor: Colors.brown[600],
+                        color: Colors.deepOrange[400],
                         child: Text('Confirm',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.brown[600],
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
-                          Navigator.of(context).pop([
-                            customController1?.text.toString(),
-                            customController2?.text.toString()
-                          ]);
+                          try{
+                            Navigator.of(context).pop([
+                              customController1?.text.toString(),
+                              customController2?.text.toString()
+                            ]);
+                          }
+                          catch (e){
+                            print(e);
+                          }
                         }))
               ]);
         });
@@ -416,8 +437,15 @@ class _StudentGroupState extends State<StudentGroupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Student Group", Colors.blue[600], Colors.grey[50]),
+            "Student Group", Colors.brown[700], Colors.amberAccent[100]),
         body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/space_background.png"),
+                fit: BoxFit.cover,
+//                colorFilter: new ColorFilter.mode(Colors.black.withOpacity(), BlendMode.dstATop)
+              ),
+          ),
           child: SingleChildScrollView(
             child: Column(children: <Widget>[
               SizedBox(
@@ -443,10 +471,11 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             return Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
+                                  side: BorderSide(color: Colors.white)
                               ),
                               margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                              elevation: 0,
-                              color: Colors.grey[300],
+                              elevation: 6.0,
+                              color: Colors.deepOrange[400],
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -468,7 +497,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                           'Course: ' + document['course'],
                                           style: TextStyle(
                                               fontSize: 20,
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.orange[100]
+                                          )
+                                      ),
                                       subtitle: Text(
                                           'Group: ' +
                                               document['name'] +
@@ -477,7 +509,8 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                               students
                                                   .length
                                                   .toString(),
-                                          style: TextStyle(fontSize: 18)),
+                                          style: TextStyle(fontSize: 18,
+                                          color: Colors.white)),
                                       trailing: Wrap(
                                         spacing: 5,
                                         children: <Widget>[
@@ -529,13 +562,13 @@ class _StudentGroupState extends State<StudentGroupPage> {
                   width: MediaQuery.of(context).size.width * 0.90,
                   height: MediaQuery.of(context).size.height * 0.07,
                   child: RaisedButton(
-                    elevation: 4.0,
+                    elevation: 6.0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                         side: BorderSide(color: Colors.white)),
                     padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                    textColor: Colors.white,
-                    color: Colors.blue[600],
+                    textColor: Colors.amber[100],
+                    color: Colors.deepOrange[400],
                     onPressed: () {
                       createGroupDialog(context).then((onValue) async{
                         if (onValue != null)
@@ -547,7 +580,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                         children: <Widget>[
                           Icon(
                             Icons.group_add,
-                            color: Colors.white,
+//                            color: Colors.white,
                             size: 50,
                           ),
                           SizedBox(

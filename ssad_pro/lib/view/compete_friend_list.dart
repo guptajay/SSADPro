@@ -26,7 +26,10 @@ class _CompeteFriendListState extends State<CompeteFriendList> {
               child: new ListView.builder(
         itemCount: users.length,
         itemBuilder: (context, index) {
-          return CompeteUserTile(user: users[index]);
+          return CompeteUserTile(
+            user: users[index],
+            color: Color(0xffE2950F),
+          );
         },
       )))
     ]);

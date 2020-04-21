@@ -32,10 +32,12 @@ class Avatar extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: ReusableWidgets.getAppBar(
-            "Choose Avatar", Colors.blue[600], Colors.grey[50]),
+            "Choose Avatar", Colors.white, Color(0xff1F3668)),
         body: SingleChildScrollView(
           child: Container(
-            decoration: Background.getBackground(),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 1.0008,
+            decoration: BoxDecoration(color: Color(0xff1F3668)),
             child: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +58,8 @@ class Avatar extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         CircleImage(
-                            image: "assets/images/monster.png", title: "One Eye"),
+                            image: "assets/images/monster.png",
+                            title: "One Eye"),
                         CircleImage(
                             image: "assets/images/astronaut.png",
                             title: "Astronaut"),
@@ -117,7 +120,7 @@ class CircleImage extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: Colors.grey[200],
                       image: DecorationImage(
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                           image: AssetImage(
                             image,
                           )))),
@@ -125,7 +128,10 @@ class CircleImage extends StatelessWidget {
                 height: 10,
               ),
               Text(title,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold))
             ])));
   }
 }

@@ -130,6 +130,7 @@ class _WorldUIState extends State<WorldUI> {
         //extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Container(
+            height: MediaQuery.of(context).size.height * 0.90,
             decoration: BoxDecoration(
                 image: new DecorationImage(
                     image: AssetImage("assets/images/space.jpg"),

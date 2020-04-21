@@ -11,8 +11,10 @@ import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/progress_user_tiles.dart';
 
 class ProgressStudentList extends StatefulWidget {
+  final Color color;
   @override
   _CompeteFriendListState createState() => _CompeteFriendListState();
+  ProgressStudentList({this.color});
 }
 
 class _CompeteFriendListState extends State<ProgressStudentList> {
@@ -26,7 +28,10 @@ class _CompeteFriendListState extends State<ProgressStudentList> {
               child: new ListView.builder(
         itemCount: users.length,
         itemBuilder: (context, index) {
-          return ProgressUserTile(user: users[index]);
+          return ProgressUserTile(
+            user: users[index],
+            color: widget.color,
+          );
         },
       )))
     ]);

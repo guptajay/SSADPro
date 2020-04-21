@@ -66,13 +66,13 @@ class Settings extends StatelessWidget {
                                   ],
                                 )),
                             SizedBox(height: 50),
-                            CardView.getCard(
-                                context, Profile(), "Profile", Icons.person),
+                            CardView.getCard(context, Profile(), "Profile",
+                                Icons.person, Color(0xffFFB600)),
                             SizedBox(
                               height: 20,
                             ),
                             CardView.getCard(context, SystemSettings(),
-                                "Settings", Icons.settings)
+                                "Settings", Icons.settings, Color(0xffFFB600))
                           ])
                     ]),
               ))),

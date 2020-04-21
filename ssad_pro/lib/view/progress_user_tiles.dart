@@ -11,12 +11,13 @@ import 'package:ssadpro/view/progress_page.dart';
 
 class ProgressUserTile extends StatelessWidget {
   final StudentUser user;
-  ProgressUserTile({this.user});
+  final Color color;
+  ProgressUserTile({this.user, this.color});
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       CardView.getCard(context, ProgressPage(userdata: user.progress),
-          user.name, Icons.face),
+          user.name, Icons.face, color),
       SizedBox(height: 20),
     ]);
   }

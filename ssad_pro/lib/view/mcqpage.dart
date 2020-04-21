@@ -117,6 +117,7 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
             "MCQs", Colors.white, Color(0xff1F3668)),
         backgroundColor: Colors.white,
         body: Container(
+          height: MediaQuery.of(context).size.height*1.0008,
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),

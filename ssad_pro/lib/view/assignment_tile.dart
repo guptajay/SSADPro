@@ -12,8 +12,8 @@ import 'package:ssadpro/view/card.dart';
 
 class AssignmentTile extends StatelessWidget {
   final DocumentSnapshot document;
-
-  AssignmentTile({this.document, this.status});
+  final bool isInstructor;
+  AssignmentTile({this.document, this.status, this.isInstructor});
   final String status;
 
   @override
@@ -24,17 +24,29 @@ class AssignmentTile extends StatelessWidget {
           document['topic'],
           document['dueDate'],
           Icons.description,
-          ColorSelect.colorValue(status)),
+          ColorSelect.colorValue(status, isInstructor),
+          TextColorSelect.colorValue(isInstructor)),
       SizedBox(height: 20),
     ]);
   }
 }
-
-class ColorSelect {
-  static Color colorValue(String status) {
-    if (status == "Active")
-      return Colors.green;
+class TextColorSelect {
+  static Color colorValue(bool isInstructor) {
+    if (isInstructor == false)
+      return Colors.white;
     else
+      return Colors.brown[700];
+  }
+}
+class ColorSelect {
+  static Color colorValue(String status, bool isInstructor) {
+    if (status == "Active" && isInstructor == false)
+      return Colors.green;
+    else if (status == "Active" && isInstructor == true)
+      return Colors.lightGreen[400];
+    else if (status == "Inactive" && isInstructor == false)
       return Colors.redAccent;
+    else
+      return Colors.red[300];
   }
 }

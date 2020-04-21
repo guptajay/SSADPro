@@ -73,18 +73,18 @@ class _ProgressPageState extends State<ProgressPage> {
           }
 
           var piedata = [
-            new Task('Worlds Completed', worlds, Colors.blue[600]),
-            new Task('Worlds Left', 5.0 - worlds, Colors.blue[100]),
+            new Task('Worlds Completed', worlds, Color(0xffFC963E)),
+            new Task('Worlds Left', 5.0 - worlds, Colors.blue),
           ];
 
           var sectiondata = [
-            new Task('Sections Completed', sections, Colors.blue[600]),
-            new Task('Sections Left', 5.0 * 5.0 - sections, Colors.blue[100]),
+            new Task('Sections Completed', sections, Color(0xffFC963E)),
+            new Task('Sections Left', 5.0 * 5.0 - sections, Colors.blue),
           ];
 
           var leveldata = [
-            new Task('Levels Completed', levels, Colors.blue[600]),
-            new Task('Levels Left', 5.0 * 5.0 * 3.0 - levels, Colors.blue[100]),
+            new Task('Levels Completed', levels, Color(0xffFC963E)),
+            new Task('Levels Left', 5.0 * 5.0 * 3.0 - levels, Colors.blue),
           ];
 
           _seriesData.add(
@@ -95,7 +95,7 @@ class _ProgressPageState extends State<ProgressPage> {
               data: data1,
               fillPatternFn: (_, __) => charts.FillPatternType.solid,
               fillColorFn: (Score score, _) =>
-                  charts.ColorUtil.fromDartColor(Colors.blue[100]),
+                  charts.ColorUtil.fromDartColor(Color(0xffFC963E)),
             ),
           );
 
@@ -136,126 +136,149 @@ class _ProgressPageState extends State<ProgressPage> {
           );
 
           return Scaffold(
-            body: DefaultTabController(
-              length: 2,
-              child: Scaffold(
-                appBar: AppBar(
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/space_background.png"),
+                  fit: BoxFit.cover,
+//                colorFilter: new ColorFilter.mode(Colors.black.withOpacity(), BlendMode.dstATop)
+                ),
+              ),
+              child: DefaultTabController(
+                length: 2,
+                child: Scaffold(
+                  appBar: AppBar(
                     title: Text("Student Progress",
                         style: TextStyle(
-                            color: Colors.blue[600],
+                            color: Colors.brown[700],
                             fontSize: 35,
                             fontWeight: FontWeight.bold)),
-                    backgroundColor: Colors.grey[50],
+                    backgroundColor: Colors.amberAccent[100],
                     brightness: Brightness.light,
                     elevation: 0,
                     iconTheme: IconThemeData(
-                      color: Colors.blue[600],
+                      color: Colors.brown[700],
                       //change your color here
                     ),
                     bottom: PreferredSize(
-                        preferredSize: Size.fromHeight(70.0),
+                      preferredSize: Size.fromHeight(60.0),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            color: Colors.brown[700],
+                            height: 4.0,
+                          ),
+                          Container(
+                            child: TabBar(
+                              tabs: [
+                                Tab(
+                                  icon: Icon(
+                                    FontAwesomeIcons.solidChartBar,
+                                    color: Colors.brown[700],
+                                    size: 30,
+                                  ),
+                                ),
+                                Tab(
+                                  icon: Icon(
+                                    FontAwesomeIcons.chartPie,
+                                    color: Colors.brown[700],
+                                    size: 30,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  body: TabBarView(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                          child: TabBar(
-                            tabs: [
-                              Tab(
-                                icon: Icon(
-                                  FontAwesomeIcons.solidChartBar,
-                                  color: Colors.blue[600],
-                                  size: 30,
+                          child: Center(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'Student progress - Compete Mode',
+                                  style: TextStyle(
+                                      color: Colors.brown,
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              Tab(
-                                icon: Icon(
-                                  FontAwesomeIcons.chartPie,
-                                  color: Colors.blue[600],
-                                  size: 30,
-                                ),
-                              )
-                            ],
-                          ),
-                        ))),
-                body: TabBarView(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Center(
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Student progress - Compete Mode',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Expanded(
-                                child:
-                                    ProgressComponents.getBarChart(_seriesData),
-                              )
-                            ],
+                                Expanded(
+                                  child: ProgressComponents.getBarChart(
+                                      _seriesData),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Center(
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Student progress - Adventure Mode',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(height: 20),
-                              Text(
-                                'World Progress',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 2.0,
-                              ),
-                              Expanded(
-                                child: ProgressComponents.getPieChart(
-                                    _seriesPieData),
-                              ),
-                              Text(
-                                'Section Progress',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 2.0,
-                              ),
-                              Expanded(
-                                child: ProgressComponents.getPieChart(
-                                    _seriesPieData1),
-                              ),
-                              Text(
-                                'Level Progress',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 2.0,
-                              ),
-                              Expanded(
-                                child: ProgressComponents.getPieChart(
-                                    _seriesPieData2),
-                              ),
-                            ],
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'Student progress - Adventure Mode',
+                                  style: TextStyle(
+                                      color: Colors.brown[700],
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  'World Progress',
+                                  style: TextStyle(
+                                      color: Colors.brown[700],
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 2.0,
+                                ),
+                                Expanded(
+                                  child: ProgressComponents.getPieChart(
+                                      _seriesPieData),
+                                ),
+                                Text(
+                                  'Section Progress',
+                                  style: TextStyle(
+                                      color: Colors.brown[700],
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 2.0,
+                                ),
+                                Expanded(
+                                  child: ProgressComponents.getPieChart(
+                                      _seriesPieData1),
+                                ),
+                                Text(
+                                  'Level Progress',
+                                  style: TextStyle(
+                                      color: Colors.brown[700],
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 2.0,
+                                ),
+                                Expanded(
+                                  child: ProgressComponents.getPieChart(
+                                      _seriesPieData2),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

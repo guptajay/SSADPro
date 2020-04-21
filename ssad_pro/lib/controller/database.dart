@@ -432,7 +432,7 @@ class DatabaseService {
 //
 
 //Function to return the assignments of a particular students
-  //Use can be traced from 'assignmentList.dart'
+  //Use can be traced from 'assignment_list.dart'
   Stream<QuerySnapshot> getAssignmentSnapshots() {
     List<DocumentSnapshot> activeAssigments = new List();
 

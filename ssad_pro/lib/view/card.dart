@@ -9,21 +9,17 @@ import 'package:ssadpro/view/compete_mcq.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CardView {
-  static getCard(
-    BuildContext context,
-    Object o,
-    String title,
-    IconData symbol,
-  ) {
+  static getCard(BuildContext context, Object o, String title, IconData symbol,
+      Color color) {
     return SizedBox(
         width: 300.0,
         child: RaisedButton(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: Colors.white)),
+            borderRadius: BorderRadius.circular(18.0),
+          ),
           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-          textColor: Colors.white,
-          color: Colors.blue[700],
+          textColor: Colors.white, //Colors.black,
+          color: color,
           onPressed: () {
             Navigator.push(
               context,
@@ -31,11 +27,11 @@ class CardView {
             );
           },
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Icon(
                   symbol,
-                  color: Colors.white,
+                  color: Colors.brown[600],
                   size: 70,
                 ),
                 SizedBox(
@@ -91,7 +87,7 @@ class CardView {
   }
 
   static getCardNoClickColor(String heading, String title, String dueDate,
-      IconData symbol, Color color) {
+      IconData symbol, Color cardColor, Color textColor) {
     return SizedBox(
         width: 300.0,
         child: InkWell(
@@ -100,8 +96,9 @@ class CardView {
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-            textColor: Colors.white,
-            color: color,
+            textColor: textColor,
+            color: cardColor,
+            elevation: 6.0,
             onPressed: () {},
             child: Row(children: <Widget>[
               SizedBox(
