@@ -51,42 +51,52 @@ class _WorldUIState extends State<WorldUI> {
     Section sec1 = new Section();
     sec1.sectionInt = 1;
     sec1.sectionName = 'Requirements Elicitation';
+    sec1.section_state=0;
 
     Section sec2 = new Section();
     sec2.sectionInt = 2;
     sec2.sectionName = 'Requirements Analysis';
+    sec2.section_state=0;
 
     Section sec3 = new Section();
     sec3.sectionInt = 3;
     sec3.sectionName = 'Strategy Pattern';
+    sec3.section_state=0;
 
     Section sec4 = new Section();
     sec4.sectionInt = 4;
     sec4.sectionName = 'Observer Pattern';
+    sec4.section_state=0;
 
     Section sec5 = new Section();
     sec5.sectionInt = 5;
     sec5.sectionName = 'Software Architecture';
+    sec5.section_state=0;
 
     Section sec6 = new Section();
     sec6.sectionInt = 6;
     sec6.sectionName = 'SRS';
+    sec6.section_state=0;
 
     Section sec7 = new Section();
     sec7.sectionInt = 7;
     sec7.sectionName = 'Factory Pattern';
+    sec7.section_state=0;
 
     Section sec8 = new Section();
     sec8.sectionInt = 8;
     sec8.sectionName = 'Facade Pattern';
+    sec8.section_state=0;
 
     Section sec9 = new Section();
     sec9.sectionInt = 9;
     sec9.sectionName = 'World Quiz';
+    sec9.section_state=0;
 
     Section sec10 = new Section();
     sec10.sectionInt = 10;
     sec10.sectionName = 'World Quiz';
+    sec10.section_state=0;
 
     World world1 = new World();
     World world2 = new World();
@@ -116,7 +126,7 @@ class _WorldUIState extends State<WorldUI> {
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Adventure", Colors.blue[600], Colors.grey[50]),
+            "Adventure", Colors.white, Color(0xff1F3668)),
         //extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Container(

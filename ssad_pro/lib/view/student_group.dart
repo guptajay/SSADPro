@@ -152,9 +152,28 @@ class _StudentGroupState extends State<StudentGroupPage> {
         });
   }
 
-  Future<List> addMembersDialog(
-      BuildContext context, var groupSnapshot, int index) {
+  Future<Map<String,dynamic>> addMembersDialog(
+      BuildContext context, var groupSnapshot, int index) async{
     List<String> listOfSelectedUsers = [];
+    DocumentSnapshot groups =
+    groupSnapshot.data.documents[index];
+    Map<String, dynamic> stateOfAllUsers = {};
+    QuerySnapshot allUsersDocs = await Firestore.instance.collection('Users').getDocuments();
+    allUsersDocs.documents.forEach((doc) => {
+      stateOfAllUsers.addAll({doc['name']: false})
+    });
+
+    for (String j in groups['students']){
+      stateOfAllUsers[j] = true;
+    }
+//    for (String groupMember in usersOfGroup){
+//      if (doc['name'] == groupMember){
+//      Firestore.instance
+//          .collection('Users')
+//          .document('${doc['email']}')
+//          .updateData({'group': groupName})
+//      }
+//    }
     return showDialog(
         context: context,
         builder: (context) {
@@ -166,22 +185,19 @@ class _StudentGroupState extends State<StudentGroupPage> {
                   stream: Firestore.instance.collection('Users').snapshots(),
                   builder: (context, userSnapshot) {
                     if (!userSnapshot.hasData) return const Text('Loading...');
-
+                    final lengthOfSnapshot = userSnapshot.data.documents.length;
                     return ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: userSnapshot.data.documents.length,
+                        shrinkWrap: true,
+                        itemCount: lengthOfSnapshot,
                         itemBuilder: (context, indexOfUsers) {
                           DocumentSnapshot users =
                               userSnapshot.data.documents[indexOfUsers];
                           bool isChecked = false;
                           String studentName = users['name'];
-                          DocumentSnapshot groups =
-                              groupSnapshot.data.documents[index];
 
                           for (String memberName in groups['students']) {
                             if (memberName == studentName) {
                               isChecked = true;
-                              listOfSelectedUsers.add(studentName);
                             }
                           }
                           return Card(
@@ -215,15 +231,9 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                               _setState(() => isChecked =
                                                   newValue ? true : false);
                                               if (isChecked) {
-                                                if (!listOfSelectedUsers
-                                                    .contains(studentName))
-                                                  listOfSelectedUsers
-                                                      .add(studentName);
+                                                stateOfAllUsers[studentName] = true;
                                               } else {
-                                                if (listOfSelectedUsers
-                                                    .contains(studentName))
-                                                  listOfSelectedUsers
-                                                      .remove(studentName);
+                                                stateOfAllUsers[studentName] = false;
                                               }
                                             },
                                             value: isChecked),
@@ -274,7 +284,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold)),
                         onPressed: () {
-                          Navigator.of(context).pop(listOfSelectedUsers);
+                          Navigator.of(context).pop(stateOfAllUsers);
                         }))
               ]);
         });
@@ -364,7 +374,44 @@ class _StudentGroupState extends State<StudentGroupPage> {
               ]);
         });
   }
+  syncUsersGroup(List usersOfGroup, String groupName) async{
+    List<List> previousGroup = [[]]; //[[SS1, itsAName]]
+    int count = 0;
+    QuerySnapshot allUsersDocs = await Firestore.instance.collection('Users').getDocuments();
+    for (String groupMember in usersOfGroup){
+      allUsersDocs.documents.forEach((doc) async=>{
+          if (doc['name'] == groupMember){
+            if(!previousGroup[count].contains(doc['group']) || !previousGroup[count].contains(doc['name'])){
+              count++,
+              previousGroup.add([doc['group'],doc['name']]),
+              await Firestore.instance
+                  .collection('Users')
+                  .document('${doc['email']}')
+                  .updateData({'group': groupName})
+            }
+          }
+      });
+    }
+    previousGroup.removeAt(0);
+    int finalCount = 0;
+    List<List> finalStudents = [];
 
+    for (List i in previousGroup){
+      finalStudents = [];
+      QuerySnapshot allGroupsDocs = await Firestore.instance.collection('Groups').getDocuments();
+      allGroupsDocs.documents.forEach((f) async =>{
+        if(f['name']!=groupName){
+          if(f['students'].contains(i[1])){
+            finalStudents.add(f['students']),
+            finalStudents[finalCount].remove(i[1]),
+            await Firestore.instance.collection('Groups').document('${i[0]}').updateData({'students': finalStudents[finalCount]}),
+            finalCount++
+          }
+        }
+      });
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -392,6 +439,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                 snapshot.data.documents[index];
                             String groupName = document['name'];
                             String course = document['course'];
+                            List students = document['students'];
                             return Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
@@ -426,7 +474,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                               document['name'] +
                                               '   ' +
                                               'Members: ' +
-                                              document['students']
+                                              students
                                                   .length
                                                   .toString(),
                                           style: TextStyle(fontSize: 18)),
@@ -439,12 +487,25 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                             onPressed: () {
                                               addMembersDialog(
                                                       context, snapshot, index)
-                                                  .then((onValue) {
+                                                  .then((onValue) async{
                                                 if (onValue != null)
-                                                  DatabaseService().updateGroup(
-                                                      course,
-                                                      groupName,
-                                                      onValue);
+                                                  {
+                                                    List<String> output = [];
+                                                    onValue.forEach((key, value)=>{
+                                                      if(value == true){
+                                                        output.add(key)
+                                                      }
+                                                    });
+                                                    List output2 = new List.from(output);
+                                                    for (String previousStudent in students) {
+                                                      output2.remove(previousStudent);
+                                                    }
+                                                    await DatabaseService().updateGroup(
+                                                        course,
+                                                        groupName,
+                                                        output);
+                                                    await syncUsersGroup(output2, groupName);
+                                                  }
                                               });
                                             },
                                           ),
@@ -476,9 +537,9 @@ class _StudentGroupState extends State<StudentGroupPage> {
                     textColor: Colors.white,
                     color: Colors.blue[600],
                     onPressed: () {
-                      createGroupDialog(context).then((onValue) {
-                        DatabaseService()
-                            .createGroup(onValue[0], onValue[1], []);
+                      createGroupDialog(context).then((onValue) async{
+                        if (onValue != null)
+                          await DatabaseService().createGroup(onValue[0], onValue[1], []);
                       });
                     },
                     child: Row(

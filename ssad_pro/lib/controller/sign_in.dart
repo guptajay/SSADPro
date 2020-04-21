@@ -61,11 +61,10 @@ class AuthService {
     List<String> students1 = ['Ritwik Kanodia', 'Yap Jay', 'Koh Chean'];
     List<String> students2 = ['Ritik', 'Yusuf', 'Divyesh'];
     List<String> students3 = ['Mac Milin', 'Arduc', 'Soham'];
-    List<String> students4 = ['Gaurav', 'Arjun', 'Jay Gupta'];
-    List<String> students5 = ['Rachel', 'Michael', 'Johnson'];
+    List<String> students4 = ['Gaurav', 'Arjun Vaish', 'Jay Gupta'];
 
     //Comment this part to avoid resetting the database when the user logs in
-    if(DatabaseService(email: user.email).getRegState() == 0) {
+    if(DatabaseService(email: user.email).getRegState() == 0 || DatabaseService(email: user.email).getRegState() == null ) {
       DatabaseService(email: user.email).updateStudentUserData(
         user.displayName,
         '0',
@@ -111,7 +110,6 @@ class AuthService {
       DatabaseService().createGroup('CZ3003', 'SS2', students2);
       DatabaseService().createGroup('CZ3003', 'SS3', students3);
       DatabaseService().createGroup('CZ3003', 'SS4', students4);
-      DatabaseService().createGroup('CZ3003', 'SS5', students5);
     }
 
     name = user.displayName;

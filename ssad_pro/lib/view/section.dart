@@ -7,6 +7,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ssadpro/controller/dynamic_predictor.dart';
 import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ssadpro/view/appbar.dart';
@@ -50,7 +51,7 @@ class _SectionUIState extends State<SectionUI> {
 
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
-          "World $worldInt", Colors.blue[600], Colors.grey[50]),
+          "World $worldInt", Colors.white, Color(0xff1F3668)),
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
@@ -96,19 +97,19 @@ class _SectionUIState extends State<SectionUI> {
                         ),
                         SizedBox(height: 20),
                         SectionBox(list[0].sectionName, Colors.blue[700], context,
-                            sect_progress[0], '1', worldInt),
+                            sect_progress[0], '1', worldInt, list[0].section_state),
                         SizedBox(height: 20),
                         SectionBox(list[1].sectionName, Colors.blue[700], context,
-                            sect_progress[1], '2', worldInt),
+                            sect_progress[1], '2', worldInt, list[0].section_state),
                         SizedBox(height: 20),
                         SectionBox(list[2].sectionName, Colors.blue[700], context,
-                            sect_progress[2], '3', worldInt),
+                            sect_progress[2], '3', worldInt, list[0].section_state),
                         SizedBox(height: 20),
                         SectionBox(list[3].sectionName, Colors.blue[700], context,
-                            sect_progress[3], '4', worldInt),
+                            sect_progress[3], '4', worldInt, list[0].section_state),
                         SizedBox(height: 50),
                         SectionBox(list[4].sectionName, Color(0xffffa41b), context,
-                            sect_progress[4], '5', worldInt)
+                            sect_progress[4], '5', worldInt, list[0].section_state)
                       ]);
                     })
               ],
@@ -121,7 +122,7 @@ class _SectionUIState extends State<SectionUI> {
 }
 
 SizedBox SectionBox(String boxname, Color color, BuildContext cont,
-    bool sect_progress, String section, int world) {
+    bool sect_progress, String section, int world, int section_state) {
   return SizedBox(
     width: 350.0,
     child: RaisedButton(
@@ -133,8 +134,9 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
       color: (sect_progress == true) ? Color(0xff2C8E29) : Color(0xffD35A26),
       onPressed: () {
         if (sect_progress == true) {
+//          section_state = DynamicPrediction().dynamicprediction(section_state, 0);
           List<String> question =
-              GenerateMCQ().question(world, int.parse(section), 1);
+              GenerateMCQ().question(world, int.parse(section), 1, section_state);
           Navigator.push(
               cont,
               MaterialPageRoute(
@@ -144,6 +146,7 @@ SizedBox SectionBox(String boxname, Color color, BuildContext cont,
                       question[2],
                       question[3],
                       question[4],
+                     section_state,
                       int.parse(question[5]),
                       world,
                       int.parse(section),
