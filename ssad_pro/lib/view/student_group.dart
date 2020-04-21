@@ -509,7 +509,7 @@ class _StudentGroupState extends State<StudentGroupPage> {
                                                   .length
                                                   .toString(),
                                           style: TextStyle(fontSize: 18,
-                                          color: Colors.yellow[400])),
+                                          color: Colors.white)),
                                       trailing: Wrap(
                                         spacing: 5,
                                         children: <Widget>[
