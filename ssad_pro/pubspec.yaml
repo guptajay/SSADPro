@@ -38,6 +38,7 @@ dependencies:
   app_settings: 3.0.1
   share: ^0.6.3+6
   animated_background: ^1.0.5
+  explode_view: ^1.0.4
 
 
 dev_dependencies:

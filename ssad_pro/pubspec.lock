@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
+  explode_view:
+    dependency: "direct main"
+    description:
+      name: explode_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   firebase:
     dependency: transitive
     description:
