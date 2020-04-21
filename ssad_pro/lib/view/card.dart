@@ -98,6 +98,7 @@ class CardView {
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             textColor: textColor,
             color: cardColor,
+            elevation: 6.0,
             onPressed: () {},
             child: Row(children: <Widget>[
               SizedBox(

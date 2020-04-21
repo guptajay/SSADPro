@@ -125,7 +125,7 @@ class InstructorDashboard extends StatelessWidget {
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Text("Send Assignement",
+                                    Text("Send Assignment",
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold))

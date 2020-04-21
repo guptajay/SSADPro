@@ -471,9 +471,10 @@ class _StudentGroupState extends State<StudentGroupPage> {
                             return Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25.0),
+                                  side: BorderSide(color: Colors.white)
                               ),
                               margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                              elevation: 0,
+                              elevation: 6.0,
                               color: Colors.deepOrange[400],
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
