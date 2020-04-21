@@ -54,6 +54,7 @@ class _SectionUIState extends State<SectionUI> {
           "World $worldInt", Colors.white, Color(0xff1F3668)),
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height*1.0008,
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
