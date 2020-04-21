@@ -96,8 +96,8 @@ class CheckChallengedState extends State<CheckChallenged> {
                                             borderRadius:
                                                 BorderRadius.circular(22.0)),
                                         onPressed: () {
-                                          List<String> question =
-                                              GenerateMCQ().question(99, 99, 0, 0);
+                                          List<String> question = GenerateMCQ()
+                                              .question(99, 99, 0, 0);
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -116,6 +116,7 @@ class CheckChallengedState extends State<CheckChallenged> {
                                       height: 20,
                                     ),
                                     SocialMedia(
+                                        color: Colors.blue[300],
                                         text:
                                             "Invite your Friends via LinkedIn",
                                         image:

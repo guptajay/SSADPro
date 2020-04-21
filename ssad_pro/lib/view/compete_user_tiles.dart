@@ -13,7 +13,8 @@ import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CompeteUserTile extends StatelessWidget {
   final StudentUser user;
-  CompeteUserTile({this.user});
+  final Color color;
+  CompeteUserTile({this.user, this.color});
   @override
   Widget build(BuildContext context) {
     List<String> question = GenerateMCQ().question(99, 99, 0, 0);
@@ -36,7 +37,8 @@ class CompeteUserTile extends StatelessWidget {
               0,
               0),
           user.name,
-          Icons.face),
+          Icons.face,
+          color),
       SizedBox(height: 20),
     ]);
   }

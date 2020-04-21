@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height*1.0008,
+            height: MediaQuery.of(context).size.height * 1.0008,
             decoration: BoxDecoration(
                 image: new DecorationImage(
                     image: AssetImage("assets/images/space.jpg"),
@@ -94,7 +94,8 @@ class HomePage extends StatelessWidget {
                               side: BorderSide(color: Colors.white)),
                           margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           color: Color(0xff49A5B7),
-                          elevation: 5.0,//Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
+                          elevation:
+                              5.0, //Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
 //
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -102,35 +103,31 @@ class HomePage extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 ListTile(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => WorldUI(0, 0)),
-                                    );
-                                  },
-                                  leading: Icon(
-                                    FontAwesomeIcons.rocket,
-                                    color: Colors.white,
-                                    size: 50,
-                                  ),
-                                  title: Padding(
-                                    padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-                                    child: Text("Adventure",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white
-                                        )
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                WorldUI(0, 0)),
+                                      );
+                                    },
+                                    leading: Icon(
+                                      FontAwesomeIcons.rocket,
+                                      color: Colors.white,
+                                      size: 50,
                                     ),
-                                  )
-                                )
+                                    title: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          40, 0, 0, 0),
+                                      child: Text("Adventure",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                    ))
                               ]),
                         ),
                       )),
-                  SizedBox(
-                    height: 20,
-                  ),
                   SizedBox(
                       width: 300.0,
                       child: Container(
@@ -141,36 +138,34 @@ class HomePage extends StatelessWidget {
                               side: BorderSide(color: Colors.white)),
                           margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           color: Color(0xffE2950F),
-
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 ListTile(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => CheckChallenged()),
-                                    );
-                                  },
-                                  leading: Icon(
-                                    FontAwesomeIcons.trophy,
-                                    color: Colors.white,
-                                    size: 50,
-                                  ),
-                                  title: Padding(
-                                    padding: EdgeInsets.fromLTRB(48, 0, 0, 0),
-                                    child: Text("Compete",
-                                        style: TextStyle(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CheckChallenged()),
+                                      );
+                                    },
+                                    leading: Icon(
+                                      FontAwesomeIcons.trophy,
+                                      color: Colors.white,
+                                      size: 50,
+                                    ),
+                                    title: Padding(
+                                      padding: EdgeInsets.fromLTRB(48, 0, 0, 0),
+                                      child: Text("Compete",
+                                          style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
-                                        )
-                                    ),
-                                  )
-                                ),
+                                          )),
+                                    )),
                               ]),
                         ),
                       )),
@@ -193,28 +188,27 @@ class HomePage extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 ListTile(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AssessmentHistory()),
-                                    );
-                                  },
-                                  leading: Icon(
-                                    Icons.assignment,
-                                    color: Colors.white,
-                                    size: 50,
-                                  ),
-                                  title: Padding(
-                                    padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                                    child: Text("Assessments",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AssessmentHistory()),
+                                      );
+                                    },
+                                    leading: Icon(
+                                      Icons.assignment,
+                                      color: Colors.white,
+                                      size: 50,
                                     ),
-                                  )
-                                ),
+                                    title: Padding(
+                                      padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                                      child: Text("Assessments",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                    )),
                               ]),
                         ),
                       )),
@@ -231,36 +225,33 @@ class HomePage extends StatelessWidget {
                               side: BorderSide(color: Colors.white)),
                           margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           color: Color(0xff5F42B7),
-
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 ListTile(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LeaderboardPage()),
-                                    );
-                                  },
-                                  leading: Icon(
-                                    FontAwesomeIcons.medal,
-                                    color: Colors.white,
-                                    size: 50,
-                                  ),
-                                  title: Padding(
-                                    padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                                    child: Text("Leaderboard",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white
-                                        )
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LeaderboardPage()),
+                                      );
+                                    },
+                                    leading: Icon(
+                                      FontAwesomeIcons.medal,
+                                      color: Colors.white,
+                                      size: 50,
                                     ),
-                                  )
-                                ),
+                                    title: Padding(
+                                      padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                                      child: Text("Leaderboard",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                    )),
                               ]),
                         ),
                       )),
@@ -283,33 +274,29 @@ class HomePage extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 ListTile(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Settings()),
-                                    );
-                                  },
-                                  leading: Icon(
-                                    Icons.settings,
-                                    color: Colors.white,
-                                    size: 50,
-                                  ),
-                                  title: Padding(
-                                    padding: EdgeInsets.fromLTRB(21, 0, 0, 0),
-                                    child: Text("Configuration",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white
-                                        )
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Settings()),
+                                      );
+                                    },
+                                    leading: Icon(
+                                      Icons.settings,
+                                      color: Colors.white,
+                                      size: 50,
                                     ),
-                                  )
-                                ),
+                                    title: Padding(
+                                      padding: EdgeInsets.fromLTRB(21, 0, 0, 0),
+                                      child: Text("Configuration",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                    )),
                               ]),
                         ),
-                      )
-                  ),
+                      )),
                   SizedBox(
                     height: 20,
                   ),

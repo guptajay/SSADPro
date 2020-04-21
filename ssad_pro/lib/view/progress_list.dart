@@ -60,7 +60,10 @@ class ProgressList extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Expanded(child: ProgressStudentList())
+                    Expanded(
+                        child: ProgressStudentList(
+                      color: Colors.deepOrange[400],
+                    ))
                   ]),
             ),
           ),

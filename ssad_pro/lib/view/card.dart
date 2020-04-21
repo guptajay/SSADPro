@@ -9,21 +9,17 @@ import 'package:ssadpro/view/compete_mcq.dart';
 import 'package:ssadpro/controller/mcq_generator.dart';
 
 class CardView {
-  static getCard(
-    BuildContext context,
-    Object o,
-    String title,
-    IconData symbol,
-  ) {
+  static getCard(BuildContext context, Object o, String title, IconData symbol,
+      Color color) {
     return SizedBox(
         width: 300.0,
         child: RaisedButton(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: Colors.white)),
+            borderRadius: BorderRadius.circular(18.0),
+          ),
           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
           textColor: Colors.white, //Colors.black,
-          color: Colors.deepOrange[400],
+          color: color,
           onPressed: () {
             Navigator.push(
               context,

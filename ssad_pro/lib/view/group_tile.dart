@@ -19,7 +19,8 @@ class GroupTile extends StatelessWidget {
       this.topic,
       this.dueDate,
       this.questions,
-      this.answers});
+      this.answers,
+      this.color});
   final StudentUser user;
   final String course;
   final String topic;
@@ -27,6 +28,7 @@ class GroupTile extends StatelessWidget {
   final List<String> questions;
   final List<String> answers;
   final List<StudentUser> allStudent;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -42,7 +44,8 @@ class GroupTile extends StatelessWidget {
             answers: answers,
           ),
           user.group,
-          Icons.group),
+          Icons.group,
+          color),
       SizedBox(height: 20),
     ]);
   }

@@ -9,10 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class SocialMedia extends StatefulWidget {
-  SocialMedia({this.text, this.image, this.shareText});
+  SocialMedia({this.text, this.image, this.shareText, this.color});
   final String text;
   final String image;
   final String shareText;
+  final Color color;
   @override
   SocialMediaState createState() => SocialMediaState();
 }
@@ -27,7 +28,7 @@ class SocialMediaState extends State<SocialMedia> {
           builder: (BuildContext context) {
             return RaisedButton(
               splashColor: Colors.white,
-              color: Colors.blue[300],
+              color: widget.color,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40)),
               highlightElevation: 0,

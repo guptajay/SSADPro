@@ -54,13 +54,13 @@ class InstructorDashboard extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.brown[700]),
                         ),
                         Text(
                           userData.name,
                           style: TextStyle(
                               fontSize: 25,
-                              color: Colors.blue[600],
+                              color: Colors.deepOrange[400],
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 20),
@@ -72,7 +72,7 @@ class InstructorDashboard extends StatelessWidget {
                                   side: BorderSide(color: Colors.white)),
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                               textColor: Colors.white,
-                              color: Colors.blue[700],
+                              color: Colors.deepOrange[400],
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -106,7 +106,7 @@ class InstructorDashboard extends StatelessWidget {
                                   side: BorderSide(color: Colors.white)),
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                               textColor: Colors.white,
-                              color: Colors.blue[700],
+                              color: Colors.deepOrange[400],
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -140,7 +140,7 @@ class InstructorDashboard extends StatelessWidget {
                                   side: BorderSide(color: Colors.white)),
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                               textColor: Colors.white,
-                              color: Colors.blue[700],
+                              color: Colors.deepOrange[400],
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -174,7 +174,7 @@ class InstructorDashboard extends StatelessWidget {
                                   side: BorderSide(color: Colors.white)),
                               padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                               textColor: Colors.white,
-                              color: Colors.blue[700],
+                              color: Colors.deepOrange[400],
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -212,7 +212,7 @@ class InstructorDashboard extends StatelessWidget {
                               return LoginPage();
                             }), ModalRoute.withName('/'));
                           },
-                          color: Colors.deepOrangeAccent,
+                          color: Colors.deepOrange[400],
                           child: Padding(
                             padding: const EdgeInsets.all(5),
                             child: Text(
@@ -229,6 +229,7 @@ class InstructorDashboard extends StatelessWidget {
                           height: 30,
                         ),
                         SocialMedia(
+                            color: Colors.deepOrange[400],
                             text: "Invite Students via WhatsApp",
                             image: "assets/images/whatsapp_logo.png",
                             shareText:
