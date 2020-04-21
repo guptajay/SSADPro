@@ -70,8 +70,15 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: ReusableWidgets.getAppBar(
-            "Fill in the Blanks", Colors.blue[600], Colors.grey[50]),
+            "Fill in the Blanks", Colors.white, Color(0xff1F3668)),
         body: Container(
+            decoration: BoxDecoration(
+                image: new DecorationImage(
+                    image: AssetImage("assets/images/space.jpg"),
+                    fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
+                )
+            ),
             child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
