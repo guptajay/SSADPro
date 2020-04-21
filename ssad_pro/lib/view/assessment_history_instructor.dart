@@ -10,9 +10,9 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/assignmentList.dart';
+import 'assignment_list_instructor.dart';
 
-class AssessmentHistory extends StatelessWidget {
+class AssessmentHistoryInstructor extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -25,22 +25,22 @@ class AssessmentHistory extends StatelessWidget {
             title: Text(
               "Assessments",
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.brown[700],
                   fontSize: 35,
                   fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Color(0xff1F3668),
+            backgroundColor: Colors.amberAccent[100],
             brightness: Brightness.light,
             elevation: 0,
             iconTheme: IconThemeData(
-              color: Colors.white,
+              color: Colors.brown[700],
             ),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(70.0),
               child: Column(
                 children: <Widget>[
                   Container(
-                    color: Colors.white,
+                    color: Colors.brown[700],
                     height: 4.0,
                   ),
                   Container(
@@ -49,22 +49,22 @@ class AssessmentHistory extends StatelessWidget {
                         Tab(
                           icon: Icon(
                             Icons.check,
-                            color: Colors.white,
+                            color: Colors.brown[700],
                             size: 40,
                           ),
                           child: Text("Present",
                               style:
-                              TextStyle(color: Colors.white, fontSize: 15)),
+                              TextStyle(color: Colors.brown[700], fontSize: 15)),
                         ),
                         Tab(
                           icon: Icon(
                             Icons.history,
-                            color: Colors.white,
+                            color: Colors.brown[700],
                             size: 40,
                           ),
                           child: Text("History",
                               style:
-                              TextStyle(color: Colors.white, fontSize: 15)),
+                              TextStyle(color: Colors.brown[700], fontSize: 15)),
                         ),
                       ],
                     ),
@@ -74,18 +74,10 @@ class AssessmentHistory extends StatelessWidget {
             ),
           ),
           body: Container(
-            decoration: BoxDecoration(
-              image: new DecorationImage(
-                image: AssetImage("assets/images/space.jpg"),
-                fit: BoxFit.cover,
-                colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.75), BlendMode.dstATop),
-              ),
-            ),
             child: TabBarView(
               children: [
-                AssignmentList(status: "Active"),
-                AssignmentList(status: "Inactive")
+                AssignmentListInstructor(status: "Active"),
+                AssignmentListInstructor(status: "Inactive")
               ],
             ),
           ),

@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
-import 'package:ssadpro/view/assignmentList.dart';
+import 'package:ssadpro/view/assignment_list.dart';
 
 class AssessmentHistory extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -74,14 +74,6 @@ class AssessmentHistory extends StatelessWidget {
             ),
           ),
           body: Container(
-            decoration: BoxDecoration(
-              image: new DecorationImage(
-                image: AssetImage("assets/images/space.jpg"),
-                fit: BoxFit.cover,
-                colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.75), BlendMode.dstATop),
-              ),
-            ),
             child: TabBarView(
               children: [
                 AssignmentList(status: "Active"),

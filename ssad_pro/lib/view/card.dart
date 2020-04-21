@@ -91,7 +91,7 @@ class CardView {
   }
 
   static getCardNoClickColor(String heading, String title, String dueDate,
-      IconData symbol, Color color) {
+      IconData symbol, Color cardColor, Color textColor) {
     return SizedBox(
         width: 300.0,
         child: InkWell(
@@ -100,8 +100,8 @@ class CardView {
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.white)),
             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-            textColor: Colors.white,
-            color: color,
+            textColor: textColor,
+            color: cardColor,
             onPressed: () {},
             child: Row(children: <Widget>[
               SizedBox(

@@ -18,6 +18,8 @@ import 'package:ssadpro/view/social_media.dart';
 import 'package:ssadpro/view/student_group.dart';
 import 'package:ssadpro/view/background.dart';
 
+import 'assessment_history_instructor.dart';
+
 class InstructorDashboard extends StatelessWidget {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -178,7 +180,7 @@ class InstructorDashboard extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          AssessmentHistory()),
+                                          AssessmentHistoryInstructor()),
                                 );
                               },
                               child: Row(
