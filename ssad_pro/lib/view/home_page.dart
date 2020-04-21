@@ -85,49 +85,52 @@ class HomePage extends StatelessWidget {
                     height: 20,
                   ),
                   SizedBox(
-                      width: 300.0,
-                      child: Container(
-                        height: 85,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: Colors.white)),
-                          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          color: Color(0xff49A5B7),
-                          elevation:
-                              5.0, //Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
+                    width: 300.0,
+                    child: Container(
+                      height: 85,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                        color: Color(0xff49A5B7),
+                        elevation:
+                            5.0, //Color(0xffE2950F),//0xff49A5B7, //0xff9E0041,
 //
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                ListTile(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                WorldUI(0, 0)),
-                                      );
-                                    },
-                                    leading: Icon(
-                                      FontAwesomeIcons.rocket,
-                                      color: Colors.white,
-                                      size: 50,
-                                    ),
-                                    title: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          40, 0, 0, 0),
-                                      child: Text("Adventure",
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white)),
-                                    ))
-                              ]),
-                        ),
-                      )),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              ListTile(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => WorldUI(0, 0)),
+                                    );
+                                  },
+                                  leading: Icon(
+                                    FontAwesomeIcons.rocket,
+                                    color: Colors.white,
+                                    size: 50,
+                                  ),
+                                  title: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                                    child: Text("Adventure",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white)),
+                                  ))
+                            ]),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
                       width: 300.0,
                       child: Container(
