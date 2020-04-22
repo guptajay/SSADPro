@@ -11,6 +11,8 @@ It is a follow up member of a family of products which seek to make the learning
 > School of Computer Science and Engineering \
 > Nanyang Technological University
 
+![SRS](SRS.png)
+
 ## Installation
 
 Make sure you have the following dependencies available:
