@@ -30,68 +30,65 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
     return Scaffold(
-        backgroundColor: Colors.grey[50],
         appBar: ReusableWidgets.getAppBar(
             "Choose Avatar", Colors.white, Color(0xff1F3668)),
-        body: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 1.0008,
-            decoration: BoxDecoration(color: Color(0xff1F3668)),
-            child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 1.0008,
+          decoration: BoxDecoration(color: Color(0xff1F3668)),
+          child: Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                Column(children: <Widget>[
+                  Row(
                     children: <Widget>[
-                  Column(children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        CircleImage(
-                            image: "assets/images/ufo.png", title: "Alien"),
-                        CircleImage(
-                            image: "assets/images/alien.png", title: "Monster"),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        CircleImage(
-                            image: "assets/images/monster.png",
-                            title: "One Eye"),
-                        CircleImage(
-                            image: "assets/images/astronaut.png",
-                            title: "Astronaut"),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        CircleImage(
-                            image: "assets/images/satellite.png",
-                            title: "Swag Satellite"),
-                        CircleImage(
-                            image: "assets/images/rocket.png",
-                            title: "Super Rocket"),
-                      ],
-                    )
-                  ]),
-                  SizedBox(height: 10),
-                  StreamBuilder<UserData>(
-                      stream: DatabaseService(email: user.email).userData,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          UserData userData = snapshot.data;
-                          return Column(children: <Widget>[]);
-                        } else {
-                          return Text('Error retreiving Information');
-                        }
-                      }),
-                ])),
-          ),
+                      CircleImage(
+                          image: "assets/images/ufo.png", title: "Alien"),
+                      CircleImage(
+                          image: "assets/images/alien.png", title: "Monster"),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      CircleImage(
+                          image: "assets/images/monster.png",
+                          title: "One Eye"),
+                      CircleImage(
+                          image: "assets/images/astronaut.png",
+                          title: "Astronaut"),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      CircleImage(
+                          image: "assets/images/satellite.png",
+                          title: "Swag Satellite"),
+                      CircleImage(
+                          image: "assets/images/rocket.png",
+                          title: "Super Rocket"),
+                    ],
+                  )
+                ]),
+                SizedBox(height: 10),
+                StreamBuilder<UserData>(
+                    stream: DatabaseService(email: user.email).userData,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        UserData userData = snapshot.data;
+                        return Column(children: <Widget>[]);
+                      } else {
+                        return Text('Error retreiving Information');
+                      }
+                    }),
+              ])),
         ));
   }
 }
