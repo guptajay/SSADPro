@@ -12,6 +12,7 @@ import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/assessment_group_list.dart';
+import 'package:ssadpro/view/background.dart';
 
 class GroupList extends StatelessWidget {
   GroupList(
@@ -33,10 +34,10 @@ class GroupList extends StatelessWidget {
       value: DatabaseService().users,
       child: Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Select Group", Colors.blue[600], Colors.grey[50]),
+            "Select Group", Colors.brown[700], Colors.amberAccent[100]),
         body: Scaffold(
             body: Container(
-          decoration: BoxDecoration(),
+          decoration: Background.getBackground(),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +50,7 @@ class GroupList extends StatelessWidget {
                   height: 100,
                   child: Icon(
                     Icons.public,
-                    color: Colors.blue[600],
+                    color: Color(0xffF47217),
                     size: 120,
                   ),
                 ),
@@ -66,7 +67,8 @@ class GroupList extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.blue[600]))))),
+                                        fontWeight: FontWeight.w700,
+                                        color:Colors.brown[700]))))),
                   ],
                 )),
                 Expanded(

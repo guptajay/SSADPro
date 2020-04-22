@@ -17,7 +17,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         appBar: ReusableWidgets.getAppBar(
             "Settings", Colors.white, Color(0xff1F3668)),
         body: Center(
@@ -27,7 +27,7 @@ class Settings extends StatelessWidget {
                   image: AssetImage("assets/images/space.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.90), BlendMode.dstATop))),
+                      Colors.black.withOpacity(0.75), BlendMode.dstATop))),
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
           child: MediaQuery.removePadding(

@@ -7,14 +7,14 @@ class GenerateMCQ {
     String option4 = '';
     String correct_ans = '';
 
-    List<List<String>> MCQ_Easy_1= [['q1Easy', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q2Easy', 'o1', 'o2', 'o3', 'o4', '1'],
-                                    ['q3Easy', 'o1', 'o2', 'o3', 'o4', '1'],
+    List<List<String>> MCQ_Easy_1= [['Workflow diagrams are usually required for which of the following requirement elicitation techniques? (easy)', 'Interviewing stakeholders', 'Using questionnaires/surveys', 'Watching users do their job', 'Examining documents', '3'],
+                                    ['Which of these is NOT associated with watching users do their job during the requirement elicitation process? (easy)', 'What information the user has', '‘Day in the life’ studies', 'Workflow diagrams', 'Prototypes', '4'],
+                                    ['Which of the following matches between requirement classification cues and their definitions is FALSE? (easy)', 'Business requirement: a benefit that is expected to be gained by the customer, often expressed as a number.', 'Business rule: a policy, standard or regulation in place.', 'Functional requirement: describes how well the system performs a function in conformance with a standard', 'External interface requirement: describes connections between your system and any external components', '3'],
                                     ['q4Easy', 'o1', 'o2', 'o3', 'o4', '1']];
 
-    List<List<String>> MCQ_Medium_1= [['q5Medium', 'o1', 'o2', 'o3', 'o4', '1'],
-                                      ['q6Medium', 'o1', 'o2', 'o3', 'o4', '1'],
-                                      ['q7Medium', 'o1', 'o2', 'o3', 'o4', '1']];
+    List<List<String>> MCQ_Medium_1= [['Which of these is NOT an appropriate description of a stakeholder? (medium)', 'Focus groups of representative customers', 'Designers of the product', 'Product champions', 'Key customer representatives', '2'],
+                                      ['q7Medium', 'o1', 'o2', 'o3', 'o4', '1'],
+                                      ['Which of these is NOT an appropriate example for an external interface requirement? (medium)', '“must read signals from all Nixdorf 3XXX pressure sensors”', '“must export files in comma-separated value format” ', '“GUI button labels must conform to product family style guide”', '“files submitted electronically cannot exceed 10 MB”', '4']];
 
 
     List<List<String>> MCQ_Hard_1= [['q8Hard', 'o1', 'o2', 'o3', 'o4', '1'],
