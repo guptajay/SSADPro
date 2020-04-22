@@ -27,7 +27,8 @@ class FIBPage extends StatefulWidget {
   int section;
   int attempt;
   int section_state;
-  FIBPage(this.question, this.answer, this.world, this.section, this.attempt, this.section_state);
+  FIBPage(this.question, this.answer, this.world, this.section, this.attempt,
+      this.section_state);
 }
 
 class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
@@ -47,8 +48,8 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
   final int section;
   final int attempt;
   int section_state;
-  _InputPageState(
-      this.question, this.answer, this.world, this.section, this.attempt, this.section_state);
+  _InputPageState(this.question, this.answer, this.world, this.section,
+      this.attempt, this.section_state);
 
   int firstAttempt = -1; // not yet attempted
 
@@ -75,13 +76,13 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
         appBar: ReusableWidgets.getAppBar(
             "Fill in the Blanks", Colors.white, Color(0xff1F3668)),
         body: Container(
+            constraints: BoxConstraints.expand(),
             decoration: BoxDecoration(
                 image: new DecorationImage(
                     image: AssetImage("assets/images/space.jpg"),
                     fit: BoxFit.cover,
-                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
-                )
-            ),
+                    colorFilter: new ColorFilter.mode(
+                        Colors.black.withOpacity(0.90), BlendMode.dstATop))),
             child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
@@ -185,11 +186,11 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                   textColor: Colors.white,
                                   color: Colors.blue[600],
                                   onPressed: () async {
-
-                                    if(myController.text == answer && firstAttempt == -1)
-                                    firstAttempt =1;
-                                    else if(firstAttempt ==-1)
-                                    firstAttempt = 0;
+                                    if (myController.text == answer &&
+                                        firstAttempt == -1)
+                                      firstAttempt = 1;
+                                    else if (firstAttempt == -1)
+                                      firstAttempt = 0;
 
                                     if (myController.text == answer) {
                                       confirmButton = 1;
@@ -199,7 +200,13 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                       if (attempt < 3) {
                                         List<String> fib = GenerateFIB()
                                             .question(
-                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                                world,
+                                                section,
+                                                attempt + 1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -209,10 +216,21 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                                   world,
                                                   section,
                                                   attempt + 1,
-                                              DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
+                                                  DynamicPrediction()
+                                                      .dynamicprediction(
+                                                          section_state,
+                                                          firstAttempt))),
                                         );
                                       } else {
-                                        List<String> match = GenerateMatch().question(world, section, 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                        List<String> match = GenerateMatch()
+                                            .question(
+                                                world,
+                                                section,
+                                                1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -228,7 +246,10 @@ class _InputPageState extends State<FIBPage> with TickerProviderStateMixin {
                                                   world,
                                                   section,
                                                   1,
-                                                  DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
+                                                  DynamicPrediction()
+                                                      .dynamicprediction(
+                                                          section_state,
+                                                          firstAttempt))),
                                         );
                                       }
                                     } else {

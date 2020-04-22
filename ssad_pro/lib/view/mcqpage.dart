@@ -31,8 +31,17 @@ class MCQPage extends StatefulWidget {
   final int section;
   final int attempt;
 
-  MCQPage(this.question, this.option1, this.option2, this.option3, this.option4, this.section_state,
-      this.correctAnswer, this.world, this.section, this.attempt);
+  MCQPage(
+      this.question,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.section_state,
+      this.correctAnswer,
+      this.world,
+      this.section,
+      this.attempt);
 }
 
 class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
@@ -56,8 +65,17 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
   final int section;
   final int attempt;
 
-  _InputPageState(this.question, this.option1, this.option2, this.option3,
-      this.option4, this.section_state, this.correctAnswer, this.world, this.section, this.attempt);
+  _InputPageState(
+      this.question,
+      this.option1,
+      this.option2,
+      this.option3,
+      this.option4,
+      this.section_state,
+      this.correctAnswer,
+      this.world,
+      this.section,
+      this.attempt);
 
   int firstAttempt = -1; // not yet attempted
 
@@ -113,23 +131,22 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
           });
 
     return Scaffold(
-        appBar: ReusableWidgets.getAppBar(
-            "MCQs", Colors.white, Color(0xff1F3668)),
+        appBar:
+            ReusableWidgets.getAppBar("MCQs", Colors.white, Color(0xff1F3668)),
         backgroundColor: Colors.white,
         body: Container(
-          height: MediaQuery.of(context).size.height*1.0008,
+          height: MediaQuery.of(context).size.height * 1.0008,
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
                   fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.90), BlendMode.dstATop)
-              )
-          ),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.90), BlendMode.dstATop))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: 300,
+                height: 250,
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -138,6 +155,7 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                   ],
                 ),
               ),
+              SizedBox(height: 20),
               Expanded(
                   child: Row(
                 children: <Widget>[
@@ -175,19 +193,25 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       pressAttention3 = 2;
                                       pressAttention4 = 2;
                                     });
-                                    if(correctAnswer ==1 && firstAttempt == -1)
-                                      firstAttempt =1;
-                                    else if(firstAttempt ==-1)
+                                    if (correctAnswer == 1 &&
+                                        firstAttempt == -1)
+                                      firstAttempt = 1;
+                                    else if (firstAttempt == -1)
                                       firstAttempt = 0;
                                     if (correctAnswer == 1) {
                                       createRecord("Right", "mcq");
                                       await new Future.delayed(
                                           const Duration(seconds: 2));
                                       if (attempt < 3) {
-
                                         List<String> question = GenerateMCQ()
                                             .question(
-                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                                world,
+                                                section,
+                                                attempt + 1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                             context,
                                             CupertinoPageRoute(
@@ -197,13 +221,24 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                     question[2],
                                                     question[3],
                                                     question[4],
-                                                    DynamicPrediction().dynamicprediction(section_state, firstAttempt),
+                                                    DynamicPrediction()
+                                                        .dynamicprediction(
+                                                            section_state,
+                                                            firstAttempt),
                                                     int.parse(question[5]),
                                                     world,
                                                     section,
                                                     attempt + 1)));
                                       } else {
-                                        List<String> fib = GenerateFIB().question(world, section, 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                        List<String> fib = GenerateFIB()
+                                            .question(
+                                                world,
+                                                section,
+                                                1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -213,7 +248,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                   world,
                                                   section,
                                                   1,
-                                                  DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
+                                                  DynamicPrediction()
+                                                      .dynamicprediction(
+                                                          section_state,
+                                                          firstAttempt))),
                                         );
                                       }
                                     } else {
@@ -293,9 +331,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       pressAttention4 = 2;
                                     });
 
-                                    if(correctAnswer ==2 && firstAttempt == -1)
-                                      firstAttempt =1;
-                                    else if(firstAttempt ==-1)
+                                    if (correctAnswer == 2 &&
+                                        firstAttempt == -1)
+                                      firstAttempt = 1;
+                                    else if (firstAttempt == -1)
                                       firstAttempt = 0;
 
                                     if (correctAnswer == 2) {
@@ -305,7 +344,13 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       if (attempt < 3) {
                                         List<String> question = GenerateMCQ()
                                             .question(
-                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                                world,
+                                                section,
+                                                attempt + 1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                             context,
                                             CupertinoPageRoute(
@@ -315,13 +360,24 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                     question[2],
                                                     question[3],
                                                     question[4],
-                                                    DynamicPrediction().dynamicprediction(section_state, firstAttempt),
+                                                    DynamicPrediction()
+                                                        .dynamicprediction(
+                                                            section_state,
+                                                            firstAttempt),
                                                     int.parse(question[5]),
                                                     world,
                                                     section,
                                                     attempt + 1)));
                                       } else {
-                                        List<String> fib = GenerateFIB().question(world, section, 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                        List<String> fib = GenerateFIB()
+                                            .question(
+                                                world,
+                                                section,
+                                                1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -331,7 +387,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                   world,
                                                   section,
                                                   1,
-                                                  DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
+                                                  DynamicPrediction()
+                                                      .dynamicprediction(
+                                                          section_state,
+                                                          firstAttempt))),
                                         );
                                       }
                                     } else {
@@ -414,9 +473,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       pressAttention4 = 2;
                                     });
 
-                                    if(correctAnswer ==3 && firstAttempt == -1)
-                                      firstAttempt =1;
-                                    else if(firstAttempt ==-1)
+                                    if (correctAnswer == 3 &&
+                                        firstAttempt == -1)
+                                      firstAttempt = 1;
+                                    else if (firstAttempt == -1)
                                       firstAttempt = 0;
 
                                     if (correctAnswer == 3) {
@@ -426,7 +486,13 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       if (attempt < 3) {
                                         List<String> question = GenerateMCQ()
                                             .question(
-                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                                world,
+                                                section,
+                                                attempt + 1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                             context,
                                             CupertinoPageRoute(
@@ -436,13 +502,24 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                     question[2],
                                                     question[3],
                                                     question[4],
-                                                    DynamicPrediction().dynamicprediction(section_state, firstAttempt),
+                                                    DynamicPrediction()
+                                                        .dynamicprediction(
+                                                            section_state,
+                                                            firstAttempt),
                                                     int.parse(question[5]),
                                                     world,
                                                     section,
                                                     attempt + 1)));
                                       } else {
-                                        List<String> fib = GenerateFIB().question(world, section, 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                        List<String> fib = GenerateFIB()
+                                            .question(
+                                                world,
+                                                section,
+                                                1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                           context,
                                           CupertinoPageRoute(
@@ -452,7 +529,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                   world,
                                                   section,
                                                   1,
-                                                  DynamicPrediction().dynamicprediction(section_state, firstAttempt))),
+                                                  DynamicPrediction()
+                                                      .dynamicprediction(
+                                                          section_state,
+                                                          firstAttempt))),
                                         );
                                       }
                                     } else {
@@ -531,9 +611,10 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       pressAttention3 = 2;
                                       pressAttention1 = 2;
                                     });
-                                    if(correctAnswer ==4 && firstAttempt == -1)
-                                      firstAttempt =1;
-                                    else if(firstAttempt ==-1)
+                                    if (correctAnswer == 4 &&
+                                        firstAttempt == -1)
+                                      firstAttempt = 1;
+                                    else if (firstAttempt == -1)
                                       firstAttempt = 0;
 
                                     if (correctAnswer == 4) {
@@ -543,7 +624,13 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                       if (attempt < 3) {
                                         List<String> question = GenerateMCQ()
                                             .question(
-                                                world, section, attempt + 1, DynamicPrediction().dynamicprediction(section_state, firstAttempt));
+                                                world,
+                                                section,
+                                                attempt + 1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        section_state,
+                                                        firstAttempt));
                                         Navigator.push(
                                             context,
                                             CupertinoPageRoute(
@@ -553,24 +640,38 @@ class _InputPageState extends State<MCQPage> with TickerProviderStateMixin {
                                                     question[2],
                                                     question[3],
                                                     question[4],
-                                                    DynamicPrediction().dynamicprediction(section_state, firstAttempt),
+                                                    DynamicPrediction()
+                                                        .dynamicprediction(
+                                                            section_state,
+                                                            firstAttempt),
                                                     int.parse(question[5]),
                                                     world,
                                                     section,
                                                     attempt + 1)));
                                       } else {
-                                        List<String> fib = GenerateFIB().question(world, section, 1, DynamicPrediction().dynamicprediction(this.section_state, firstAttempt));
+                                        List<String> fib = GenerateFIB()
+                                            .question(
+                                                world,
+                                                section,
+                                                1,
+                                                DynamicPrediction()
+                                                    .dynamicprediction(
+                                                        this.section_state,
+                                                        firstAttempt));
                                         Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (context) => FIBPage(
-                                                  fib[0],
-                                                  fib[1],
-                                                  world,
-                                                  section,
-                                                  1,
-                                                DynamicPrediction().dynamicprediction(this.section_state, firstAttempt),
-                                        )));
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) => FIBPage(
+                                                      fib[0],
+                                                      fib[1],
+                                                      world,
+                                                      section,
+                                                      1,
+                                                      DynamicPrediction()
+                                                          .dynamicprediction(
+                                                              this.section_state,
+                                                              firstAttempt),
+                                                    )));
                                       }
                                     } else {
                                       if (firstAttempt == -1) {

@@ -99,17 +99,16 @@ class _InputPageState extends State<CompeteMCQPage> {
   Widget build(BuildContext context) {
     // List<String> fib = GenerateFIB().question(world, section);
     return Scaffold(
-        appBar: ReusableWidgets.getAppBar(
-            "MCQs", Colors.white, Color(0xff1F3668)),
+        appBar:
+            ReusableWidgets.getAppBar("MCQs", Colors.white, Color(0xff1F3668)),
         backgroundColor: Colors.transparent,
         body: Container(
           decoration: BoxDecoration(
               image: new DecorationImage(
                   image: AssetImage("assets/images/space.jpg"),
                   fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.80), BlendMode.dstATop)
-              )
-          ),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.80), BlendMode.dstATop))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -345,6 +344,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                   ),
                 ],
               )),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
                   child: Row(
                 children: <Widget>[
@@ -567,6 +569,9 @@ class _InputPageState extends State<CompeteMCQPage> {
                   ),
                 ],
               )),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ));

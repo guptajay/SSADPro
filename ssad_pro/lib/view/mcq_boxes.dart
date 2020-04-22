@@ -12,18 +12,18 @@ class MCQBoxes {
     return Container(
       padding: EdgeInsets.only(left: 40, right: 40),
       child: SizedBox(
-          width: 300.0,
+          width: 250.0,
           child: RaisedButton(
             elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 side: BorderSide(color: Colors.white)),
-            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             textColor: Colors.white,
-            color: Color(0xff49A5B7),//Colors.blue[800],
+            color: Color(0xff49A5B7), //Colors.blue[800],
             onPressed: () {},
             child: Padding(
-              padding: const EdgeInsets.only(top: 60.0, bottom: 60),
+              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -33,6 +33,7 @@ class MCQBoxes {
                     Flexible(
                         child: Text(
                       question,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -68,7 +69,7 @@ class MCQBoxes {
                       child: Text(ques,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 35,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                     ),
