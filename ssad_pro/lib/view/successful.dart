@@ -11,6 +11,7 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/model/student_user.dart';
+import 'background.dart';
 
 class Sucessfull extends StatefulWidget {
   SucessfullState createState() => SucessfullState();
@@ -60,7 +61,7 @@ class SucessfullState extends State<Sucessfull> {
 
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "Successful", Colors.blue[600], Colors.grey[50]),
+            "Successful", Colors.brown[700], Colors.amberAccent[100]),
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
             onTap: () {
@@ -79,7 +80,7 @@ class SucessfullState extends State<Sucessfull> {
                         0.5,
                         Icon(
                           Icons.done_all,
-                          color: Colors.blue[600],
+                          color: Color(0xffF47217),
                           size: 200,
                         ),
                       ),
@@ -96,7 +97,7 @@ class SucessfullState extends State<Sucessfull> {
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.blue[400])))))),
+                                              color: Colors.brown[700])))))),
                       FadeAnimation(
                           0.7,
                           Padding(
@@ -121,7 +122,7 @@ class SucessfullState extends State<Sucessfull> {
                                                   InstructorDashboard()),
                                         );
                                       },
-                                      color: Colors.blue[600],
+                                      color: Color(0xffF47217),
                                       child: Center(
                                           child: Text(
                                         "Home",

@@ -34,6 +34,7 @@ class _SystemSettingsState extends State<SystemSettings> {
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
           "Settings", Colors.white, Color(0xff1F3668)),
+      backgroundColor: Colors.transparent,
       body: Center(
           child: Container(
         decoration: BoxDecoration(
@@ -41,7 +42,7 @@ class _SystemSettingsState extends State<SystemSettings> {
                 image: AssetImage("assets/images/space.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.90), BlendMode.dstATop))),
+                    Colors.black.withOpacity(0.75), BlendMode.dstATop))),
         height: MediaQuery.of(context).size.height,
         alignment: Alignment.center,
         child: MediaQuery.removePadding(
@@ -83,20 +84,20 @@ class _SystemSettingsState extends State<SystemSettings> {
               child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)),
+                      side: BorderSide(color: Colors.black)),
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  textColor: Colors.white,
-                  color: Colors.blue[400],
+                  textColor: Color(0xff1F3668),
+                  color: Color(0xffFFB600),
                   onPressed: () {
                     AppSettings.openWIFISettings();
                   },
                   child: Center(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Icon(
                             Icons.wifi,
-                            color: Colors.white,
+                            color: Color(0xff1F3668),
                             size: 70,
                           ),
                           SizedBox(
@@ -121,20 +122,20 @@ class _SystemSettingsState extends State<SystemSettings> {
               child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)),
+                      side: BorderSide(color: Colors.black)),
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  textColor: Colors.white,
-                  color: Colors.blue[400],
+                  textColor: Color(0xff1F3668),//Colors.white,
+                  color: Color(0xffFFB600),
                   onPressed: () {
                     AppSettings.openAppSettings();
                   },
                   child: Center(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Icon(
                             Icons.apps,
-                            color: Colors.white,
+                            color: Color(0xff1F3668),
                             size: 70,
                           ),
                           SizedBox(
@@ -159,20 +160,20 @@ class _SystemSettingsState extends State<SystemSettings> {
               child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)),
+                      side: BorderSide(color: Colors.black)),
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  textColor: Colors.white,
-                  color: Colors.blue[400],
+                  textColor: Color(0xff1F3668),
+                  color: Color(0xffFFB600),
                   onPressed: () {
                     AppSettings.openSoundSettings();
                   },
                   child: Center(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Icon(
                             Icons.surround_sound,
-                            color: Colors.white,
+                            color: Color(0xff1F3668),
                             size: 70,
                           ),
                           SizedBox(
@@ -197,20 +198,20 @@ class _SystemSettingsState extends State<SystemSettings> {
               child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white)),
+                      side: BorderSide(color: Colors.black)),
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  textColor: Colors.white,
-                  color: Colors.blue[400],
+                  textColor: Color(0xff1F3668),
+                  color: Color(0xffFFB600),
                   onPressed: () {
                     AppSettings.openDisplaySettings();
                   },
                   child: Center(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Icon(
                             Icons.screen_lock_portrait,
-                            color: Colors.white,
+                            color: Color(0xff1F3668),
                             size: 70,
                           ),
                           SizedBox(
