@@ -11,7 +11,8 @@ It is a follow up member of a family of products which seek to make the learning
 > School of Computer Science and Engineering \
 > Nanyang Technological University
 
-![SRS](SRS.png)
+![Repository Structure](img/repository_structure.png)
+![SRS](img/SRS.png)
 
 ## Installation
 
