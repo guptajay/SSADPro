@@ -3,19 +3,20 @@ class GenerateFIB {
     String question = '';
     String answer = '';
 
-    List<List<String>> FIB_Easy_1 = [['q1Easy', 'a'],
-                                      ['q2Easy', 'a'],
-                                      ['q3Easy', 'a'],
+    List<List<String>> FIB_Easy_1 = [['Which diagram graphically represents what happens when an actor interacts with a system? ', 'Use Case'],
+                                      ['There are how many types of actors in a use case diagram? ', 'Two'],
+                                      ['What is textually describing the use case scenarios called? ', 'Use Case Description'],
                                       ];
 
-    List<List<String>> FIB_Medium_1 = [['q4Med', 'a'],
-      ['q5Med', 'a'],
-      ['q6Med', 'a'],
+    List<List<String>> FIB_Medium_1 = [['q6Med', 'a'],
+      ['What is an external agent who lies outside the system but still interacts with it called? ', 'Actor'],
+      ['Which type of actor requires assistance from the system to achieve a goal? ', ' Primary'],
+
     ];
 
     List<List<String>> FIB_Hard_1 = [['q7', 'a'],
-      ['q8Hard', 'a'],
-      ['q9Hard', 'a'],
+      ['Which relationship denotes a connection between two interactions when an interaction is invoked by another?', 'Include'],
+      ['What is used when a use case conditionally adds steps to another first-class use case?', 'Extend'],
     ];
 
 
