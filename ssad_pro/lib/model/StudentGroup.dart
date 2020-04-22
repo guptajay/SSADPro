@@ -1,11 +1,11 @@
 import 'Student.dart';
 
 class StudentGroup {
-  String groupId;
+  String course;
   String groupName;
   List<String> members = [];
 
-  StudentGroup({this.groupId, this.groupName, this.members});
+  StudentGroup({this.course, this.groupName});
 
   int getNumOfMembers(){
     return members.length;

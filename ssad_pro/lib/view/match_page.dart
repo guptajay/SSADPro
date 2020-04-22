@@ -117,7 +117,7 @@ class _InputPageState extends State<MatchPage> {
       children: <Widget>[
         Scaffold(
             appBar: ReusableWidgets.getAppBar(
-                "Match the Column", Colors.blue[600], Colors.grey[50]),
+                "Match the Column", Colors.white, Color(0xff1F3668)),
             body: Container(
                 child: MediaQuery.removePadding(
                     context: context,

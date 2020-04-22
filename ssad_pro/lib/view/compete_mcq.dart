@@ -100,197 +100,94 @@ class _InputPageState extends State<CompeteMCQPage> {
     // List<String> fib = GenerateFIB().question(world, section);
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "MCQs", Colors.blue[600], Colors.grey[50]),
-        backgroundColor: Colors.white,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              height: 300,
-              child: Row(
+            "MCQs", Colors.white, Color(0xff1F3668)),
+        backgroundColor: Colors.transparent,
+        body: Container(
+          decoration: BoxDecoration(
+              image: new DecorationImage(
+                  image: AssetImage("assets/images/space.jpg"),
+                  fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.80), BlendMode.dstATop)
+              )
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                height: 300,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: MCQBoxes.getQuestionBox1(question),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                  child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: MCQBoxes.getQuestionBox1(question),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-                child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 1
-                              ? (pressAttention1 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention1 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention1 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention1 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention1 = 1;
-                              pressAttention2 = 2;
-                              pressAttention3 = 2;
-                              pressAttention4 = 2;
-                            });
+                    child: Container(
+                      padding: EdgeInsets.only(left: 40),
+                      child: SizedBox(
+                          width: 300.0,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.white)),
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            textColor: Colors.white,
+                            color: correctAnswer == 1
+                                ? (pressAttention1 == 1
+                                    ? Colors.green[800]
+                                    : (pressAttention1 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]))
+                                : pressAttention1 == 1
+                                    ? Colors.red[800]
+                                    : (pressAttention1 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]),
+                            onPressed: () async {
+                              setState(() {
+                                pressAttention1 = 1;
+                                pressAttention2 = 2;
+                                pressAttention3 = 2;
+                                pressAttention4 = 2;
+                              });
 
-                            createRecord("Right", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            if (state == 1) {
-                              if (correctAnswer == 1) points = 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 100, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        2,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 2) {
-                              if (correctAnswer == 1) points = points + 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 101, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        3,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 3) {
-                              if (correctAnswer == 1) points = points + 1;
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteEnd(
-                                      points: points,
-                                      friendEmail: email,
-                                      isChallenged: isChallenged,
-                                      friendPoints: friendPoints,
-                                    ),
-                                  ));
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option1,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 2
-                              ? (pressAttention2 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention2 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention2 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention2 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention2 = 1;
-                              pressAttention1 = 2;
-                              pressAttention3 = 2;
-                              pressAttention4 = 2;
-                            });
-
-                            createRecord("Right", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            if (state == 1) {
-                              if (correctAnswer == 2) points = 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 100, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        2,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 2) {
-                              if (correctAnswer == 2) points = points + 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 101, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              if (state == 1) {
+                                if (correctAnswer == 1) points = 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 100, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          2,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 2) {
+                                if (correctAnswer == 1) points = points + 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 101, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
                                       builder: (context) => CompeteMCQPage(
                                           question[0],
                                           question[1],
@@ -304,262 +201,374 @@ class _InputPageState extends State<CompeteMCQPage> {
                                           points,
                                           email,
                                           isChallenged,
-                                          friendPoints)));
-                            } else if (state == 3) {
-                              if (correctAnswer == 2) points = points + 1;
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteEnd(
+                                          friendPoints),
+                                    ));
+                              } else if (state == 3) {
+                                if (correctAnswer == 1) points = points + 1;
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteEnd(
                                         points: points,
                                         friendEmail: email,
                                         isChallenged: isChallenged,
-                                        friendPoints: friendPoints),
-                                  ));
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option2,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
+                                        friendPoints: friendPoints,
+                                      ),
+                                    ));
+                              }
+                            },
+                            child: Center(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Flexible(
+                                        child: Text(
+                                      option1,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.visible,
+                                    ))
+                                  ]),
+                            ),
+                          )),
+                    ),
                   ),
-                ),
-              ],
-            )),
-            Expanded(
-                child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 3
-                              ? (pressAttention3 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention3 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention3 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention3 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention3 = 1;
-                              pressAttention1 = 2;
-                              pressAttention2 = 2;
-                              pressAttention4 = 2;
-                            });
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(right: 40),
+                      child: SizedBox(
+                          width: 300.0,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.white)),
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            textColor: Colors.white,
+                            color: correctAnswer == 2
+                                ? (pressAttention2 == 1
+                                    ? Colors.green[800]
+                                    : (pressAttention2 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]))
+                                : pressAttention2 == 1
+                                    ? Colors.red[800]
+                                    : (pressAttention2 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]),
+                            onPressed: () async {
+                              setState(() {
+                                pressAttention2 = 1;
+                                pressAttention1 = 2;
+                                pressAttention3 = 2;
+                                pressAttention4 = 2;
+                              });
 
-                            createRecord("Right", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            if (state == 1) {
-                              if (correctAnswer == 3) points = 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 100, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        2,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 2) {
-                              if (correctAnswer == 3) points = points + 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 101, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        3,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 3) {
-                              if (correctAnswer == 3) points = points + 1;
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteEnd(
-                                        points: points,
-                                        friendEmail: email,
-                                        isChallenged: isChallenged,
-                                        friendPoints: friendPoints),
-                                  ));
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option3,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              if (state == 1) {
+                                if (correctAnswer == 2) points = 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 100, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          2,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 2) {
+                                if (correctAnswer == 2) points = points + 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 101, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => CompeteMCQPage(
+                                            question[0],
+                                            question[1],
+                                            question[2],
+                                            question[3],
+                                            question[4],
+                                            int.parse(question[5]),
+                                            99,
+                                            100,
+                                            3,
+                                            points,
+                                            email,
+                                            isChallenged,
+                                            friendPoints)));
+                              } else if (state == 3) {
+                                if (correctAnswer == 2) points = points + 1;
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteEnd(
+                                          points: points,
+                                          friendEmail: email,
+                                          isChallenged: isChallenged,
+                                          friendPoints: friendPoints),
+                                    ));
+                              }
+                            },
+                            child: Center(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Flexible(
+                                        child: Text(
+                                      option2,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.visible,
+                                    ))
+                                  ]),
+                            ),
+                          )),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 40),
-                    child: SizedBox(
-                        width: 300.0,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.white)),
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                          textColor: Colors.white,
-                          color: correctAnswer == 4
-                              ? (pressAttention4 == 1
-                                  ? Colors.green[800]
-                                  : (pressAttention4 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]))
-                              : pressAttention4 == 1
-                                  ? Colors.red[800]
-                                  : (pressAttention4 == 2
-                                      ? Colors.grey
-                                      : Colors.blue[700]),
-                          onPressed: () async {
-                            setState(() {
-                              pressAttention4 = 1;
-                              pressAttention2 = 2;
-                              pressAttention3 = 2;
-                              pressAttention1 = 2;
-                            });
+                ],
+              )),
+              Expanded(
+                  child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 40),
+                      child: SizedBox(
+                          width: 300.0,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.white)),
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            textColor: Colors.white,
+                            color: correctAnswer == 3
+                                ? (pressAttention3 == 1
+                                    ? Colors.green[800]
+                                    : (pressAttention3 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]))
+                                : pressAttention3 == 1
+                                    ? Colors.red[800]
+                                    : (pressAttention3 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]),
+                            onPressed: () async {
+                              setState(() {
+                                pressAttention3 = 1;
+                                pressAttention1 = 2;
+                                pressAttention2 = 2;
+                                pressAttention4 = 2;
+                              });
 
-                            createRecord("Right", "mcq");
-                            await new Future.delayed(
-                                const Duration(seconds: 2));
-                            if (state == 1) {
-                              if (correctAnswer == 4) points = 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 100, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        2,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 2) {
-                              if (correctAnswer == 4) points = points + 1;
-                              List<String> question =
-                                  GenerateMCQ().question(99, 101, 0, 0);
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteMCQPage(
-                                        question[0],
-                                        question[1],
-                                        question[2],
-                                        question[3],
-                                        question[4],
-                                        int.parse(question[5]),
-                                        99,
-                                        100,
-                                        3,
-                                        points,
-                                        email,
-                                        isChallenged,
-                                        friendPoints),
-                                  ));
-                            } else if (state == 3) {
-                              if (correctAnswer == 4) points = points + 1;
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) => CompeteEnd(
-                                        points: points,
-                                        friendEmail: email,
-                                        isChallenged: isChallenged,
-                                        friendPoints: friendPoints),
-                                  ));
-                            }
-                          },
-                          child: Center(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Flexible(
-                                      child: Text(
-                                    option4,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.visible,
-                                  ))
-                                ]),
-                          ),
-                        )),
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              if (state == 1) {
+                                if (correctAnswer == 3) points = 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 100, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          2,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 2) {
+                                if (correctAnswer == 3) points = points + 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 101, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          3,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 3) {
+                                if (correctAnswer == 3) points = points + 1;
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteEnd(
+                                          points: points,
+                                          friendEmail: email,
+                                          isChallenged: isChallenged,
+                                          friendPoints: friendPoints),
+                                    ));
+                              }
+                            },
+                            child: Center(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Flexible(
+                                        child: Text(
+                                      option3,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.visible,
+                                    ))
+                                  ]),
+                            ),
+                          )),
+                    ),
                   ),
-                ),
-              ],
-            )),
-          ],
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(right: 40),
+                      child: SizedBox(
+                          width: 300.0,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(color: Colors.white)),
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            textColor: Colors.white,
+                            color: correctAnswer == 4
+                                ? (pressAttention4 == 1
+                                    ? Colors.green[800]
+                                    : (pressAttention4 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]))
+                                : pressAttention4 == 1
+                                    ? Colors.red[800]
+                                    : (pressAttention4 == 2
+                                        ? Colors.grey
+                                        : Colors.blue[700]),
+                            onPressed: () async {
+                              setState(() {
+                                pressAttention4 = 1;
+                                pressAttention2 = 2;
+                                pressAttention3 = 2;
+                                pressAttention1 = 2;
+                              });
+
+                              createRecord("Right", "mcq");
+                              await new Future.delayed(
+                                  const Duration(seconds: 2));
+                              if (state == 1) {
+                                if (correctAnswer == 4) points = 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 100, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          2,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 2) {
+                                if (correctAnswer == 4) points = points + 1;
+                                List<String> question =
+                                    GenerateMCQ().question(99, 101, 0, 0);
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteMCQPage(
+                                          question[0],
+                                          question[1],
+                                          question[2],
+                                          question[3],
+                                          question[4],
+                                          int.parse(question[5]),
+                                          99,
+                                          100,
+                                          3,
+                                          points,
+                                          email,
+                                          isChallenged,
+                                          friendPoints),
+                                    ));
+                              } else if (state == 3) {
+                                if (correctAnswer == 4) points = points + 1;
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => CompeteEnd(
+                                          points: points,
+                                          friendEmail: email,
+                                          isChallenged: isChallenged,
+                                          friendPoints: friendPoints),
+                                    ));
+                              }
+                            },
+                            child: Center(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Flexible(
+                                        child: Text(
+                                      option4,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.visible,
+                                    ))
+                                  ]),
+                            ),
+                          )),
+                    ),
+                  ),
+                ],
+              )),
+            ],
+          ),
         ));
   }
 }
