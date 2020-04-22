@@ -39,7 +39,8 @@ class _AssessmentGroupListState extends State<AssessmentGroupList> {
     Groups.sort();
     final List<StudentUser> selecteduser = new List();
     for (String str in Groups) {
-      selecteduser.add(StudentUser(group: str));
+      if (str != '0')
+        selecteduser.add(StudentUser(group: str));
     }
 
     return Row(
@@ -57,6 +58,7 @@ class _AssessmentGroupListState extends State<AssessmentGroupList> {
                   dueDate: widget.dueDate,
                   questions: widget.questions,
                   answers: widget.answers,
+                  color: Colors.deepOrange[400]
                 );
               },
             ),
