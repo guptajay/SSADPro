@@ -145,7 +145,7 @@ class _ProgressPageState extends State<ProgressPage> {
                 ),
               ),
               child: DefaultTabController(
-                length: 2,
+                length: 3,
                 child: Scaffold(
                   appBar: AppBar(
                     title: Text("Student Progress",
@@ -184,7 +184,14 @@ class _ProgressPageState extends State<ProgressPage> {
                                     color: Colors.brown[700],
                                     size: 30,
                                   ),
-                                )
+                                ),
+                                Tab(
+                                  icon: Icon(
+                                    FontAwesomeIcons.poll,
+                                    color: Colors.brown[700],
+                                    size: 30,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -277,6 +284,215 @@ class _ProgressPageState extends State<ProgressPage> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'Strengths and Weakness',
+                                  style: TextStyle(
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 15),
+                                    SizedBox(
+                                        width: 300,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: BorderSide(
+                                                  color: Colors.white)),
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                          textColor: Colors.white,
+                                          color: Colors.blue[700],
+                                          onPressed: () {},
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Column(children: <Widget>[
+                                                  Text(
+                                                    "World 1",
+                                                    style: TextStyle(
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Text(
+                                                    "Best Performance: \n Requirement Elicitation",
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Text(
+                                                    " Worst Performance: \n Requirement Specification",
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                ])
+                                              ]),
+                                        )),
+                                    SizedBox(height: 10),
+                                    SizedBox(
+                                        width: 300,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: BorderSide(
+                                                  color: Colors.white)),
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                          textColor: Colors.white,
+                                          color: Colors.grey[500],
+                                          onPressed: () {},
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                      "World 2 \n Not Available",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                )
+                                              ]),
+                                        )),
+                                    SizedBox(height: 10),
+                                    SizedBox(
+                                        width: 300,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: BorderSide(
+                                                  color: Colors.white)),
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                          textColor: Colors.white,
+                                          color: Colors.grey[500],
+                                          onPressed: () {},
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                      "World 3 \n Not Available",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                )
+                                              ]),
+                                        )),
+                                    SizedBox(height: 10),
+                                    SizedBox(
+                                        width: 300,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: BorderSide(
+                                                  color: Colors.white)),
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                          textColor: Colors.white,
+                                          color: Colors.grey[500],
+                                          onPressed: () {},
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                      "World 4 \n Not Available",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                )
+                                              ]),
+                                        )),
+                                    SizedBox(height: 10),
+                                    SizedBox(
+                                        width: 300,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                              side: BorderSide(
+                                                  color: Colors.white)),
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                          textColor: Colors.white,
+                                          color: Colors.grey[500],
+                                          onPressed: () {},
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                      "World 5 \n Not Available",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                )
+                                              ]),
+                                        )),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -289,85 +505,6 @@ class _ProgressPageState extends State<ProgressPage> {
       },
     );
   }
-
-  // _generateData(List<dynamic> points) {
-  //   var data1 = [Score(1, 0, 30), Score(1, 1, 60)];
-  //   // data1.add(Score(1, 2, points[1]));
-
-  //   for (var i = 0; i < len; i++) {
-  //     data1.add(Score(1, i + 1, points[i]));
-  //   }
-  //   //new Score(1, 0, 30);
-  //   //  new Score(1, 1, 40),
-  //   //  new Score(1, 2, 80),
-
-  //   // for (var i=0;i<len;i++){
-  //   //   data1.add(points[i]);
-  //   // }
-
-  //   var piedata = [
-  //     new Task('Worlds Completed', worlds, Colors.blue[600]),
-  //     new Task('Worlds Left', 5.0 - worlds, Colors.blue[100]),
-  //   ];
-
-  //   var sectiondata = [
-  //     new Task('Sections Completed', sections, Colors.blue[600]),
-  //     new Task('Sections Left', 12.0 - sections, Colors.blue[100]),
-  //   ];
-
-  //   var leveldata = [
-  //     new Task('Levels Completed', levels, Colors.blue[600]),
-  //     new Task('Levels Left', 9.0 - levels, Colors.blue[100]),
-  //   ];
-
-  //   _seriesData.add(
-  //     charts.Series(
-  //       domainFn: (Score score, _) => score.date.toString(),
-  //       measureFn: (Score score, _) => score.quantity,
-  //       id: '1',
-  //       data: data1,
-  //       fillPatternFn: (_, __) => charts.FillPatternType.solid,
-  //       fillColorFn: (Score score, _) =>
-  //           charts.ColorUtil.fromDartColor(Colors.blue[100]),
-  //     ),
-  //   );
-
-  //   _seriesPieData.add(
-  //     charts.Series(
-  //       domainFn: (Task task, _) => task.task,
-  //       measureFn: (Task task, _) => task.taskvalue,
-  //       colorFn: (Task task, _) =>
-  //           charts.ColorUtil.fromDartColor(task.colorval),
-  //       id: 'World Progress',
-  //       data: piedata,
-  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-  //     ),
-  //   );
-
-  //   _seriesPieData1.add(
-  //     charts.Series(
-  //       domainFn: (Task task, _) => task.task,
-  //       measureFn: (Task task, _) => task.taskvalue,
-  //       colorFn: (Task task, _) =>
-  //           charts.ColorUtil.fromDartColor(task.colorval),
-  //       id: 'Section Progress',
-  //       data: sectiondata,
-  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-  //     ),
-  //   );
-
-  //   _seriesPieData2.add(
-  //     charts.Series(
-  //       domainFn: (Task task, _) => task.task,
-  //       measureFn: (Task task, _) => task.taskvalue,
-  //       colorFn: (Task task, _) =>
-  //           charts.ColorUtil.fromDartColor(task.colorval),
-  //       id: 'Level Progress',
-  //       data: leveldata,
-  //       labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-  //     ),
-  //   );
-  // }
 }
 
 class Score {
