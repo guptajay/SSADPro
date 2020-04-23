@@ -2,7 +2,7 @@
  * This class return the logic of incorporating
  * social media in the application.
  * 
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

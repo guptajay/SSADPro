@@ -2,7 +2,7 @@
  * This class return the page layout displaying
  * sections of each world.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/cupertino.dart';

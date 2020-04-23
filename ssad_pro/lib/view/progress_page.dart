@@ -3,7 +3,7 @@
  * progress of each student in adventure mode as well
  * as compete mode.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

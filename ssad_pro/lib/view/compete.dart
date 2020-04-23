@@ -1,7 +1,7 @@
 /**
  * This class implements the logic and home page for 
  * the compete mode of the application.
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

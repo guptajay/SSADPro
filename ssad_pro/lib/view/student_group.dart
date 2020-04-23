@@ -2,7 +2,7 @@
  * This class return the page layout displaying
  * all the student groups.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

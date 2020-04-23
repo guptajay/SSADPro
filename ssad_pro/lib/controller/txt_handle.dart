@@ -2,16 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
-// Future<String> get _localPath async {
-//   final directory = await getApplicationDocumentsDirectory();
-//   return directory.path;
-// }
-
-// Future<File> get _localFile async {
-//   final path = await _localPath;
-//   return File('$path/status.txt');
-// }
-
 void createRecord(String res, String inputFile) async {
   final Directory directory = await getApplicationDocumentsDirectory();
   final File file = File('${directory.path}/' + inputFile + '.txt');

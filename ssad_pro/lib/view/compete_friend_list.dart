@@ -2,7 +2,7 @@
  * This class return the list of students who
  * can be challenged in compete mode.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

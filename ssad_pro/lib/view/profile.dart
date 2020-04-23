@@ -2,7 +2,7 @@
  * This class implements the layout of the 
  * profile of the student.
  *
- * @author Mac Milin
+ *
  */
 
 import 'package:flutter/material.dart';

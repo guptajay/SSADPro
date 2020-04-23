@@ -2,7 +2,7 @@
  * This class implements the layout of the fill in the blanks
  * question displayed as one of the levels in each section.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

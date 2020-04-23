@@ -2,7 +2,7 @@
  * This class implements the layout of the home page for
  * instructors to select different functionalities of the app.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/assessment_history.dart';
 import 'package:ssadpro/view/progress_list.dart';
 import 'package:ssadpro/view/send_assessment.dart';
 import 'package:ssadpro/view/login.dart';

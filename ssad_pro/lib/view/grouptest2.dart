@@ -1,7 +1,7 @@
 /**
  * This class implements the layout of group tiles.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -2,7 +2,7 @@
  * This class implements the layout of list
  * of challenges for a student.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

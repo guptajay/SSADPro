@@ -2,7 +2,7 @@
  * This class implements the parameterised card button
  * which is used in subsequent classes. 
  *
- * @author Jay Gupta
+ *
  */
 import 'package:flutter/material.dart';
 import 'package:ssadpro/view/compete_mcq.dart';

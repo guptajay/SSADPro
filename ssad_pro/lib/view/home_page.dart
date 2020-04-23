@@ -2,7 +2,7 @@
  * This class implements the layout of the home page for
  * students to select different functionalities of the app.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

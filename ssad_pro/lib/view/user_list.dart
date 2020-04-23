@@ -2,7 +2,7 @@
  * This class return the page layout displaying
  * list of users.
  * 
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

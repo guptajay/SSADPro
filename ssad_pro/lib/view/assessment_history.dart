@@ -2,7 +2,7 @@
  * This class implements logic to fetch the assessment history 
  * of each student and their scores as well.
  *
- * @author Ritwik Kanodia
+ *
  */
 
 import 'package:flutter/material.dart';

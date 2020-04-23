@@ -2,7 +2,7 @@
  * This class return the list of students whose 
  * progress can be viewed by their instructors.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

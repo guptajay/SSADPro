@@ -2,7 +2,7 @@
  * This class return the list of scores of a student 
  * for compete mode in form of text.
  *
- * @author Ritwik Kanodia
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

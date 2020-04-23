@@ -2,7 +2,7 @@
  * This class return the mcq pages for 
  * compete mode of each student.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

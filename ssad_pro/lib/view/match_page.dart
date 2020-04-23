@@ -2,7 +2,7 @@
  * This class implements the layout match the column 
  * type of questions
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@
  * This class return the page layout displaying
  * the 5 Worlds of our application.
  *  
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/cupertino.dart';

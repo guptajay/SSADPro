@@ -2,7 +2,7 @@
  * This class return the layout for each
  * button denoting user list.
  * 
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

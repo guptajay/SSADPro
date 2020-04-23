@@ -2,7 +2,7 @@
  * This class return the list of scores of a student 
  * for compete mode
  *
- * @author Ritwik Kanodia
+ *
  */
 
 import 'package:flutter/material.dart';

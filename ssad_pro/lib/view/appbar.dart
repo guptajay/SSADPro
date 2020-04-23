@@ -1,7 +1,7 @@
 /**
  * This class implements the parameterised AppBar throughout the application.
  *
- * @author Jay Gupta
+ *
  */
 import 'package:flutter/material.dart';
 

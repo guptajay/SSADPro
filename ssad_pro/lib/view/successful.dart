@@ -2,7 +2,7 @@
  * This class return the successful message when 
  * assignment is sent by one student to another.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

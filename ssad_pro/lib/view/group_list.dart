@@ -2,7 +2,7 @@
  * This class implements the layout for the students to select
  * othe students from groups to send the assignments.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

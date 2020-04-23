@@ -2,7 +2,7 @@
  * This class implements logic to fetch the list of
  * assignements done by a student.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

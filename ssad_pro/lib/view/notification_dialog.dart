@@ -2,7 +2,7 @@
  * This class implements the layout of the page to
  * select date and time.
  *
- * @author Gaurav Kumar
+ *
  */
 
 import 'package:flutter/material.dart';

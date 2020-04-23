@@ -3,7 +3,7 @@
  * cards of each student whose assessment 
  * details are fetched.
  *
- * @author Ritwik Kanodia
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';

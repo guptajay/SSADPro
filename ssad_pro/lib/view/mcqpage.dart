@@ -2,7 +2,7 @@
  * This class implements the layout of multiple 
  * choice question.
  *
- * @author Divyesh Mundhra and Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@
  * This class return the logic and layout 
  * to show student groups.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

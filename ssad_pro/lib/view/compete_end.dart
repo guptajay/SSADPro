@@ -2,7 +2,7 @@
  * This class implements logic to end a test and display
  * the achieved score based on answers inputted.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/controller/add_compete_score.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/controller/database.dart';
 import 'dart:math';
 

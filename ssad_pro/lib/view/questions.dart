@@ -1,7 +1,7 @@
 /**
  * This class returns the layout of questions asked.
  *
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

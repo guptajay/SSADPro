@@ -2,7 +2,7 @@
  * This class implements the layout of display
  * of students for the compete mode.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

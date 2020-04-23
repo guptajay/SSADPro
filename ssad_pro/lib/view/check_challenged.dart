@@ -2,7 +2,7 @@
  * This class implements layout to display
  * the list of challenges received.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';
