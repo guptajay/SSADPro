@@ -17,7 +17,10 @@ class GenerateFIB {
     ];
 
     List<List<String>> FIB_Medium_1 = [
-      ['q6Med', 'a'],
+      [
+        'What is an external agent who lies outside the system but still interacts with it called? ',
+        'Actor'
+      ],
       [
         'What is an external agent who lies outside the system but still interacts with it called? ',
         'Actor'
@@ -29,7 +32,10 @@ class GenerateFIB {
     ];
 
     List<List<String>> FIB_Hard_1 = [
-      ['q7', 'a'],
+      [
+        'Which relationship denotes a connection between two interactions when an interaction is invoked by another?',
+        'Include'
+      ],
       [
         'Which relationship denotes a connection between two interactions when an interaction is invoked by another?',
         'Include'
