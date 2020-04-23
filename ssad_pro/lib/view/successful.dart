@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/instructor_dashboard.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'background.dart';
 

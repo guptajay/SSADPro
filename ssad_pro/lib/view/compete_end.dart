@@ -11,7 +11,7 @@ import 'package:ssadpro/animation/fade_animation.dart';
 import 'package:ssadpro/controller/add_compete_score.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'dart:math';
 
 import 'package:ssadpro/view/home_page.dart';

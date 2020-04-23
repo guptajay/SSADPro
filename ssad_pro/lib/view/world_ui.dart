@@ -15,8 +15,8 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/services/database.dart';
+import 'package:ssadpro/model/progress.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
 

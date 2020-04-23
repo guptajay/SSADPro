@@ -11,7 +11,7 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/compete_end.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 
 class CompeteMCQPage extends StatefulWidget {
   @override

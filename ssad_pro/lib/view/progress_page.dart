@@ -13,8 +13,8 @@ import 'package:ssadpro/view/progress_components.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/controller/score_list.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/services/database.dart';
+import 'package:ssadpro/model/progress.dart';
 
 class ProgressPage extends StatefulWidget {
   final String userdata;

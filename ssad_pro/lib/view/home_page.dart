@@ -12,7 +12,7 @@ import 'package:ssadpro/view/check_challenged.dart';
 import 'package:ssadpro/view/leaderboard.dart';
 import 'package:ssadpro/view/login.dart';
 import 'package:ssadpro/view/world_ui.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/settings.dart';
 import 'package:ssadpro/model/user.dart';

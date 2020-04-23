@@ -1,11 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/user_list.dart';
-import 'package:ssadpro/model/Student.dart';
 
 class DatabaseService {
   static const String USER_COLLECTION = 'Users';
