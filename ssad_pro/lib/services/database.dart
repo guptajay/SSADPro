@@ -1,11 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/group.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/user_list.dart';
-import 'package:ssadpro/model/Student.dart';
 
 class DatabaseService {
   static const String USER_COLLECTION = 'Users';
@@ -286,22 +281,6 @@ class DatabaseService {
     );
   }
 
-//  //assignment list from snapshot
-//  List<Assignment> _assignmentListFromSnapshot(QuerySnapshot snapshot) {
-//    return snapshot.documents.map((doc) {
-//      return Assignment(
-//        name: doc.data['name'] ?? '',
-//        status: doc.data['status'] ?? 'Inactive',
-//        topic: doc.data['topic'] ?? '',
-//
-//
-//      );
-//    }).toList();
-//  }
-
-  //get docs stream
-  //Mapping the firebase stream to the userdata model
-  //Do not want to work with snapshots but with custom models
 
   //Getter to get a list of registered users from database
   Stream<List<StudentUser>> get users {
@@ -315,8 +294,6 @@ class DatabaseService {
         .snapshots()
         .map(_userDataFromSnapshot);
   }
-
-
 
 
 //Function to update the group of the current user in the data base
@@ -353,87 +330,6 @@ class DatabaseService {
           {'points': points});
     });
   }
-
-//   Future<int> getWorldProgress(String userEmail) async {
-//    try {
-//      DocumentSnapshot ds = await Firestore.instance
-//          .collection('Users')
-//          .document('$userEmail')
-//          .get();
-//
-//      String str = ds['progress'];
-//      int num = int.parse(str[1]);
-//      print('GWP : $num');
-//
-//      return num;
-//    } catch (e) {
-//      print(e);
-//      return null;
-//    }
-//  }
-
-//
-//  Future getStudentAssignments(String name) async {
-//    return await Firestore.instance.runTransaction((transaction) async
-//    {
-//      await transaction.get(Firestore.instance.collection(USER_COLLECTION)
-//          .document(this.email).collection(USER_ASSIGNMENT_COLLECTION).document(
-//          'A1'));
-//
-//      await
-//      transaction.set(Firestore.instance.collection(USER_COLLECTION)
-//          .document(this.email).collection(USER_ASSIGNMENT_COLLECTION).document(
-//          'A1')
-//          , {
-//            'name': name
-//          });
-//    });
-//  }
-//
-
-//
-//    List <String> assignments = new List();
-//    QuerySnapshot qs = await studentUserCollection.document(this.email).collection(USER_ASSIGNMENT_COLLECTION).getDocuments();
-//
-//    for(DocumentSnapshot ds in qs.documents)
-//      assignments.add(ds.data['name']);
-//    return assignments;
-//  }
-
-//
-//Stream <List<Assignment>> getReports(){
-//    return studentUserCollection.document(this.email).collection(
-//        USER_ASSIGNMENT_COLLECTION).snapshots().map((snapshot) => snapshot.documents.map((document) => Assignment.fromJson(document.data)).toList());
-//}
-
-// //Function to get the value of the name field
-//  List<String> getData() {
-//    List<String> assignmentNames = new List();
-//    Firestore.instance.collection(USER_COLLECTION)
-//        .document(this.email)
-//        .collection(USER_ASSIGNMENT_COLLECTION)
-//        .getDocuments()
-//        .then((QuerySnapshot snapshot) {
-//
-//          snapshot.documents.forEach((f) => assignmentNames.add('${f.data['name']}}'));
-//          return assignmentNames;
-//    });
-//  }
-
-//
-//  void updateData() {
-//    try {
-//      Firestore.instance.collection(USER_COLLECTION)
-//          .document(this.email)
-//          .collection(USER_ASSIGNMENT_COLLECTION)
-//          .document('A1')
-//          .updateData({'name': 'Bye'});
-//    } catch (e) {
-//      print(e.toString());
-//    }
-//  }
-//
-
 //Function to return the assignments of a particular students
   //Use can be traced from 'assignment_list.dart'
   Stream<QuerySnapshot> getAssignmentSnapshots() {

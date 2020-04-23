@@ -2,19 +2,19 @@
  * This class implements the layout of the fill in the blanks
  * question displayed as one of the levels in each section.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';
-import 'package:ssadpro/controller/dynamic_predictor.dart';
+import 'package:ssadpro/services/dynamic_predictor.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/match_page.dart';
-import 'package:ssadpro/controller/match_generator.dart';
-import 'package:ssadpro/controller/fib_generator.dart';
+import 'package:ssadpro/services/match_generator.dart';
+import 'package:ssadpro/services/fib_generator.dart';
 
 class FIBPage extends StatefulWidget {
   @override

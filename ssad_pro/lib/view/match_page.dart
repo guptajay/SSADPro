@@ -2,12 +2,12 @@
  * This class implements the layout match the column 
  * type of questions
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';
 import 'package:ssadpro/controller/drag_objects.dart';
-import 'package:ssadpro/controller/dynamic_predictor.dart';
+import 'package:ssadpro/services/dynamic_predictor.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +15,7 @@ import 'package:ssadpro/view/world_ui.dart';
 import 'mcq_boxes.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/match_generator.dart';
+import 'package:ssadpro/services/match_generator.dart';
 
 class MatchPage extends StatefulWidget {
   @override

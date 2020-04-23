@@ -2,7 +2,7 @@
  * This class implements layout to display
  * the list of challenges received.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/challenged_list.dart';
 import 'package:ssadpro/view/compete.dart';
 import 'package:ssadpro/view/social_media.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CheckChallenged extends StatefulWidget {

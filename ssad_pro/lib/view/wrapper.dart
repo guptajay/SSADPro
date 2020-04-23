@@ -3,7 +3,7 @@
  * authenticate the users logging into
  * the application.
  * 
- * @author Jay Gupta
+ *
  */
 
 import 'package:provider/provider.dart';

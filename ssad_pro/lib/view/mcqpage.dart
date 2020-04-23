@@ -2,18 +2,18 @@
  * This class implements the layout of multiple 
  * choice question.
  *
- * @author Divyesh Mundhra and Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';
-import 'package:ssadpro/controller/dynamic_predictor.dart';
+import 'package:ssadpro/services/dynamic_predictor.dart';
 import 'package:ssadpro/controller/txt_handle.dart';
 import 'package:ssadpro/view/appbar.dart';
 import 'package:ssadpro/view/mcq_boxes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ssadpro/view/fibpage.dart';
-import 'package:ssadpro/controller/fib_generator.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/fib_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 
 class MCQPage extends StatefulWidget {
   @override

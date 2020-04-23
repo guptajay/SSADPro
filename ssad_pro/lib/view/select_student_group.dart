@@ -2,11 +2,11 @@
  * This class return the logic and layout 
  * to show student groups.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/model/student_user.dart';
 
 class SelectStudentGroup extends StatefulWidget {

@@ -2,14 +2,14 @@
  * This class implements the layout of display
  * of students for the compete mode.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:ssadpro/view/compete_mcq.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 
 class CompeteUserTile extends StatelessWidget {
   final StudentUser user;

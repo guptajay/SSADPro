@@ -2,11 +2,11 @@
  * This class implements the parameterised card button
  * which is used in subsequent classes. 
  *
- * @author Jay Gupta
+ *
  */
 import 'package:flutter/material.dart';
 import 'package:ssadpro/view/compete_mcq.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 
 class CardView {
   static getCard(BuildContext context, Object o, String title, IconData symbol,

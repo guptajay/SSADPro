@@ -2,12 +2,12 @@
  * This class implements logic to fetch the assessment history
  * of each student and their scores as well.
  *
- * @author Ritwik Kanodia
+ *
  */
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'assignment_list_instructor.dart';

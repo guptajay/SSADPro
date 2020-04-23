@@ -1,4 +1,4 @@
-import 'package:ssadpro/model/question.dart';
+
 class Ass
 {
   String email;
@@ -13,11 +13,6 @@ class Assignment{
 
 
   Assignment({this.name, this.topic, this.status, this.email});
-
-//  Assignment.fromJson(Map<String,dynamic> parsedJson)
-//    : name = parsedJson['name'],
-//      topic = parsedJson['topic'],
-//        status = parsedJson['status'];
 
   factory Assignment.fromMap(Map<String, dynamic> data) {
     return Assignment(

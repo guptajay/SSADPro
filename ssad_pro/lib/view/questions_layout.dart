@@ -2,7 +2,7 @@
  * This class implements the parameterised card button. 
  * This class shows the layout of questions diplayed.
  *
- * @author Jay Gupta
+ *
  */
 import 'package:flutter/material.dart';
 import 'package:ssadpro/view/text_field.dart';

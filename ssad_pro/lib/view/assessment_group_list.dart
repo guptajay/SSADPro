@@ -2,7 +2,7 @@
  * This class implements logic to fetch the list of
  * groups to which different students belong.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

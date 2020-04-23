@@ -1,7 +1,12 @@
+/**
+ * This class implements the layout for the leaderboard of the application and displays the current points of all the user.
+*
+*/
+
+
 import 'dart:core';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ssadpro/controller/database.dart';
 import 'package:ssadpro/view/appbar.dart';
 
 class LeaderboardPage extends StatefulWidget {

@@ -2,7 +2,7 @@
  * This class implements the layout of the different groups 
  * to select students from.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

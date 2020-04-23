@@ -1,7 +1,7 @@
 /**
  * This class return the layout of the button used 
  * to show student for tracking their progress.
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

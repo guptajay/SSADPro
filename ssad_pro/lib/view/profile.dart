@@ -2,17 +2,16 @@
  * This class implements the layout of the 
  * profile of the student.
  *
- * @author Mac Milin
+ *
  */
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/model/user.dart';
-import 'package:ssadpro/view/background.dart';
 import 'package:ssadpro/view/card.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/model/progress.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatefulWidget {

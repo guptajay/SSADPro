@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/model/assignment.dart';
-import 'package:ssadpro/model/question.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/model/user.dart';
 
 class AuthService {
@@ -21,11 +18,6 @@ class AuthService {
     return user != null ? User(email: user.email) : null;
   }
 
-  //create user object based on FirebaseUser
-//  String _userAssignmentFromFirebaseUser(FirebaseUser user) {
-//    return userEmail != null ? email: null;
-//  }
-
   Stream<User> get user {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
@@ -42,8 +34,7 @@ class AuthService {
 
     final AuthResult authResult = await _auth.signInWithCredential(credential);
     final FirebaseUser user = authResult.user;
-//  if(group<6) group++;
-//  else group=1;
+
 
     // Checking if email and name is null
     assert(user.email != null);

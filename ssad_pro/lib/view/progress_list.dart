@@ -2,12 +2,12 @@
  * This class return the list of students whose 
  * progress can be viewed by their instructors.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/controller/sign_in.dart';
 import 'package:ssadpro/model/student_user.dart';
 import 'package:ssadpro/view/appbar.dart';

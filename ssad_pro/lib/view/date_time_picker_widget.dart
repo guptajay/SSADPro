@@ -3,7 +3,7 @@
  * time specific to the region in which the application
  * is used.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

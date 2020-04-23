@@ -2,7 +2,7 @@
  * This class return the page layout displaying
  * system setting of the application.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

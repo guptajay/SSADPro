@@ -2,7 +2,7 @@
  * This class return the components used in showing
  * progress of each student.
  *
- * @author Divyesh Mundhra
+ *
  */
 
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@
  * This class has the logic to send assessments
  * from one student to another.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@
  * This class implements the layout of some components
  * which have been reused in many classes of the app.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:flutter/material.dart';

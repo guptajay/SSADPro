@@ -2,21 +2,20 @@
  * This class return the page layout displaying
  * sections of each world.
  * 
- * @author Ritik Bhatia
+ *
  */
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ssadpro/controller/dynamic_predictor.dart';
 import 'package:ssadpro/model/Section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ssadpro/view/appbar.dart';
-import 'package:ssadpro/controller/database.dart';
-import 'package:ssadpro/controller/progress.dart';
+import 'package:ssadpro/services/database.dart';
+import 'package:ssadpro/model/progress.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:ssadpro/view/mcqpage.dart';
-import 'package:ssadpro/controller/mcq_generator.dart';
+import 'package:ssadpro/services/mcq_generator.dart';
 
 class SectionUI extends StatefulWidget {
   final List<Section> list;

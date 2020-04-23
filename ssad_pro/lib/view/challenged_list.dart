@@ -2,13 +2,13 @@
  * This class implements the layout of list
  * of challenges for a student.
  *
- * @author Jay Gupta
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ssadpro/controller/database.dart';
+import 'package:ssadpro/services/database.dart';
 import 'package:ssadpro/model/user.dart';
 import 'package:ssadpro/view/challenged_tile.dart';
 

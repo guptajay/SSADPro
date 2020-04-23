@@ -2,7 +2,7 @@
  * This class implements the layout of 
  * the button to challenge a particular student.
  * 
- * @author Jay Gupta
+ *
  */
 
 import 'package:cloud_firestore/cloud_firestore.dart';
